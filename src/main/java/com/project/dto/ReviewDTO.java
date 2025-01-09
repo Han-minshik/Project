@@ -22,7 +22,7 @@ public class ReviewDTO {
     private String tag;
     private String comment;
 
-    private String userid;
+    private String userId;
     private int bookIsbn;
 
     private List<UserDTO> user;
