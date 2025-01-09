@@ -6,9 +6,9 @@
     <!-- 책 등록 -->
     <insert id="createBook">
         INSERT INTO book (isbn, title, author, publisher, publication_date, genre, rating, rental_state,
-                          copies_avilable, detail, cover_image, created_at)
+                          copies_avilable, detail, cover_image, created_at, user_id)
         VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{genre}, #{rating},
-                #{rentalState}, #{copiesAvailable}, #{detail}, #{coverImage}, #{createdAt})
+                #{rentalState}, #{copiesAvailable}, #{detail}, #{coverImage}, #{createdAt}, #{userId})
     </insert>
     <!-- 책 찾기 -->
     <select id="getBookByIsbn" resultType="BookDTO">
@@ -23,13 +23,19 @@
         UPDATE book
         SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
             genre = #{genre}, rating = #{rating}, rental_state = #{rentalState}, detail = #{detail},
-            cover_image = #{coverImage}, created_at = DEFAULT
+            cover_image = #{coverImage}, created_at = DEFAULT, user_id = #{userId}
         WHERE isbn = #{isbn}
     </update>
     <!-- 책 삭제 -->
     <delete id="deleteBook">
         DELETE FROm book WHERE isbn = #{isbn}
     </delete>
+    <!-- 베스트셀러 가져오기 -->
+    <select id="getBestsellerList" resultType="BestsellerDTO">
+        SELECT b.isbn, b.title, b.author, bs.rank, bs.created_at
+        FROM book b
+                 JOIN bestseller bs ON b.isbn = BS.book_isbn
+    </select>
     <!-- 제목으로 책 검색 -->
     <select id="searchBooksByName" parameterType="string" resultType="com.project.dto.BookDTO">
         SELECT
