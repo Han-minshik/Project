@@ -14,7 +14,6 @@ public interface BookMapper {
     List<BookDTO> getAllBooks();
     void updateBook(BookDTO book);
     void deleteBook(int isbn);
-    List<BestsellerDTO> getBestsellerList();
     // 책 제목으로 검색
     List<BookDTO> searchBooksByName(@Param("title") String title);
 }
