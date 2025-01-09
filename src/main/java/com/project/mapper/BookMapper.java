@@ -1,6 +1,5 @@
 package com.project.mapper;
 
-import com.project.dto.BestsellerDTO;
 import com.project.dto.BookDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

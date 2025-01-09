@@ -6,9 +6,9 @@
     <!-- 책 등록 -->
     <insert id="createBook">
         INSERT INTO book (isbn, title, author, publisher, publication_date, genre, rating, rental_state,
-                          copies_avilable, detail, cover_image, created_at, user_id)
+                          copies_avilable, detail, cover_image, created_at)
         VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{genre}, #{rating},
-                #{rentalState}, #{copiesAvailable}, #{detail}, #{coverImage}, #{createdAt}, #{userId})
+                #{rentalState}, #{copiesAvailable}, #{detail}, #{coverImage}, #{createdAt})
     </insert>
     <!-- 책 찾기 -->
     <select id="getBookByIsbn" resultType="BookDTO">
@@ -23,7 +23,7 @@
         UPDATE book
         SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
             genre = #{genre}, rating = #{rating}, rental_state = #{rentalState}, detail = #{detail},
-            cover_image = #{coverImage}, created_at = DEFAULT, user_id = #{userId}
+            cover_image = #{coverImage}, created_at = DEFAULT
         WHERE isbn = #{isbn}
     </update>
     <!-- 책 삭제 -->
