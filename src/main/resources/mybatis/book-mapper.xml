@@ -23,7 +23,7 @@
         UPDATE book
         SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
             genre = #{genre}, rating = #{rating}, rental_state = #{rentalState}, detail = #{detail},
-            cover_image = #{coverImage}, created_at = DEFAULT, user_id = #{userId}
+            cover_image = #{coverImage}, created_at = DEFAULT
         WHERE isbn = #{isbn}
     </update>
     <!-- 책 삭제 -->
