@@ -26,7 +26,7 @@
         WHERE id = #{id}
     </update>
     <!-- 현재 대출 중인 사용자 모두 출력 -->
-    <select id="getAllloans" resultType="LoanDTO">
+    <select id="getAllLoans" resultType="LoanDTO">
         SELECT a.*, b.title AS bookTitle, c.name AS userName
         FROM loan as a JOIN book b ON a.book_isbn = b.isbn
         JOIN user c ON a.user_id = c.id

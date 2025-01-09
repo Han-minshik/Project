@@ -11,5 +11,5 @@ public interface LoanMapper {
     LoanDTO getLoanById(int id);
     List<LoanDTO> getLoansByUserId(String userId);
     void updateLoanStatus(LoanDTO loan);
-    List<LoanDTO> getAllloans();
+    List<LoanDTO> getAllLoans();
 }

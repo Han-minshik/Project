@@ -26,6 +26,7 @@ public class UserDTO implements UserDetails, OAuth2User {
     @Pattern(regexp = "^[a-z][0-9a-zA-Z]*$")
     private String id;
     private String name;
+    @NotBlank
     @Pattern(regexp = "^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}")
     private String password;
     private String ci;
@@ -57,5 +58,10 @@ public class UserDTO implements UserDetails, OAuth2User {
     @Override
     public String getUsername() {
         return this.id;
+    }
+    // SecurityConfig 작성할 때 oauth2 작성했을 경우 삭제 (override getPassword)
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 }

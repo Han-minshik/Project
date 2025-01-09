@@ -24,7 +24,4 @@ public class BookDTO {
     private byte[] coverImage;
     // 등록일자
     private LocalDateTime createdAt;
-
-
-    private String userId;
 }
