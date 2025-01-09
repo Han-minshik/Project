@@ -36,4 +36,25 @@
         FROM book b
         JOIN bestseller bs ON b.isbn = BS.book_isbn
     </select>
+    <!-- 제목으로 책 검색 -->
+    <select id="searchBooksByName" parameterType="string" resultType="com.project.dto.BookDTO">
+        SELECT
+            b.isbn,
+            b.title,
+            b.author,
+            b.publisher,
+            b.publication_date AS publicationDate,
+            b.genre,
+            b.rating,
+            b.rental_state AS rentalState,
+            b.copies_avilable AS copiesAvailable,
+            b.detail,
+            b.cover_image AS coverImage,
+            b.created_at AS createdAt
+        FROM
+            book b
+        WHERE
+            REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '')
+    </select>
+
 </mapper>
