@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +22,9 @@ public class BookDTO {
     private String rentalState;
     private int copiesAvailable;
     private String detail;
-    private byte[] coverImage;
     // 등록일자
     private LocalDateTime createdAt;
+    private CategoryDTO category;
+
+    private List<BookImageDTO> images;
 }

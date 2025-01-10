@@ -3,12 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.BookMapper">
+    <!-- BookDTO 안의 컬럼으로 BookImageDTO 를 처리하기 위해 사용 -->
+    <resultMap id="bookWithImagesMap" type="com.project.dto.BookDTO">
+        <id property="isbn" column="isbn"/>
+        <result property="title" column="title"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="publicationDate" column="publicationDate"/>
+        <result property="genre" column="genre"/>
+        <result property="rating" column="rating"/>
+        <result property="rentalState" column="rentalState"/>
+        <result property="copiesAvailable" column="copiesAvailable"/>
+        <result property="detail" column="detail"/>
+        <result property="createdAt" column="createdAt"/>
+        <collection property="images" ofType="com.project.dto.BookImageDTO">
+            <id property="no" column="imageNo"/>
+            <result property="originalFilename" column="originalFilename"/>
+            <result property="data" column="imageData"/>
+        </collection>
+    </resultMap>
+
     <!-- 책 등록 -->
     <insert id="createBook">
         INSERT INTO book (isbn, title, author, publisher, publication_date, genre, rating, rental_state,
-                          copies_avilable, detail, cover_image, created_at)
+                          copies_avilable, detail, created_at, category)
         VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{genre}, #{rating},
-                #{rentalState}, #{copiesAvailable}, #{detail}, #{coverImage}, #{createdAt})
+                #{rentalState}, #{copiesAvailable}, #{detail}, #{createdAt}, #{category})
     </insert>
     <!-- 책 찾기 -->
     <select id="getBookByIsbn" resultType="BookDTO">
@@ -23,7 +43,7 @@
         UPDATE book
         SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
             genre = #{genre}, rating = #{rating}, rental_state = #{rentalState}, detail = #{detail},
-            cover_image = #{coverImage}, created_at = DEFAULT
+            created_at = DEFAULT
         WHERE isbn = #{isbn}
     </update>
     <!-- 책 삭제 -->
@@ -31,7 +51,7 @@
         DELETE FROm book WHERE isbn = #{isbn}
     </delete>
     <!-- 제목으로 책 검색 -->
-    <select id="searchBooksByName" parameterType="string" resultType="com.project.dto.BookDTO">
+    <select id="searchBooksByName" parameterType="string" resultMap="bookWithImagesMap">
         SELECT
             b.isbn,
             b.title,
@@ -43,12 +63,21 @@
             b.rental_state AS rentalState,
             b.copies_avilable AS copiesAvailable,
             b.detail,
-            b.cover_image AS coverImage,
-            b.created_at AS createdAt
+            b.created_at AS createdAt,
+            bi.no AS imageNo,
+            bi.original_filename AS originalFilename,
+            bi.data AS imageData
         FROM
             book b
+                LEFT JOIN
+            book_image bi ON b.isbn = bi.book_isbn
         WHERE
             REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '')
     </select>
-
+    <!-- 책 제목으로 리뷰 검색 -->
+    <select id="findReviewTitlesByBookTitle" parameterType="string" resultType="ReviewDTO">
+        SELECT r.title AS  review_title FROM review r
+                                                 JOIN book b ON r.book_isbn = b.isbn
+        WHERE REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '');
+    </select>
 </mapper>

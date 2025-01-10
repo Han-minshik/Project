@@ -18,7 +18,6 @@ public class ReviewDTO {
     private int like;
     private String status;
     private LocalDateTime updatedAt;
-    private int viewCount;
     private String tag;
     private String comment;
 

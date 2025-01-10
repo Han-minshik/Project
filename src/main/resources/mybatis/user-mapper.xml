@@ -7,13 +7,20 @@
     <insert id="createUser">
         INSERT INTO user (id, name, password, ci, tel, email,
                           join_date, point, rental_date, profile_image,
-                          updated_at, role, book_isbn)
+                          updated_at, role)
         VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
-                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, #{role}, #{bookIsbn})
+                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, #{role})
     </insert>
     <!-- id로 사용자 조회 -->
     <select id="getUserById" resultType="com.project.dto.UserDTO">
         SELECT * FROM user WHERE id = #{id}
+    </select>
+    <!-- ci로 사용자 조회 -->
+    <select id="getUserByCi" resultType="com.project.dto.UserDTO">
+        SELECT *, USER.id AS user_id, SNS_INFO.id AS sns_id
+        FROM user USER
+                 LEFT OUTER JOIN sns_info SNS_INFO ON USER.id = SNS_INFO.user_id
+        WHERE USER.ci = #{ci}
     </select>
     <!-- 모든 사용자 조회 -->
     <select id="getAllUsers" resultType="com.project.dto.UserDTO">
@@ -35,4 +42,16 @@
         FROM review a
         WHERE a.user_id = #{userId}
     </select>
+    <!-- sns 등록 -->
+    <insert id="insertSnsInfo">
+        INSERT INTO sns_info (id, user_id, name)
+        VALUES (#{id}, #{userId}, #{name})
+    </insert>
+    <!-- 리뷰 등록 -->
+    <insert id="insertReview">
+        INSERT INTO review (id, title, content, uploaded_at, `like`, status, updated_at, tag,
+                            user_id, book_isbn)
+        VALUES (NULL, #{title}, #{content}, DEFAULT, 0, '공개', DEFAULT, #{tag}, #{userId},
+                (SELECT isbn FROM book WHERE title = #{bookTitle}))
+    </insert>
 </mapper>
