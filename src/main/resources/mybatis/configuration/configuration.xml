@@ -18,6 +18,7 @@
         <typeAlias type="com.project.dto.LoanDTO" alias="LoanDTO" />
         <typeAlias type="com.project.dto.NotificationDTO" alias="NotificationDTO" />
         <typeAlias type="com.project.dto.ReviewDTO" alias="ReviewDTO" />
+        <typeAlias type="com.project.dto.BookImageDTO" alias="BookImageDTO" />
     </typeAliases>
 </configuration>
 
