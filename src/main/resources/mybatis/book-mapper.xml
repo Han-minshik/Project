@@ -80,4 +80,16 @@
                                                  JOIN book b ON r.book_isbn = b.isbn
         WHERE REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '');
     </select>
+    <!-- 대출 가능한 책 감소 -->
+    <update id="decreaseCopiesAvailable">
+        UPDATE book
+        SET copies_avilable = copies_avilable - 1
+        WHERE isbn = #{isbn} AND copies_avilable > 0
+    </update>
+    <!-- 책 재고 증가 -->
+    <update id="increaseCopiesAvailable">
+        UPDATE book
+        SET copies_avilable = copies_avilable + 1
+        WHERE isbn = #{isbn}
+    </update>
 </mapper>

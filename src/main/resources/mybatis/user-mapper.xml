@@ -51,7 +51,6 @@
     <insert id="insertReview">
         INSERT INTO review (id, title, content, uploaded_at, `like`, status, updated_at, tag,
                             user_id, book_isbn)
-        VALUES (NULL, #{title}, #{content}, DEFAULT, 0, '공개', DEFAULT, #{tag}, #{userId},
-                (SELECT isbn FROM book WHERE title = #{bookTitle}))
+        VALUES (NULL, #{title}, #{content}, DEFAULT, 0, '공개', DEFAULT, #{tag}, #{userId}, #{bookIsbn})
     </insert>
 </mapper>
