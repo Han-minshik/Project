@@ -7,7 +7,7 @@
     <insert id="insertBook">
         INSERT INTO book VALUES (NULL, #{title}, #{author}, #{publisher}, #{publicationDate},
                                  #{genre}, #{rating}, #{rentalState}, #{copiesAvailable}, #{detail},
-                                 #{createdAt})
+                                 #{createdAt}, #{category})
     </insert>
     <!-- 책 이미지 등록 -->
     <insert id="insertBookImages">
