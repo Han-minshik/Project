@@ -11,18 +11,18 @@ import java.util.List;
 @Setter
 @ToString
 public class ReviewDTO {
-    private int id;
+    private Integer id;
     private String title;
     private String content;
     private LocalDateTime uploadedAt;
-    private int like;
+    private Integer like;
     private String status;
     private LocalDateTime updatedAt;
     private String tag;
     private String comment;
 
     private String userId;
-    private int bookIsbn;
+    private Integer bookIsbn;
 
     private List<UserDTO> user;
     private List<BookDTO> book;

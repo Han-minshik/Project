@@ -35,13 +35,13 @@ public class UserDTO implements UserDetails, OAuth2User {
     @Email
     private String email;
     private LocalDateTime joinDate;
-    private int point;
+    private Integer point;
     private LocalDateTime rentalDate;
     private byte[] profileImage;
     private LocalDateTime updatedAt;
     private String role;
 
-    private int bookIsbn;
+    private Integer bookIsbn;
 
     @Override
     public String getName() {

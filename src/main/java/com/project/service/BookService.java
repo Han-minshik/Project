@@ -17,10 +17,6 @@ public class BookService {
         bookMapper.createBook(book);
     }
 
-    public BookDTO getBookByIsbn(int isbn) {
-        return bookMapper.getBookByIsbn(isbn);
-    }
-
     public List<BookDTO> getAllBooks() {
         return bookMapper.getAllBooks();
     }
@@ -29,7 +25,7 @@ public class BookService {
         bookMapper.updateBook(book);
     }
 
-    public void deleteBook(int isbn) {
+    public void deleteBook(Integer isbn) {
         bookMapper.deleteBook(isbn);
     }
 
@@ -39,5 +35,9 @@ public class BookService {
 
     public List<ReviewDTO> findReviewTitlesByBookTitle(String title) {
         return bookMapper.findReviewTitlesByBookTitle(title);
+    }
+
+    public BookDTO getBookDetails(Integer isbn) {
+        return bookMapper.getBookDetails(isbn);
     }
 }

@@ -12,11 +12,11 @@ import java.util.List;
 public class LoanService {
     @Autowired private LoanMapper loanMapper;
     public void createLoan(LoanDTO loanDTO) {
-        int activeLoanCount = loanMapper.getActiveLoanCountByUserId(loanDTO.getUserId());
+        Integer activeLoanCount = loanMapper.getActiveLoanCountByUserId(loanDTO.getUserId());
         if(activeLoanCount >= 5) {
             throw new IllegalArgumentException("최대 5권까지 대출할 수 있습니다.");
         }
-        int availableCopies = loanMapper.getAvailableCopies(loanDTO.getBookIsbn());
+        Integer availableCopies = loanMapper.getAvailableCopies(loanDTO.getBookIsbn());
         if(availableCopies <= 0) {
             throw new IllegalArgumentException("대출 가능한 재고가 없습니다.");
         }
@@ -37,7 +37,7 @@ public class LoanService {
      * - 반납 처리 시 상태를 '반납 완료'로 설정
      * - 반납일은 현재 날짜로 설정
      */
-    public void updateLoanStatus(int loanId, int bookIsbn) {
+    public void updateLoanStatus(Integer loanId, Integer bookIsbn) {
         loanMapper.updateLoanStatus(loanId, "반납 완료");
         loanMapper.increaseCopiesAvailable(bookIsbn);
     }

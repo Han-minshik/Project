@@ -10,11 +10,13 @@ import java.util.List;
 @Getter
 @ToString
 public class NotificationDTO {
-    private int id;
+    private Integer id;
     private String message;
     private String status;
 
     private String userId;
 
     private List<UserDTO> user;
+
+    private String type;
 }

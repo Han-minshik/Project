@@ -11,11 +11,11 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
     void createBook(BookDTO book);
-    BookDTO getBookByIsbn(int isbn);
     List<BookDTO> getAllBooks();
     void updateBook(BookDTO book);
-    void deleteBook(int isbn);
+    void deleteBook(Integer isbn);
     // 책 제목으로 검색
     List<BookDTO> searchBooksByName(@Param("title") String title);
     List<ReviewDTO> findReviewTitlesByBookTitle(@Param("title") String title);
+    BookDTO getBookDetails(@Param("isbn") Integer isbn);
 }

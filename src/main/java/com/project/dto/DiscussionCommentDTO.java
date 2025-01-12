@@ -11,14 +11,14 @@ import java.util.List;
 @Setter
 @ToString
 public class DiscussionCommentDTO {
-    private int id;
+    private Integer id;
     private String content;
-    private int like;
+    private Integer like;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     private String userId;
-    private int discussionId;
+    private Integer discussionId;
 
     private List<UserDTO> user;
     private List<DiscussionDTO> discussion;

@@ -12,8 +12,8 @@ public interface AdminMapper {
     void insertBookImages(BookDTO book);
 
     void createdAdminPost(AdminPostDTO adminPost);
-    AdminPostDTO getAdminPostById(int id);
+    AdminPostDTO getAdminPostById(Integer id);
     List<AdminPostDTO> getAllAdminPosts();
     void updateAdminPost(AdminPostDTO adminPost);
-    void deleteAdminPost(int id);
+    void deleteAdminPost(Integer id);
 }
