@@ -12,15 +12,16 @@ import java.util.List;
 @Setter
 @ToString
 public class BookDTO {
-    private int isbn;
+    private Integer isbn;
     private String title;
     private String author;
+    private Integer price;
     private String publisher;
     private LocalDate publicationDate;
     private String genre;
     private Integer rating;
     private String rentalState;
-    private int copiesAvailable;
+    private Integer copiesAvailable;
     private String detail;
     // 등록일자
     private LocalDateTime createdAt;

@@ -3,8 +3,10 @@ package com.project.service;
 import com.project.dto.BookDTO;
 import com.project.dto.ReviewDTO;
 import com.project.mapper.BookMapper;
+import com.project.mapper.LoanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
 
@@ -15,10 +17,6 @@ public class BookService {
         bookMapper.createBook(book);
     }
 
-    public BookDTO getBookByIsbn(int isbn) {
-        return bookMapper.getBookByIsbn(isbn);
-    }
-
     public List<BookDTO> getAllBooks() {
         return bookMapper.getAllBooks();
     }
@@ -27,7 +25,7 @@ public class BookService {
         bookMapper.updateBook(book);
     }
 
-    public void deleteBook(int isbn) {
+    public void deleteBook(Integer isbn) {
         bookMapper.deleteBook(isbn);
     }
 
@@ -37,5 +35,9 @@ public class BookService {
 
     public List<ReviewDTO> findReviewTitlesByBookTitle(String title) {
         return bookMapper.findReviewTitlesByBookTitle(title);
+    }
+
+    public BookDTO getBookDetails(Integer isbn) {
+        return bookMapper.getBookDetails(isbn);
     }
 }

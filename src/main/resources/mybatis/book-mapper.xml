@@ -26,14 +26,10 @@
     <!-- 책 등록 -->
     <insert id="createBook">
         INSERT INTO book (isbn, title, author, publisher, publication_date, genre, rating, rental_state,
-                          copies_avilable, detail, created_at, category)
+                          copies_avilable, detail, created_at, category, price)
         VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{genre}, #{rating},
-                #{rentalState}, #{copiesAvailable}, #{detail}, #{createdAt}, #{category})
+                #{rentalState}, #{copiesAvailable}, #{detail}, #{createdAt}, #{category}, #{price})
     </insert>
-    <!-- 책 찾기 -->
-    <select id="getBookByIsbn" resultType="BookDTO">
-        SELECT * FROM book WHERE isbn = #{isbn}
-    </select>
     <!-- 모든 책 리스트 -->
     <select id="getAllBooks" resultType="BookDTO">
         SELECT * FROM book
@@ -80,16 +76,10 @@
                                                  JOIN book b ON r.book_isbn = b.isbn
         WHERE REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '');
     </select>
-    <!-- 대출 가능한 책 감소 -->
-    <update id="decreaseCopiesAvailable">
-        UPDATE book
-        SET copies_avilable = copies_avilable - 1
-        WHERE isbn = #{isbn} AND copies_avilable > 0
-    </update>
-    <!-- 책 재고 증가 -->
-    <update id="increaseCopiesAvailable">
-        UPDATE book
-        SET copies_avilable = copies_avilable + 1
+    <!-- 특정 책의 상세 정보 조회 -->
+    <select id="getBookDetails" resultType="BookDTO">
+        SELECT isbn, title, price
+        FROM book
         WHERE isbn = #{isbn}
-    </update>
+    </select>
 </mapper>
