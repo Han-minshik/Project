@@ -26,15 +26,15 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.FOUND).build(); // 중복이면
     }
 
-    @GetMapping("/name/{userName}")
-    public ResponseEntity<Void> find_user_by_nickname(
-            @PathVariable String userName
-    ) {
-        if(userMapper.selectUserByName(userName) == null){ // 중복 아니면 200
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.status(HttpStatus.FOUND).build(); // 중복이면
-    }
+//    @GetMapping("/name/{userName}")
+//    public ResponseEntity<Void> find_user_by_nickname(
+//            @PathVariable String userName
+//    ) {
+//        if(userMapper.selectUserByName(userName) == null){ // 중복 아니면 200
+//            return ResponseEntity.ok().build();
+//        }
+//        return ResponseEntity.status(HttpStatus.FOUND).build(); // 중복이면
+//    }
 
     @GetMapping("/findId/{email}")
     public ResponseEntity<String> get_findId_by_email(@PathVariable String email) {

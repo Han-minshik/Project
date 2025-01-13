@@ -7,9 +7,9 @@
     <insert id="createUser">
         INSERT INTO user (id, name, password, ci, tel, email,
                           join_date, point, rental_date, profile_image,
-                          updated_at, role, book_isbn)
+                          updated_at, role)
         VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
-                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, #{role}, #{bookIsbn})
+                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, #{role})
     </insert>
     <!-- id로 사용자 조회 -->
     <select id="getUserById" resultType="com.project.dto.UserDTO">
@@ -37,5 +37,8 @@
     </select>
     <select id="findIdByEmail" resultType="String">
         SELECT id FROM user WHERE email = #{email}
+    </select>
+    <select id="getUserByCi" resultType="UserDTO">
+
     </select>
 </mapper>

@@ -16,18 +16,23 @@ import java.util.Map;
 @Log4j2
 @Service
 public class PortOneSerivce {
-
     @Autowired private ObjectMapper objectMapper;
 
-    @Value("${IMP_KEY}")
-    private String IMP_KEY;
-    @Value("${IMP_SECRET}")
-    private String IMP_SECRET;
+    private final String IMP_KEY;
+    private final String IMP_SECRET;
 
     private final String AUTENTICATION_TOKEN_URI = "https://api.iamport.kr/users/getToken";
     private final String TEL_AUTENTICATION_URI = "https://api.iamport.kr/certifications/{impUid}";
 
     private final RestTemplate restTemplate = new RestTemplate();
+
+    public PortOneSerivce(
+        @Value("${IMP_KEY}") String impKey,
+        @Value("${IMP_SECRET}") String impSecret
+    ) {
+        IMP_KEY = impKey;
+        IMP_SECRET = impSecret;
+    }
 
 
     public String tel_authentication(String impUid, String tel){

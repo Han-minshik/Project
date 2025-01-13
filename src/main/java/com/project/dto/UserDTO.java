@@ -42,6 +42,8 @@ public class UserDTO implements UserDetails, OAuth2User {
 
     private int bookIsbn;
 
+    private List<SnsInfoDTO> snsInfo;
+
     public void setTel(String tel) {
         this.tel = tel.replace(",", "-");
     }

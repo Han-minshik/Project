@@ -4,7 +4,7 @@ package com.project.controller;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
-import my.team_project_test.service.EmailService;
+import com.project.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

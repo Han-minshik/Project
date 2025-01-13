@@ -1,6 +1,7 @@
 package com.project.mapper;
 
 import com.project.dto.ReviewDTO;
+import com.project.dto.SnsInfoDTO;
 import com.project.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,4 +17,8 @@ public interface UserMapper {
     List<ReviewDTO> getReviewsByUserId(String userId);
 
     String findIdByEmail(String email);
+
+    UserDTO getUserByCi(String ci);
+
+    void createSnsInfo(SnsInfoDTO snsInfoDTO);
 }

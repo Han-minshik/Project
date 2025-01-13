@@ -18,13 +18,16 @@ import java.util.Random;
 @Service
 @PropertySource("classpath:my.properties")
 public class EmailService {
+    // 원래 에러 뜹니다 but 문제 없습니다 -> application.properties에 없고, my.properties에 있어서 그렇습니다
     @Autowired private JavaMailSender mailSender;
     @Autowired private TemplateEngine templateEngine;
 
     private final String FROM;
     private final String EMAIL_CERT_TEMPLATE = "/mail/email-auth-template.html";
 
-    public EmailService(@Value("${spring.mail.username}") String from) {
+    public EmailService(
+        @Value("${spring.mail.username}") String from
+    ) {
         this.FROM = from;
         log.info("FROM : " + FROM); // application.properties에서 설정해주세요
     }
