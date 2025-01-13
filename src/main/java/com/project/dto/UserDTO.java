@@ -42,6 +42,14 @@ public class UserDTO implements UserDetails, OAuth2User {
 
     private int bookIsbn;
 
+    public void setTel(String tel) {
+        this.tel = tel.replace(",", "-");
+    }
+
+    public void setEmail(String email) {
+        this.email = email.replace(",", "@");
+    }
+
     @Override
     public String getName() {
         return this.id;

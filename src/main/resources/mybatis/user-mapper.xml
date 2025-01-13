@@ -35,4 +35,7 @@
         FROM review a
         WHERE a.user_id = #{userId}
     </select>
+    <select id="findIdByEmail" resultType="String">
+        SELECT id FROM user WHERE email = #{email}
+    </select>
 </mapper>

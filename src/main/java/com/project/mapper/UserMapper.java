@@ -14,4 +14,6 @@ public interface UserMapper {
     void updateUser(UserDTO userDTO);
     void deleteUser(String id);
     List<ReviewDTO> getReviewsByUserId(String userId);
+
+    String findIdByEmail(String email);
 }
