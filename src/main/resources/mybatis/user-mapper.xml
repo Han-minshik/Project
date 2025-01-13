@@ -9,21 +9,21 @@
                           join_date, point, rental_date, profile_image,
                           updated_at, role)
         VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
-                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, #{role})
+                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, '일반')
     </insert>
     <!-- id로 사용자 조회 -->
-    <select id="getUserById" resultType="com.project.dto.UserDTO">
+    <select id="getUserById" resultType="UserDTO">
         SELECT * FROM user WHERE id = #{id}
     </select>
     <!-- ci로 사용자 조회 -->
-    <select id="getUserByCi" resultType="com.project.dto.UserDTO">
+    <select id="getUserByCi" resultType="UserDTO">
         SELECT *, USER.id AS user_id, SNS_INFO.id AS sns_id
         FROM user USER
         LEFT OUTER JOIN sns_info SNS_INFO ON USER.id = SNS_INFO.user_id
         WHERE USER.ci = #{ci}
     </select>
     <!-- 모든 사용자 조회 -->
-    <select id="getAllUsers" resultType="com.project.dto.UserDTO">
+    <select id="getAllUsers" resultType="UserDTO">
         SELECT * FROM user
     </select>
     <!-- 사용자 정보 업데이트 -->
@@ -37,7 +37,7 @@
         DELETE FROM user WHERE id = #{id}
     </delete>
     <!-- 사용자 id로 남긴 review 조회 -->
-    <select id="getReviewsByUserId" resultType="com.project.dto.ReviewDTO">
+    <select id="getReviewsByUserId" resultType="ReviewDTO">
         SELECT a.*
         FROM review a
         WHERE a.user_id = #{userId}
