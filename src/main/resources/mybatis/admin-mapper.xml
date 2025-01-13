@@ -3,9 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.AdminMapper">
+    <!-- 관리자 등록 -->
+    <insert id="createAdmin">
+        INSERT INTO user (id, name, password, ci, tel, email, join_date, point, rental_date, profile_image, updated_at, role)
+        VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT, #{point}, #{rentalDate}, #{profileImage}, DEFAULT, '관리자')
+    </insert>
     <!-- 책 등록 -->
     <insert id="insertBook">
-        INSERT INTO book VALUES (NULL, #{title}, #{author}, #{publisher}, #{publicationDate},
+        INSERT INTO book VALUES (NULL, #{title}, #{author}, #{price}, #{publisher}, #{publicationDate},
                                  #{genre}, #{rating}, #{rentalState}, #{copiesAvailable}, #{detail},
                                  #{createdAt}, #{category})
     </insert>
@@ -21,7 +26,7 @@
         </foreach>
     </insert>
     <!-- 공지사항 등록 -->
-    <insert id="createdAdminPost">
+    <insert id="createAdminPost">
         INSERT INTO admin_post (title, content, created_at, updated_at, user_id)
         VALUES (#{title}, #{content}, DEFAULT, DEFAULT, #{userId})
     </insert>
