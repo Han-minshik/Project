@@ -29,7 +29,7 @@
     <!-- 사용자 정보 업데이트 -->
     <update id="updateUser">
         UPDATE user
-        SET name = #{name}, password = #{password}, email = #{email}, updated_at = DEFAULT
+        SET name = #{name}, password = #{password}, updated_at = DEFAULT
         WHERE id = #{id}
     </update>
     <!-- 사용자 정보 삭제 -->

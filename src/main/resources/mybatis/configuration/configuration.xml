@@ -12,7 +12,6 @@
     <typeAliases>
         <typeAlias type="com.project.dto.AdminPostDTO" alias="AdminPostDTO" />
         <typeAlias type="com.project.dto.BookDTO" alias="BookDTO" />
-        <typeAlias type="com.project.dto.BookImageDTO" alias="BookImageDTO" />
         <typeAlias type="com.project.dto.CategoryDTO" alias="CategoryDTO" />
         <typeAlias type="com.project.dto.DiscussionCommentDTO" alias="DiscussionCommentDTO" />
         <typeAlias type="com.project.dto.DiscussionDTO" alias="DiscussionDTO" />
