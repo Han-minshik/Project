@@ -7,9 +7,9 @@
     <insert id="createUser">
         INSERT INTO user (id, name, password, ci, tel, email,
                           join_date, point, rental_date, profile_image,
-                          updated_at, role)
+                          updated_at, role, nickname)
         VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
-                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, '일반')
+                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, '일반', #{nickname})
     </insert>
     <!-- id로 사용자 조회 -->
     <select id="getUserById" resultType="UserDTO">
@@ -29,7 +29,7 @@
     <!-- 사용자 정보 업데이트 -->
     <update id="updateUser">
         UPDATE user
-        SET name = #{name}, password = #{password}, updated_at = DEFAULT
+        SET password = #{password}, tel = #{tel}, email = #{email}, nickname = #{nickname}, updated_at = DEFAULT
         WHERE id = #{id}
     </update>
     <!-- 사용자 정보 삭제 -->

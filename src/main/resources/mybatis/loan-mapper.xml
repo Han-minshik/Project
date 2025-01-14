@@ -26,9 +26,6 @@
         WHERE
             a.user_id = #{userId};
     </select>
-
-
-
     <!-- 대출 정보 업데이트(반납처리) -->
     <update id="updateLoanStatus">
         UPDATE loan
@@ -44,7 +41,6 @@
                        JOIN user c ON a.user_id = c.id
         WHERE a.status = '대출 중'
     </select>
-
     <!-- 한 사람이 대출 할 수 있는 횟수 -->
     <select id="getActiveLoanCountByUserId" resultType="java.lang.Integer">
         SELECt COUNT(*)
