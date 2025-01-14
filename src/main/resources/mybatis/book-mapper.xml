@@ -38,16 +38,11 @@
             b.detail,
             b.category,
             b.image,
-            b.created_at AS createdAt,
-            bi.no AS imageNo,
-            bi.original_filename AS originalFilename,
-            bi.data AS imageData
+            b.created_at AS createdAt
         FROM
             book b
-                LEFT JOIN
-            book_image bi ON b.isbn = bi.book_isbn
-        WHERE
-            REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '')
+        WHERE b.title
+            LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%');
     </select>
     <!-- 특정 책의 상세 정보 조회 -->
     <select id="getBookDetails" resultType="BookDTO">
