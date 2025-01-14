@@ -3,20 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.BookMapper">
-    <!-- BookDTO 안의 컬럼으로 BookImageDTO 를 처리하기 위해 사용 -->
-    <resultMap id="bookWithImagesMap" type="com.project.dto.BookDTO">
-        <id property="isbn" column="isbn"/>
-        <result property="title" column="title"/>
-        <result property="author" column="author"/>
-        <result property="publisher" column="publisher"/>
-        <result property="publicationDate" column="publicationDate"/>
-        <result property="price" column="genre"/>
-        <result property="copiesAvailable" column="copiesAvailable"/>
-        <result property="detail" column="detail"/>
-        <result property="category" column="category"/>
-        <result property="image" column="image"/>
-        <result property="createdAt" column="createdAt"/>
-    </resultMap>
+<!--    &lt;!&ndash; BookDTO 안의 컬럼으로 BookImageDTO 를 처리하기 위해 사용 &ndash;&gt;-->
+<!--    <resultMap id="bookWithImagesMap" type="com.project.dto.BookDTO">-->
+<!--        <id property="isbn" column="isbn"/>-->
+<!--        <result property="title" column="title"/>-->
+<!--        <result property="author" column="author"/>-->
+<!--        <result property="publisher" column="publisher"/>-->
+<!--        <result property="publicationDate" column="publicationDate"/>-->
+<!--        <result property="price" column="genre"/>-->
+<!--        <result property="copiesAvailable" column="copiesAvailable"/>-->
+<!--        <result property="detail" column="detail"/>-->
+<!--        <result property="category" column="category"/>-->
+<!--        <result property="image" column="image"/>-->
+<!--        <result property="createdAt" column="createdAt"/>-->
+<!--    </resultMap>-->
     <!-- 모든 책 리스트 -->
     <select id="getAllBooks" resultType="BookDTO">
         SELECT * FROM book
@@ -26,7 +26,7 @@
         DELETE FROM book WHERE isbn = #{isbn}
     </delete>
     <!-- 제목으로 책 검색 -->
-    <select id="searchBooksByName" parameterType="string" resultMap="bookWithImagesMap">
+    <select id="searchBooksByName" parameterType="string">
         SELECT
             b.isbn,
             b.title,

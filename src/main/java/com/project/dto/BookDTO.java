@@ -26,4 +26,5 @@ public class BookDTO {
     private byte[] image;
     // 등록일자
     private LocalDateTime createdAt;
+    private Integer ItemId;
 }

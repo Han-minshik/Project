@@ -10,7 +10,7 @@
     </insert>
     <!-- 책 등록 -->
     <insert id="insertBook">
-        INSERT INTO book VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{price}, 50, #{detail}, #{category.no}, #{image}, DEFAULT)
+        INSERT INTO book VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{price}, 50, #{detail}, #{category.no}, #{image}, DEFAULT, #{ItemId})
     </insert>
     <!-- 책 정보 수정 -->
     <update id="updateBook">
