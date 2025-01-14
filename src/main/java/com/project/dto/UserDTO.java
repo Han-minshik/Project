@@ -42,6 +42,8 @@ public class UserDTO implements UserDetails, OAuth2User {
     private String role;
 
     private String bookIsbn;
+    private String nickname;
+
 
     private List<SnsInfoDTO> snsInfo; // 이 유저가 로그인 할 때 사용한 SNS 데이터
 
