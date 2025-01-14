@@ -23,7 +23,7 @@
     </select>
     <!-- 책 삭제 -->
     <delete id="deleteBook">
-        DELETE FROm book WHERE isbn = #{isbn}
+        DELETE FROM book WHERE isbn = #{isbn}
     </delete>
     <!-- 제목으로 책 검색 -->
     <select id="searchBooksByName" parameterType="string" resultMap="bookWithImagesMap">
