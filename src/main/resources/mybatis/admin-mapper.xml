@@ -10,10 +10,16 @@
     </insert>
     <!-- 책 등록 -->
     <insert id="insertBook">
-        INSERT INTO book VALUES (NULL, #{title}, #{author}, #{price}, #{publisher}, #{publicationDate},
-                                 #{genre}, #{rating}, #{rentalState}, #{copiesAvailable}, #{detail},
-                                 #{createdAt}, #{category})
+        INSERT INTO book VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{price}, 50, #{detail}, #{category.no}, #{image}, DEFAULT)
     </insert>
+    <!-- 책 정보 수정 -->
+    <update id="updateBook">
+        UPDATE book
+        SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
+            price = #{price}, copies_available = #{copiesAvailable}, detail = #{detail}, category = #{category.no},
+            image = #{image}, created_at = DEFAULT
+        WHERE isbn = #{isbn}
+    </update>
     <!-- 책 이미지 등록 -->
     <insert id="insertBookImages">
         # 책의 isbn과 image의 no는 ai기 때문에 같다

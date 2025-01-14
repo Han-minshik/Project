@@ -12,11 +12,10 @@ public interface LoanMapper {
     List<LoanDTO> getLoansByUserId(String userId);
     void updateLoanStatus(@Param("id") Integer id, @Param("status") String status);
     List<LoanDTO> getAllLoans();
-    // 한 사용자가 빌릴 수 있는 책의 권수
     Integer getActiveLoanCountByUserId(@Param("userId") String userId);
-    // 대출 가능한 책 재고
-    Integer getAvailableCopies(@Param("bookIsbn") Integer bookIsbn);
-    void decreaseCopiesAvailable(@Param("bookIsbn") Integer bookIsbn);
-    void increaseCopiesAvailable(@Param("bookIsbn") Integer bookIsbn);
-    LoanDTO getActiveLoanByUserAndBook(@Param("userId") String userId, @Param("isbn") Integer isbn);
+    Integer getAvailableCopies(@Param("bookIsbn") String bookIsbn); // Integer → String
+    void decreaseCopiesAvailable(@Param("bookIsbn") String bookIsbn); // Integer → String
+    void increaseCopiesAvailable(@Param("bookIsbn") String bookIsbn); // Integer → String
+    LoanDTO getActiveLoanByUserAndBook(@Param("userId") String userId, @Param("isbn") String isbn); // Integer → String
 }
+

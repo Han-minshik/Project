@@ -22,83 +22,28 @@ public class UserService {
     @Autowired private LoanMapper loanMapper;
 //    @Autowired private PasswordEncoder passwordEncoder;
 
-    public boolean join_user(UserDTO userDTO) {
-        // 유저 중복 방지
-        UserDTO findUser = userMapper.getUserById(userDTO.getId());
-        if(Objects.nonNull(findUser)) {
-            log.error("이미 회원가입이 되어있습니다.");
-            return false;
-        }
-        // 유저 DB에 등록하기 직전에 패스워드를 인코딩해서 삽입
-//        String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
-//        userDTO.setPassword(encodedPassword);
-        userMapper.createUser(userDTO);
-        log.info("회원가입이 완료되었습니다.");
-        return true;
-    }
-    // 리뷰 작성
-    public void write_review(String userId, Integer bookIsbn, ReviewDTO review) {
-        review.setUserId(userId);
-        review.setBookIsbn(bookIsbn);
-        userMapper.insertReview(review);
-    }
-
-    public void grantPoint(String userId, Integer points, String reason) {
-        boolean alreadyGranted = userMapper.hasPointGrantedForReason(userId, reason);
-        if(!alreadyGranted) {
-            userMapper.addPointToUser(userId, points);
-            userMapper.addPointGrantHistory(userId, points, reason);
-            log.info("포인트 지급 완료 : userId={}, points={}, reason{}", userId, points, reason);
-        } else {
-            log.info("포인트가 이미 지급된 사용자입니다. : userId={}, reason={}", userId, reason);
-        }
-    }
-    // 댓글이 가장 많은 토론 생성자
-    public void rewardDiscussionCreator() {
-        String userId = userMapper.getTopDiscussionUser();
-        if(userId != null) {
-            grantPoint(userId, 1, "댓글 다수");
-        }
-    }
-    // 좋아요가 가장 많은 댓글 작성자
-    public void rewardTopCommenter(Integer discussionId) {
-        String userId = userMapper.getTopCommentUserByDiscussionId(discussionId);
-        if(userId != null) {
-            grantPoint(userId, 1, "공감 다수");
-        }
-    }
-
-    /**
-     * 책 대여 기능 : 포인트를 사용하여 할인
-     * @param userId : 사용자 Id
-     * @param isbn : 대여하려는 책 ISBN
-     * @param points : 사용하려는 포인트
-     * @return : 최종 결제 금액
-     */
-    public Integer rentBookWithPoints(String userId, Integer isbn, Integer points) {
-        // 대출 중복 확인
+    public Integer rentBookWithPoints(String userId, String isbn, Integer points) { // Integer → String
         Integer activeLoans = loanMapper.getActiveLoanCountByUserId(userId);
-        if(activeLoans >= 5) {
+        if (activeLoans >= 5) {
             throw new IllegalArgumentException("최대 5권까지 대출 가능합니다.");
         }
-        // 기존 대출 확인
-        LoanDTO existingLoan = loanMapper.getActiveLoanByUserAndBook(userId, isbn);
-        if(existingLoan != null) {
+
+        LoanDTO existingLoan = loanMapper.getActiveLoanByUserAndBook(userId, isbn); // Integer.valueOf 제거
+        if (existingLoan != null) {
             throw new IllegalArgumentException("이미 대출 중인 책입니다.");
         }
 
-        // 책 상세 정보 조회
-        BookDTO book = bookMapper.getBookDetails(isbn);
-        if(book == null) {
+        BookDTO book = bookMapper.getBookDetails(isbn); // Integer.valueOf 제거
+        if (book == null) {
             throw new IllegalArgumentException("해당 ISBN에 해당하는 책이 없습니다.");
         }
 
-        if(points == null || points == 0) {
+        if (points == null || points == 0) {
             Integer finalPrice = book.getPrice();
 
             LoanDTO loan = new LoanDTO();
             loan.setUserId(userId);
-            loan.setBookIsbn(isbn);
+            loan.setBookIsbn(isbn); // String으로 설정
             loan.setDiscountPrice(0);
             loan.setFinalPrice(finalPrice);
             loanMapper.createLoan(loan);
@@ -106,7 +51,7 @@ public class UserService {
         }
 
         Integer maxUsablePoints = (book.getPrice() / 1000) * 10;
-        if(points > maxUsablePoints) {
+        if (points > maxUsablePoints) {
             points = maxUsablePoints;
         }
 
@@ -117,7 +62,7 @@ public class UserService {
 
         LoanDTO loan = new LoanDTO();
         loan.setUserId(userId);
-        loan.setBookIsbn(isbn);
+        loan.setBookIsbn(isbn); // String으로 설정
         loan.setDiscountPrice(discountPrice);
         loan.setFinalPrice(finalPrice);
         loanMapper.createLoan(loan);

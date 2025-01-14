@@ -49,9 +49,8 @@
     </insert>
     <!-- 리뷰 등록 -->
     <insert id="insertReview">
-        INSERT INTO review (id, title, content, uploaded_at, `like`, status, updated_at, tag,
-                            user_id, book_isbn)
-        VALUES (NULL, #{title}, #{content}, DEFAULT, 0, '공개', DEFAULT, #{tag}, #{userId}, #{bookIsbn})
+        INSERT INTO review (user_id, book_isbn, content, uploaded_at, `like`, status, updated_at)
+        VALUES (#{userId}, #{bookIsbn}, #{content}, DEFAULT, 0, '공개', DEFAULT)
     </insert>
     <!-- 사용자에게 포인트 부여 -->
     <update id="addPointToUser">

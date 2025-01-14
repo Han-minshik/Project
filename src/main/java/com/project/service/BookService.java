@@ -13,19 +13,12 @@ import java.util.List;
 @Service
 public class BookService {
     @Autowired private BookMapper bookMapper;
-    public void createBook(BookDTO book) {
-        bookMapper.createBook(book);
-    }
 
     public List<BookDTO> getAllBooks() {
         return bookMapper.getAllBooks();
     }
 
-    public void updateBook(BookDTO book) {
-        bookMapper.updateBook(book);
-    }
-
-    public void deleteBook(Integer isbn) {
+    public void deleteBook(String isbn) { // Integer → String
         bookMapper.deleteBook(isbn);
     }
 
@@ -33,11 +26,8 @@ public class BookService {
         return bookMapper.searchBooksByName(title);
     }
 
-    public List<ReviewDTO> findReviewTitlesByBookTitle(String title) {
-        return bookMapper.findReviewTitlesByBookTitle(title);
-    }
-
-    public BookDTO getBookDetails(Integer isbn) {
+    public BookDTO getBookDetails(String isbn) { // Integer → String
         return bookMapper.getBookDetails(isbn);
     }
 }
+

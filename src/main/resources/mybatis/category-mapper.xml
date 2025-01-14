@@ -3,13 +3,47 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.CategoryMapper">
-    <select id="findCategoryByNameAndParent" resultType="java.lang.Integer">
-        SELECT no
-        FROM category
-        WHERE name = #{name} AND (parent = #{parent} OR (#{parent} IS NULL AND parent IS NULL))
-    </select>
-    <insert id="insertCategory" parameterType="com.project.dto.CategoryDTO" useGeneratedKeys="true" keyProperty="no">
+
+    <!-- 카테고리 추가 -->
+    <insert id="insertCategory" parameterType="CategoryDTO">
         INSERT INTO category (name, parent, level)
-        VALUES (#{name}, #{parent}, #{level})
+        SELECT #{name}, #{parent}, #{level}
+        WHERE NOT EXISTS (
+        SELECT 1
+        FROM category
+        WHERE name = #{name}
+        <if test="parent == null">
+            AND parent IS NULL
+        </if>
+        <if test="parent != null">
+            AND parent = #{parent}
+        </if>
+        AND level = #{level}
+        );
     </insert>
+
+    <select id="findByName" parameterType="string" resultType="CategoryDTO">
+        SELECT * FROM category WHERE name = #{name} LIMIT 1;
+    </select>
+
+    <!-- 이름과 부모 ID로 카테고리 조회 -->
+    <select id="findCategoryByNameAndParent" parameterType="map" resultType="CategoryDTO">
+        SELECT *
+        FROM category
+        WHERE name = #{name}
+          AND ((parent IS NULL AND #{parent} IS NULL) OR parent = #{parent})
+        LIMIT 1;
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

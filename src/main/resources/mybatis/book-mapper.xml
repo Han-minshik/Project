@@ -10,38 +10,17 @@
         <result property="author" column="author"/>
         <result property="publisher" column="publisher"/>
         <result property="publicationDate" column="publicationDate"/>
-        <result property="genre" column="genre"/>
-        <result property="rating" column="rating"/>
-        <result property="rentalState" column="rentalState"/>
+        <result property="price" column="genre"/>
         <result property="copiesAvailable" column="copiesAvailable"/>
         <result property="detail" column="detail"/>
+        <result property="category" column="category"/>
+        <result property="image" column="image"/>
         <result property="createdAt" column="createdAt"/>
-        <collection property="images" ofType="com.project.dto.BookImageDTO">
-            <id property="no" column="imageNo"/>
-            <result property="originalFilename" column="originalFilename"/>
-            <result property="data" column="imageData"/>
-        </collection>
     </resultMap>
-
-    <!-- 책 등록 -->
-    <insert id="createBook">
-        INSERT INTO book (isbn, title, author, publisher, publication_date, genre, rating, rental_state,
-                          copies_avilable, detail, created_at, category, price)
-        VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{genre}, #{rating},
-                #{rentalState}, #{copiesAvailable}, #{detail}, #{createdAt}, #{category}, #{price})
-    </insert>
     <!-- 모든 책 리스트 -->
     <select id="getAllBooks" resultType="BookDTO">
         SELECT * FROM book
     </select>
-    <!-- 책 정보 수정 -->
-    <update id="updateBook">
-        UPDATE book
-        SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
-            genre = #{genre}, rating = #{rating}, rental_state = #{rentalState}, detail = #{detail},
-            created_at = DEFAULT
-        WHERE isbn = #{isbn}
-    </update>
     <!-- 책 삭제 -->
     <delete id="deleteBook">
         DELETE FROm book WHERE isbn = #{isbn}
@@ -54,11 +33,11 @@
             b.author,
             b.publisher,
             b.publication_date AS publicationDate,
-            b.genre,
-            b.rating,
-            b.rental_state AS rentalState,
-            b.copies_avilable AS copiesAvailable,
+            b.price,
+            b.copies_available AS copiesAvailable,
             b.detail,
+            b.category,
+            b.image,
             b.created_at AS createdAt,
             bi.no AS imageNo,
             bi.original_filename AS originalFilename,
@@ -69,12 +48,6 @@
             book_image bi ON b.isbn = bi.book_isbn
         WHERE
             REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '')
-    </select>
-    <!-- 책 제목으로 리뷰 검색 -->
-    <select id="findReviewTitlesByBookTitle" parameterType="string" resultType="ReviewDTO">
-        SELECT r.title AS  review_title FROM review r
-        JOIN book b ON r.book_isbn = b.isbn
-        WHERE REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '');
     </select>
     <!-- 특정 책의 상세 정보 조회 -->
     <select id="getBookDetails" resultType="BookDTO">

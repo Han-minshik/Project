@@ -1,5 +1,6 @@
 package com.project.dto;
 
+import com.project.dto.CategoryDTO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,20 +13,17 @@ import java.util.List;
 @Setter
 @ToString
 public class BookDTO {
-    private Integer isbn;
+    private String isbn;
     private String title;
     private String author;
-    private Integer price;
     private String publisher;
-    private LocalDate publicationDate;
-    private String genre;
-    private Integer rating;
-    private String rentalState;
+    private String publicationDate;
+    private Integer price;
+    private Integer pageCount;
     private Integer copiesAvailable;
     private String detail;
+    private CategoryDTO category;
+    private byte[] image;
     // 등록일자
     private LocalDateTime createdAt;
-    private CategoryDTO category;
-
-    private List<BookImageDTO> images;
 }

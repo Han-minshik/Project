@@ -4,6 +4,7 @@ import com.project.dto.AdminPostDTO;
 import com.project.dto.BookDTO;
 import com.project.dto.UserDTO;
 import com.project.mapper.AdminMapper;
+import com.project.mapper.BookMapper;
 import com.project.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class AdminService {
     private boolean isAdmin(String userId) {
         UserDTO user = userMapper.getUserById(userId);
         return user != null && "관리자".equals(user.getRole());
+    }
+
+    public void updateBook(BookDTO book) {
+        adminMapper.updateBook(book);
     }
 
     public void addBook(String adminId, BookDTO book) {

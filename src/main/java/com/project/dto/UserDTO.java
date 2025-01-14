@@ -41,7 +41,9 @@ public class UserDTO implements UserDetails, OAuth2User {
     private LocalDateTime updatedAt;
     private String role;
 
-    private Integer bookIsbn;
+    private String bookIsbn;
+
+    private List<SnsInfoDTO> snsInfo; // 이 유저가 로그인 할 때 사용한 SNS 데이터
 
     @Override
     public String getName() {

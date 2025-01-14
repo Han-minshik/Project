@@ -12,6 +12,7 @@ public interface AdminMapper {
     void createAdmin(UserDTO admin);
     void insertBook(BookDTO book);
     void insertBookImages(BookDTO book);
+    void updateBook(BookDTO book);
 
     void createAdminPost(AdminPostDTO adminPost);
     AdminPostDTO getAdminPostById(Integer id);

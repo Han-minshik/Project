@@ -17,7 +17,7 @@ public class DiscussionDTO {
     private LocalDateTime updatedAt;
 
     private String userId;
-    private Integer bookIsbn;
+    private String bookIsbn;
 
     private List<UserDTO> user;
     private List<BookDTO> book;
