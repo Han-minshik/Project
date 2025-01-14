@@ -19,10 +19,19 @@ main h1{
     text-align: left;
     padding: 30px;
 }
-.my-opinion-container h2{
+.discussion-book-title{
+    display: flex;
+}
+.discussion-book-title span{
     font-family: Bold;
     font-size: var(--font-size-xx-large);
     margin-bottom: 10px;
+}
+.discussion-book-title span:first-child{
+    margin-right: 10px;
+}
+.discussion-book-title:first-child{
+    margin-right: 10px;
 }
 .discussion-title{
     display: flex;
@@ -37,7 +46,8 @@ main h1{
     border-bottom: 1px solid black;
     padding: 30px;
     font-size: var(--font-size-small);
-    height: 200px;
+    min-height: 300px;
+    box-sizing: border-box;
 }
 .my-opinion-chat{
     padding: 30px 30px 0 30px;
