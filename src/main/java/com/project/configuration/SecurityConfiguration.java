@@ -1,80 +1,80 @@
 package com.project.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+    @Autowired private UserDetailsService userDetailsService;
     @Autowired private DataSource dataSource;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http.authorizeHttpRequests(configure -> {
-            configure.anyRequest().permitAll();
+            configure.requestMatchers("/static/**").permitAll();
+            configure.requestMatchers("/").permitAll();
+            configure.requestMatchers("/user/sign-up").permitAll();
+            configure.requestMatchers( "/user/id/*", "/user/name/*", "user/findId/**").permitAll();
+            configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
+            configure.anyRequest().authenticated();
         });
 
-//        http.formLogin(configure -> {
-//            configure.loginPage("/user/login")
-//                    .loginProcessingUrl("/user/login")
-//                    .usernameParameter("id")
-//                    .passwordParameter("password")
-//                    .defaultSuccessUrl("/") // 로그인이 완료되었을 시 홈페이지로 이동
-//                    .permitAll();
-//        });
+        http.formLogin(configure -> {
+            configure.loginPage("/user/login")
+                    .loginProcessingUrl("/user/login")
+                    .usernameParameter("id")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/")
+                    .permitAll();
+        });
 
-//        http.logout(configure -> {
-//            configure.logoutUrl("/user/logout").permitAll();
-//            configure.invalidateHttpSession(true);
-//            configure.deleteCookies("JSESSIONID");
-//            configure.clearAuthentication(true);
-//            configure.logoutSuccessUrl("/");
-//        });
+        http.logout(configure -> {
+            configure.logoutUrl("/user/logout")
+                    .clearAuthentication(true)
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                    .logoutSuccessUrl("/")
+                    .permitAll();
+        });
 
-//        http.oauth2Login(configure -> {
-//            configure
-//                    .loginPage("/user/login") // 기본 경로인 /login 이 아니라 우리의 로그인 페이지 사용
-//                    .failureUrl("/user/join") // 소셜 로그인이 실패했다면 회원가입부터 해야하는 유저다
-//                    .defaultSuccessUrl("/")
-//                    .permitAll(); // 로그인이 완료되었을 시 홈페이지로 이동
-//        });
+        http.oauth2Login(configure -> {
+            configure.loginPage("/user/login")
+                    .failureUrl("/user/sign-up")
+                    .defaultSuccessUrl("/")
+                    .permitAll();
+        });
 
-//        http.rememberMe(configure -> {
-//            configure.userDetailsService(userDetailsService);
-//            configure.tokenRepository(persistentTokenRepository());
-//            configure.tokenValiditySeconds(60 * 60 * 24 * 7);
-//        });
+        http.rememberMe(configure -> {
+            configure.userDetailsService(userDetailsService)
+                    .tokenRepository(persistentTokenRepository())
+                    .tokenValiditySeconds(60 * 10);
+        });
+
         return http.build();
     }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-
-//    @Bean
-//    public PersistentTokenRepository persistentTokenRepository() {
-//        JdbcTokenRepositoryImpl repository = new JdbcTokenRepositoryImpl();
-//        repository.setDataSource(dataSource);
-//        return repository;
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+//
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+        tokenRepository.setDataSource(dataSource);
+        return tokenRepository;
+    }
 }

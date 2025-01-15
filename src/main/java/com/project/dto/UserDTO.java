@@ -47,6 +47,16 @@ public class UserDTO implements UserDetails, OAuth2User {
 
     private List<SnsInfoDTO> snsInfo; // 이 유저가 로그인 할 때 사용한 SNS 데이터
 
+    private List<SnsInfoDTO> snsInfo;
+
+    public void setTel(String tel) {
+        this.tel = tel.replace(",", "-");
+    }
+
+    public void setEmail(String email) {
+        this.email = email.replace(",", "@");
+    }
+
     @Override
     public String getName() {
         return this.id;
