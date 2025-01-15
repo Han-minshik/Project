@@ -5,10 +5,10 @@
 <mapper namespace="com.project.mapper.UserMapper">
     <!-- 유저 등록 -->
     <insert id="createUser">
-        INSERT INTO user (id, name, password, ci, tel, email,
+        INSERT INTO user (id, password, ci, tel, email,
                           join_date, point, rental_date, profile_image,
                           updated_at, role, nickname)
-        VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
+        VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
                 #{point}, #{rentalDate}, #{profileImage}, DEFAULT, '일반', #{nickname})
     </insert>
     <!-- id로 사용자 조회 -->
