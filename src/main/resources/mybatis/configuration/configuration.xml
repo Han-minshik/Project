@@ -10,15 +10,18 @@
 
     <!-- ALIAS 정의 -->
     <typeAliases>
-        <typeAlias type="com.project.dto.UserDTO" alias="UserDTO" />
         <typeAlias type="com.project.dto.AdminPostDTO" alias="AdminPostDTO" />
-        <typeAlias type="com.project.dto.BestsellerDTO" alias="BestsellerDTO" />
         <typeAlias type="com.project.dto.BookDTO" alias="BookDTO" />
-        <typeAlias type="com.project.dto.DiscussionCommentDTO" alias="DiscussionCommentsDTO" />
+        <typeAlias type="com.project.dto.BookImageDTO" alias="BookImageDTO" />
+        <typeAlias type="com.project.dto.CategoryDTO" alias="CategoryDTO" />
+        <typeAlias type="com.project.dto.DiscussionCommentDTO" alias="DiscussionCommentDTO" />
         <typeAlias type="com.project.dto.DiscussionDTO" alias="DiscussionDTO" />
         <typeAlias type="com.project.dto.LoanDTO" alias="LoanDTO" />
         <typeAlias type="com.project.dto.NotificationDTO" alias="NotificationDTO" />
+        <typeAlias type="com.project.dto.PageInfoDTO" alias="PageInfoDTO" />
         <typeAlias type="com.project.dto.ReviewDTO" alias="ReviewDTO" />
+        <typeAlias type="com.project.dto.SnsInfoDTO" alias="SnsInfoDTO" />
+        <typeAlias type="com.project.dto.UserDTO" alias="UserDTO" />
     </typeAliases>
 </configuration>
 

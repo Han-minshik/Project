@@ -6,25 +6,26 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
 public class BookDTO {
-    private int isbn;
+    private Integer isbn;
     private String title;
     private String author;
+    private Integer price;
     private String publisher;
     private LocalDate publicationDate;
     private String genre;
     private Integer rating;
     private String rentalState;
-    private int copiesAvailable;
+    private Integer copiesAvailable;
     private String detail;
-    private byte[] coverImage;
     // 등록일자
     private LocalDateTime createdAt;
+    private CategoryDTO category;
 
-
-    private String userId;
+    private List<BookImageDTO> images;
 }

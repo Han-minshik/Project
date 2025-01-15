@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>메인 홈페이지</title>
+</head>
+<body>
+    <h1>메인 홈페이지 임둥</h1>
+    <th:block sec:authorize="not authenticated">
+        <a href="/user/sign-up">회원가입하러 가기</a>
+        <a href="/user/login">로그인하러 가기</a>
+    </th:block>
+    <th:block sec:authorize="authenticated">
+        <span>로그인되어 있음</span>
+        <form th:action="@{/user/logout}" method="post" sec:authorize="authenticated" name="logout-form">
+            <button>로그아웃</button>
+        </form>
+    </th:block>
+</body>
+</html>

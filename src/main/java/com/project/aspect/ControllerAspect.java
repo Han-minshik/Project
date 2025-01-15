@@ -1,8 +1,8 @@
 package com.project.aspect;
 
-import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
+import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
@@ -14,16 +14,16 @@ import java.lang.reflect.Parameter;
 @Aspect
 @Component
 public class ControllerAspect {
-
-    @Before("within(com.project.controller.*)")
+    // 컨트롤러의 메서드가 실행되기 전 출력
+    @Before("within(com.project.controller)")
     public void method_start_log(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
-        log.info("===== " + method.getName() + " ====="); // ※ 작동 안됨
-        Object[] args = joinPoint.getArgs();
+        log.info("======== " + method.getName() + " ========");
+        Object[] arguments = joinPoint.getArgs();
         Parameter[] params = method.getParameters();
-        for (int i = 0; i < params.length; i++) {
-            log.info(params[i].getName() + ": " + args[i]);
+        for(int i = 0; i < params.length; i++) {
+            log.info(params[i].getName() + ": " + arguments[i]);
         }
     }
 }

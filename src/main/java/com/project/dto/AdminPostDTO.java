@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @ToString
 public class AdminPostDTO {
-    private int id;
+    private Integer id;
     private String title;
     private String content;
     private LocalDateTime createdAt;

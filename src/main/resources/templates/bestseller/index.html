@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bestseller Books</title>
+	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
+	<link rel="stylesheet" href="../../static/css/bestseller/index.css">
+	<script src="../../static/js/bestseller/index.js"></script>
+</head>
+<body>
+<header class="header">
+	<h1>Bestseller Books</h1>
+	<p>Discover the most popular books right now!</p>
+</header>
+<main>
+	<div id="bestseller-list" class="book-list">
+		<!-- Books will be dynamically inserted here -->
+	</div>
+</main>
+<footer class="footer">
+	<p>Powered by <a href="https://www.aladin.co.kr" target="_blank">Aladin API</a></p>
+</footer>
+</body>
+</html>

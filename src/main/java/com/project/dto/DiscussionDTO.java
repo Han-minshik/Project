@@ -11,13 +11,13 @@ import java.util.List;
 @Setter
 @ToString
 public class DiscussionDTO {
-    private int id;
+    private Integer id;
     private String topic;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     private String userId;
-    private int bookIsbn;
+    private Integer bookIsbn;
 
     private List<UserDTO> user;
     private List<BookDTO> book;

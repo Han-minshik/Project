@@ -11,13 +11,16 @@ import java.util.List;
 @Setter
 @ToString
 public class LoanDTO {
-    private int id;
+    private Integer id;
     private LocalDateTime loanDate;
     private LocalDateTime returnDate;
     private String status;
 
     private String userId;
-    private int bookIsbn;
+    private Integer bookIsbn;
+
+    private Integer discountPrice;
+    private Integer finalPrice;
 
     private List<UserDTO> user;
     private List<BookDTO> book;
