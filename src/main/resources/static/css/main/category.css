@@ -20,17 +20,17 @@ main h1{
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-    /*border-top: 5px solid black;*/
 }
 .book-title-search span{
     font-size: var(--font-size-normal);
     margin-right: 10px;
 }
-.book-title-search select{
-    font-size: var(--font-size-small);
-    padding: 5px 10px;
-    width: 500px;
-    max-width: 500px;
+.book-title-search input{
+    font-size: var(--font-size-normal);
+    padding: 7px 15px;
+    width: 600px;
+    border-radius: 30px;
+    border: 2px solid black;
 }
 /*****************************************************/
 main > header{

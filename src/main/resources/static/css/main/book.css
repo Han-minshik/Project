@@ -186,13 +186,20 @@ main > article .summary-info-discussion {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--Dark-gray-textured-background---1-rgba);
+    /*background-color: var(--Dark-gray-textured-background---1-rgba);*/
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    background-color: var(--Dark-gray-textured-background---1-rgba);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
 }
 
 .available-rent{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.available-book{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
