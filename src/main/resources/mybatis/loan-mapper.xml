@@ -35,8 +35,7 @@
     <!-- 대출 중인 모든 사용자 조회 -->
     <select id="getAllLoans" resultType="LoanDTO">
         SELECT a.id, a.loan_date, a.return_date, a.status, a.book_isbn,
-               b.title AS bookTitle,
-               c.name AS userName
+               b.title AS bookTitle
         FROM loan as a JOIN book b ON a.book_isbn = b.isbn
                        JOIN user c ON a.user_id = c.id
         WHERE a.status = '대출 중'

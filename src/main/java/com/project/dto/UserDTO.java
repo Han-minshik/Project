@@ -25,7 +25,6 @@ public class UserDTO implements UserDetails, OAuth2User {
     @Length(min = 4, max = 15)
     @Pattern(regexp = "^[a-z][0-9a-zA-Z]*$")
     private String id;
-    private String name;
     @NotBlank
     @Pattern(regexp = "^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}")
     private String password;
