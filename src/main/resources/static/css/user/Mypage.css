@@ -1,0 +1,10 @@
+@import url("../public/public.css");
+
+body{
+    position: relative;
+    width: 1200px;
+    margin: 120px auto;
+    text-align: center;
+}
+
+img
