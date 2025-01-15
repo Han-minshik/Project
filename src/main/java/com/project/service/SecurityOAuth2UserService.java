@@ -59,7 +59,7 @@ public class SecurityOAuth2UserService extends DefaultOAuth2UserService {
         if(!isSnsExists){
             existsUser.getSnsInfo().add(snsInfoDTO);
             snsInfoDTO.setUserId(existsUser.getId());
-            userMapper.createSnsInfo(snsInfoDTO);
+            userMapper.insertSnsInfo(snsInfoDTO);
         }
 
         return existsUser;

@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/user/login.css">
+    <script src="../../static/js/user/login.js" defer></script>
 
 </head>
 <body>
@@ -15,7 +16,7 @@
         <h1>로그인</h1>
         <div class="container">
             <div class="form-section">
-                <form method="post">
+                <form th:action="@{/user/login}" method="post">
                     <section class="user-info-section">
                         <label>
                             <input type="text" placeholder="아이디를 입력하세요" id="id" name="id">
@@ -43,13 +44,13 @@
                     <button id="login-btn" type="submit">로그인</button>
                 </form>
                 <section class="sns-login-btn-section">
-                    <a href="#">
+                    <a href="/oauth2/authorization/naver"> <!-- Login with OAuth 2.0 '링크와 동일' 해야함-->
                         <img src="../../static/images/icon/naver_login_icon.png" alt="네이버 로그인 버튼 아이콘"/>
                     </a>
-                    <a href="#">
+                    <a href="/oauth2/authorization/kakao"> <!-- Login with OAuth 2.0 '링크와 동일' 해야함-->
                         <img src="../../static/images/icon/kakao_login_icon.png" alt="카카오 로그인 버튼 아이콘"/>
                     </a>
-                    <a href="#">
+                    <a href="/oauth2/authorization/google"> <!-- Login with OAuth 2.0 '링크와 동일' 해야함-->
                         <img src="../../static/images/icon/google_login_icon.png" alt="구글 로그인 버튼 아이콘"/>
                     </a>
                 </section>

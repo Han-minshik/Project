@@ -26,7 +26,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(configure -> {
             configure.requestMatchers("/static/**").permitAll();
             configure.requestMatchers("/").permitAll();
-            configure.requestMatchers("/user/sign-up").permitAll();
+            configure.requestMatchers("/user/join").permitAll();
             configure.requestMatchers("/user/id/*", "/user/name/*", "user/findId/**").permitAll();
             configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
             configure.anyRequest().authenticated();

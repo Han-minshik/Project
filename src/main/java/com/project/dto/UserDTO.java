@@ -40,14 +40,11 @@ public class UserDTO implements UserDetails, OAuth2User {
     private byte[] profileImage;
     private LocalDateTime updatedAt;
     private String role;
+    private String nickname;
 
     private Integer bookIsbn;
 
     private List<SnsInfoDTO> snsInfo;
-
-    public void setTel(String tel) {
-        this.tel = tel.replace(",", "-");
-    }
 
     public void setEmail(String email) {
         this.email = email.replace(",", "@");

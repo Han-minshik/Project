@@ -10,7 +10,8 @@ import java.util.List;
 
 @Service
 public class BookService {
-    @Autowired private BookMapper bookMapper;
+    @Autowired
+    private BookMapper bookMapper;
 
     public void createBook(BookDTO book) {
         bookMapper.createBook(book);
@@ -18,7 +19,7 @@ public class BookService {
 
     public List<BookDTO> getAllBooks() {
         return bookMapper.getAllBooks();
-    }
+    } // pagination
 
     public void updateBook(BookDTO book) {
         bookMapper.updateBook(book);
@@ -28,8 +29,8 @@ public class BookService {
         bookMapper.deleteBook(isbn);
     }
 
-    public List<BookDTO> searchBooksByName(String title) {
-        return bookMapper.searchBooksByName(title);
+    public List<BookDTO> searchBooksByName(String keyword) {
+        return bookMapper.searchBooksByName(keyword);
     }
 
     public List<ReviewDTO> findReviewTitlesByBookTitle(String title) {

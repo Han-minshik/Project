@@ -1,16 +1,16 @@
-const idInput = document.getElementById('id-input');
-const nameInput = document.getElementById('name-input');
-const [idDuplicateButton, nameDuplicateButton] = document.querySelectorAll('.duplicate-check');
+const idInput = document.getElementById('id');
+// const nameInput = document.getElementById('name-input');
+const idCheckButton = document.querySelector('.id-input-container button');
 
 const telAuthButton = document.querySelector('.tel-input-container button');
 
-const [emailLocal, emailDomain] = document.getElementsByName('email');
-const emailAuthButton = document.querySelector('#email-input-container button')
-const emailAuthConfirmInput = document.querySelector('#email-auth-input-container input')
-const emailAuthConfirmButton = document.querySelector('#email-auth-input-container button')
+const [emailHead, emailMiddle] = document.getElementsByName('email');
+const emailAuthButton = document.querySelector('.email-input-container button')
+const emailAuthConfirmInput = document.querySelector('.email-auth-input-container input')
+const emailAuthConfirmButton = document.querySelector('.email-auth-input-container button')
 
 
-const cancelButton = document.getElementById('cancel');
+const cancelButton = document.querySelector('.join-btn-section button[type=button]');
 
 let telAuthCompleted = false;
 let emailAuthCompleted = false;
@@ -42,13 +42,13 @@ function checkDuplicate(inputElement) {
         .catch(error => console.error('Error:', error));
 }
 
-idDuplicateButton.onclick = () => {
+idCheckButton.onclick = () => {
     checkDuplicate(idInput);
 };
 
-nameDuplicateButton.onclick = () => {
-    checkDuplicate(nameInput);
-};
+// nameDuplicateButton.onclick = () => {
+//     checkDuplicate(nameInput);
+// };
 /***********************************************************/
 
 telAuthButton.onclick = () => {
@@ -82,7 +82,7 @@ telAuthButton.onclick = () => {
 /***********************************************************/
 emailAuthButton.onclick = () => {
     const csrfToken = document.forms[0].querySelector('input[name=_csrf]').value;
-    const email = `${emailLocal.value}@${emailDomain.value}`;
+    const email = `${emailHead.value}@${emailMiddle.value}`;
     console.log(email)
     fetch(`/email/auth`,{
         method: "POST",
@@ -101,7 +101,7 @@ emailAuthButton.onclick = () => {
 }
 
 emailAuthConfirmButton.onclick = () => {
-    const email = `${emailLocal.value}@${emailDomain.value}`;
+    const email = `${emailHead.value}@${emailMiddle.value}`;
     const certNumber = emailAuthConfirmInput.value;
     fetch(`/email/auth?email=${email}&certNumber=${certNumber}`)
         .then(response => {

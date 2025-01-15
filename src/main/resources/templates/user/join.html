@@ -8,11 +8,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/user/join.css">
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <script src="../../static/js/user/join.js" defer></script>
 </head>
 <body>
     <main>
         <h1>회원가입</h1>
-        <form method="post">
+        <form th:action="@{/user/join}" th:object="${user}" method="post">
             <h2>필수정보</h2>
             <section>
                 <div class="id-input-container">
@@ -48,7 +50,7 @@
                 <div class="tel-input-container">
                     <label class="input-label">
                         <i class="bi bi-telephone-fill"></i>
-                        <input type="text" id="tel" placeholder="휴대전화 번호를 입력하세요">
+                        <input type="text" id="tel" name="tel" placeholder="휴대전화 번호를 입력하세요">
                     </label>
                     <button type="button">인증하기</button>
                 </div>

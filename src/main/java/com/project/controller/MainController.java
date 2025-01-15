@@ -1,4 +1,4 @@
-package my.team_project_test.controller;
+package com.project.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;

@@ -24,17 +24,17 @@ public class UserController {
 
     /***********************************************/
 
-    @GetMapping("/sign-up")
-    public String get_sign_up(Authentication auth) {
+    @GetMapping("/join")
+    public String get_join(Authentication auth) {
         if (auth != null) {
             System.out.println("회원가입 할 필요 없습니다");
             return "redirect:/";
         }
-        return "user/sign-up";
+        return "user/join";
     }
 
-    @PostMapping("/sign-up")
-    public String post_sign_up(
+    @PostMapping("/join")
+    public String post_join(
             @ModelAttribute UserDTO user,
             HttpSession session
     ) {
@@ -42,13 +42,13 @@ public class UserController {
         String impUid = (String) session.getAttribute("impUid");
         if(impUid == null) {
             log.error("전화번호 인증 확인 실패");
-            return "user/sign-up";
+            return "user/join";
         }
         // 포트원 인증 통과 여부
         String ci = portOneSerivce.tel_authentication(impUid, user.getTel());
         if(ci == null) {
             log.error("포트원 인증 확인 실패");
-            return "user/sign-up";
+            return "user/join";
         }
         user.setCi(ci);
 
@@ -56,17 +56,17 @@ public class UserController {
         String certCompleteEmail = (String) session.getAttribute("emailAuth");
         if(certCompleteEmail == null || !certCompleteEmail.equals(user.getEmail())) {
             log.error("이메일 인증 확인 실패");
-            return "user/sign-up";
+            return "user/join";
         }
 
         log.info("가입할 user" + user);
-        boolean signUpResult = userService.sign_up_user(user);
+        boolean signUpResult = userService.join_user(user);
         if (signUpResult) {
             log.info("가입 완료");
             return "redirect:/user/login";
         }
         log.error("원인 모를 이유로 실패");
-        return "user/sign-up";
+        return "user/join";
     }
 
     /***********************************************/
