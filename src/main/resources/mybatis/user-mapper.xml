@@ -11,6 +11,9 @@
         VALUES (#{id}, #{name}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
                 #{point}, #{rentalDate}, #{profileImage}, DEFAULT, #{role})
     </insert>
+    <insert id="createSnsInfo">
+
+    </insert>
     <!-- id로 사용자 조회 -->
     <select id="getUserById" resultType="com.project.dto.UserDTO">
         SELECT * FROM user WHERE id = #{id}

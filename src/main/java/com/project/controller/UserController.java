@@ -89,9 +89,23 @@ public class UserController {
     public void get_findId(){}
 
     @GetMapping("/changePw")
-    public void get_changePw(){}
+    public String get_changePw(
+        Authentication auth,
+        String oldPw,
+        String newPw
+    ){
+        String id = auth.getName();
+        boolean changePwResult =  userService.change_password(id, oldPw, newPw);
+        if (changePwResult){
+            return "redirect:/";
+        }
+        return "user/changePw";
+    }
 
-    /*************************************************/
+    /******************************************/
+
+
+
 
 
 }

@@ -21,4 +21,5 @@ public interface UserMapper {
     UserDTO getUserByCi(String ci);
 
     void createSnsInfo(SnsInfoDTO snsInfoDTO);
+
 }

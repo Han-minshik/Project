@@ -25,7 +25,9 @@ public class SecurityOAuth2UserService extends DefaultOAuth2UserService {
 
     private final String CI;
 
-    public SecurityOAuth2UserService(@Value("${CI}") String ci) {
+    public SecurityOAuth2UserService(
+        @Value("${CI}") String ci
+    ) {
         CI = ci;
     }
 
@@ -75,7 +77,7 @@ public class SecurityOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     SnsInfoDTO get_kakao_sns_info(Map<String, Object> attributes) {
-        String id = attributes.get("id").toString(); // 카카오 고유 ID
+        String id = attributes.get("id").toString();
         return SnsInfoDTO.builder()
                 .id(id)
                 .ci(CI)
@@ -84,7 +86,7 @@ public class SecurityOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     SnsInfoDTO get_google_sns_info(Map<String, Object> attributes) {
-        String id = attributes.get("id").toString(); // 카카오 고유 ID
+        String id = attributes.get("id").toString();
         return SnsInfoDTO.builder()
                 .id(id)
                 .ci(CI)

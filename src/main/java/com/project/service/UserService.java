@@ -27,8 +27,14 @@ public class UserService {
         return true;
     }
 
-//    public boolean change_password(String id, String password){
-//        return
-//    }
+    public boolean change_password(String id, String oldPw, String newPw) {
+        if(!oldPw.equals(newPw)) {
+            UserDTO findUser = userMapper.getUserById(id);
+            findUser.setPassword(newPw);
+            userMapper.updateUser(findUser);
+            return true;
+        }
+        return false;
+    }
 
 }

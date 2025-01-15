@@ -27,10 +27,16 @@ public class SecurityConfiguration {
             configure.requestMatchers("/static/**").permitAll();
             configure.requestMatchers("/").permitAll();
             configure.requestMatchers("/user/sign-up").permitAll();
-            configure.requestMatchers( "/user/id/*", "/user/name/*", "user/findId/**").permitAll();
+            configure.requestMatchers("/user/id/*", "/user/name/*", "user/findId/**").permitAll();
             configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
             configure.anyRequest().authenticated();
         });
+        
+        // 관리자만 접근 가능한 authorizeHttpRequests가 필요함
+//        http.authorizeHttpRequests(configure -> {
+//            configure.requestMatchers("/admin/**").hasAnyAuthority("ADMIN"); // READ 권한 있는 유저만 가능
+//            configure.anyRequest().authenticated();
+//        });
 
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
