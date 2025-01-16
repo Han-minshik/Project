@@ -65,7 +65,8 @@ main > header a{
 .image-container{
     display: flex;
     align-items: center;
-    padding: 50px 0 50px 60px;
+    padding: 50px 0 50px 40px;
+    width: 450px;
 }
 .image-container img{
     width: 80%;
@@ -82,6 +83,10 @@ main > header a{
 .book-info h2{
     font-size: var(--font-size-large);
     margin-bottom: 20px;
+}
+.book-info h2 a{
+    text-decoration: none;
+    color: inherit;
 }
 .author-publisher{
     display: flex;

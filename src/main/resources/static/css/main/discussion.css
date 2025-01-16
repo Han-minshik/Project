@@ -64,9 +64,7 @@ main > header a{
 
 .image-container{
     display: flex;
-    /*justify-content: center;*/
     padding: 50px 0 50px 60px;
-    /*margin: 70px;*/
 }
 .image-container img{
     width: 70%;
@@ -87,32 +85,37 @@ main > header a{
 .discussion-title{
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 .discussion-title span{
     font-size: var(--font-size-normal);
-    /*margin-bottom: 20px;*/
     margin-right: 10px;
 }
 .discussion-title p{
     font-size: var(--font-size-normal);
-    /*margin-bottom: 20px;*/
     margin-right: 10px;
 }
 .discussion-recent{
-    display: flex;
+    /*display: flex;*/
+    box-sizing: border-box;
     border: none;
     border-radius: 20px;
     background-color: white;
     width: 100%;
-    height: 100%;
+    height: 120px;
     margin-bottom: 20px;
+    padding: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    overflow-y: scroll;
+}
+.discussion-recent::-webkit-scrollbar {
+    width: 0; /* 스크롤바의 너비를 0으로 설정 */
+    background: transparent; /* 배경을 투명하게 설정 */
 }
 .discussion-recent p{
-    flex: 1;
     margin: 0;
-    padding: 20px;
     font-size: var(--font-size-small);
+    line-height: 30px;
 }
 .discussion-button-section{
     display: flex;
@@ -133,9 +136,20 @@ main > header a{
         color: white;
     }
 }
-.discussion-button a{
-    text-decoration: none;
-    color: inherit;
+.book-button{
+    font-size: var(--font-size-small);
+    padding: 10px 20px;
+    margin-right: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #ffe08a;
+    border: none;
+    color: #512e02;
+    transition-duration: 0.2s;
+    &:hover{
+        background-color: #8f642f;
+        color: white;
+    }
 }
 .all-book-discussion{
     border-bottom: 2px solid black;
@@ -230,123 +244,3 @@ main > header a{
 .my-opinion-form .button-container button[type=button]{
     background-color: transparent;
 }
-
-/*****************************************/
-
-/*.all-review-container {*/
-/*    display: none;*/
-/*    position: fixed; !* 화면에 고정 *!*/
-/*    top: 50%; !* 세로 중앙 *!*/
-/*    left: 50%; !* 가로 중앙 *!*/
-/*    transform: translate(-50%, -50%); !* 정확히 중앙으로 이동 *!*/
-/*    width: 100vw;*/
-/*    height: 100vh;*/
-/*    padding: 40px 0;*/
-/*    background-color: rgba(0,0,0,0.3); !* 배경색 *!*/
-/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); !* 그림자 효과 *!*/
-/*    z-index: 99; !* 다른 요소 위에 표시 *!*/
-/*}*/
-
-/*.all-review {*/
-/*    display: flex;*/
-/*    flex-direction: column; !* 세로 방향으로 배치 *!*/
-/*    position: absolute;*/
-/*    top: 20%;*/
-/*    left: 50%;*/
-/*    width: 800px;*/
-/*    height: 800px;*/
-/*    padding: 50px 30px;*/
-/*    transform: translateX(-50%);*/
-/*    background-color: beige;*/
-/*    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);*/
-/*    border-radius: 50px;*/
-/*    border: none;*/
-/*    text-align: center;*/
-/*}*/
-
-/*.all-review > h3{*/
-/*    font-size: var(--font-size-normal);*/
-/*    text-align: center;*/
-/*    margin: 10px 0;*/
-/*}*/
-/*.all-review select{*/
-/*    font-size: var(--font-size-small);*/
-/*    padding: 5px 10px;*/
-/*}*/
-
-/*.all-review .button-container {*/
-/*    margin: 20px 0 20px 70px;*/
-/*    text-align: center;*/
-/*}*/
-/*.all-review .button-container button{*/
-/*    display: inline-block;*/
-/*    margin: 0 4px;*/
-/*    font-size: var(--font-size-x-small);*/
-/*    padding: 8px 20px;*/
-/*    cursor: pointer;*/
-/*    border: none;*/
-/*    border-radius: 50px;*/
-/*    color: #512e02;*/
-/*}*/
-
-/*.all-review .button-container button[type=submit]{*/
-/*    transition-duration: 0.2s;*/
-/*    background-color: #ffe08a;*/
-/*    &:hover{*/
-/*        background-color: #8f642f;*/
-/*        color: white;*/
-/*    }*/
-/*}*/
-/*.all-review .button-container button[type=button]{*/
-/*    background-color: transparent;*/
-/*}*/
-/******************************/
-
-/*.all-discussion{*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    max-height: 800px;*/
-/*    overflow-y: auto;*/
-/*}*/
-/*.one-discussion{*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    text-align: left;*/
-/*    margin: 30px 30px 0 30px;*/
-/*    padding: 20px;*/
-/*    border-top: 1px solid black;*/
-/*}*/
-/*.one-discussion span{*/
-/*    font-size: var(--font-size-small);*/
-/*    font-weight: bold;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-/*.one-discussion p{*/
-/*    font-size: var(--font-size-small);*/
-/*    margin-bottom: 20px;*/
-/*}*/
-/*.one-discussion:last-child {*/
-/*    border-bottom: 1px solid black;*/
-/*}*/
-/*.agree-disagree-btn{*/
-/*    display: flex;*/
-/*    justify-content: right;*/
-/*}*/
-/*.agree-disagree-btn button{*/
-/*    padding: 5px;*/
-/*    font-size: var(--font-size-small);*/
-/*    width: 70px;*/
-/*    border-radius: 30px;*/
-/*    cursor: pointer;*/
-/*    background-color: #ffc946;*/
-/*    border: none;*/
-/*    color: #512e02;*/
-/*    transition-duration: 0.2s;*/
-/*    &:hover{*/
-/*        background-color: #8f642f;*/
-/*        color: white;*/
-/*    }*/
-/*}*/
-/*.agree{*/
-/*    margin-right: 10px;*/
-/*}*/
