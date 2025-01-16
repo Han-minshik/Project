@@ -22,15 +22,15 @@ body{
 }
 
 .logo {
-    margin-right: 20px;
+
     top: 20px;
+    margin: 0;
     text-align: left;
     left: 20px;
     font-size: 24px;
     font-weight: bold;
     color: black;
 }
-
 
 .menu-bar {
     justify-content: center;
@@ -152,6 +152,7 @@ body{
         color: white;
         border: none;
         padding: 5px 10px;
+        margin: 5px;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;

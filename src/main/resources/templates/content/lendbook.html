@@ -5,14 +5,14 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>찜목록</title>
-    <link rel="stylesheet" href="../../static/css/content/zim.css?ver=1" type="text/css">
+    <title>내가 얼마나 대여를 했을까요?</title>
+    <link rel="stylesheet" href="../../static/css/content/lendbook.css?ver=1" type="text/css">
 </head>
 <body>
-    <h1>나의 찜 목록</h1>
+    <h1>나의 대여 목록</h1>
     <header>
         <div>
-            <span th:text="#{category.registed-item}">등록상품:</span>
+            <span th:text="#{category.registed-item}">대여한 권수:</span>
             <b th:text="${pageInfo.totalElementCount} + '건'">13건</b>
         </div>
 
@@ -47,8 +47,8 @@
     <main>
         <h2>책 목록</h2>
         <div class="wishlist" id="wishlist-container">
-            <p>찜한 책이 없습니다.</p>
-            <a href="../main/booklist.html" class="link">책 보러가기!</a>
+            <p>대여한 책이 없어요ㅠㅠ</p>
+            <a href="../content/booklist.html" class="link">책 보러가기!</a>
         </div>
     </main>
 
