@@ -12,5 +12,5 @@ public interface BookMapper {
     List<BookDTO> getAllBooks();
     void deleteBook(String isbn); // Integer → String
     List<BookDTO> searchBooksByName(@Param("title") String title);
-    BookDTO getBookDetails(@Param("isbn") String isbn); // Integer → String
+    BookDTO getBookByIsbn(@Param("isbn") String isbn);
 }
