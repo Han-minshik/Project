@@ -82,4 +82,7 @@
         FROM book
         WHERE isbn = #{isbn}
     </select>
+    <select id="getBookByIsbn" resultType="com.project.dto.BookDTO">
+        SELECT * FROM book WHERE isbn = #{isbn}
+    </select>
 </mapper>

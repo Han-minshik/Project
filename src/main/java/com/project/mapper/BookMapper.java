@@ -18,4 +18,6 @@ public interface BookMapper {
     List<BookDTO> searchBooksByName(@Param("title") String title);
     List<ReviewDTO> findReviewTitlesByBookTitle(@Param("title") String title);
     BookDTO getBookDetails(@Param("isbn") Integer isbn);
+    BookDTO getBookByIsbn(@Param("isbn") String isbn);
+
 }
