@@ -9,6 +9,9 @@ import com.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,9 +38,15 @@ public class UserController {
 
     @PostMapping("/join")
     public String post_join(
-            @ModelAttribute UserDTO user,
+            @ModelAttribute @Validated UserDTO joinUser,
+            BindingResult bindingResult,
             HttpSession session
     ) {
+        if (bindingResult.hasErrors()) { // 유효성 검사 실패 시
+            log.error("에러 발생!");
+            log.error(bindingResult.getAllErrors());
+            return "user/join";
+        }
         // 전화번호 인증 확인 여부
         String impUid = (String) session.getAttribute("impUid");
         if(impUid == null) {
@@ -45,22 +54,22 @@ public class UserController {
             return "user/join";
         }
         // 포트원 인증 통과 여부
-        String ci = portOneSerivce.tel_authentication(impUid, user.getTel());
+        String ci = portOneSerivce.tel_authentication(impUid, joinUser.getTel());
         if(ci == null) {
             log.error("포트원 인증 확인 실패");
             return "user/join";
         }
-        user.setCi(ci);
+        joinUser.setCi(ci);
 
         // 이메일 인증 확인 여부
         String certCompleteEmail = (String) session.getAttribute("emailAuth");
-        if(certCompleteEmail == null || !certCompleteEmail.equals(user.getEmail())) {
+        if(certCompleteEmail == null || !certCompleteEmail.equals(joinUser.getEmail())) {
             log.error("이메일 인증 확인 실패");
             return "user/join";
         }
 
-        log.info("가입할 user" + user);
-        boolean signUpResult = userService.join_user(user);
+        log.info("가입할 user" + joinUser);
+        boolean signUpResult = userService.join_user(joinUser);
         if (signUpResult) {
             log.info("가입 완료");
             return "redirect:/user/login";
@@ -83,19 +92,61 @@ public class UserController {
         return "user/login";
     }
 
-    /************************************************/
+    /***********************************************/
 
     @GetMapping("/findId")
     public void get_findId(){}
 
+    /************************************************/
+
+    @GetMapping("/my-page")
+    public String get_my_page(Authentication auth) {
+        if (auth != null) {
+            return "user/my-page";
+        }
+        return "redirect:/user/login";
+    }
+
+    /************************************************/
+
+    @GetMapping("/changeInfo")
+    public String get_user_change_info(
+            Authentication auth,
+            Model model
+    ) {
+        if (auth != null) {
+            UserDTO user = userMapper.getUserById(auth.getName()); // 유저 정보 가져옴
+            user.setPassword(null); // 비밀번호 유출 안되게
+            model.addAttribute("user", user); // 유저 정보를 템플릿에 넘김
+            return "user/change-user-info";
+        }
+        return "redirect:/user/login";
+    }
+
+    // 테스트 후 지울 예정
+//    @PostMapping("/change-user-info")
+//    public String change_user_info(
+//        Authentication auth,
+//        @ModelAttribute UserDTO user
+//    ){
+//        if (auth != null) {
+//            userMapper.updateUser(user);
+//            return "redirect:/";
+//        }
+//        return "redirect:/user/login";
+//    }
+
+
+
+    /************************************************/
+
+    // 비밀번호 분실
     @GetMapping("/changePw")
     public String get_changePw(
-        Authentication auth,
-        String oldPw,
-        String newPw
+        String id,
+        String newPw // 패턴검사 필요함
     ){
-        String id = auth.getName();
-        boolean changePwResult =  userService.change_password(id, oldPw, newPw);
+        boolean changePwResult =  userService.change_password(id, newPw);
         if (changePwResult){
             return "redirect:/";
         }
