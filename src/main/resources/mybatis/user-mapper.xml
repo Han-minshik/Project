@@ -49,8 +49,8 @@
     </insert>
     <!-- 리뷰 등록 -->
     <insert id="insertReview">
-        INSERT INTO review (user_id, book_isbn, content, `like`, rate, status, updated_at)
-        VALUES (#{userId}, #{bookIsbn}, #{content}, DEFAULT, 0, '공개', DEFAULT)
+        INSERT INTO review (user_id, book_isbn, content, `like`, rate, updated_at)
+        VALUES (#{userId}, #{bookIsbn}, #{content}, DEFAULT, 0, DEFAULT)
     </insert>
     <!-- 사용자에게 포인트 부여 -->
     <update id="addPointToUser">
@@ -75,4 +75,16 @@
         UPDATE user SET point = point - #{points}
         WHERE id = #{userId} AND point >= #{points}
     </update>
+    <!-- 특정 사용자가 작성한 모든 Discussion 조회 -->
+    <select id="getAllDiscussionsByUser" resultType="java.lang.Integer">
+        SELECT id
+        FROM discussion
+        WHERE user_id = #{userId}
+    </select>
+    <!-- 특정 사용자가 작성한 Discussion 내의 댓글 수 조회 -->
+    <select id="getCommentCountByUserInDiscussion" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion_comment
+        WHERE user_id = #{userId} AND discussion_id = #{discussionId}
+    </select>
 </mapper>

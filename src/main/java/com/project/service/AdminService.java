@@ -44,4 +44,9 @@ public class AdminService {
         adminMapper.createAdminPost(adminPost);
         log.info("공지사항을 DB에 삽입했습니다 : {}", adminPost.getTitle());
     }
+
+
+    public void deleteBook(String isbn) { // Integer → String
+        adminMapper.deleteBook(isbn);
+    }
 }

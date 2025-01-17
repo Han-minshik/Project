@@ -7,10 +7,6 @@
     <select id="getAllBooks" resultType="BookDTO">
         SELECT * FROM book
     </select>
-    <!-- 책 삭제 -->
-    <delete id="deleteBook">
-        DELETE FROM book WHERE isbn = #{isbn}
-    </delete>
     <!-- 제목으로 책 검색 -->
     <select id="searchBooksByName" parameterType="string" resultType="BookDTO">
         SELECT
@@ -36,7 +32,53 @@
         FROM book
         WHERE isbn = #{isbn}
     </select>
-    <select id="getBookByIsbn" resultType="com.project.dto.BookDTO">
+    <!-- isbn 으로 책 조회 -->
+    <select id="getBookByIsbn" resultType="BookDTO">
         SELECT * FROM book WHERE isbn = #{isbn}
+    </select>
+    <!-- 평균 평점이 가장 높은 책 반환 -->
+    <select id="getPopularBook" resultType="BookDTO">
+        SELECT b.title,
+               b.author,
+               b.publisher,
+               b.price,
+               b.detail,
+               b.category
+        FROM book b
+                 JOIN review r ON b.isbn = r.book_isbn
+        GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
+        ORDER BY AVG(r.rate) DESC
+        LIMIT 1;
+    </select>
+    <!-- 특정 책의 별점 평균 조회 -->
+    <select id="getAverageRatingByIsbn" resultType="java.lang.Double">
+        SELECT AVG(r.rate) AS averageRating
+        FROM review r
+        WHERE r.book_isbn = #{isbn};
+    </select>
+    <!-- 특정 책의 리뷰와 각 리뷰의 좋아요 개수 조회 -->
+    <select id="getBookReviewsWithLikes" resultType="ReviewDTO">
+        SELECT r.user_id,
+               r.book_isbn,
+               r.content,
+               r.rate,
+               r.`like`,
+               r.rate,
+               r.updated_at
+        FROM review r
+        WHERE r.book_isbn = #{isbn}
+    </select>
+    <!-- 특정 책의 토론 주제 개수 조회 -->
+    <select id="getDiscussionCountByBookIsbn" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion
+        WHERE book_isbn = #{isbn};
+    </select>
+    <!-- 특정 책의 토론 참여자 인원수 조회 -->
+    <select id="getParticipantCountByBookIsbn" resultType="java.lang.Integer">
+        SELECT COUNT(DISTINCT dc.user_id) AS participantCount
+        FROM discussion d
+                 JOIN discussion_comment dc ON d.id = dc.discussion_id
+        WHERE d.book_isbn = #{isbn};
     </select>
 </mapper>

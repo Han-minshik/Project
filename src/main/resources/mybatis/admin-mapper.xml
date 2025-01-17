@@ -20,6 +20,10 @@
             image = #{image}, created_at = DEFAULT
         WHERE isbn = #{isbn}
     </update>
+    <!-- 책 삭제 -->
+    <delete id="deleteBook">
+        DELETE FROM book WHERE isbn = #{isbn}
+    </delete>
     <!-- 책 이미지 등록 -->
     <insert id="insertBookImages">
         # 책의 isbn과 image의 no는 ai기 때문에 같다

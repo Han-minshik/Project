@@ -70,4 +70,14 @@
         AND book_isbn = #{isbn}
         AND status = '대출 중'
     </select>
+    <!-- 책의 대출 가능 복사본이 0일 때, 첫 번째 대출자의 반납일 조회 -->
+    <select id="getFirstReturnDateByBookIsbn" resultType="java.time.LocalDateTime">
+        SELECT l.return_date
+        FROM loan l
+                 JOIN book b ON l.book_isbn = b.isbn
+        WHERE b.isbn = #{isbn}
+          AND b.copies_available = 0
+        ORDER BY l.return_date DESC
+        LIMIT 1;
+    </select>
 </mapper>

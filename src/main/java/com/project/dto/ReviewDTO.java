@@ -16,7 +16,7 @@ public class ReviewDTO {
     private String content;    // 리뷰 내용
     private Integer like;
     private Integer rate;   // 별점
-    private LocalDateTime uploadedAt;
+    private LocalDateTime updatedAt;
 
     private List<UserDTO> user;
     private List<BookDTO> book;
