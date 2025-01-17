@@ -67,6 +67,13 @@ form > section > div > label{
         opacity: 0.8;
     }
 }
+.image-revise-container{
+    border-bottom: 1px solid black;
+    padding-bottom: 30px;
+}
+.image-revise-container input{
+    border: none;
+}
 .nickname-revise-container{
     padding-bottom: 30px;
     border-bottom: 1px solid black;
@@ -111,7 +118,7 @@ form > section > div > label{
 }
 /********************************/
 .error-container{
-    display: none;
+    /*display: none;*/
     margin-top: 10px;
     font-size: var(--font-size-small);
 }
