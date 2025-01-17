@@ -6,13 +6,13 @@
     <!-- 토론 주제 생성 -->
     <insert id="createDiscussion">
         INSERT INTO discussion (id, topic, contents, created_at, updated_at, user_id, book_isbn)
-        VALUES (NULL, #{topic}, #{contents}, DEFAULT, DEFAULT, #{userId}, #{bookIsbn});
+        VALUES (NULL, #{topic}, #{contents}, DEFAULT, DEFAULT, #{userId}, #{bookIsbn})
     </insert>
     <!-- 모든 토론 주제 조회 -->
     <select id="getAllDiscussions" resultType="DiscussionDTO">
         SELECT d.id, d.topic, d.contents, d.created_at, d.updated_at, d.user_id, d.book_isbn
         FROM discussion d
-        ORDER BY d.created_at DESC;
+        ORDER BY d.created_at DESC
     </select>
     <!-- 가장 최근에 남겨진 의견 -->
     <select id="getRecentCommentByDiscussionId" resultType="string">
@@ -20,7 +20,7 @@
         FROM discussion_comment c
         WHERE c.discussion_id = #{discussionId}
         ORDER BY c.created_at DESC
-        LIMIT 1;
+        LIMIT 1
     </select>
     <!-- 특정 Discussion 에 대한 댓글 수 조회 -->
     <select id="getCommentCountByDiscussion" resultType="java.lang.Integer">
@@ -33,5 +33,40 @@
         SELECT topic, discussion.contents FROM discussion
         ORDER BY created_at DESC
         LIMIT 1
+    </select>
+    <!-- 페이징된 토론의 총 개수 조회 -->
+    <select id="selectPaginatedDiscussionsTotalCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion d
+    </select>
+    <!-- 책의 모든 정보와 토론 주제 반환 -->
+    <select id="getDiscussionsWithBookInfo" resultType="DiscussionDTO">
+        SELECT
+        d.id,
+        d.topic,
+        d.contents,
+        d.created_at,
+        d.updated_at,
+        d.user_id,
+        d.book_isbn,
+        b.title AS book_title,
+        b.image AS book_image
+        FROM discussion d
+        LEFT JOIN book b ON d.book_isbn = b.isbn
+        <choose>
+            <!-- 최신순 정렬 -->
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY d.created_at DESC
+            </when>
+            <!-- 제목순 정렬 -->
+            <when test="pageInfo.sort == 'title'">
+                ORDER BY d.topic ASC
+            </when>
+            <!-- 기본 정렬: 최신순 -->
+            <otherwise>
+                ORDER BY d.created_at DESC
+            </otherwise>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
 </mapper>
