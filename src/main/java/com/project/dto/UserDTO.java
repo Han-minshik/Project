@@ -39,8 +39,6 @@ public class UserDTO implements UserDetails, OAuth2User {
     private byte[] profileImage;
     private LocalDateTime updatedAt;
     private String role;
-
-    private String bookIsbn;
     private String nickname;
 
 

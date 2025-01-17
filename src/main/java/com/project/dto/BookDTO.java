@@ -19,12 +19,12 @@ public class BookDTO {
     private String publisher;
     private String publicationDate;
     private Integer price;
-    private Integer pageCount;
     private Integer copiesAvailable;
     private String detail;
     private CategoryDTO category;
     private byte[] image;
     // 등록일자
     private LocalDateTime createdAt;
-    private Integer ItemId;
+    private Integer itemId;
+    private Integer pageCount;
 }

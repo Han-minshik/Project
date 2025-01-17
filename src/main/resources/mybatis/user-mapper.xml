@@ -49,7 +49,7 @@
     </insert>
     <!-- 리뷰 등록 -->
     <insert id="insertReview">
-        INSERT INTO review (user_id, book_isbn, content, uploaded_at, `like`, status, updated_at)
+        INSERT INTO review (user_id, book_isbn, content, `like`, rate, status, updated_at)
         VALUES (#{userId}, #{bookIsbn}, #{content}, DEFAULT, 0, '공개', DEFAULT)
     </insert>
     <!-- 사용자에게 포인트 부여 -->
@@ -69,17 +69,6 @@
         SELECT user_id FROM discussion_comment
         WHERE discussion_id = #{discussionId}
         ORDER BY `like` DESC LIMIT 1
-    </select>
-    <!-- 포인트 지급 기록 -->
-    <insert id="addPointGrantHistory">
-        INSERT INTO point_grant_history (id, user_id, grant_date, granted_points, reason)
-        VALUES (NULL, #{userId}, DEFAULT, #{points}, #{reason})
-    </insert>
-    <!-- 포인트 지급 사유 확인 -->
-    <select id="hasPointGrantedForReason" resultType="java.lang.Boolean">
-        SELECT EXISTS (SELECT 1 FROM point_grant_history WHERE user_id = #{userId}
-                                                         AND reason = #{reason}
-                                                         AND DATE(grant_date) = CURDATE())
     </select>
     <!-- 사용 포인트 감소 -->
     <update id="deductPoints">

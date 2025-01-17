@@ -15,8 +15,8 @@ public class NotificationDTO {
     private String status;
 
     private String userId;
+    private String type;
 
     private List<UserDTO> user;
 
-    private String type;
 }
