@@ -10,12 +10,15 @@ import java.util.List;
 
 @Mapper
 public interface BookMapper {
-    void createBook(BookDTO book);
-    List<BookDTO> getAllBooks();
-    void updateBook(BookDTO book);
-    void deleteBook(Integer isbn);
+    // adminMapper로 이동
+//    void createBook(BookDTO book);
+//    List<BookDTO> getAllBooks();
+
+
+    /*************************************/
     // 책 제목으로 검색
     List<BookDTO> searchBooksByName(@Param("title") String title);
     List<ReviewDTO> findReviewTitlesByBookTitle(@Param("title") String title);
     BookDTO getBookDetails(@Param("isbn") Integer isbn);
+
 }

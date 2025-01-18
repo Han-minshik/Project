@@ -51,7 +51,7 @@ public class UserService {
     }
 
     // 비밀번호 분실 시
-    public boolean change_password(String id, String newPw) {
+    public boolean reset_password(String id, String newPw) {
         // 패턴 검사
         boolean pwPatternResult = newPw.matches("^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}");
         if(!pwPatternResult) {

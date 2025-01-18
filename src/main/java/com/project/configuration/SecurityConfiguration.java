@@ -29,6 +29,7 @@ public class SecurityConfiguration {
             configure.requestMatchers("/user/join").permitAll();
             configure.requestMatchers("/user/id/*", "/user/name/*", "user/findId/**").permitAll();
             configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
+            configure.requestMatchers("/book/**","/discussion/**").permitAll();
             configure.anyRequest().authenticated();
         });
         
