@@ -1,62 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
-/*@font-face {*/
-/*    font-family: 'Thin';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff') format('woff');*/
-/*    font-weight: 100;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'ExtraLight';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraLight.woff') format('woff');*/
-/*    font-weight: 200;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'Light';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');*/
-/*    font-weight: 300;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'Regular';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');*/
-/*    font-weight: 400;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'Medium';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');*/
-/*    font-weight: 500;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'SemiBold';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');*/
-/*    font-weight: 600;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'Bold';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');*/
-/*    font-weight: 700;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'ExtraBold';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');*/
-/*    font-weight: 800;*/
-/*    font-style: normal;*/
-/*}*/
-/*@font-face {*/
-/*    font-family: 'Black';*/
-/*    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');*/
-/*    font-weight: 900;*/
-/*    font-style: normal;*/
-/*}*/
-
-/*******************************/
-
 @font-face {
     font-family: 'Thin';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
@@ -145,7 +88,7 @@
     --Spring-WT-5-rgba : rgba(221, 237, 253, 1);
 
     /* Color Theme Swatches in RGBA */
-    --Dark-gray-textured-background---1-rgba : rgba(191, 191, 191, 1);
+    --Dark-gray-textured-background---1-rgba : rgb(234, 232, 232);
     --Dark-gray-textured-background---2-rgba : rgba(140, 140, 140, 1);
     --Dark-gray-textured-background---3-rgba : rgba(114, 114, 114, 1);
     --Dark-gray-textured-background---4-rgba : rgba(89, 89, 89, 1);
@@ -174,5 +117,5 @@
 }
 
 html{
-    background-color: cornsilk;
+    /*background-color: cornsilk;*/
 }

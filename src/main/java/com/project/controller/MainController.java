@@ -17,46 +17,74 @@ import java.util.Map;
 public class MainController {
     @Autowired private BookService bookService;
 
+
+    //    @GetMapping("/")
+//    public String get_home(){
+//        return "main/home";
+//    }
+    @GetMapping("/book")
+    public String get_book() {
+    }
+
+
     @GetMapping("/")
-    public String get_home(){
+    public String get_home () {
         return "main/home";
     }
 
-    @GetMapping("/test-page")
-    public String get_test_page(){
-        return "main/test-page";
+    /************************************/
+    @GetMapping("/category")
+    public String get_category () {
+        return "main/category";
     }
 
     /**********************************************/
+    @GetMapping("/book")
+    public String get_book () {
+        return "main/book";
+    }
+
     // 책 페이지 불러오기
     @GetMapping("/book/{bookIsbn}")
-    public String get_book(@PathVariable Integer bookIsbn){
+    public String get_book (@PathVariable Integer bookIsbn){
         return "main/book";
     }
 
     // 책 리뷰 불러오기
     // js로 태그 작성 같은걸 붙인다
     @GetMapping("/book/{bookIsbn}/review")
-    public String get_book_review(
+    public String get_book_review (
             @PathVariable Integer bookIsbn,
-            PageInfoDTO<ReviewDTO> pageInfo,
+            PageInfoDTO < ReviewDTO > pageInfo,
             Model model
     ){
         Map<String, Map<String, Object>> rateMap = bookService.findReviewTitlesByBookTitle() // ??
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("rateMap", rateMap);
         return "main/review-template";
+
     }
+    /**********************************************/
+    @GetMapping("/discussion")
+    public String get_discussion () {
+    }
+
+
     /********************************************/
     // 토론 페이지 불러오기
-    @GetMapping("/discussion/{discussion_id}")
-    public String get_discussion(
-            @PathVariable Integer discussion_id,
-            Model model
-    ){
+//    @GetMapping("/discussion/{discussion_id}")
+//    public String get_discussion (
+//            @PathVariable Integer discussion_id,
+//            Model model
+//    ){
 //        DiscussionDTO discussion = discussionMapper.get
-        model.addAttribute("discussion", discussion);
-        return "main/discussion";
+//        model.addAttribute("discussion", discussion);
+//
+//
+//    }
+    @GetMapping("/participation")
+    public String get_participate() {
+        return "main/participation";
     }
 
     // 토론 페이지 댓글 불러오기 (어쩌면 fetch로 해야할지도)
@@ -68,5 +96,6 @@ public class MainController {
 //        model.addAttribute("discussion-comment", discussion_comment);
         return "main/discussion-comment";
     }
-    /*********************************************/
+
+
 }

@@ -62,6 +62,10 @@ main > article .main-image-container{
     width: 100%;
     overflow: hidden;
 }
+.main-image-container img{
+    height: 80%;
+    width: auto;
+}
 /*******************************************************/
 main > article > form{
     display: flex;
@@ -186,13 +190,20 @@ main > article .summary-info-discussion {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    background-color: var(--Dark-gray-textured-background---1-rgba);
+    /*background-color: var(--Dark-gray-textured-background---1-rgba);*/
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
+    background-color: var(--Dark-gray-textured-background---1-rgba);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
 }
 
 .available-rent{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.available-book{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -235,13 +246,17 @@ main > article .heart-btn{
     font-size: var(--font-size-small);
     cursor: pointer;
     border-radius: 10px;
-    background-color: var(--gta-online-pastels-1-4-rgba);
+    /*background-color: var(--gta-online-pastels-1-4-rgba);*/
+    background-color: var(--Pasteles-5-rgba);
     border: none;
-    color: #512e02;
+    /*color: #512e02;*/
+    color: white;
     transition-duration: 0.2s;
     &:hover{
-        background-color: var(--Pasteles-5-rgba);
-        color: var(--gta-online-pastels-1-4-rgba);
+        /*background-color: var(--Pasteles-5-rgba);*/
+        background-color: var(--gta-online-pastels-1-4-rgba);
+        /*color: var(--gta-online-pastels-1-4-rgba);*/
+        color: black;
     }
 }
 main > article .rent-btn{
@@ -250,14 +265,17 @@ main > article .rent-btn{
     margin-bottom: 20px;
     font-size: var(--font-size-small);
     cursor: pointer;
-    background-color: #512e02;
-    border: none;
+    /*background-color: #512e02;*/
+    background-color: black;
+    border: 2px solid black;
     border-radius: 10px;
     color: white;
     transition-duration: 0.2s;
     &:hover{
-        background-color: #8f642f;
-        color: white;
+        /*background-color: #8f642f;*/
+        background-color: white;
+        color: black;
+        /*color: white;*/
     }
 }
 main > article .button-container{
@@ -290,7 +308,7 @@ main > article .button-container > .heart-btn{
     top: 0;
     position: sticky;
     margin: 50px 0;
-    background-color: cornsilk;
+    background-color: white;
 }
 #book-info-navigator > ul{
     display: flex;
@@ -573,4 +591,41 @@ main > article .button-container > .heart-btn{
 }
 #review-form > ol a[active=true]{
     font-weight: bold;
+}
+/*******************************/
+.my-opinion-chat{
+    padding: 30px 0;
+    margin-bottom: 20px;
+}
+.my-opinion-chat h3{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: var(--font-size-small);
+}
+.my-opinion-form{
+    display: flex;
+}
+.my-opinion-form label{
+    width: 100%;
+    padding-right: 10px;
+}
+.my-opinion-form textarea{
+    border-radius: 20px;
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 20px;
+    font-size: var(--font-size-small);
+}
+.my-opinion-chat button{
+    font-size: var(--font-size-x-small);
+    padding: 8px 10px;
+    width: 100px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #8f642f;
+    color: white;
+    transition-duration: 0.2s;
 }

@@ -9,6 +9,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/main/book.css">
     <script src="https://kit.fontawesome.com/d19fdaba43.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/main/book.js" defer></script>
 </head>
 <body>
     <main>
@@ -28,7 +29,7 @@
                 </div>
             </section>
 
-            <form method="post" name="book">
+            <form method="post" th:id="${book.isbn}" name="book">
                 <div class="summary-info-discussion">
                     <div class="book-summary-info">
                         <div class="review-score-container">
@@ -61,10 +62,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="rent-info">
-                    <div class="available-rent">
+                <div class="loan-info">
+                    <div class="available-loan">
                         <b>대출 가능 여부:</b>
                         <span>불가</span>
+                    </div>
+                    <div class="available-book">
+                        <b>대출:</b>
+                        <div>
+                            <span>30</span>
+                            <span>/</span>
+                            <span>50</span>
+                        </div>
                     </div>
                     <div class="available-date">
                         <b>대출 가능일:</b>
@@ -72,14 +81,17 @@
                     </div>
                 </div>
 
-                <div class="login-to-rent">
+                <div class="login-to-loan">
                     <span><a href="#">로그인</a></span>
                     <b>후 대출을 해보세요</b>
                 </div>
 
-                <button type="submit" class="discussion-btn">토론하러 가기</button>
-                <button type="button" class="heart-btn">찜하기</button>
-                <button type="submit" class="rent-btn">대출하기</button>
+                <button type="button" class="discussion-btn">토론하러 가기</button>
+                <button type="button" class="heart-btn">
+                    <i class="bi bi-heart-fill"></i>
+                    찜하기
+                </button>
+                <button type="submit" class="loan-btn">대출하기</button>
             </form>
         </article>
 
@@ -204,11 +216,18 @@
 
                 </section>
             </div>
-
+            <div class="my-opinion-chat">
+                <h3>
+                    리뷰 작성하기
+                </h3>
+                <form method="post" class="my-opinion-form">
+                    <label><textarea name="text"></textarea></label>
+                    <button type="submit">작성하기</button>
+                </form>
+            </div>
             <div class="review-sort-container">
                 <ul>
                     <li><a href="#" active>최신순</a></li>
-                    <li><a href="#">인기순</a></li>
                     <li><a href="#">평점 높은 순</a></li>
                     <li><a href="#">평점 낮은 순</a></li>
                 </ul>
