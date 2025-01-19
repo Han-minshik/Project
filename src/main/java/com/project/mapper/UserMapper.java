@@ -1,6 +1,6 @@
 package com.project.mapper;
 
-import com.project.dto.LoanDTO;
+import com.project.dto.ComplainDTO;
 import com.project.dto.ReviewDTO;
 import com.project.dto.SnsInfoDTO;
 import com.project.dto.UserDTO;
@@ -23,7 +23,10 @@ public interface UserMapper {
     void addPointToUser(@Param("userId") String userId, @Param("points") Integer points);
     String getTopDiscussionUser();
     String getTopCommentUserByDiscussionId(@Param("discussionId") Integer discussionId);
-    void addPointGrantHistory(@Param("userId") String userId, @Param("points") Integer points, @Param("reason") String reason);
-    boolean hasPointGrantedForReason(@Param("userId") String userId, @Param("reason") String reason);
     Integer deductPoints(@Param("userId") String userId, @Param("points") Integer points);
+    Integer getCommentCountByUserInDiscussion(@Param("userId") String userId, @Param("discussionId") Integer discussionId);
+    List<Integer> getAllDiscussionsByUser(@Param("userId") String userId);
+    void insertComplain(ComplainDTO userId);
+    void updateComplain(ComplainDTO complain);
+    void deleteComplain(Integer complainNo);
 }

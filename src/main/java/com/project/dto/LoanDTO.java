@@ -17,7 +17,7 @@ public class LoanDTO {
     private String status;
 
     private String userId;
-    private Integer bookIsbn;
+    private String bookIsbn;
 
     private Integer discountPrice;
     private Integer finalPrice;

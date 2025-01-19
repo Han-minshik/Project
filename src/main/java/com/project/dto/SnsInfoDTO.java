@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class SnsInfoDTO {
     private String id;
     private String userId;
-    private String ci;
     private String name;
     private LocalDateTime connectedDate;
 }

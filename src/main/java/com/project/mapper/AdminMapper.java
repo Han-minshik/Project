@@ -11,8 +11,8 @@ import java.util.List;
 public interface AdminMapper {
     void createAdmin(UserDTO admin);
     void insertBook(BookDTO book);
-    void insertBookImages(BookDTO book);
-
+    void updateBook(BookDTO book);
+    void deleteBook(String isbn); // Integer → String
     void createAdminPost(AdminPostDTO adminPost);
     AdminPostDTO getAdminPostById(Integer id);
     List<AdminPostDTO> getAllAdminPosts();

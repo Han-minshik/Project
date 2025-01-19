@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -25,7 +24,6 @@ public class UserDTO implements UserDetails, OAuth2User {
     @Length(min = 4, max = 15)
     @Pattern(regexp = "^[a-z][0-9a-zA-Z]*$")
     private String id;
-    private String name;
     @NotBlank
     @Pattern(regexp = "^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}")
     private String password;
@@ -40,8 +38,10 @@ public class UserDTO implements UserDetails, OAuth2User {
     private byte[] profileImage;
     private LocalDateTime updatedAt;
     private String role;
+    private String nickname;
 
-    private Integer bookIsbn;
+
+    private List<SnsInfoDTO> snsInfo; // 이 유저가 로그인 할 때 사용한 SNS 데이터
 
     @Override
     public String getName() {

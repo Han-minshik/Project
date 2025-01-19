@@ -14,6 +14,7 @@ public class DiscussionCommentDTO {
     private Integer id;
     private String content;
     private Integer like;
+    private Integer unlike;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

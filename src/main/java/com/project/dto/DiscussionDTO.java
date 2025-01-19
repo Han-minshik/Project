@@ -13,12 +13,14 @@ import java.util.List;
 public class DiscussionDTO {
     private Integer id;
     private String topic;
+    private String contents;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     private String userId;
-    private Integer bookIsbn;
+    private String bookIsbn;
 
     private List<UserDTO> user;
     private List<BookDTO> book;
+    private List<DiscussionCommentDTO> comment;
 }

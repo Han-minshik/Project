@@ -2,47 +2,121 @@ package com.project.service;
 
 import com.project.dto.LoanDTO;
 import com.project.mapper.LoanMapper;
+import com.project.mapper.UserMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Log4j2
 @Service
 public class LoanService {
-    @Autowired private LoanMapper loanMapper;
-    public void createLoan(LoanDTO loanDTO) {
-        Integer activeLoanCount = loanMapper.getActiveLoanCountByUserId(loanDTO.getUserId());
-        if(activeLoanCount >= 5) {
-            throw new IllegalArgumentException("최대 5권까지 대출할 수 있습니다.");
-        }
-        Integer availableCopies = loanMapper.getAvailableCopies(loanDTO.getBookIsbn());
-        if(availableCopies <= 0) {
-            throw new IllegalArgumentException("대출 가능한 재고가 없습니다.");
-        }
+    @Autowired
+    private LoanMapper loanMapper;
 
-        loanMapper.createLoan(loanDTO);
-        loanMapper.decreaseCopiesAvailable(loanDTO.getBookIsbn());
-    }
+    @Autowired
+    private UserMapper userMapper;
+
     /**
-     * 대출 기록 조회
-     * @param  userId : 사용자 ID
-     * @return : 대출 기록 리스트
+     * 특정 사용자의 대출 기록 조회
      */
     public List<LoanDTO> getLoansByUserId(String userId) {
         return loanMapper.getLoansByUserId(userId);
     }
+
     /**
-     * 대출 상태 업데이트
-     * - 반납 처리 시 상태를 '반납 완료'로 설정
-     * - 반납일은 현재 날짜로 설정
+     * 대출 상태 업데이트 및 책 재고 증가 (반납 처리)
      */
-    public void updateLoanStatus(Integer loanId, Integer bookIsbn) {
+    public void updateLoanStatus(Integer loanId, String bookIsbn) {
+        // 대출 상태를 '반납 완료'로 업데이트
         loanMapper.updateLoanStatus(loanId, "반납 완료");
+        // 책 재고를 증가
         loanMapper.increaseCopiesAvailable(bookIsbn);
     }
 
+    /**
+     * 모든 대출 기록 조회
+     */
     public List<LoanDTO> getAllLoans() {
         return loanMapper.getAllLoans();
+    }
+
+    /**
+     * 사용자가 대출 중인 책의 개수 확인
+     */
+    public Integer getActiveLoanCountByUserId(String userId) {
+        return loanMapper.getActiveLoanCountByUserId(userId);
+    }
+
+    /**
+     * 특정 책의 대출 가능한 복사본 확인
+     */
+    public Integer getAvailableCopies(String bookIsbn) {
+        return loanMapper.getAvailableCopies(bookIsbn);
+    }
+
+    /**
+     * 포인트를 사용하여 대출 생성
+     */
+    public void createLoanWithPoints(LoanDTO loan, Integer points) {
+        // 책 재고 확인
+        Integer availableCopies = loanMapper.getAvailableCopies(loan.getBookIsbn());
+        if (availableCopies == null || availableCopies <= 0) {
+            LocalDateTime nextReturnDate = loanMapper.getFirstReturnDateByBookIsbn(loan.getBookIsbn());
+            throw new IllegalArgumentException(
+                    "현재 대출 가능한 복사본이 없습니다. 다음 반납 예상일: " + nextReturnDate
+            );
+        }
+
+        // 포인트 계산
+        Integer discountPrice = 0;
+        if (points != null && points > 0) {
+            Integer maxUsablePoints = (loan.getFinalPrice() / 10000) * 1000;
+            points = Math.min(points, maxUsablePoints);
+            discountPrice = (points / 1000) * 10000;
+            loan.setDiscountPrice(discountPrice);
+            loan.setFinalPrice(loan.getFinalPrice() - discountPrice);
+        }
+
+        // 대출 생성
+        loanMapper.createLoan(loan);
+
+        // 책 재고 감소
+        loanMapper.decreaseCopiesAvailable(loan.getBookIsbn());
+    }
+
+    /**
+     * 특정 사용자가 대출 중인 특정 책의 정보 확인
+     */
+    public LoanDTO getActiveLoanByUserAndBook(String userId, String bookIsbn) {
+        return loanMapper.getActiveLoanByUserAndBook(userId, bookIsbn);
+    }
+
+    /**
+     * 특정 책의 첫 번째 반납 예정일 조회
+     */
+    public LocalDateTime getFirstReturnDateByBookIsbn(String bookIsbn) {
+        return loanMapper.getFirstReturnDateByBookIsbn(bookIsbn);
+    }
+
+    /**
+     * 반납 처리 및 포인트 적립
+     */
+    public void returnBookWithReward(Integer loanId, String bookIsbn, String userId) {
+        // 대출 상태를 '반납 완료'로 업데이트
+        loanMapper.updateLoanStatus(loanId, "반납 완료");
+
+        // 책 재고 증가
+        loanMapper.increaseCopiesAvailable(bookIsbn);
+
+        // 포인트 적립
+        LoanDTO loan = loanMapper.getActiveLoanByUserAndBook(userId, bookIsbn);
+        if (loan != null && loan.getFinalPrice() != null) {
+            Integer rewardPoints = (loan.getFinalPrice() / 1000) * 10;
+            userMapper.addPointToUser(userId, rewardPoints);
+            log.info("반납 완료 및 포인트 {} 적립: 사용자 ID {}, 책 ISBN {}", rewardPoints, userId, bookIsbn);
+        }
     }
 }

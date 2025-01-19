@@ -11,7 +11,7 @@ import java.util.List;
 public class PageInfoDTO<T> {
     @Setter private Integer categoryNo = 1; // 조회하는 카테고리 번호
     @Setter private Integer page = 1; // 기본 시작 페이지
-    @Setter private Integer size = 8; // 한 페이지 당 보여줄 요소 개수
+    @Setter private Integer size = 5; // 한 페이지 당 보여줄 요소 개수
     @Setter private String sort = "recent"; // 요소의 정렬 방식
     @Setter private Integer totalPageCount; // 총 페이지 개수 (조회된 elem과 상관없음)
     /********* no setter (calculated) ***********/
