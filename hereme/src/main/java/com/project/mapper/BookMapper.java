@@ -1,14 +1,11 @@
 package com.project.mapper;
 
 import com.project.dto.BookDTO;
-import com.project.dto.PageInfoDTO;
 import com.project.dto.ReviewDTO;
-import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface BookMapper {
@@ -20,9 +17,4 @@ public interface BookMapper {
     List<ReviewDTO> getBookReviewsWithLikes(@Param("isbn") String isbn);
     Integer getDiscussionCountByBookIsbn(@Param("isbn") String isbn);
     Integer getParticipantCountByBookIsbn(@Param("isbn") String isbn);
-    List<ReviewDTO> selectPaginatedReviewsByBookIsbn(PageInfoDTO<ReviewDTO> pageInfo, String isbn);
-    @MapKey("rate")
-    Map<String, Map<String, Object>> selectPaginatedReviewTotalCountByIsbn(String isbn);
-    Integer selectPaginatedBooksTotalCount(PageInfoDTO<BookDTO> pageInfo);
-    List<BookDTO> getPaginatedBooks(@Param("pageInfo") PageInfoDTO<BookDTO> pageInfo);
 }

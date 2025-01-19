@@ -24,7 +24,7 @@
             ON
                 a.book_isbn = b.isbn
         WHERE
-            a.user_id = #{userId}
+            a.user_id = #{userId};
     </select>
     <!-- 대출 정보 업데이트(반납처리) -->
     <update id="updateLoanStatus">
@@ -56,7 +56,7 @@
     <update id="decreaseCopiesAvailable">
         UPDATE book
         SET copies_available = book.copies_available - 1
-        WHERE isbn = #{bookIsbn} AND book.copies_available > 0
+        WHERE isbn = #{bookIsbn} AND book.copies_available > 0;
     </update>
     <!-- 책 재고 증가(반납시) -->
     <update id="increaseCopiesAvailable">
@@ -78,6 +78,6 @@
         WHERE b.isbn = #{isbn}
           AND b.copies_available = 0
         ORDER BY l.return_date DESC
-        LIMIT 1
+        LIMIT 1;
     </select>
 </mapper>

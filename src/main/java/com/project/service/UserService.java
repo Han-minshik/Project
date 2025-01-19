@@ -19,6 +19,14 @@ public class UserService {
     @Autowired
     private LoanMapper loanMapper;
 
+    /**
+     * 사용자가 책을 대출하면서 포인트를 사용하거나 기본 결제를 처리하는 메서드
+     *
+     * @param userId 사용자 ID
+     * @param isbn   대출할 책의 ISBN
+     * @param points 사용하려는 포인트 (null 또는 0일 경우 포인트 미사용)
+     * @return 대출된 책의 최종 가격
+     */
     public Integer rentBookWithPoints(String userId, String isbn, Integer points) {
         // 현재 대출 중인 책의 수 확인
         Integer activeLoans = loanMapper.getActiveLoanCountByUserId(userId);
@@ -58,6 +66,12 @@ public class UserService {
         return createLoan(userId, isbn, discountPrice, finalPrice);
     }
 
+    /**
+     * 포인트를 차감하는 메서드
+     *
+     * @param userId 사용자 ID
+     * @param points 차감할 포인트
+     */
     public void deductPoints(String userId, Integer points) {
         Integer updatedRows = userMapper.deductPoints(userId, points);
         if (updatedRows == 0) {
@@ -65,6 +79,15 @@ public class UserService {
         }
     }
 
+    /**
+     * 대출 정보를 생성하고 데이터베이스에 저장하는 메서드
+     *
+     * @param userId        사용자 ID
+     * @param isbn          대출할 책의 ISBN
+     * @param discountPrice 포인트로 인한 할인 가격
+     * @param finalPrice    최종 대출 가격
+     * @return 최종 대출 가격
+     */
     private Integer createLoan(String userId, String isbn, Integer discountPrice, Integer finalPrice) {
         LoanDTO loan = new LoanDTO();
         loan.setUserId(userId);

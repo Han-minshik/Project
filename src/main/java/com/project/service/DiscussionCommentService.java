@@ -1,13 +1,9 @@
 package com.project.service;
 
-import com.project.dto.DiscussionCommentDTO;
-import com.project.dto.PageInfoDTO;
 import com.project.mapper.DiscussionCommentMapper;
 import com.project.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class DiscussionCommentService {
@@ -17,6 +13,13 @@ public class DiscussionCommentService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 댓글 추가 및 댓글 수 확인 후 포인트 부여
+     *
+     * @param discussionId 토론 ID
+     * @param userId       댓글 작성자 ID
+     * @param content      댓글 내용
+     */
     public void addComment(Integer discussionId, String userId, String content) {
         // 댓글 추가
         discussionCommentMapper.addComment(discussionId, userId, content);
@@ -30,14 +33,30 @@ public class DiscussionCommentService {
         }
     }
 
+    /**
+     * 찬성 클릭 및 포인트 조건 확인
+     *
+     * @param commentId 댓글 ID
+     */
     public void addLike(Integer commentId) {
         handleVote(commentId, true);
     }
 
+    /**
+     * 반대 클릭 및 포인트 조건 확인
+     *
+     * @param commentId 댓글 ID
+     */
     public void addUnlike(Integer commentId) {
         handleVote(commentId, false);
     }
 
+    /**
+     * 찬성/반대 클릭 처리 및 포인트 조건 확인
+     *
+     * @param commentId 댓글 ID
+     * @param isLike    찬성 여부 (true: 찬성, false: 반대)
+     */
     private void handleVote(Integer commentId, boolean isLike) {
         // 찬성 또는 반대 값 증가
         if (isLike) {
@@ -53,26 +72,6 @@ public class DiscussionCommentService {
         if (totalVotes >= 50) {
             String userId = discussionCommentMapper.getUserIdByCommentId(commentId);
             userMapper.addPointToUser(userId, 5000);
-        }
-    }
-
-    public void getCommentsWithSortAndPagination(PageInfoDTO<DiscussionCommentDTO> pageInfo, Integer discussionId) {
-        // 기본값 설정
-        if (pageInfo.getPage() < 1) {
-            pageInfo.setPage(1);
-        }
-        if (pageInfo.getSize() == null) {
-            pageInfo.setSize(5); // 기본 보기 설정
-        }
-
-        // 총 댓글 수 조회
-        Integer totalCommentCount = discussionCommentMapper.getCommentCountByDiscussion(discussionId);
-
-        if (totalCommentCount != null && totalCommentCount > 0) {
-            // 댓글 데이터 조회
-            List<DiscussionCommentDTO> comments = discussionCommentMapper.getCommentsWithSortAndPagination(pageInfo, discussionId);
-            pageInfo.setTotalElementCount(totalCommentCount);
-            pageInfo.setElements(comments);
         }
     }
 }

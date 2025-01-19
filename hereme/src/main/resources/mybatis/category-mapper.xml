@@ -19,10 +19,10 @@
             AND parent = #{parent}
         </if>
         AND level = #{level}
-        )
+        );
     </insert>
     <select id="findByName" parameterType="string" resultType="CategoryDTO">
-        SELECT * FROM category WHERE name = #{name} LIMIT 1
+        SELECT * FROM category WHERE name = #{name} LIMIT 1;
     </select>
     <!-- 이름과 부모 ID로 카테고리 조회 -->
     <select id="findCategoryByNameAndParent" parameterType="map" resultType="CategoryDTO">
@@ -30,7 +30,7 @@
         FROM category
         WHERE name = #{name}
           AND ((parent IS NULL AND #{parent} IS NULL) OR parent = #{parent})
-        LIMIT 1
+        LIMIT 1;
     </select>
 
 
