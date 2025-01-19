@@ -8,65 +8,27 @@
         SELECT * FROM book
     </select>
     <!-- 제목으로 책 검색 -->
-    <select id="searchBooksByName" parameterType="string" resultType="BookDTO">
-        SELECT
-            b.isbn,
-            b.title,
-            b.author,
-            b.publisher,
-            b.publication_date AS publicationDate,
-            b.price,
-            b.copies_available AS copiesAvailable,
-            b.detail,
-            b.category,
-            b.image,
-            b.created_at AS createdAt
-        FROM
-            book b
-        WHERE b.title
-            LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+    <select id="searchBooksByNameWithCount" parameterType="string" resultType="map">
+        SELECT b.*,
+               (SELECT COUNT(*)
+                FROM book
+                WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')) AS totalCount
+        FROM book b
+        WHERE b.title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
     </select>
-    <!-- 특정 책의 상세 정보 조회 -->
-    <select id="getBookDetails" resultType="BookDTO">
-        SELECT isbn, title, price
-        FROM book
-        WHERE isbn = #{isbn}
-    </select>
+
     <!-- isbn 으로 책 조회 -->
     <select id="getBookByIsbn" resultType="BookDTO">
         SELECT * FROM book WHERE isbn = #{isbn}
     </select>
     <!-- 평균 평점이 가장 높은 책 반환 -->
     <select id="getPopularBook" resultType="BookDTO">
-        SELECT b.title,
-               b.author,
-               b.publisher,
-               b.price,
-               b.detail,
-               b.category
+        SELECT *
         FROM book b
                  JOIN review r ON b.isbn = r.book_isbn
         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
         ORDER BY AVG(r.rate) DESC
         LIMIT 1
-    </select>
-    <!-- 특정 책의 별점 평균 조회 -->
-    <select id="getAverageRatingByIsbn" resultType="java.lang.Double">
-        SELECT AVG(r.rate) AS averageRating
-        FROM review r
-        WHERE r.book_isbn = #{isbn}
-    </select>
-    <!-- 특정 책의 리뷰와 각 리뷰의 좋아요 개수 조회 -->
-    <select id="getBookReviewsWithLikes" resultType="ReviewDTO">
-        SELECT r.user_id,
-               r.book_isbn,
-               r.content,
-               r.rate,
-               r.`like`,
-               r.rate,
-               r.updated_at
-        FROM review r
-        WHERE r.book_isbn = #{isbn}
     </select>
     <!-- 특정 책의 토론 주제 개수 조회 -->
     <select id="getDiscussionCountByBookIsbn" resultType="java.lang.Integer">
@@ -102,7 +64,7 @@
         ) REVIEW
         INNER JOIN user USER ON REVIEW.user_id = USER.id
     </select>
-    <!-- 총 리뷰 개수 -->
+    <!-- 리뷰 관련 쿼리(개수, 평균 등) -->
     <select id="selectPaginatedReviewTotalCountByIsbn" resultType="java.util.Map">
         SELECT
             IFNULL(rate, 'result') AS 'rate',
@@ -111,12 +73,12 @@
         FROM review WHERE book_isbn = #{isbn}
         GROUP BY rate with rollup
     </select>
-    <!-- 페이징된 책의 총 개수 -->
+    <!-- 책의 총 개수 -->
     <select id="selectPaginatedBooksTotalCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM book
     </select>
     <!-- 책 조회할 때의 pagination   -->
-    <select id="getPaginatedBooks" resultType="com.project.dto.BookDTO">
+    <select id="getPaginatedBooks" resultType="BookDTO">
     SELECT *
     FROM book b
     <choose>
@@ -132,4 +94,38 @@
     </choose>
     LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
+    <!-- 평균 평점이 가장 높은 책 5권 반환 -->
+    <select id="getPopularBook5" resultType="BookDTO">
+        SELECT *
+        FROM book b
+                 JOIN review r ON b.isbn = r.book_isbn
+        GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
+        ORDER BY AVG(r.rate) DESC
+        LIMIT 5
+    </select>
+    <!-- 평균 평점이 가장 높은 책 2권 반환 -->
+    <select id="getPopularBook2" resultType="BookDTO">
+        SELECT *
+        FROM book b
+                 JOIN review r ON b.isbn = r.book_isbn
+        GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
+        ORDER BY AVG(r.rate) DESC
+        LIMIT 2
+    </select>
+    <!-- 유저 카트 조회 -->
+    <select id="selectCartsByUser" resultType="CartDTO">
+        SELECT * FROM `select_carts_by_user_view` WHERE `user_id` = #{id}
+    </select>
+    <!-- 카트에 책 추가 -->
+    <insert id="insertBookToCart">
+        INSERT INTO cart (no, user_id, book_isbn)
+        VALUES (NULL, #{user_id}, #{book_isbn})
+    </insert>
+    <!-- 카트에서 특정 책 삭제 -->
+    <delete id="deleteBookFromCart">
+        DELETE FROM `cart` WHERE user_id = #{user.id} AND cart.no IN
+        <foreach collection="carts" item="cart" open="(" close=")" separator=",">
+            #{cart.no}
+        </foreach>
+    </delete>
 </mapper>

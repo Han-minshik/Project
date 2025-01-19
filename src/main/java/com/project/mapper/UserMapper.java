@@ -1,9 +1,6 @@
 package com.project.mapper;
 
-import com.project.dto.LoanDTO;
-import com.project.dto.ReviewDTO;
-import com.project.dto.SnsInfoDTO;
-import com.project.dto.UserDTO;
+import com.project.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,4 +23,7 @@ public interface UserMapper {
     Integer deductPoints(@Param("userId") String userId, @Param("points") Integer points);
     Integer getCommentCountByUserInDiscussion(@Param("userId") String userId, @Param("discussionId") Integer discussionId);
     List<Integer> getAllDiscussionsByUser(@Param("userId") String userId);
+    void insertComplain(ComplainDTO userId);
+    void updateComplain(ComplainDTO complain);
+    void deleteComplain(Integer complainNo);
 }

@@ -8,12 +8,6 @@
         INSERT INTO discussion (id, topic, contents, created_at, updated_at, user_id, book_isbn)
         VALUES (NULL, #{topic}, #{contents}, DEFAULT, DEFAULT, #{userId}, #{bookIsbn})
     </insert>
-    <!-- 모든 토론 주제 조회 -->
-    <select id="getAllDiscussions" resultType="DiscussionDTO">
-        SELECT d.id, d.topic, d.contents, d.created_at, d.updated_at, d.user_id, d.book_isbn
-        FROM discussion d
-        ORDER BY d.created_at DESC
-    </select>
     <!-- 가장 최근에 남겨진 의견 -->
     <select id="getRecentCommentByDiscussionId" resultType="string">
         SELECT c.content
@@ -39,16 +33,10 @@
         SELECT COUNT(*)
         FROM discussion d
     </select>
-    <!-- 책의 모든 정보와 토론 주제 반환 -->
+    <!-- 토론의 모든 내용과 책의 이미지, 제목 반환 -->
     <select id="getDiscussionsWithBookInfo" resultType="DiscussionDTO">
         SELECT
-        d.id,
-        d.topic,
-        d.contents,
-        d.created_at,
-        d.updated_at,
-        d.user_id,
-        d.book_isbn,
+        d.*,
         b.title AS book_title,
         b.image AS book_image
         FROM discussion d
@@ -68,5 +56,9 @@
             </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+    </select>
+    <!-- discussion_id 로 토론 조회 -->
+    <select id="getDiscussion" resultType="DiscussionDTO">
+        SELECT * FROM discussion WHERE discussion.id = #{discussionID}
     </select>
 </mapper>

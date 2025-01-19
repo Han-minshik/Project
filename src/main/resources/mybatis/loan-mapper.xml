@@ -11,12 +11,8 @@
     <!-- 사용자의 모든 대출 기록 조회 -->
     <select id="getLoansByUserId" resultType="LoanDTO">
         SELECT
-            a.id AS loanId,
-            a.loan_date AS loanDate,
-            a.return_date AS returnDate,
-            a.status AS loanStatus,
-            a.book_isbn AS bookIsbn,
-            b.title AS bookTitle
+            a.*,
+            b.*
         FROM
             loan AS a
                 JOIN

@@ -14,33 +14,45 @@ public class DiscussionService {
     @Autowired
     private DiscussionMapper discussionMapper;
 
+    /**
+     * 새로운 토론 주제를 생성
+     */
     public void createDiscussion(String topic, String contents, String userId, String bookIsbn) {
         discussionMapper.createDiscussion(topic, contents, userId, bookIsbn);
     }
 
-    public List<DiscussionDTO> getAllDiscussions() {
-        return discussionMapper.getAllDiscussions();
-    }
-
+    /**
+     * 가장 최근의 댓글 내용 반환
+     */
     public String getRecentCommentByDiscussionId(Integer discussionId) {
         return discussionMapper.getRecentCommentByDiscussionId(discussionId);
     }
 
+    /**
+     * 특정 토론에 대한 댓글 수 반환
+     */
     public Integer getCommentCountByDiscussion(Integer discussionId) {
         return discussionMapper.getCommentCountByDiscussion(discussionId);
     }
 
-    public List<DiscussionDTO> getCurrentDiscussion() {
-        return discussionMapper.getCurrentDiscussion();
+    /**
+     * 가장 최근의 토론 주제 반환 (최신 5개)
+     */
+    public List<DiscussionDTO> getCurrentDiscussions() {
+        List<DiscussionDTO> discussions = discussionMapper.getCurrentDiscussion();
+        return discussions.size() > 5 ? discussions.subList(0, 5) : discussions;
     }
 
-    public void getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo) {
-        // 페이지 기본값 설정
+    /**
+     * 페이징된 토론 목록 반환 (책 정보 포함)
+     */
+    public PageInfoDTO<DiscussionDTO> getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo) {
+        // 기본 페이지 설정
         if (pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
-        if (pageInfo.getSize() == null) {
-            pageInfo.setSize(5); // 기본 보기 설정
+        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
+            pageInfo.setSize(5); // 기본 5개씩 노출
         }
 
         // 총 토론 개수 조회
@@ -52,5 +64,15 @@ public class DiscussionService {
             pageInfo.setTotalElementCount(totalDiscussionCount);
             pageInfo.setElements(discussions);
         }
+
+        return pageInfo;
+    }
+
+    /**
+     * 특정 토론 ID에 대한 토론 내용 반환
+     */
+    public DiscussionDTO getDiscussion(Integer discussionID) {
+        List<DiscussionDTO> discussion = discussionMapper.getDiscussion(discussionID);
+        return discussion != null && !discussion.isEmpty() ? discussion.get(0) : null;
     }
 }

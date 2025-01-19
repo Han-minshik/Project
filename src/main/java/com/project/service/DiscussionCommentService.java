@@ -14,8 +14,12 @@ public class DiscussionCommentService {
 
     @Autowired
     private DiscussionCommentMapper discussionCommentMapper;
+
     @Autowired
     private UserMapper userMapper;
+
+    private static final int POINTS_THRESHOLD = 1000; // 포인트 지급 값
+    private static final int COMMENT_COUNT_THRESHOLD = 10; // 댓글 10개 조건
 
     public void addComment(Integer discussionId, String userId, String content) {
         // 댓글 추가
@@ -24,55 +28,62 @@ public class DiscussionCommentService {
         // 댓글 수 확인
         Integer commentCount = discussionCommentMapper.getCommentCountByDiscussion(discussionId);
 
-        // 댓글이 10개가 되면 포인트 부여
-        if (commentCount == 10) {
-            userMapper.addPointToUser(userId, 5000);
+        // 댓글이 10개에 도달하면 포인트 부여
+        if (commentCount == COMMENT_COUNT_THRESHOLD) {
+            String authorId = discussionCommentMapper.getDiscussionAuthorById(discussionId); // 토론 작성자 ID 가져오기
+            userMapper.addPointToUser(authorId, POINTS_THRESHOLD);
         }
     }
 
-    public void addLike(Integer commentId) {
-        handleVote(commentId, true);
+    public void addLike(Integer commentId, String userId) {
+        handleVote(commentId, userId, true);
     }
 
-    public void addUnlike(Integer commentId) {
-        handleVote(commentId, false);
+    public void addUnlike(Integer commentId, String userId) {
+        handleVote(commentId, userId, false);
     }
 
-    private void handleVote(Integer commentId, boolean isLike) {
-        // 찬성 또는 반대 값 증가
+    private void handleVote(Integer commentId, String userId, boolean isLike) {
+        // 사용자가 이미 투표했는지 확인
+        Boolean hasVoted = discussionCommentMapper.hasUserVoted(userId, commentId);
+        if (Boolean.TRUE.equals(hasVoted)) {
+            throw new IllegalStateException("사용자는 이미 이 댓글에 투표했습니다.");
+        }
+
+        // 사용자 투표 기록 추가
+        discussionCommentMapper.addUserVote(commentId, userId);
+
+        // 찬성/반대 값 증가
         if (isLike) {
             discussionCommentMapper.incrementLike(commentId);
         } else {
             discussionCommentMapper.incrementUnlike(commentId);
         }
 
-        // 찬/반 합산 값 확인
+        // 찬/반 합산 값 확인 및 포인트 지급
         Integer totalVotes = discussionCommentMapper.getTotalVotesByCommentId(commentId);
-
-        // 합산이 50 이상이면 포인트 부여
         if (totalVotes >= 50) {
-            String userId = discussionCommentMapper.getUserIdByCommentId(commentId);
-            userMapper.addPointToUser(userId, 5000);
+            String authorId = discussionCommentMapper.getUserIdByCommentId(commentId);
+            userMapper.addPointToUser(authorId, POINTS_THRESHOLD);
         }
     }
 
-    public void getCommentsWithSortAndPagination(PageInfoDTO<DiscussionCommentDTO> pageInfo, Integer discussionId) {
-        // 기본값 설정
+    public PageInfoDTO<DiscussionCommentDTO> getCommentsWithSortAndPagination(PageInfoDTO<DiscussionCommentDTO> pageInfo, Integer discussionId) {
         if (pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
-        if (pageInfo.getSize() == null) {
-            pageInfo.setSize(5); // 기본 보기 설정
+        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
+            pageInfo.setSize(10);
         }
 
-        // 총 댓글 수 조회
-        Integer totalCommentCount = discussionCommentMapper.getCommentCountByDiscussion(discussionId);
+        Integer totalCommentCount = discussionCommentMapper.getTotalCommentsByDiscussionId(discussionId);
+        pageInfo.setTotalElementCount(totalCommentCount);
 
         if (totalCommentCount != null && totalCommentCount > 0) {
-            // 댓글 데이터 조회
             List<DiscussionCommentDTO> comments = discussionCommentMapper.getCommentsWithSortAndPagination(pageInfo, discussionId);
-            pageInfo.setTotalElementCount(totalCommentCount);
             pageInfo.setElements(comments);
         }
+
+        return pageInfo;
     }
 }

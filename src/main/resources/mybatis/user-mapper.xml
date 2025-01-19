@@ -9,7 +9,7 @@
                           join_date, point, rental_date, profile_image,
                           updated_at, role, nickname)
         VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
-                DEFAULT, #{rentalDate}, #{profileImage}, DEFAULT, '일반', #{nickname})
+                DEFAULT, NULL, #{profileImage}, NULL, '일반', #{nickname})
     </insert>
     <!-- id로 사용자 조회 -->
     <select id="getUserById" resultType="UserDTO">
@@ -87,4 +87,16 @@
         FROM discussion_comment
         WHERE user_id = #{userId} AND discussion_id = #{discussionId}
     </select>
+    <!-- 컴플레인 생성 -->
+    <insert id="insertComplain">
+        INSERT INTO complain VALUES (NULL, #{title}, #{contents}, #{userId}, '');
+    </insert>
+    <!-- 컴플레인 답변 완료 -->
+    <update id="updateComplain">
+        UPDATE complain SET status = '답장완료' WHERE user_id = #{userId}
+    </update>
+    <!-- 컴플레인 삭제 -->
+    <delete id="deleteComplain">
+        DELETE FROM complain WHERE user_id = #{userId}
+    </delete>
 </mapper>

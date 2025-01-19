@@ -12,4 +12,5 @@ public class ComplainDTO {
     private String title;
     private String contents;
     private String userId;
+    private String status;
 }
