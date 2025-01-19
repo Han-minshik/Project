@@ -17,4 +17,5 @@ public interface BookMapper {
     List<ReviewDTO> getBookReviewsWithLikes(@Param("isbn") String isbn);
     Integer getDiscussionCountByBookIsbn(@Param("isbn") String isbn);
     Integer getParticipantCountByBookIsbn(@Param("isbn") String isbn);
+    Integer getCountReviews(String isbn);
 }

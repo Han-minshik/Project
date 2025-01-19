@@ -24,17 +24,6 @@
     <delete id="deleteBook">
         DELETE FROM book WHERE isbn = #{isbn}
     </delete>
-    <!-- 책 이미지 등록 -->
-    <insert id="insertBookImages">
-        # 책의 isbn과 image의 no는 ai기 때문에 같다
-        <selectKey keyProperty="no" resultType="int" order="BEFORE">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-        INSERT INTO book_image VALUES
-        <foreach collection="images" item="image" separator=",">
-            (NULL, #{image.no}, #{image.originalFileName}, #{image.data})
-        </foreach>
-    </insert>
     <!-- 공지사항 등록 -->
     <insert id="createAdminPost">
         INSERT INTO admin_post (title, content, created_at, updated_at, user_id)
