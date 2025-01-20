@@ -184,7 +184,7 @@ public class UserController {
             Model model
     ){
         if (auth != null) {
-            AdminPostDTO adminPost = adminMapper.getAdminPostById(adminPostId);
+            List<AdminPostDTO> adminPost = adminMapper.getAdminPostById(adminPostId);
             model.addAttribute("adminPost", adminPost);
             return "user/admin-post";
         }

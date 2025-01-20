@@ -99,4 +99,7 @@
     <delete id="deleteComplain">
         DELETE FROM complain WHERE user_id = #{userId}
     </delete>
+    <select id="findIdByEmail" resultType="java.lang.String">
+        SELECT user.id FROM user WHERE email = #{email}
+    </select>
 </mapper>

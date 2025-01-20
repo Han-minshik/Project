@@ -26,15 +26,15 @@ public class AdminController {
 
     /*********************************************/
     @GetMapping("/add-book")
-    public void addBook(){}
+    public void insertBook(){}
 
     @PostMapping("/add-book")
-    public String addBook(
+    public String insertBook(
             @AuthenticationPrincipal UserDTO user,
             BookDTO book
     ){
-        if(user.getRole().equals("admin")){
-            adminService.addBook(book);
+        if(user.getRole().equals("관리자")){
+            adminService.insertBook(book);
             return "redirect:/admin/books";
         }
         return "redirect:/";

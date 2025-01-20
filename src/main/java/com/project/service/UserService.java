@@ -63,6 +63,18 @@ public class UserService {
         return false;
     }
 
+    public boolean update_user(
+            UserDTO modifyingUser
+    ) {
+        UserDTO findUser = userMapper.getUserById(modifyingUser.getId()); // 사실 필요 없음 지워도 됨.
+        if(Objects.nonNull(findUser)) { // 변경하려는 유저가 맞음
+            modifyingUser.setPassword(passwordEncoder.encode(modifyingUser.getPassword())); // 비밀번호 암호화
+            userMapper.updateUser(modifyingUser); // 단, 이게 int형이여야만 return true/false 사용 가능
+            return true;
+        }
+        return false;
+    }
+
     /**
      * 포인트를 사용하여 책 대출하기
      */

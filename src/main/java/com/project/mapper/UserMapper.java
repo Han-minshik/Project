@@ -29,4 +29,6 @@ public interface UserMapper {
     void insertComplain(ComplainDTO userId);
     void updateComplain(ComplainDTO complain);
     void deleteComplain(Integer complainNo);
+    String findIdByEmail(String email);
+
 }
