@@ -1,4 +1,4 @@
-lendbook.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -23,11 +23,9 @@ lendbook.html<!DOCTYPE html>
             <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='name')}">이름순</a>
         </li>
         <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='low-price')}">삭제하기</a>
+            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='low-price')}">대여기간</a>
         </li>
-        <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='high-price')}">대여하기</a>
-        </li>
+
         <li>
             <label>
                 <span>보기설정</span>
@@ -45,7 +43,6 @@ lendbook.html<!DOCTYPE html>
     <hr/>
 
     <main>
-        <h2>책 목록</h2>
         <div class="wishlist" id="wishlist-container">
             <p>대여한 책이 없어요ㅠㅠ</p>
             <a href="../AllBook/booklist.html" class="link">책 보러가기!</a>
