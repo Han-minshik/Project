@@ -190,4 +190,17 @@ public class BookService {
             throw new RuntimeException("Failed to delete books from cart. Please try again later.");
         }
     }
+
+    /**
+     * 특정 책의 이미지 조회
+     */
+    public List<BookImageDTO> getImageByIsbn(String isbn) {
+        try {
+            return bookMapper.getImageByIsbn(isbn);
+        } catch (Exception e) {
+            log.error("Error while fetching images for book ISBN: {}", isbn, e);
+            throw new RuntimeException("Failed to fetch book images. Please try again later.");
+        }
+    }
+
 }

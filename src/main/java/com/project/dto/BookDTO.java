@@ -1,10 +1,13 @@
 package com.project.dto;
 
+import com.project.dto.CategoryDTO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,4 +27,6 @@ public class BookDTO {
     private LocalDateTime createdAt;
     private Integer itemId;
     private Integer pageCount;
+
+    private List<BookImageDTO> bookImages;
 }

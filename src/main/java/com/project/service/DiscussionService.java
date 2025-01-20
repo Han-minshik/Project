@@ -73,6 +73,6 @@ public class DiscussionService {
      */
     public DiscussionDTO getDiscussion(Integer discussionID) {
         List<DiscussionDTO> discussion = discussionMapper.getDiscussion(discussionID);
-        return discussion != null && !discussion.isEmpty() ? discussion.get(0) : null;
+        return discussion != null && !discussion.isEmpty() ? discussion.getFirst() : null;
     }
 }

@@ -20,6 +20,7 @@ public class DiscussionCommentDTO {
 
     private String userId;
     private Integer discussionId;
+    private String votedUserIds;
 
     private List<UserDTO> user;
     private List<DiscussionDTO> discussion;
