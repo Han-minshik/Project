@@ -7,9 +7,8 @@ const reviewForm = document.getElementById('review-form')
 
 // 토론하러 가기 버튼을 눌렀을 때
 discussionBtn.onclick = () => {
-    if(confirm('이 책에 대한 토론에 참여하시겠습니까?')){
-        location.href = "/discussion";
-    }
+    const isbn = document.getElementById('bookIsbn').value; // hidden input에서 ISBN 값 가져오기
+    location.href = `/book/${isbn}`;
 }
 
 /*******************************************/
@@ -76,17 +75,17 @@ function request(url, requestBody){
 
 /// 일단 쿠키런 스토어에 있는거 가져옴
 // 화면 로딩 시 최초 리뷰 로딩
-// const bookNo = bookForm.id;
-// load_review(null, `/book/${bookNo}/review`);
-// /// 상품에 대한 리뷰 불러오기
-// function load_review(event, url){
-//     if(event !== null){
-//         event.preventDefault();
-//     }
-//     reviewForm.innerHTML = '';
-//     fetch(url)
-//         .then(response => response.text())
-//         .then(reviewTemplate => {
-//             reviewForm.insertAdjacentHTML(`beforeend`, reviewTemplate)
-//         });
-// }
+const bookNo = bookForm.id;
+load_review(null, `/book/${bookNo}/review`);
+/// 상품에 대한 리뷰 불러오기
+function load_review(event, url){
+    if(event !== null){
+        event.preventDefault();
+    }
+    reviewForm.innerHTML = '';
+    fetch(url)
+        .then(response => response.text())
+        .then(reviewTemplate => {
+            reviewForm.insertAdjacentHTML(`beforeend`, reviewTemplate)
+        });
+}
