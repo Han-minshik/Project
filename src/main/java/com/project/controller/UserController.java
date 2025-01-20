@@ -1,0 +1,212 @@
+package com.project.controller;
+
+import com.project.dto.AdminPostDTO;
+import com.project.mapper.AdminMapper;
+import jakarta.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j2;
+import com.project.dto.UserDTO;
+import com.project.mapper.UserMapper;
+import com.project.service.PortOneSerivce;
+import com.project.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Log4j2
+@Controller
+@RequestMapping("/user")
+public class UserController {
+    @Autowired private UserService userService;
+    @Autowired private UserMapper userMapper;
+    @Autowired private PortOneSerivce portOneSerivce;
+    @Autowired private AdminMapper adminMapper;
+
+    /***********************************************/
+
+    @GetMapping("/join")
+    public String get_join(Authentication auth) {
+        if (auth != null) {
+            System.out.println("회원가입 할 필요 없습니다");
+            return "redirect:/";
+        }
+        return "user/join";
+    }
+
+    @PostMapping("/join")
+    public String post_join(
+            @ModelAttribute @Validated UserDTO joinUser,
+            BindingResult bindingResult,
+            HttpSession session
+    ) {
+        if (bindingResult.hasErrors()) { // 유효성 검사 실패 시
+            log.error("에러 발생!");
+            log.error(bindingResult.getAllErrors());
+            return "user/join";
+        }
+        // 전화번호 인증 확인 여부
+        String impUid = (String) session.getAttribute("impUid");
+        if(impUid == null) {
+            log.error("전화번호 인증 확인 실패");
+            return "user/join";
+        }
+        // 포트원 인증 통과 여부
+        String ci = portOneSerivce.tel_authentication(impUid, joinUser.getTel());
+        if(ci == null) {
+            log.error("포트원 인증 확인 실패");
+            return "user/join";
+        }
+        joinUser.setCi(ci);
+
+        // 이메일 인증 확인 여부
+        String certCompleteEmail = (String) session.getAttribute("emailAuth");
+        if(certCompleteEmail == null || !certCompleteEmail.equals(joinUser.getEmail())) {
+            log.error("이메일 인증 확인 실패");
+            return "user/join";
+        }
+
+        log.info("가입할 user" + joinUser);
+        boolean signUpResult = userService.join_user(joinUser);
+        if (signUpResult) {
+            log.info("가입 완료");
+            return "redirect:/user/login";
+        }
+        log.error("원인 모를 이유로 실패");
+        return "user/join";
+    }
+
+    /***********************************************/
+
+    @GetMapping("/login")
+    public String get_login(Authentication auth) {
+        if (auth != null) {
+            System.out.println("로그인 할 필요 없습니다");
+            System.out.println("이미 로그인된 유저 : " + auth.getName());
+            return "redirect:/";
+        }
+
+        System.out.println("로그인 안되어있음");
+        return "user/login";
+    }
+
+    /***********************************************/
+
+//    @GetMapping("/findId")
+//    public void get_findId(){}
+
+    /************************************************/
+
+    @GetMapping("/my-page")
+    public String get_my_page(Authentication auth) {
+        if (auth != null) {
+            return "user/my-page";
+        }
+        return "redirect:/user/login";
+    }
+
+    /************************************************/
+
+    @GetMapping("/info-revise")
+    public String get_user_info_revise(
+            @AuthenticationPrincipal UserDTO user,
+            Model model
+    ) {
+        if (user != null) {
+//            UserDTO user = userMapper.getUserById(auth.getName()); // 유저 정보 가져옴
+//            user.setPassword(null); // 비밀번호 유출 안되게
+            model.addAttribute("user", user); // 유저 정보를 템플릿에 넘김
+            return "user/info-revise";
+        }
+        return "redirect:/user/login";
+    }
+
+    // 아마도 userRestController로 가야할지도
+    @PostMapping("/info-revise")
+    public String post_user_info_revise(
+        Authentication auth,
+        @ModelAttribute @Validated UserDTO user,
+        BindingResult bindingResult
+    ){
+        if(auth == null || !auth.getName().equals(user.getId())){
+            return "redirect:/user/login";
+        }
+        if(bindingResult.hasErrors()) {
+            return "user/info-revise";
+        }
+
+        userMapper.updateUser(user);
+        return "redirect:/";
+        
+    }
+
+    /************************************************/
+    // 비밀번호 분실
+    @GetMapping("/resetPw")
+    public String get_reset_pw(
+        String id,
+        String newPw
+    ){
+        // 패턴 검사도 함
+        boolean resetPwResult =  userService.reset_password(id, newPw);
+        if (resetPwResult){
+            return "redirect:/";
+        }
+        return "user/reset-pw";
+    }
+
+    /******************************************/
+    // 공지사항 목록
+    @GetMapping("/adminPost")
+    public String get_allAdminPost(
+            Authentication auth,
+            Model model
+    ){
+        if (auth != null) {
+            List<AdminPostDTO> allAdminPost = adminMapper.getAllAdminPosts();
+            model.addAttribute("allAdminPost", allAdminPost);
+            return "user/all-admin-post";
+        }
+        return "redirect:/user/login";
+
+    }
+
+    // 공지사항 한 페이지
+    @GetMapping("/adminPost/{adminPostId}")
+    public String get_adminPost(
+            Authentication auth,
+            @PathVariable Integer adminPostId,
+            Model model
+    ){
+        if (auth != null) {
+            AdminPostDTO adminPost = adminMapper.getAdminPostById(adminPostId);
+            model.addAttribute("adminPost", adminPost);
+            return "user/admin-post";
+        }
+        return "redirect:/user/login";
+    }
+
+    /******************************/
+    // 탈퇴
+    @GetMapping("/resign-user")
+    public void get_resignUser(){}
+
+    @PostMapping("/resign-user")
+    public String post_resignUser(
+            Authentication auth
+    ){
+        if (auth != null) {
+            userMapper.deleteUser(auth.getName());
+        }
+        return "redirect:/";
+    }
+
+
+
+
+}
