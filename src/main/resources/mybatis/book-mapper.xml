@@ -79,20 +79,20 @@
     </select>
     <!-- 책 조회할 때의 pagination   -->
     <select id="getPaginatedBooks" resultType="BookDTO">
-    SELECT *
-    FROM book b
-    <choose>
-        <when test="pageInfo.sort == 'recent'">
-            ORDER BY b.publication_date DESC
-        </when>
-        <when test="pageInfo.sort == 'title'">
-            ORDER BY b.title ASC
-        </when>
-        <otherwise>
-            ORDER BY b.created_at DESC
-        </otherwise>
-    </choose>
-    LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+        SELECT *
+        FROM book b
+        <choose>
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY b.publication_date DESC
+            </when>
+            <when test="pageInfo.sort == 'title'">
+                ORDER BY b.title ASC
+            </when>
+            <otherwise>
+                ORDER BY b.created_at DESC
+            </otherwise>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
     <!-- 평균 평점이 가장 높은 책 5권 반환 -->
     <select id="getPopularBook5" resultType="BookDTO">

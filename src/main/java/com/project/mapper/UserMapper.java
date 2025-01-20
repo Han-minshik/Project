@@ -1,6 +1,9 @@
 package com.project.mapper;
 
-import com.project.dto.*;
+import com.project.dto.ComplainDTO;
+import com.project.dto.ReviewDTO;
+import com.project.dto.SnsInfoDTO;
+import com.project.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,4 +29,6 @@ public interface UserMapper {
     void insertComplain(ComplainDTO userId);
     void updateComplain(ComplainDTO complain);
     void deleteComplain(Integer complainNo);
+    String findIdByEmail(String email);
+
 }

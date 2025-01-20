@@ -1,5 +1,4 @@
-@import "../../css/public/public.css";
-
+@import "../public/public.css";
 
 .container {
     display: flex;

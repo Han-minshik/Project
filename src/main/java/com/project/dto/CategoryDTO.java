@@ -2,8 +2,6 @@ package com.project.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString

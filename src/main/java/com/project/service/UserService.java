@@ -3,14 +3,21 @@ package com.project.service;
 import com.project.dto.BookDTO;
 import com.project.dto.ComplainDTO;
 import com.project.dto.LoanDTO;
+import com.project.dto.UserDTO;
 import com.project.mapper.BookMapper;
 import com.project.mapper.LoanMapper;
 import com.project.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Log4j2
 @Service
@@ -21,6 +28,52 @@ public class UserService {
     private BookMapper bookMapper;
     @Autowired
     private LoanMapper loanMapper;
+    @Autowired private PasswordEncoder passwordEncoder;
+
+
+    public boolean join_user(UserDTO joinUser) {
+        // 유저 중복 방지
+        UserDTO findUser = userMapper.getUserById(joinUser.getId());
+        if(Objects.nonNull(findUser)) {
+            log.error("이미 회원가입이 되어있습니다.");
+            return false;
+        }
+
+        String encodedPassword = passwordEncoder.encode(joinUser.getPassword());
+        joinUser.setPassword(encodedPassword);
+
+        userMapper.createUser(joinUser);
+        return true;
+    }
+
+    // 비밀번호 분실 시
+    public boolean reset_password(String id, String newPw) {
+        // 패턴 검사
+        boolean pwPatternResult = newPw.matches("^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}");
+        if(!pwPatternResult) {
+            return false;
+        }
+
+        UserDTO findUser = userMapper.getUserById(id);
+        if(!newPw.equals(findUser.getPassword())) {
+            findUser.setPassword(passwordEncoder.encode(findUser.getPassword())); // 비밀번호 암호화
+            userMapper.updateUser(findUser);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean update_user(
+            UserDTO modifyingUser
+    ) {
+        UserDTO findUser = userMapper.getUserById(modifyingUser.getId()); // 사실 필요 없음 지워도 됨.
+        if(Objects.nonNull(findUser)) { // 변경하려는 유저가 맞음
+            modifyingUser.setPassword(passwordEncoder.encode(modifyingUser.getPassword())); // 비밀번호 암호화
+            userMapper.updateUser(modifyingUser); // 단, 이게 int형이여야만 return true/false 사용 가능
+            return true;
+        }
+        return false;
+    }
 
     /**
      * 포인트를 사용하여 책 대출하기
@@ -139,4 +192,6 @@ public class UserService {
         loanMapper.createLoan(loan);
         return finalPrice;
     }
+
+
 }

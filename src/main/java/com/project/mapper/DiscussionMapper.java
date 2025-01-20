@@ -1,13 +1,11 @@
 package com.project.mapper;
 
-import com.project.dto.BookDTO;
 import com.project.dto.DiscussionDTO;
 import com.project.dto.PageInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface DiscussionMapper {

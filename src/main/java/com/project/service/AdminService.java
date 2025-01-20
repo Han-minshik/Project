@@ -68,11 +68,7 @@ public class AdminService {
     /**
      * 새로운 책 추가
      */
-    public void addBook(String adminId, BookDTO book) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public void insertBook(BookDTO book) {
         adminMapper.insertBook(book);
         log.info("책을 DB에 삽입했습니다 : {}", book.getTitle());
     }
