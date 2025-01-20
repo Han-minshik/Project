@@ -33,6 +33,31 @@ public class AdminService {
     }
 
     /**
+     * 관리자 권한 부여
+     */
+    public void promoteToAdmin(String adminId, String userId) {
+        if (!isAdmin(adminId)) {
+            throw new SecurityException("관리자 권한이 없습니다.");
+        }
+
+        adminMapper.createAdmin(userId);
+        log.info("사용자 {}에게 관리자 권한을 부여했습니다.", userId);
+    }
+
+    /**
+     * 최근 1주일 내 정보를 변경한 사용자 조회
+     */
+    public List<UserDTO> getRecentlyUpdatedUsers(String adminId) {
+        if (!isAdmin(adminId)) {
+            throw new SecurityException("관리자 권한이 없습니다.");
+        }
+
+        List<UserDTO> updatedUsers = adminMapper.getUpdatedUser();
+        log.info("최근 1주일 동안 업데이트된 사용자 목록을 조회했습니다. 총 {}명의 사용자가 있습니다.", updatedUsers.size());
+        return updatedUsers;
+    }
+
+    /**
      * 책 업데이트
      */
     public void updateBook(BookDTO book) {
@@ -84,14 +109,17 @@ public class AdminService {
             throw new SecurityException("관리자 권한이 없습니다.");
         }
 
-        AdminPostDTO post = adminMapper.getAdminPostById(postId);
-        if (post == null) {
+        List<AdminPostDTO> posts = adminMapper.getAdminPostById(postId);
+        if (posts == null || posts.isEmpty()) {
             log.warn("ID {}에 해당하는 공지사항이 존재하지 않습니다.", postId);
             return null;
         }
+
+        AdminPostDTO post = posts.get(0); // 첫 번째 요소 선택
         log.info("공지사항을 조회했습니다: {}", post.getTitle());
         return post;
     }
+
 
     /**
      * 모든 공지사항 조회
