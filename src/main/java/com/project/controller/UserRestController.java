@@ -110,7 +110,7 @@ public class UserRestController {
         @RequestBody String password
     ){
         String id = auth.getName();
-        userService.reset_password(id, password);
+        userService.resetPassword(id, password);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
@@ -137,7 +137,7 @@ public class UserRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        boolean updateResult = userService.update_user(modifyingUser);
+        boolean updateResult = userService.updateUser(modifyingUser);
         if(!updateResult){
             // 업데이트 실패 시
             return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();

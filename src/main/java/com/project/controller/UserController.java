@@ -72,7 +72,7 @@ public class UserController {
         }
 
         log.info("가입할 user" + joinUser);
-        boolean signUpResult = userService.join_user(joinUser);
+        boolean signUpResult = userService.joinUser(joinUser);
         if (signUpResult) {
             log.info("가입 완료");
             return "redirect:/user/login";
@@ -153,7 +153,7 @@ public class UserController {
         String newPw
     ){
         // 패턴 검사도 함
-        boolean resetPwResult =  userService.reset_password(id, newPw);
+        boolean resetPwResult =  userService.resetPassword(id, newPw);
         if (resetPwResult){
             return "redirect:/";
         }

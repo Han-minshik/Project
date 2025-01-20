@@ -12,11 +12,11 @@ import java.util.Map;
 public interface BookMapper {
     List<BookDTO> getAllBooks();
     @MapKey("isbn")
-    List<Map<String, Object>> searchBooksByNameWithCount(@Param("title") String title);
-    BookDTO getBookByIsbn(@Param("isbn") String isbn);
+    List<Map<String, Object>> searchBooksByNameWithCount(String title);
+    BookDTO getBookByIsbn(String isbn);
     List<BookDTO> getPopularBook();
-    Integer getDiscussionCountByBookIsbn(@Param("isbn") String isbn);
-    Integer getParticipantCountByBookIsbn(@Param("isbn") String isbn);
+    Integer getDiscussionCountByBookIsbn(String isbn);
+    Integer getParticipantCountByBookIsbn(String isbn);
     List<ReviewDTO> selectPaginatedReviewsByBookIsbn(PageInfoDTO<ReviewDTO> pageInfo, String isbn);
     @MapKey("rate")
     Map<String, Map<String, Object>> selectPaginatedReviewTotalCountByIsbn(String isbn);
