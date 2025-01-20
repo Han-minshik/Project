@@ -32,7 +32,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public boolean joinUser(UserDTO joinUser) {
+    public boolean join_user(UserDTO joinUser) {
         UserDTO findUser = userMapper.getUserById(joinUser.getId());
         if (findUser != null) {
             log.error("이미 회원가입이 되어있습니다.");
@@ -45,7 +45,7 @@ public class UserService {
         return true;
     }
 
-    public boolean resetPassword(String id, String newPw) {
+    public boolean reset_password(String id, String newPw) {
         boolean pwPatternResult = newPw.matches("^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}");
         if (!pwPatternResult) {
             return false;

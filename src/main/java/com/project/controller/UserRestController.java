@@ -110,7 +110,7 @@ public class UserRestController {
         @RequestBody String password
     ){
         String id = auth.getName();
-        userService.resetPassword(id, password);
+        userService.reset_password(id, password);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
