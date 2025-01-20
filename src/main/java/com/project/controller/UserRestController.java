@@ -106,8 +106,8 @@ public class UserRestController {
 
     @PostMapping("/resetPw/password")
     public ResponseEntity<Void> post_change_password(
-        Authentication auth,
-        @RequestBody String password
+            Authentication auth,
+            @RequestBody String password
     ){
         String id = auth.getName();
         userService.reset_password(id, password);
@@ -120,7 +120,7 @@ public class UserRestController {
     public ResponseEntity<Void> post_user_change_info(
             // 아이디/비번만 찾는다면 auth로 충분
             // 단, 다른 정보는 @AuthenticationPrincipal 써야됨
-            Authentication auth, 
+            Authentication auth,
             @ModelAttribute @Validated UserDTO modifyingUser,
             BindingResult bindingResult
     ){
