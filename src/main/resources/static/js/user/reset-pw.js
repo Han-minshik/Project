@@ -1,9 +1,10 @@
-const changePwButton = document.querySelector('#pw-change-input-section button')
-changePwButton.onclick = () => {
+const resetPwButton = document.querySelector('#pw-change-input-section button')
+
+resetPwButton.onclick = () => {
     const csrfToken = document.forms[0].querySelector('input[name=_csrf]').value;
     const password = document.getElementById('password-input')
     console.log(password)
-    fetch(`/changePw/password`,{
+    fetch(`/resetPw/password`,{
         method: "POST",
         headers:{
             "X-CSRF-TOKEN": csrfToken,

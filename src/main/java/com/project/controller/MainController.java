@@ -18,15 +18,6 @@ public class MainController {
     @Autowired private BookService bookService;
 
 
-    //    @GetMapping("/")
-//    public String get_home(){
-//        return "main/home";
-//    }
-    @GetMapping("/book")
-    public String get_book() {
-    }
-
-
     @GetMapping("/")
     public String get_home () {
         return "main/home";
@@ -39,38 +30,35 @@ public class MainController {
     }
 
     /**********************************************/
-    @GetMapping("/book")
-    public String get_book () {
-        return "main/book";
-    }
 
     // 책 페이지 불러오기
     @GetMapping("/book/{bookIsbn}")
-    public String get_book (@PathVariable Integer bookIsbn){
+    public String get_book (
+            @PathVariable Integer bookIsbn
+    ){
         return "main/book";
     }
 
     // 책 리뷰 불러오기
     // js로 태그 작성 같은걸 붙인다
-    @GetMapping("/book/{bookIsbn}/review")
-    public String get_book_review (
-            @PathVariable Integer bookIsbn,
-            PageInfoDTO < ReviewDTO > pageInfo,
-            Model model
-    ){
-        Map<String, Map<String, Object>> rateMap = bookService.findReviewTitlesByBookTitle() // ??
-        model.addAttribute("pageInfo", pageInfo);
-        model.addAttribute("rateMap", rateMap);
-        return "main/review-template";
-
-    }
+//    @GetMapping("/book/{bookIsbn}/review")
+//    public String get_book_review (
+//            @PathVariable Integer bookIsbn,
+//            PageInfoDTO < ReviewDTO > pageInfo,
+//            Model model
+//    ){
+//        Map<String, Map<String, Object>> rateMap = bookService.findReviewTitlesByBookTitle() // ??
+//        model.addAttribute("pageInfo", pageInfo);
+//        model.addAttribute("rateMap", rateMap);
+//        return "main/review-template";
+//
+//    }
     /**********************************************/
     @GetMapping("/discussion")
     public String get_discussion () {
+        return "main/discussion";
     }
 
-
-    /********************************************/
     // 토론 페이지 불러오기
 //    @GetMapping("/discussion/{discussion_id}")
 //    public String get_discussion (
@@ -96,6 +84,8 @@ public class MainController {
 //        model.addAttribute("discussion-comment", discussion_comment);
         return "main/discussion-comment";
     }
+
+    /********************************************/
 
 
 }

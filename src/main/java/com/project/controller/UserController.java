@@ -150,13 +150,14 @@ public class UserController {
     @GetMapping("/resetPw")
     public String get_reset_pw(
         String id,
-        String newPw // 패턴검사 필요함
+        String newPw
     ){
+        // 패턴 검사도 함
         boolean resetPwResult =  userService.reset_password(id, newPw);
         if (resetPwResult){
             return "redirect:/";
         }
-        return "user/resetPw";
+        return "user/reset-pw";
     }
 
     /******************************************/

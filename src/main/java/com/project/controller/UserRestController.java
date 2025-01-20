@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.project.dto.BookDTO;
 import com.project.dto.UserDTO;
 import com.project.service.EmailService;
 import jakarta.mail.MessagingException;
@@ -92,7 +93,9 @@ public class UserRestController {
 
     /**********************************************************/
     @GetMapping("/findId/{email}")
-    public ResponseEntity<String> get_findId_by_email(@PathVariable String email) {
+    public ResponseEntity<String> get_findId_by_email(
+            @PathVariable String email
+    ) {
         String foundId = userMapper.findIdByEmail(email);
 
         if(foundId != null){
@@ -101,15 +104,15 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-//    @PostMapping("/changePw/password")
-//    public ResponseEntity<Void> post_change_password(
-//        Authentication auth,
-//        @RequestBody String password
-//    ){
-////        auth.getName();
-////        userService.changePassword(password);
-//        return ResponseEntity.status(HttpStatus.OK).build();
-//    }
+    @PostMapping("/resetPw/password")
+    public ResponseEntity<Void> post_change_password(
+        Authentication auth,
+        @RequestBody String password
+    ){
+        String id = auth.getName();
+        userService.reset_password(id, password);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 
 
     /******************************************/
@@ -140,6 +143,16 @@ public class UserRestController {
             return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
         }
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    /***************************************************/
+    @PostMapping("/info")
+    public ResponseEntity<Void> post_user_info(
+            @RequestBody Integer bookIsbn
+    ){
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+
     }
 
 }
