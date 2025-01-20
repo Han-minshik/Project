@@ -5,45 +5,45 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../static/css/user/reset-pw.css">
-    <script src="../../static/js/user/reset-pw.js" defer></script>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="../../static/css/user/reset-pw.css">
+	<script src="../../static/js/user/reset-pw.js" defer></script>
 </head>
 <body>
-    <main>
-        <h1>비밀번호 초기화</h1>
-        <form>
-            <section class="user-info-revise-section">
-                <div class="nickname-revise-container">
-                    <span>이메일</span>
-                    <label>
-                        <input type="text" id="email" name="email">
-                        <button type="button">인증</button>
-                    </label>
-                </div>
-                <div class="email-error-container">
-                    <span>이메일 인증을 해주세요</span>
-                </div>
-                <div class="password-revise-container">
-                    <span>비밀번호</span>
-                    <input type="text" id="password" name="password">
-                </div>
-                <div class="pw-error-container">
-                    <span>비밀번호 형식이 잘못되었습니다</span>
-                </div>
-                <div class="password-re-revise-container">
-                    <span>비밀번호 재입력</span>
-                    <input type="text" id="password-re" name="password">
-                </div>
-                <div class="pw-re-error-container">
-                    <span>비밀번호가 틀렸습니다</span>
-                </div>
-            </section>
-            <section class="change-btn-section">
-                <button type="submit">바꾸기</button>
-            </section>
-        </form>
-    </main>
+<main>
+	<h1>비밀번호 초기화</h1>
+	<form th:action="@{/user/resetPw}" method="post">
+		<section class="user-info-revise-section">
+			<div class="nickname-revise-container">
+				<span>이메일</span>
+				<label>
+					<input type="text" id="email" name="email">
+					<button type="button">인증</button>
+				</label>
+			</div>
+			<div class="email-error-container">
+				<span>이메일 인증을 해주세요</span>
+			</div>
+			<div class="password-revise-container">
+				<span>비밀번호</span>
+				<input type="text" id="password" name="password">
+			</div>
+			<div class="pw-error-container">
+				<span>비밀번호 형식이 잘못되었습니다</span>
+			</div>
+			<div class="password-re-revise-container">
+				<span>비밀번호 재입력</span>
+				<input type="text" id="password-re" name="password">
+			</div>
+			<div class="pw-re-error-container">
+				<span>비밀번호가 틀렸습니다</span>
+			</div>
+		</section>
+		<section class="change-btn-section">
+			<button type="submit">바꾸기</button>
+		</section>
+	</form>
+</main>
 </body>
 </html>

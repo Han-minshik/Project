@@ -1,13 +1,15 @@
 package com.project.controller;
 
-import com.project.dto.AdminPostDTO;
+import com.project.dto.*;
 import com.project.mapper.AdminMapper;
+import com.project.mapper.LoanMapper;
+import com.project.service.BookService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
-import com.project.dto.UserDTO;
 import com.project.mapper.UserMapper;
 import com.project.service.PortOneSerivce;
 import com.project.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,6 +29,9 @@ public class UserController {
     @Autowired private UserMapper userMapper;
     @Autowired private PortOneSerivce portOneSerivce;
     @Autowired private AdminMapper adminMapper;
+    @Autowired
+    private BookService bookService;
+    @Autowired private LoanMapper loanMapper;
 
     /***********************************************/
 
@@ -97,21 +102,43 @@ public class UserController {
 
     /***********************************************/
 
-//    @GetMapping("/findId")
-//    public void get_findId(){}
-
-    /************************************************/
-
-    @GetMapping("/my-page")
+    @GetMapping("/mypage")
     public String get_my_page(Authentication auth) {
         if (auth != null) {
-            return "user/my-page";
+            return "user/mypage";
+        }
+        return "redirect:/user/login";
+    }
+    /************************************************/
+
+    @GetMapping("/lendbook")
+    public String get_lendbook(Authentication auth) {
+        if (auth != null) {
+            return "user/lendbook";
+//            List<BookDTO> lendbook =  loanMapper.getActiveLoanByUserAndBook(auth.getName()).getBook();
+
         }
         return "redirect:/user/login";
     }
 
     /************************************************/
 
+    @GetMapping("/wishlist")
+    public String get_wishlist(
+            Authentication auth,
+            Model model
+    ) {
+        if (auth != null) {
+            List<CartDTO> wishlist = bookService.getCartsByUser(auth.getName());
+            model.addAttribute("wishlist", wishlist);
+            return "user/wishlist";
+        }
+        return "redirect:/user/login";
+    }
+
+
+    /************************************************/
+    // 회원 정보 수정 하는 메서드
     @GetMapping("/info-revise")
     public String get_user_info_revise(
             @AuthenticationPrincipal UserDTO user,
@@ -147,10 +174,11 @@ public class UserController {
 
     /************************************************/
     // 비밀번호 분실
-    @GetMapping("/resetPw")
-    public String get_reset_pw(
+    // 이것도 아마도 userRestController로 옮겨야 할듯
+    @PostMapping("/resetPw")
+    public String post_reset_pw(
             String id,
-            String newPw
+            @RequestParam("password") String newPw
     ){
         // 패턴 검사도 함
         boolean resetPwResult =  userService.reset_password(id, newPw);
