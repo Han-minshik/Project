@@ -1,5 +1,4 @@
-
-
+@import url("../public/public.css");
 
 .nav-container {
     background-color: white;
@@ -50,29 +49,13 @@
     margin-bottom: 20px;
 }
 
-.notification-badge {
-    position: relative;
-    left: 15px;
-    top: 16px;
-    background-color: #DC3545;
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: small;
-    font-weight: 600;
-}
-
 #notification-name {
     margin-left: 40px;
     color: grey;
 }
 
 .ani-navbar {
-    background-color: #494CB4;
+    background-color: black;
     color: white;
     width: 200px;
     height: 100%;
