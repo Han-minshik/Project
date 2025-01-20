@@ -4,10 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.AdminMapper">
     <!-- 관리자 등록 -->
-    <insert id="createAdmin">
-        INSERT INTO user (id, password, ci, tel, email, join_date, point, profile_image, updated_at, role)
-        VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT, 0, #{profileImage}, DEFAULT, '관리자')
-    </insert>
+    <update id="createAdmin">
+        UPDATE user SET role = '관리자' WHERE id = #{userId}
+    </update>
     <!-- 책 등록 -->
     <insert id="insertBook">
         INSERT INTO book VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{price}, 50, #{detail}, #{category.no}, #{image}, DEFAULT, #{ItemId}, #{pageCount})
@@ -47,4 +46,10 @@
     <delete id="deleteAdminPost">
         DELETE FROM admin_post WHERE id = #{id}
     </delete>
+    <!-- 최근 1주일 동안 정보를 변경한 유저 -->
+    <select id="getUpdatedUser" resultType="UserDTO">
+        SELECT *
+        FROM user
+        WHERE updated_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)
+    </select>
 </mapper>
