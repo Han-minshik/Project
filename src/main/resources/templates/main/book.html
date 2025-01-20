@@ -15,7 +15,7 @@
     <main>
         <nav id="category-nav">
             <ol>
-                <li th:each="category: ${categoryMap}">
+                <li>
                     <a href="#">CATEGORY1</a>
                 </li>
             </ol>
@@ -29,7 +29,7 @@
                 </div>
             </section>
 
-            <form method="post" th:id="${book.isbn}" name="book">
+            <form method="post" name="book">
                 <div class="summary-info-discussion">
                     <div class="book-summary-info">
                         <div class="review-score-container">

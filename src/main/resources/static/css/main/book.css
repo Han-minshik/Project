@@ -185,7 +185,7 @@ main > article .summary-info-discussion {
 }
 
 /**************************************/
-.rent-info{
+.loan-info{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -198,7 +198,7 @@ main > article .summary-info-discussion {
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
 }
 
-.available-rent{
+.available-loan{
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -213,13 +213,13 @@ main > article .summary-info-discussion {
     justify-content: space-between;
 }
 
-.login-to-rent{
+.login-to-loan{
     display: flex;
     justify-content: flex-end;
     /*flex: 1;*/
     margin-bottom: 20px;
 }
-.login-to-rent span{
+.login-to-loan span{
     margin-right: 10px;
 }
 /*********************************************/
@@ -259,7 +259,7 @@ main > article .heart-btn{
         color: black;
     }
 }
-main > article .rent-btn{
+main > article .loan-btn{
     width: 100%;
     padding: 20px 0;
     margin-bottom: 20px;
