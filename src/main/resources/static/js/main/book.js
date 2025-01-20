@@ -14,6 +14,7 @@ discussionBtn.onclick = () => {
 /*******************************************/
 
 // 찜하기 버튼을 눌렀을 때
+// 어디에 저장?
 loanBtn.onclick = () => {
     confirm('찜하시겠습니까?');
     const bookObject = create_book_object();

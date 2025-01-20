@@ -151,32 +151,19 @@ main > article > form li > span{
 }
 /***********************************************/
 main > article .summary-info-discussion {
-    display: flex; /* 수평 정렬을 위한 플렉스 설정 */
+    display: flex;
+    justify-content: center;
     border: none;
     border-radius: 20px;
     background-color: white;
     padding: 30px;
+    width: 200px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    margin: 30px 50px;
-}
-
-.book-summary-info {
-    display: flex; /* 수평 정렬을 위한 플렉스 설정 */
-    flex-direction: column; /* 세로 방향으로 정렬 */
-    flex: 1; /* 남은 공간을 차지하도록 설정 */
-}
-.book-summary-info .review-score-container{
-    padding: 0;
-}
-.book-summary-info .review-score-container .review-score-section{
-    padding: 0;
+    margin: 30px auto;
 }
 
 .discussion-summary {
-    display: flex;
-    flex: 1; /* 수평 정렬을 위한 플렉스 설정 */
-    justify-content: center;
-    align-items: center; /* 세로 중앙 정렬 */
+    align-items: center;
     text-align: center;
 }
 .discussion-summary div{
@@ -190,12 +177,10 @@ main > article .summary-info-discussion {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    /*background-color: var(--Dark-gray-textured-background---1-rgba);*/
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
     background-color: var(--Dark-gray-textured-background---1-rgba);
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);*/
 }
 
 .available-loan{
@@ -216,7 +201,6 @@ main > article .summary-info-discussion {
 .login-to-loan{
     display: flex;
     justify-content: flex-end;
-    /*flex: 1;*/
     margin-bottom: 20px;
 }
 .login-to-loan span{
@@ -246,16 +230,13 @@ main > article .heart-btn{
     font-size: var(--font-size-small);
     cursor: pointer;
     border-radius: 10px;
-    /*background-color: var(--gta-online-pastels-1-4-rgba);*/
     background-color: var(--Pasteles-5-rgba);
     border: none;
     /*color: #512e02;*/
     color: white;
     transition-duration: 0.2s;
     &:hover{
-        /*background-color: var(--Pasteles-5-rgba);*/
         background-color: var(--gta-online-pastels-1-4-rgba);
-        /*color: var(--gta-online-pastels-1-4-rgba);*/
         color: black;
     }
 }
@@ -265,17 +246,14 @@ main > article .loan-btn{
     margin-bottom: 20px;
     font-size: var(--font-size-small);
     cursor: pointer;
-    /*background-color: #512e02;*/
     background-color: black;
     border: 2px solid black;
     border-radius: 10px;
     color: white;
     transition-duration: 0.2s;
     &:hover{
-        /*background-color: #8f642f;*/
         background-color: white;
         color: black;
-        /*color: white;*/
     }
 }
 main > article .button-container{

@@ -5,7 +5,6 @@ main{
     position: relative;
     flex-direction: column;
     align-items: center;
-    /*position: relative;*/
     width: 1200px;
     margin: 120px auto;
     text-align: center;
@@ -21,7 +20,6 @@ main h1{
 }
 /*************************************/
 form{
-    /*display: none;*/
     position: relative;
     background-color: transparent;
     font-size: var(--font-size-normal);
@@ -54,7 +52,6 @@ form > section > div > label{
 .user-info-revise-section{
     padding: 70px 50px;
     border-top: 2px solid #512e02;
-    /*border-bottom: 2px solid #512e02;*/
 }
 .user-info-revise-section > div > label > button{
     font-family: Medium;
@@ -107,10 +104,9 @@ form > section > div > label{
 .find-id-section{
     display: none;
     position: absolute;
-    top: 110px; /* form의 아래쪽 위치 (필요에 따라 조정) */
-    left: 50%; /* 왼쪽 모서리 50% */
-    transform: translateX(-50%); /* 수평으로 중앙 정렬 */
-    /*margin-top: 30px;*/
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 60px 80px;
     width: 800px;
 }

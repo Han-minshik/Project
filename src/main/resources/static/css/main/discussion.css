@@ -109,8 +109,8 @@ main > header a{
     overflow-y: scroll;
 }
 .discussion-recent::-webkit-scrollbar {
-    width: 0; /* 스크롤바의 너비를 0으로 설정 */
-    background: transparent; /* 배경을 투명하게 설정 */
+    width: 0;
+    background: transparent;
 }
 .discussion-recent p{
     margin: 0;
@@ -159,20 +159,20 @@ main > header a{
 
 .my-opinion-container {
     display: none;
-    position: fixed; /* 화면에 고정 */
-    top: 50%; /* 세로 중앙 */
-    left: 50%; /* 가로 중앙 */
-    transform: translate(-50%, -50%); /* 정확히 중앙으로 이동 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100vw;
     height: 100vh;
     padding: 40px 0;
-    background-color: rgba(0,0,0,0.3); /* 배경색 */
-    z-index: 99; /* 다른 요소 위에 표시 */
+    background-color: rgba(0,0,0,0.3);
+    z-index: 99;
 }
 
 .my-opinion-form {
     display: flex;
-    flex-direction: column; /* 세로 방향으로 배치 */
+    flex-direction: column;
     position: absolute;
     top: 30%;
     left: 50%;

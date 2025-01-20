@@ -25,12 +25,29 @@ main h1{
     font-size: var(--font-size-normal);
     margin-right: 10px;
 }
-.book-title-search input{
-    font-size: var(--font-size-normal);
+.book-title-search label{
     padding: 7px 15px;
     width: 600px;
     border-radius: 30px;
     border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.book-title-search input{
+    font-size: var(--font-size-normal);
+    text-align: left;
+    outline: none;
+    border: none;
+    width: 100%;
+}
+.book-title-search input:focus {
+    border: none;
+}
+.book-title-search button{
+    background-color: transparent;
+    border: none;
+    font-size: var(--font-size-normal);
+    cursor: pointer;
 }
 /*****************************************************/
 main > header{
@@ -159,4 +176,8 @@ main > header a{
 .all-book{
     border-bottom: 2px solid black;
     margin: 0 100px;
+}
+.all-book > p{
+    font-size: var(--font-size-normal);
+    padding: 30px 0;
 }
