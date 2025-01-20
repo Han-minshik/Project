@@ -128,4 +128,8 @@
             #{cart.no}
         </foreach>
     </delete>
+    <!-- viewer -->
+    <select id="getImageByIsbn" resultType="BookImageDTO">
+        SELECT * FROM book_image WHERE book_isbn = #{isbn}
+    </select>
 </mapper>

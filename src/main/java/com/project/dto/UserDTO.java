@@ -35,7 +35,6 @@ public class UserDTO implements UserDetails, OAuth2User {
     private String email;
     private LocalDateTime joinDate;
     private Integer point;
-    private LocalDateTime rentalDate;
     private byte[] profileImage;
     private LocalDateTime updatedAt;
     private String role;

@@ -27,4 +27,5 @@ public interface BookMapper {
     List<CartDTO> selectCartsByUser(UserDTO user);
     void insertBookToCart(CartDTO cart);
     void deleteBookFromCart(List<CartDTO> carts, UserDTO user);
+    List<BookImageDTO> getImageByIsbn(String isbn);
 }

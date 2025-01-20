@@ -5,8 +5,8 @@
 <mapper namespace="com.project.mapper.AdminMapper">
     <!-- 관리자 등록 -->
     <insert id="createAdmin">
-        INSERT INTO user (id, password, ci, tel, email, join_date, point, rental_date, profile_image, updated_at, role)
-        VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT, 0, #{rentalDate}, #{profileImage}, DEFAULT, '관리자')
+        INSERT INTO user (id, password, ci, tel, email, join_date, point, profile_image, updated_at, role)
+        VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT, 0, #{profileImage}, DEFAULT, '관리자')
     </insert>
     <!-- 책 등록 -->
     <insert id="insertBook">

@@ -70,7 +70,7 @@
                discussion_id AS discussionId,
                (`like` + unlike) AS totalVotes
         FROM discussion_comment
-        ORDER BY totalVotes DESC, created_at ASC
+        ORDER BY totalVotes DESC, created_at
         LIMIT 1
     </select>
     <!-- 두 번째로 찬/반 합산이 많은 댓글 -->
@@ -83,7 +83,7 @@
                discussion_id AS discussionId,
                (`like` + unlike) AS totalVotes
         FROM discussion_comment
-        ORDER BY totalVotes DESC, created_at ASC
+        ORDER BY totalVotes DESC, created_at
         LIMIT 1 OFFSET 1
     </select>
     <!-- 댓글 정렬 및 페이지네이션 -->

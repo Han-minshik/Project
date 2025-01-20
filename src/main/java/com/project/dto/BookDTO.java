@@ -27,4 +27,6 @@ public class BookDTO {
     private LocalDateTime createdAt;
     private Integer itemId;
     private Integer pageCount;
+
+    private List<BookImageDTO> bookImages;
 }
