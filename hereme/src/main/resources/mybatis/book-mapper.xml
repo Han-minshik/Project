@@ -1,3 +1,4 @@
+<<<<<<< HEAD:hereme/src/main/resources/mybatis/book-mapper.xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -37,3 +38,90 @@
         JOIN bestseller bs ON b.isbn = BS.book_isbn
     </select>
 </mapper>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.BookMapper">
+    <!-- BookDTO 안의 컬럼으로 BookImageDTO 를 처리하기 위해 사용 -->
+    <resultMap id="bookWithImagesMap" type="com.project.dto.BookDTO">
+        <id property="isbn" column="isbn"/>
+        <result property="title" column="title"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="publicationDate" column="publicationDate"/>
+        <result property="genre" column="genre"/>
+        <result property="rating" column="rating"/>
+        <result property="rentalState" column="rentalState"/>
+        <result property="copiesAvailable" column="copiesAvailable"/>
+        <result property="detail" column="detail"/>
+        <result property="createdAt" column="createdAt"/>
+        <collection property="images" ofType="com.project.dto.BookImageDTO">
+            <id property="no" column="imageNo"/>
+            <result property="originalFilename" column="originalFilename"/>
+            <result property="data" column="imageData"/>
+        </collection>
+    </resultMap>
+
+    <!-- 책 등록 -->
+    <insert id="createBook">
+        INSERT INTO book (isbn, title, author, publisher, publication_date, genre, rating, rental_state,
+                          copies_avilable, detail, created_at, category, price)
+        VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{genre}, #{rating},
+                #{rentalState}, #{copiesAvailable}, #{detail}, #{createdAt}, #{category}, #{price})
+    </insert>
+    <!-- 모든 책 리스트 -->
+    <select id="getAllBooks" resultType="BookDTO">
+        SELECT * FROM book
+    </select>
+    <!-- 책 정보 수정 -->
+    <update id="updateBook">
+        UPDATE book
+        SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
+            genre = #{genre}, rating = #{rating}, rental_state = #{rentalState}, detail = #{detail},
+            created_at = DEFAULT
+        WHERE isbn = #{isbn}
+    </update>
+    <!-- 책 삭제 -->
+    <delete id="deleteBook">
+        DELETE FROm book WHERE isbn = #{isbn}
+    </delete>
+    <!-- 제목으로 책 검색 -->
+    <select id="searchBooksByName" parameterType="string" resultMap="bookWithImagesMap">
+        SELECT
+            b.isbn,
+            b.title,
+            b.author,
+            b.publisher,
+            b.publication_date AS publicationDate,
+            b.genre,
+            b.rating,
+            b.rental_state AS rentalState,
+            b.copies_avilable AS copiesAvailable,
+            b.detail,
+            b.created_at AS createdAt,
+            bi.no AS imageNo,
+            bi.original_filename AS originalFilename,
+            bi.data AS imageData
+        FROM
+            book b
+                LEFT JOIN
+            book_image bi ON b.isbn = bi.book_isbn
+        WHERE
+            REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '')
+    </select>
+    <!-- 책 제목으로 리뷰 검색 -->
+    <select id="findReviewTitlesByBookTitle" parameterType="string" resultType="ReviewDTO">
+        SELECT r.title AS  review_title FROM review r
+        JOIN book b ON r.book_isbn = b.isbn
+        WHERE REPLACE(b.title, ' ', '') LIKE REPLACE(CONCAT('%', #{title}, '%'), ' ', '');
+    </select>
+    <!-- 특정 책의 상세 정보 조회 -->
+    <select id="getBookDetails" resultType="BookDTO">
+        SELECT isbn, title, price
+        FROM book
+        WHERE isbn = #{isbn}
+    </select>
+</mapper>
+>>>>>>> 메인-페이지-디자인(정예은):src/main/resources/mybatis/book-mapper.xml

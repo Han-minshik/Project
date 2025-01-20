@@ -1,3 +1,4 @@
+<<<<<<< HEAD:hereme/src/main/java/com/project/dto/ReviewDTO.java
 package com.project.dto;
 
 import lombok.Getter;
@@ -28,3 +29,34 @@ public class ReviewDTO {
     private List<UserDTO> user;
     private List<BookDTO> book;
 }
+=======
+package com.project.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Getter
+@Setter
+@ToString
+public class ReviewDTO {
+    private Integer id;
+    private String title;
+    private String content;
+    private LocalDateTime uploadedAt;
+    private Integer like;
+    private String status;
+    private LocalDateTime updatedAt;
+    private String tag;
+    private String comment;
+
+    private String userId;
+    private Integer bookIsbn;
+
+    private List<UserDTO> user;
+    private List<BookDTO> book;
+}
+>>>>>>> 메인-페이지-디자인(정예은):src/main/java/com/project/dto/ReviewDTO.java
