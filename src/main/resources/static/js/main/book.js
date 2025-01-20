@@ -30,7 +30,7 @@ loanBtn.onclick = () => {
 loanBtn.onclick = () => {
     confirm('대출하시겠습니까?');
     const bookObject = create_book_object();
-    request('/info', bookObject.book).then(() => {
+    request('/info', bookObject.loan).then(() => {
         // 대출하기일 경우
         if(confirm('대출에 완료했습니다. 대출 내역을 확인하시겠습니까?')){
             location.href = '/user/info';
@@ -43,8 +43,7 @@ function create_book_object(){
         // bookDTO 형태
         loan: {
             id: bookForm.id,
-        },
-        amount: 1
+        }
     }
 }
 

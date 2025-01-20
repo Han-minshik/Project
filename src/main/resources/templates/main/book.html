@@ -6,6 +6,7 @@
 >
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/main/book.css">
     <script src="https://kit.fontawesome.com/d19fdaba43.js" crossorigin="anonymous"></script>
@@ -20,12 +21,12 @@
                 </li>
             </ol>
         </nav>
-        <h1>소년이 온다</h1>
-        <h2>한강 / 창비</h2>
+        <h1 th:text="${book.title}">소년이 온다</h1>
+        <h2 th:text="|${book.author} / ${book.publisher}|">한강 / 창비</h2>
         <article>
             <section>
                 <div class="main-image-container">
-                    <img src="../../static/images/book_main.jpg" alt="메인이미지"/>
+                    <img th:src="@{|/image/${book.image.no}|}" src="../../static/images/book_main.jpg" alt="메인이미지"/>
                 </div>
             </section>
 
@@ -47,19 +48,19 @@
                     <div class="available-book">
                         <b>대출:</b>
                         <div>
-                            <span>30</span>
+                            <span th:text="${50 - book.copiesAvailable}">30</span>
                             <span>/</span>
                             <span>50</span>
                         </div>
                     </div>
                     <div class="available-date">
                         <b>대출 가능일:</b>
-                        <span >2025-02-17</span>
+                        <span th:text="${loan.returnDate}">2025-02-17</span>
                     </div>
                 </div>
 
                 <div class="login-to-loan">
-                    <span><a href="#">로그인</a></span>
+                    <span><a href="/user/login">로그인</a></span>
                     <b>후 대출을 해보세요</b>
                 </div>
 
@@ -100,7 +101,7 @@
                 <h4>말라파르테 문학상, 만해문학상 수상작 <br>
                     우리 시대의 소설 『소년이 온다』
                 </h4>
-                <p>
+                <p th:text="${book.detail}">
                     2014년 만해문학상, 2017년 이탈리아 말라파르테 문학상을 수상하고 전세계 20여개국에 번역 출간되며 세계를 사로잡은 우리 시대의 소설 『소년이 온다』. <br>
                     이 작품은 『채식주의자』로 인터내셔널 부커상을 수상한 한강 작가에게 “눈을 뗄 수 없는, 보편적이며 깊은 울림”(뉴욕타임즈), “역사와 인간의 본질을 다룬 충격적이고 도발적인 소설”(가디언), “한강을 뛰어넘은 한강의 소설”(문학평론가 신형철)이라는 찬사를 선사한 작품으로, 그간 많은 독자들에게 광주의 상처를 깨우치고 함께 아파하는 문학적인 헌사로 높은 관심과 찬사를 받아왔다.
                     <br>
@@ -119,15 +120,15 @@
                 <h4>기본 정보</h4>
                 <div class="isbn">
                     <b>ISBN</b>
-                    <span>9788936434120</span><br>
+                    <span th:text="${book.isbn}">9788936434120</span><br>
                 </div>
                 <div class="release-date">
                     <b>발행(출시)일자</b>
-                    <span>2014년 05월 19일</span><br>
+                    <span th:text="${book.publicationDate}">2014년 05월 19일</span><br>
                 </div>
                 <div class="pages">
                     <b>쪽수</b>
-                    <span>216쪽</span>
+                    <span th:text="${book.pageCount}">216쪽</span>
                 </div>
             </div>
         </section>
