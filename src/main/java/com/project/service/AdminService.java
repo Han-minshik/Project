@@ -76,11 +76,7 @@ public class AdminService {
     /**
      * 책 삭제
      */
-    public void deleteBook(String adminId, String isbn) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public void deleteBook(String isbn) {
         adminMapper.deleteBook(isbn);
         log.info("책을 삭제했습니다 : {}", isbn);
     }
@@ -88,11 +84,7 @@ public class AdminService {
     /**
      * 관리자 공지사항 추가
      */
-    public void addAdminPost(String adminId, AdminPostDTO adminPost) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public void addAdminPost(AdminPostDTO adminPost) {
         adminMapper.createAdminPost(adminPost);
         log.info("공지사항을 DB에 삽입했습니다 : {}", adminPost.getTitle());
     }
@@ -100,10 +92,7 @@ public class AdminService {
     /**
      * 특정 공지사항 조회
      */
-    public AdminPostDTO getAdminPostById(String adminId, Integer postId) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
+    public AdminPostDTO getAdminPostById(Integer postId) {
 
         List<AdminPostDTO> posts = adminMapper.getAdminPostById(postId);
         if (posts == null || posts.isEmpty()) {
@@ -116,15 +105,10 @@ public class AdminService {
         return post;
     }
 
-
     /**
      * 모든 공지사항 조회
      */
-    public List<AdminPostDTO> getAllAdminPosts(String adminId) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public List<AdminPostDTO> getAllAdminPosts() {
         List<AdminPostDTO> posts = adminMapper.getAllAdminPosts();
         log.info("모든 공지사항을 조회했습니다. 총 {}개의 공지사항이 있습니다.", posts.size());
         return posts;
@@ -133,11 +117,7 @@ public class AdminService {
     /**
      * 공지사항 업데이트
      */
-    public void updateAdminPost(String adminId, AdminPostDTO adminPost) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public void updateAdminPost(AdminPostDTO adminPost) {
         adminMapper.updateAdminPost(adminPost);
         log.info("공지사항을 업데이트했습니다 : {}", adminPost.getTitle());
     }
@@ -145,11 +125,7 @@ public class AdminService {
     /**
      * 공지사항 삭제
      */
-    public void deleteAdminPost(String adminId, Integer postId) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public void deleteAdminPost(Integer postId) {
         adminMapper.deleteAdminPost(postId);
         log.info("공지사항을 삭제했습니다. ID: {}", postId);
     }

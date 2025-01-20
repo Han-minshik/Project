@@ -7,6 +7,7 @@ import com.project.mapper.AdminMapper;
 import com.project.mapper.BookMapper;
 import com.project.mapper.UserMapper;
 import com.project.service.AdminService;
+import com.project.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ public class AdminController {
     @Autowired private UserMapper userMapper;
     @Autowired private AdminService adminService;
     @Autowired private AdminMapper adminMapper;
+    @Autowired private BookService bookService;
 
     /**********************************************/
 
@@ -45,24 +47,35 @@ public class AdminController {
     @GetMapping("/update-book")
     public void updateBook(){}
 
-//    @PatchMapping("/update-book")
-//    public String updateBook(BookDTO book) {
-//        bookMapper.updateBook(book);
-//        return "redirect:/admin/books";
-//    }
+    @PatchMapping("/update-book")
+    public String updateBook(
+            @AuthenticationPrincipal UserDTO user,
+            BookDTO book
+    ) {
+        if(user.getRole().equals("관리자")){
+            adminService.updateBook(book);
+            return "redirect:/admin/books";
+
+        }
+        return "redirect:/";
+    }
 
     /********************************************/
 
     @GetMapping("/delete-book")
     public void deleteBook(){}
 
-//    @DeleteMapping("/delete-book")
-//    public String deleteBook(
-//            @RequestParam("bookIsbn") int bookIsbn
-//    ) {
-//        bookMapper.deleteBook(bookIsbn);
-//        return "redirect:/admin/books";
-//    }
+    @DeleteMapping("/delete-book")
+    public String deleteBook(
+            @AuthenticationPrincipal UserDTO user,
+            @RequestParam("bookIsbn") String bookIsbn
+    ) {
+        if(user.getRole().equals("관리자")){
+            adminService.deleteBook(bookIsbn);
+            return "redirect:/admin/books";
+        }
+        return "redirect:/";
+    }
 
     /******************* 강제 퇴출 ********************/
 
@@ -120,7 +133,7 @@ public class AdminController {
             AdminPostDTO adminPost
     ){
         if(user.getRole().equals("admin")){
-            adminMapper.updateAdminPost(adminPost);
+            adminService.updateAdminPost(adminPost);
             return "redirect:/admin/admins";
         }
         return "redirect:/user/login";
@@ -132,7 +145,7 @@ public class AdminController {
             Integer adminPostId
     ){
         if(user.getRole().equals("admin")){
-            adminMapper.deleteAdminPost(adminPostId);
+            adminService.deleteAdminPost(adminPostId);
             return "redirect:/admin/admins";
         }
         return "redirect:/user/login";
