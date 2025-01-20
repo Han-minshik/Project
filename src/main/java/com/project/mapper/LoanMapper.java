@@ -13,11 +13,11 @@ public interface LoanMapper {
     List<LoanDTO> getLoansByUserId(String userId);
     void updateLoanStatus(@Param("id") Integer id, @Param("status") String status);
     List<LoanDTO> getAllLoans();
-    Integer getActiveLoanCountByUserId(@Param("userId") String userId);
-    Integer getAvailableCopies(@Param("bookIsbn") String bookIsbn); // Integer → String
-    void decreaseCopiesAvailable(@Param("bookIsbn") String bookIsbn); // Integer → String
-    void increaseCopiesAvailable(@Param("bookIsbn") String bookIsbn); // Integer → String
-    LoanDTO getActiveLoanByUserAndBook(@Param("userId") String userId, @Param("isbn") String isbn); // Integer → String
-    LocalDateTime getFirstReturnDateByBookIsbn(@Param("isbn") String isbn);
+    Integer getActiveLoanCountByUserId(String userId);
+    Integer getAvailableCopies(String bookIsbn); // Integer → String
+    void decreaseCopiesAvailable( String bookIsbn); // Integer → String
+    void increaseCopiesAvailable(String bookIsbn); // Integer → String
+    LoanDTO getActiveLoanByUserAndBook(String userId); // Integer → String
+    LocalDateTime getFirstReturnDateByBookIsbn(String isbn);
 }
 

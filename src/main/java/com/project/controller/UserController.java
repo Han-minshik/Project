@@ -129,9 +129,9 @@ public class UserController {
     // 아마도 userRestController로 가야할지도
     @PostMapping("/info-revise")
     public String post_user_info_revise(
-        Authentication auth,
-        @ModelAttribute @Validated UserDTO user,
-        BindingResult bindingResult
+            Authentication auth,
+            @ModelAttribute @Validated UserDTO user,
+            BindingResult bindingResult
     ){
         if(auth == null || !auth.getName().equals(user.getId())){
             return "redirect:/user/login";
@@ -142,15 +142,15 @@ public class UserController {
 
         userMapper.updateUser(user);
         return "redirect:/";
-        
+
     }
 
     /************************************************/
     // 비밀번호 분실
     @GetMapping("/resetPw")
     public String get_reset_pw(
-        String id,
-        String newPw
+            String id,
+            String newPw
     ){
         // 패턴 검사도 함
         boolean resetPwResult =  userService.reset_password(id, newPw);
