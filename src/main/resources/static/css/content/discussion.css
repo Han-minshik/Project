@@ -1,0 +1,72 @@
+@import url("../public/public.css");
+
+main{
+    position: relative;
+    width: 1200px;
+    margin: 120px auto;
+    text-align: center;
+}
+main h1{
+    font-size: 50px;
+    font-family: Bold;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 50px;
+    border-bottom: 5px solid black;
+}
+/***********************************/
+main > header{
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-x-small);
+    margin: 25px 100px;
+    color: var(--Dark-gray-textured-background---4-rgba);
+}
+main > header li{
+    display: inline-block;
+    list-style: none;
+}
+main > header li:not(:last-child)::after{
+    content: "|";
+    margin: 0 10px;
+}
+main > header a{
+    text-decoration: none;
+    color: var(--Dark-gray-textured-background---4-rgba);
+}
+#view-size-select{
+    font-size: var(--font-size-xx-small);
+    padding: 3px;
+}
+/***********************************************/
+.book-title-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    /*border-top: 5px solid black;*/
+}
+.book-title-search span{
+    font-size: var(--font-size-normal);
+    margin-right: 10px;
+}
+.book-title-search select{
+    font-size: var(--font-size-small);
+    padding: 5px 10px;
+    width: 500px;
+    max-width: 500px;
+}
+/*****************************************************/
+.one-book-discussion{
+    display: flex;
+    border-top: 2px solid var(--Dark-gray-textured-background---2-rgba);
+}
+
+.image-container{
+    display: flex;
+    padding: 50px 0 50px 60px;
+}
+.image-container img{
+    width: 70%;
+    height: auto;
+}
