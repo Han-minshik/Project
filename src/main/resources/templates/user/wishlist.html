@@ -6,13 +6,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>나의 찜목록</title>
-	<link rel="stylesheet" href="../../static/css/content/lendbook.css?ver=1" type="text/css">
+	<link rel="stylesheet" href="../../static/css/content/lendbook.css" type="text/css">
 </head>
 <body>
 <h1>나의 찜 목록</h1>
 <header>
 	<div>
-		<span th:text="#{category.registed-item}">대여한 권수:</span>
+		<span th:text="'대여한 권수 : ' + ${activeLoanCount}"></span>
 		<b th:text="${pageInfo.totalElementCount} + '건'">13건</b>
 	</div>
 
