@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.LoanMapper">
+    <!-- 대출 기록 생성 -->
+    <insert id="createLoan">
+        INSERT INTO loan(id, loan_date, return_date, status, user_id, book_isbn, discount_price, final_price)
+        VALUES (NULL, DEFAULT, DATE_ADD(NOW(), INTERVAL 7 DAY), '대출 중', #{userId}, #{bookIsbn}, #{discountPrice}, #{finalPrice})
+    </insert>
+    <!-- 사용자의 모든 대출 기록 조회 -->
+    <select id="getLoansByUserId" resultType="LoanDTO">
+        SELECT
+            a.*,
+            b.*
+        FROM
+            loan AS a
+                JOIN
+            book AS b
+            ON
+                a.book_isbn = b.isbn
+        WHERE
+            a.user_id = #{userId}
+    </select>
+    <!-- 대출 정보 업데이트(반납처리) -->
+    <update id="updateLoanStatus">
+        UPDATE loan
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+    <!-- 대출 중인 모든 사용자 조회 -->
+    <select id="getAllLoans" resultType="LoanDTO">
+        SELECT a.id, a.loan_date, a.return_date, a.status, a.book_isbn,
+               b.title AS bookTitle
+        FROM loan as a JOIN book b ON a.book_isbn = b.isbn
+                       JOIN user c ON a.user_id = c.id
+        WHERE a.status = '대출 중'
+    </select>
+    <!-- 한 사람이 대출 할 수 있는 횟수 -->
+    <select id="getActiveLoanCountByUserId" resultType="java.lang.Integer">
+        SELECt COUNT(*)
+        FROM loan
+        WHERE user_id = #{userId} AND status = '대출 중'
+    </select>
+    <!-- 대출 가능한 책 재고 확인 -->
+    <select id="getAvailableCopies" resultType="java.lang.Integer">
+        SELECt book.copies_available
+        FROM book
+        WHERE isbn = #{bookIsbn}
+    </select>
+    <!-- 책 재고 감소 -->
+    <update id="decreaseCopiesAvailable">
+        UPDATE book
+        SET copies_available = book.copies_available - 1
+        WHERE isbn = #{bookIsbn} AND book.copies_available > 0
+    </update>
+    <!-- 책 재고 증가(반납시) -->
+    <update id="increaseCopiesAvailable">
+        UPDATE book
+        SET copies_available = book.copies_available + 1
+        WHERE  isbn = #{bookIsbn}
+    </update>
+    <!-- 사용자 id로 대출중인 책 반환 -->
+    <select id="getActiveLoanByUserAndBook" resultType="LoanDTO">
+        SELECT * FROM loan WHERE user_id = #{userId}
+        AND book_isbn = #{isbn}
+        AND status = '대출 중'
+    </select>
+    <!-- 책의 대출 가능 복사본이 0일 때, 첫 번째 대출자의 반납일 조회 -->
+    <select id="getFirstReturnDateByBookIsbn" resultType="java.time.LocalDateTime">
+        SELECT l.return_date
+        FROM loan l
+                 JOIN book b ON l.book_isbn = b.isbn
+        WHERE b.isbn = #{isbn}
+          AND b.copies_available = 0
+        ORDER BY l.return_date DESC
+        LIMIT 1
+    </select>
+</mapper>

@@ -14,7 +14,6 @@ discussionBtn.onclick = () => {
 /*******************************************/
 
 // 찜하기 버튼을 눌렀을 때
-// 어디에 저장?
 loanBtn.onclick = () => {
     confirm('찜하시겠습니까?');
     const bookObject = create_book_object();
@@ -30,7 +29,7 @@ loanBtn.onclick = () => {
 loanBtn.onclick = () => {
     confirm('대출하시겠습니까?');
     const bookObject = create_book_object();
-    request('/info', bookObject.loan).then(() => {
+    request('/info', bookObject.book).then(() => {
         // 대출하기일 경우
         if(confirm('대출에 완료했습니다. 대출 내역을 확인하시겠습니까?')){
             location.href = '/user/info';
@@ -43,7 +42,8 @@ function create_book_object(){
         // bookDTO 형태
         loan: {
             id: bookForm.id,
-        }
+        },
+        amount: 1
     }
 }
 
