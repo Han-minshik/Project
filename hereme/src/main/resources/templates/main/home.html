@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+
 <head>
     <meta charset="UTF-8">
     <title>RD 홈페이지에 오신것을 환영합니다!</title>
@@ -11,7 +16,7 @@
         <nav>
             <ul class="menu-bar">
                 <li><div class="logo">Read Talk Enjoy</div></li>
-                <li><a href="../AllBook/booklist.html" class="link">책</a></li>
+                <li><a href="../AllBook/category.html" class="link">책</a></li>
                 <li><a href="" onclick="alert('로그인 후 사용가능해요!')">토론 게시판</a></li>
                 <li><a href="../user/method.html">문의하기</a></li>
                 <li>
@@ -40,7 +45,7 @@
             <div class="book">
                 <div class="box">
                     <h1>1퍼센트 부자들의 법칙: 성공과 부를 끌어당기는 비밀법칙</h1>
-                    <button type="button" class="link" onclick="location.href='../AllBook/booklist.html'")>대여하러가기</button>
+                    <button type="button" class="link" onclick="location.href='../AllBook/category.html'" )>대여하러가기</button>
                 </div>
 
                 <div class="box">

@@ -1,4 +1,4 @@
-@import url("../../예은/public/public.css");
+@import url("../public/public.css");
 
 main{
     position: relative;
@@ -49,6 +49,7 @@ main h1{
     min-height: 300px;
     box-sizing: border-box;
 }
+/*******************************/
 .my-opinion-chat{
     padding: 30px 30px 0 30px;
 }
@@ -86,7 +87,6 @@ main h1{
 }
 /*****************************************/
 .review-sort-container{
-    /*margin: 0 auto;*/
     display: flex;
     margin-left: auto;
     margin-right: 30px;
@@ -94,7 +94,6 @@ main h1{
     text-align: right;
     font-size: var(--font-size-xx-small);
     padding-bottom: 15px;
-    /*border-bottom: 1px solid black;*/
 }
 .review-sort-container ul{
     display: inline-flex;
@@ -116,7 +115,7 @@ main h1{
 
 .all-discussion-container {
     display: flex;
-    flex-direction: column; /* 세로 방향으로 배치 */
+    flex-direction: column;
     position: absolute;
     border: none;
     width: 100%;

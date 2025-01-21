@@ -11,20 +11,20 @@
     const content4 = document.getElementById('content4');
     const content5 = document.getElementById('content5');
 
-    // 모든 콘텐츠 숨기기
-    function hideAllContents(content1)
-    {const allContents = document.querySelectorAll('.content-item');
-    allContents.forEach(content => {
-    content.style.display = 'none';});
+{/*    // 모든 콘텐츠 숨기기*/}
+{/*    function hideAllContents(content1)*/}
+{/*    {const allContents = document.querySelectorAll('.content-item');*/}
+{/*    allContents.forEach(content => {*/}
+{/*    content.style.display = 'none';});*/}
 
-    // 버튼 클릭 이벤트 추가
-    menu-title1.addEventListener('click', () => {
-    hideAllContents(); // 다른 콘텐츠 숨기기
-    content1.style.display = 'content1'; // 선택한 콘텐츠 표시
-});
+{/*    // 버튼 클릭 이벤트 추가*/}
+{/*    menu-title1.addEventListener('click', () => {*/}
+{/*    hideAllContents(); // 다른 콘텐츠 숨기기*/}
+{/*    content1.style.display = 'content1'; // 선택한 콘텐츠 표시*/}
+{/*});*/}
 
-    button2.addEventListener('click', () => {
-    hideAllContents();
-    content2.style.display = 'block' });
+{/*    button2.addEventListener('click', () => {*/}
+{/*    hideAllContents();*/}
+{/*    content2.style.display = 'block' });*/}
 
 </script>

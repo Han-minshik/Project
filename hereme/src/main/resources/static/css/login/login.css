@@ -1,9 +1,9 @@
-@import "../../예은/public/public.css";
+@import "../public/public.css";
 
 .container {
     display: flex;
     justify-content: center;
-    align-items: center; /* 세로 정렬 */
+    align-items: center;
     border: none;
     width: 1000px;
     padding: 30px 50px;
@@ -13,30 +13,30 @@
 }
 
 .form-section {
-    flex: 1; /* 폼 섹션이 남은 공간을 차지하도록 함 */
-    padding: 20px; /* 여백 추가 */
+    flex: 1;
+    padding: 20px;
     margin-right: 50px;
 }
 
 .image-section {
-    flex: 1; /* 이미지 섹션이 남은 공간을 차지하도록 함 */
+    flex: 1;
     display: flex;
-    justify-content: center; /* 수평 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center;
+    align-items: center;
 }
 
 .image-section img {
-    max-width: 100%; /* 이미지 크기를 컨테이너에 맞춤 */
-    height: auto; /* 비율 유지 */
+    max-width: 100%;
+    height: auto;
 }
 
 /***************************************/
 
 main{
     display: flex;
-    flex-direction: column; /* 세로 방향으로 정렬 */
-    align-items: center; /* 자식 요소를 중앙 정렬 */
-    width: 100%; /* 전체 너비 사용 */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     margin-top: 100px;
 }
 
