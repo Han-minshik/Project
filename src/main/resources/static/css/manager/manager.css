@@ -78,16 +78,20 @@
     padding: 15px;
 }
 
-.ani-navbar-menu p {
+.ani-navbar-menu menu-title {
     margin: 0;
     margin-left: 10px;
 }
 
-.ani-navbar i {
+.ani-navbar menu-title {
     transition: all 0.5s;
     transform: translateX(125px);
 }
 
-.ani-navbar:hover i {
-    transform: translateX(0px);
+.ani-navbar-menu:hover {
+    color: grey;
+}
+
+div > * {
+    display: none;
 }

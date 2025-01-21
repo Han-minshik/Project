@@ -4,157 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
-      <change beforePath="$PROJECT_DIR$/Project/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/ProjectApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/aspect/ControllerAspect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/configuration/MainConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/configuration/SecurityConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/controller/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/controller/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/controller/MainRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/controller/UserRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/converter/MultipartConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/AdminPostDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/BookDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/BookImageDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/CartDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/CategoryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/ComplainDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/DiscussionCommentDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/DiscussionDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/LoanDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/NotificationDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/PageInfoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/ReviewDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/SnsInfoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/dto/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/AdminMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/BookMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/CategoryMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/DiscussionCommentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/DiscussionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/LoanMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/NotificationMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/AdminService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/BookService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/DiscussionCommentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/EmailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/LoanService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/NotificationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/PortOneSerivce.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/SecurityOAuth2UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/SecurityUserDetailsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/UserRestService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/project/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/admin-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/category-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/configuration/configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/discussion-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/discussioncomment-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/loan-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/notification-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/mybatis/user-mapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/book.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/booklist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/category.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/discussion.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/lendbook.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/participation.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/wishlist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/content/zim.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/login/join.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/login/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/login/longheader.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/book.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/category.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/discussion.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/info-revise.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/loginhome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/main/participation.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/manager/manager.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/public/public.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/find-id.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/info-revise.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/join.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/method.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/mypage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/mytalk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/reset-pw.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/css/user/write.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/book1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/book2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/book3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/book_main.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/free-icon-email-6129053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/free-icon-kakao-talk-3669990.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/free-icon-more-information-2740648.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/free-icon-stack-of-books-5833290.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/icon/google_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/icon/kakao_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/icon/naver_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/login_book.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/images/예시 프로필.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/content/book.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/content/category.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/content/discussion.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/content/zim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/login/loginheader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/main/book.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/main/category.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/main/discussion.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/main/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/main/loginhome.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/main/participation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/manager/manager.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/user/find-id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/user/join.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/user/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/user/method.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/static/js/user/reset-pw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/allbook/book.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/content/category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/content/discussion.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/content/participation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/login/join.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/login/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/mail/email-auth-template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/book.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/discussion.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/loginhome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/participation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/main/review-template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/manager/manager.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/find-id.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/find-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/info-revise.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/join.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/lendbook.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/method.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/mypage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/mytalk.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/reset-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/wishlist.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/resources/templates/user/write.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/test/java/com/project/ProjectApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" afterDir="false" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-21&#10;index 삭제&#10;html en -&gt; ko , LoanBookCount (wishlist, lendbook 수정) (UserController)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/loan-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/loan-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/ProjectApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/ProjectApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/aspect/ControllerAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/aspect/ControllerAspect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/MainConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/MainConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/converter/MultipartConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/converter/MultipartConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/AdminPostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/AdminPostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/BookDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/BookDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/BookImageDTO$BookImageDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/BookImageDTO$BookImageDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/BookImageDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/BookImageDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/CartDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/CartDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/CategoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/CategoryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/ComplainDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/ComplainDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionCommentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionCommentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/LoanDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/LoanDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/NotificationDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/NotificationDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/PageInfoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/PageInfoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/ReviewDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/ReviewDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/SnsInfoDTO$SnsInfoDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/SnsInfoDTO$SnsInfoDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/SnsInfoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/SnsInfoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/AdminMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/AdminMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/CategoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/CategoryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionCommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionCommentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/LoanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/LoanMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/NotificationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/NotificationMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/LoanService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/LoanService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/NotificationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/NotificationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/PortOneSerivce.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/PortOneSerivce.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/SecurityOAuth2UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/SecurityOAuth2UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/SecurityUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/SecurityUserDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserRestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserRestService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +137,23 @@
       <recent name="com.project.dto" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.project의 전부 (1)">
+    <configuration name="project의 전부 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="project의 전부" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Project" />
       <method v="2">
@@ -254,12 +167,18 @@
     </configuration>
     <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="store" />
+      <module name="project" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.ProjectApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.project의 전부 (1)" />
+        <item itemvalue="JUnit.project의 전부" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -321,6 +240,9 @@
       <workItem from="1737381176697" duration="825000" />
       <workItem from="1737442736398" duration="1329000" />
       <workItem from="1737451170271" duration="307000" />
+      <workItem from="1737455195104" duration="424000" />
+      <workItem from="1737457292673" duration="841000" />
+      <workItem from="1737458176201" duration="602000" />
     </task>
     <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
       <option name="closed" value="true" />
