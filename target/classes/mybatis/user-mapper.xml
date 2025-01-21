@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.UserMapper">
+    <!-- 유저 등록 -->
+    <insert id="createUser">
+        INSERT INTO user (id, password, ci, tel, email,
+                          join_date, point, rental_date, profile_image,
+                          updated_at, role, nickname)
+        VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
+                #{point}, #{rentalDate}, #{profileImage}, DEFAULT, '일반', #{nickname})
+    </insert>
+    <!-- id로 사용자 조회 -->
+    <select id="getUserById" resultType="UserDTO">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+    <!-- ci로 사용자 조회 -->
+    <select id="getUserByCi" resultType="UserDTO">
+        SELECT *, USER.id AS user_id, SNS_INFO.id AS sns_id
+        FROM user USER
+        LEFT OUTER JOIN sns_info SNS_INFO ON USER.id = SNS_INFO.user_id
+        WHERE USER.ci = #{ci}
+    </select>
+    <!-- 모든 사용자 조회 -->
+    <select id="getAllUsers" resultType="UserDTO">
+        SELECT * FROM user
+    </select>
+    <!-- 사용자 정보 업데이트 -->
+    <update id="updateUser">
+        UPDATE user
+        SET password = #{password}, tel = #{tel}, email = #{email}, nickname = #{nickname}, updated_at = DEFAULT
+        WHERE id = #{id}
+    </update>
+    <!-- 사용자 정보 삭제 -->
+    <delete id="deleteUser">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+    <!-- 사용자 id로 남긴 review 조회 -->
+    <select id="getReviewsByUserId" resultType="ReviewDTO">
+        SELECT a.*
+        FROM review a
+        WHERE a.user_id = #{userId}
+    </select>
+    <!-- sns 등록 -->
+    <insert id="insertSnsInfo">
+        INSERT INTO sns_info (id, user_id, name)
+        VALUES (#{id}, #{userId}, #{name})
+    </insert>
+    <!-- 리뷰 등록 -->
+    <insert id="insertReview">
+        INSERT INTO review (user_id, book_isbn, content, uploaded_at, `like`, status, updated_at)
+        VALUES (#{userId}, #{bookIsbn}, #{content}, DEFAULT, 0, '공개', DEFAULT)
+    </insert>
+    <!-- 사용자에게 포인트 부여 -->
+    <update id="addPointToUser">
+        UPDATE user SET point = point + #{points}
+        WHERE id = #{userId}
+    </update>
+    <!-- 가장 많은 댓글이 달린 토론 ID 조회(포인트 부여하기 위함) -->
+    <select id="getTopDiscussionUser" resultType="java.lang.String">
+        SELECT d.user_id FROM discussion d
+        JOIN (SELECT discussion_id, COUNT(*) AS comment_count FROM discussion_comment
+            GROUP BY discussion_id ORDER BY comment_count DESC LIMIT 1)
+        AS top_discussion ON d.id = top_discussion.discussion_id
+    </select>
+    <!-- 특정 discussion_comment 중 좋아요가 가장 많은 댓글의 작성자 ID 조회(포인트 부여) -->
+    <select id="getTopCommentUserByDiscussionId" resultType="java.lang.String">
+        SELECT user_id FROM discussion_comment
+        WHERE discussion_id = #{discussionId}
+        ORDER BY `like` DESC LIMIT 1
+    </select>
+    <!-- 포인트 지급 기록 -->
+    <insert id="addPointGrantHistory">
+        INSERT INTO point_grant_history (id, user_id, grant_date, granted_points, reason)
+        VALUES (NULL, #{userId}, DEFAULT, #{points}, #{reason})
+    </insert>
+    <!-- sns 정보 삽입 -->
+    <insert id="createSnsInfo">
+        INSERT INTO `sns_info` (id, user_id, name)
+        VALUES (#{id}, #{userId}, #{name})
+    </insert>
+    <!-- 포인트 지급 사유 확인 -->
+    <select id="hasPointGrantedForReason" resultType="java.lang.Boolean">
+        SELECT EXISTS (SELECT 1 FROM point_grant_history WHERE user_id = #{userId}
+                                                         AND reason = #{reason}
+                                                         AND DATE(grant_date) = CURDATE())
+    </select>
+    <!-- email 로 id 반환 -->
+    <select id="findIdByEmail" resultType="java.lang.String">
+        SELECT user.id FROM project.user WHERE EMAIL = #{email}
+    </select>
+    <!-- 사용 포인트 감소 -->
+    <update id="deductPoints">
+        UPDATE user SET point = point - #{points}
+        WHERE id = #{userId} AND point >= #{points}
+    </update>
+</mapper>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Han-minshik&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Han-minshik/Project.git&quot;,
+    &quot;accountId&quot;: &quot;6fa5aaa8-080a-4004-a62a-aa1bbfbbe890&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2rKaGNeRdWronJwVMuWagcScm6C" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ProjectApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/한민식/Desktop/software/Web/프로젝트/Project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\한민식\Desktop\software\Web\프로젝트\Project" />
+      <recent name="C:\Users\한민식\Desktop\software\Web\프로젝트\Project\src\main\java\com\project" />
+      <recent name="C:\Users\한민식\Desktop\software\Web\프로젝트\Project\src\main" />
+      <recent name="C:\Users\한민식\Desktop\software\Web\프로젝트\Project\src\main\java\com\project\dto" />
+      <recent name="C:\Users\한민식\Desktop\software\Web\프로젝트\Project\src\main\java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.project.dto" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Project" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="project" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.ProjectApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="" />
+      <created>1736310126486</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736310126486</updated>
+      <workItem from="1736310127845" duration="8656000" />
+      <workItem from="1736322222711" duration="2755000" />
+      <workItem from="1736326803683" duration="2465000" />
+      <workItem from="1736335225110" duration="553000" />
+      <workItem from="1736337702769" duration="20000" />
+      <workItem from="1736343889326" duration="946000" />
+      <workItem from="1736396034432" duration="679000" />
+      <workItem from="1736397597575" duration="83000" />
+      <workItem from="1736411255201" duration="2085000" />
+      <workItem from="1736413612540" duration="585000" />
+      <workItem from="1736424037517" duration="762000" />
+      <workItem from="1736424819852" duration="7000" />
+      <workItem from="1736424992327" duration="56000" />
+      <workItem from="1736482208574" duration="56000" />
+      <workItem from="1736492735523" duration="706000" />
+      <workItem from="1736583772049" duration="145000" />
+      <workItem from="1736596807452" duration="301000" />
+      <workItem from="1736682089314" duration="412000" />
+      <workItem from="1736745071237" duration="272000" />
+      <workItem from="1736763016995" duration="662000" />
+      <workItem from="1736850805190" duration="558000" />
+      <workItem from="1736851934108" duration="529000" />
+      <workItem from="1736854302272" duration="7000" />
+      <workItem from="1736857665389" duration="85000" />
+      <workItem from="1736940910828" duration="1359000" />
+      <workItem from="1736949304162" duration="56000" />
+      <workItem from="1737021748997" duration="103000" />
+      <workItem from="1737273360345" duration="651000" />
+      <workItem from="1737274131228" duration="1204000" />
+      <workItem from="1737275469294" duration="50000" />
+      <workItem from="1737275830203" duration="224000" />
+      <workItem from="1737279789638" duration="24000" />
+      <workItem from="1737280857641" duration="576000" />
+      <workItem from="1737295528779" duration="298000" />
+      <workItem from="1737361291998" duration="1139000" />
+      <workItem from="1737366458060" duration="249000" />
+      <workItem from="1737367553111" duration="2487000" />
+      <workItem from="1737370732339" duration="657000" />
+      <workItem from="1737376596559" duration="631000" />
+      <workItem from="1737377238043" duration="70000" />
+      <workItem from="1737377313696" duration="38000" />
+      <workItem from="1737381176697" duration="825000" />
+      <workItem from="1737442736398" duration="1329000" />
+      <workItem from="1737451170271" duration="307000" />
+    </task>
+    <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
+      <option name="closed" value="true" />
+      <created>1736396170944</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736396170944</updated>
+    </task>
+    <task id="LOCAL-00002" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
+      <option name="closed" value="true" />
+      <created>1736396564416</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736396564416</updated>
+    </task>
+    <task id="LOCAL-00003" summary="오타 수정(2025/01/09)">
+      <option name="closed" value="true" />
+      <created>1736397641254</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736397641254</updated>
+    </task>
+    <task id="LOCAL-00004" summary="오타 수정(2025/01/09)">
+      <option name="closed" value="true" />
+      <created>1736397671038</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1736397671038</updated>
+    </task>
+    <task id="LOCAL-00005" summary="추가&#10;- 이름으로 책 조회&#10;- userDTO 안 getPassword 추가(securityConfiguration 할 때 OAuth2 완성 후 삭제 가능)&#10;&#10;수정&#10;- ReviewDTO 오타 수정&#10;- application.properties : DB 경로 수정(jdbc:mysql//localhost -&gt; jdbc:mysql://localhost로 변경)&#10;- getAllLoans로 변경(LoanMapper, loan-mapper.xml)&#10;&#10;삭제 &#10;- isbn으로 베스트셀러 조회 삭제(BookMapper, book-mapper.xml)&#10;- book-mapper.xml의 isnert문에서 user_id 삭제(DB의 book 테이블에서도 컬럼 삭제)&#10;- BookDTO의 userId 삭제(DB의 user_id컬럼 삭제)&#10;- BestSellerDTO 삭제(DB의 bestseller 테이블 삭제)">
+      <option name="closed" value="true" />
+      <created>1736413327647</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736413327647</updated>
+    </task>
+    <task id="LOCAL-00006" summary="추가&#10;- 이름으로 책 조회&#10;- userDTO 안 getPassword 추가(securityConfiguration 할 때 OAuth2 완성 후 삭제 가능)&#10;&#10;수정&#10;- ReviewDTO 오타 수정&#10;- application.properties : DB 경로 수정(jdbc:mysql//localhost -&gt; jdbc:mysql://localhost로 변경)&#10;- getAllLoans로 변경(LoanMapper, loan-mapper.xml)&#10;&#10;삭제 &#10;- isbn으로 베스트셀러 조회 삭제(BookMapper, book-mapper.xml)&#10;- book-mapper.xml의 isnert문에서 user_id 삭제(DB의 book 테이블에서도 컬럼 삭제)&#10;- BookDTO의 userId 삭제(DB의 user_id컬럼 삭제)&#10;- BestSellerDTO 삭제(DB의 bestseller 테이블 삭제)&#10;- 책 정보 수정(book-mapper.xml)안 update 문 user_id 삭제">
+      <option name="closed" value="true" />
+      <created>1736413689667</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1736413689667</updated>
+    </task>
+    <task id="LOCAL-00007" summary="2020-01-10&#10;&#10;추가&#10;- book_image DB 추가(BookImageDTO 추가)&#10;- insertBook, insertBookImages 추가(AdminMapper, admin-mapper.xml)&#10;- bookDTO 안 List&lt;BookImageDTO&gt; images 추가&#10;- user-mapper.xml, Usermapper : ci로 유저 정보 조회, 리뷰 삽입, sns등록&#10;- 책 제목으로 리뷰 검색(BookMapper, book-mapper.xml)&#10;- book-mapper.xml 안 createBook + category 추가&#10;- book-mapper.xml 안 resultMap 추가(searchBooksByName 조회할 때 이미지 조회하기 위해)&#10;&#10;수정&#10;- Review 안 tag 컬럼 NN 로 변경&#10;- book-mapper.xml searchBooksByName&#10;- pom.xml 의존성 추가&#10;- configuration.xml BookImage 경로 추가&#10;&#10;삭제&#10;- bookDTO 안의 coverimage 삭제(DB, book-mapper.xml 안 cover_image 삭제)&#10;- user-mapper.xml : book_isbn 삭제(createUser)&#10;- Review 안 viewCount 삭제(DTO, DB), commnet 삭제, bookIsbn 삭제 &#10;&#10;&#10;보류(추가 안 함)&#10;01/09&#10;(리스트 받아오는 구현은 완료했으나 오류 생길 수도 있음)&#10;- static -&gt; bestseller -&gt; js, css에 index 파일 추가&#10;- templates -&gt; bestseller -&gt; index.html 생성&#10;- configuration -&gt; SecurityConfiguration 생성 &#10;- controller -&gt; BestsellerController 생성&#10;&#10;01/10&#10;- ControllerAspect&#10;- MainConfiguration&#10;- SecurityConfiguration&#10;- MultipartConverter">
+      <option name="closed" value="true" />
+      <created>1736493177914</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736493177914</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2020-01-10&#10;&#10;추가&#10;- book_image DB 추가(BookImageDTO 추가)&#10;- insertBook, insertBookImages 추가(AdminMapper, admin-mapper.xml)&#10;- bookDTO 안 List&lt;BookImageDTO&gt; images 추가&#10;- user-mapper.xml, Usermapper : ci로 유저 정보 조회, 리뷰 삽입, sns등록&#10;- 책 제목으로 리뷰 검색(BookMapper, book-mapper.xml)&#10;- book-mapper.xml 안 createBook + category 추가&#10;- book-mapper.xml 안 resultMap 추가(searchBooksByName 조회할 때 이미지 조회하기 위해)&#10;&#10;수정&#10;- Review 안 tag 컬럼 NN 로 변경&#10;- book-mapper.xml searchBooksByName&#10;- pom.xml 의존성 추가&#10;- configuration.xml BookImage 경로 추가&#10;&#10;삭제&#10;- bookDTO 안의 coverimage 삭제(DB, book-mapper.xml 안 cover_image 삭제)&#10;- user-mapper.xml : book_isbn 삭제(createUser)&#10;- Review 안 viewCount 삭제(DTO, DB), commnet 삭제, bookIsbn 삭제 &#10;&#10;&#10;보류(추가 안 함)&#10;01/09&#10;(리스트 받아오는 구현은 완료했으나 오류 생길 수도 있음)&#10;- static -&gt; bestseller -&gt; js, css에 index 파일 추가&#10;- templates -&gt; bestseller -&gt; index.html 생성&#10;- configuration -&gt; SecurityConfiguration 생성 &#10;- controller -&gt; BestsellerController 생성&#10;&#10;01/10&#10;- ControllerAspect&#10;- MainConfiguration&#10;- SecurityConfiguration&#10;- MultipartConverter">
+      <option name="closed" value="true" />
+      <created>1736493278811</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1736493278811</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2025-01-10&#10;book column 수정">
+      <option name="closed" value="true" />
+      <created>1736583907896</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1736583907896</updated>
+    </task>
+    <task id="LOCAL-00010" summary="2025-01-11&#10;&#10;추가&#10;- AdminService&#10;- LoanService&#10;- 한 책은 50번의 대출을 생성할 수 있음. (조건)&#10;- 한 사람의 대출은 5권을 초과할 수 없음.(조건)&#10;- loan-mapper, LoanService, loan-mapper.xml : 대출 가능한 책 재고 확인, 특정 책의 재고 감소, 증가&#10;- 반납 날짜 = loan_date + 7&#10;- UserRestService&#10;- UserService&#10;- BookService&#10;&#10;수정&#10;- admin-mapper.xml : insertBook category 추가&#10;- user-mapper.xml : insertReview bookIsbn 조회 쿼리 변경&#10;- loan-mapper.xml : createLoan : return_date(loan_date + 7), status = '대출 중'으로 변경, updateloanStatus 쿼리문 변경, getLoansByUserId 모든 컬럼 조회에서 조건 조회로 변경, getAllLoans를 모든 사용자의 대출 기록 조회에서 대출 중인 모든 사용자 조회로 변경&#10;- loan-mapper : updateloanStatus에서 id와 status를 param으로 받아오는 것으로 변경, createLoan 컬럼 값 DEFAULT로 변경&#10;- Book DB copies_avaliable DEFAULT 50으로 수정&#10;&#10;삭제&#10;- LoanMapper, loan-mapper.xml : getLoanById 삭제">
+      <option name="closed" value="true" />
+      <created>1736596987788</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1736596987789</updated>
+    </task>
+    <task id="LOCAL-00011" summary="2025-01-12&#10;&#10;추가&#10;- BookDTO : price 추가(DB)&#10;- LoanDTO : discountPrice(할인받은 금액), finalPrice(최종 금액) 추가(DB)&#10;- NotificationDTO : type 추가(DB, 알림의 종류를 결정)&#10;- BookMapper, book-mapper.xml : getBookDetails 추가&#10;- LoanMapper, loan-mapper.xml : getActiveloanByUserAndBook 추가&#10;- NotificationMapper, notification-mapper.xml 종류 별 알림 구현&#10;- UserMapper, user-mapper.xml : addPointTouser, getTopDiscussionUser, getTopCommentUserByDiscussionId, addPointGrantHistory, hasPointGrantedForReason, deductPoints 구현&#10;- getBookDetails로 UserService에서 대출시 책의 정보 상세 조회&#10;- LoanService : copiesAvailable 조절&#10;- NotificationService : 종류별 알림 서비스 구현&#10;- UserService : 포인트 부여 구현(discussion의 댓글이 다른 주제보다 많은 사용자, 댓글 중 공감이 가장 많은 사용자)&#10;&#10;수정&#10;- 모든 int 태그 -&gt; Integer로 변경&#10;&#10;&#10;삭제">
+      <option name="closed" value="true" />
+      <created>1736682390595</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736682390595</updated>
+    </task>
+    <task id="LOCAL-00012" summary="2025-01-13">
+      <option name="closed" value="true" />
+      <created>1736745320778</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1736745320779</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2025-01-13">
+      <option name="closed" value="true" />
+      <created>1736942262029</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1736942262029</updated>
+    </task>
+    <task id="LOCAL-00014" summary="2025-01-13">
+      <option name="closed" value="true" />
+      <created>1737021843956</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1737021843956</updated>
+    </task>
+    <task id="LOCAL-00015" summary="2025-01-19">
+      <option name="closed" value="true" />
+      <created>1737281427613</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1737281427613</updated>
+    </task>
+    <task id="LOCAL-00016" summary="2025-01-19&#10;&#10;관리자 페이지&#10;- 관리자 등록&#10;- 책 등ㅇ록&#10;- 책 정보 수정&#10;- 책 삭제 &#10;- 공지사항 등록&#10;- 특정 관리자의 post 조회&#10;- post 모두 찾기&#10;- post 수정&#10;- post 삭제&#10;- 관리자 지정(구현해야됨)&#10;&#10;책 페이지&#10;- isbn으로 책 조회&#10;- 특정 책의 평균 별점 조회&#10;- 특정 책의 리뷰와 좋아요 개수 조회&#10;- 특정 책의 토론 주제 개수 조회&#10;- 특정 책의 토론 참여자 인원수 조회&#10;- 리뷰 관련 쿼리(개수, 평균 등)&#10;- 리뷰별 좋아요 개수&#10;- 대출 가능일&#10;- 대출 가능 여부&#10;&#10;카테고리 페이지&#10;- 책 제목으로 검색&#10;- 최신순, 제목순, 보기 설정&#10;- 책의 총 개수&#10;- 페이지네이션&#10;- 모든 책 리스트&#10;- 제목으로 책 검색&#10;&#10;토론 게시판&#10;- 모든 토론 주제 조회&#10;- 가장 최근에 남겨진 의견&#10;- sort, pagination&#10;- 페이징된 토론 개수&#10;- 토론의 모든 내용과 책의 이미지, 제목 반환&#10;&#10;토론 참여 게시판&#10;- 토론의 모든 내용 조회&#10;- 댓글 추가&#10;- 댓글 총 개수&#10;- 댓글 정렬 및 페이지네이션&#10;- 찬성, 반대(한 댓글 당 하나만)&#10;&#10;회원가입&#10;- 회원 등록&#10;&#10;로그인&#10;- 아이디 저장&#10;- SNS 정보 저장&#10;&#10;메인&#10;- 베스트셀러 (위 : 5, 아래 2개 노출)&#10;- 왼쪽 위 : 인기가 가장 많은 책&#10;- 오른쪽 위 : 최신 토론 주제&#10;- 왼쪽 아래 : 가장 인기가 많은 토론 주제의 의견 1&#10;- 오른쪽 아래 : 가장 인기가 많은 토론 주제의 의견 2&#10;&#10;회원정보 수정&#10;- 정보 업데이트&#10;&#10;카트&#10;- 카트 저장&#10;- 카트 삭제&#10;- 카트 조회&#10;&#10;컴플레인&#10;- 컴플레인 저장&#10;- 상태 업데이트('', '답장완료')&#10;&#10;나의 대여 목록&#10;- 대출 기록 생성&#10;- 모든 사용자의 대출 조회&#10;- 반납 처리&#10;- 최신순/이름순 정렬&#10;- 페이지네이션 삭제(5권 제한이라 없어도 될 것 같음)&#10;- 대출 중인 책 반환">
+      <option name="closed" value="true" />
+      <created>1737295773826</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1737295773826</updated>
+    </task>
+    <task id="LOCAL-00017" summary="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정">
+      <option name="closed" value="true" />
+      <created>1737363055675</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1737363055675</updated>
+    </task>
+    <task id="LOCAL-00018" summary="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가">
+      <option name="closed" value="true" />
+      <created>1737366529100</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1737366529100</updated>
+    </task>
+    <task id="LOCAL-00019" summary="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가">
+      <option name="closed" value="true" />
+      <created>1737366644131</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1737366644131</updated>
+    </task>
+    <task id="LOCAL-00020" summary="2025-01-20&#10;login - develop 합병">
+      <option name="closed" value="true" />
+      <created>1737369822202</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1737369822202</updated>
+    </task>
+    <task id="LOCAL-00021" summary="2025-01-20&#10;login - develop 합병">
+      <option name="closed" value="true" />
+      <created>1737377299768</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1737377299769</updated>
+    </task>
+    <task id="LOCAL-00022" summary="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid">
+      <option name="closed" value="true" />
+      <created>1737381367109</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1737381367109</updated>
+    </task>
+    <task id="LOCAL-00023" summary="2025-01-20&#10;merge 준비 완">
+      <option name="closed" value="true" />
+      <created>1737381923109</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1737381923109</updated>
+    </task>
+    <task id="LOCAL-00024" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
+      <option name="closed" value="true" />
+      <created>1737443718245</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1737443718245</updated>
+    </task>
+    <task id="LOCAL-00025" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
+      <option name="closed" value="true" />
+      <created>1737451438212</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1737451438212</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="searchBooksByName(BookMapper, book-mapper.xml)에 추가" />
+    <MESSAGE value="오타 수정(2025/01/09)" />
+    <MESSAGE value="추가&#10;- 이름으로 책 조회&#10;- userDTO 안 getPassword 추가(securityConfiguration 할 때 OAuth2 완성 후 삭제 가능)&#10;&#10;수정&#10;- ReviewDTO 오타 수정&#10;- application.properties : DB 경로 수정(jdbc:mysql//localhost -&gt; jdbc:mysql://localhost로 변경)&#10;- getAllLoans로 변경(LoanMapper, loan-mapper.xml)&#10;&#10;삭제 &#10;- isbn으로 베스트셀러 조회 삭제(BookMapper, book-mapper.xml)&#10;- book-mapper.xml의 isnert문에서 user_id 삭제(DB의 book 테이블에서도 컬럼 삭제)&#10;- BookDTO의 userId 삭제(DB의 user_id컬럼 삭제)&#10;- BestSellerDTO 삭제(DB의 bestseller 테이블 삭제)" />
+    <MESSAGE value="추가&#10;- 이름으로 책 조회&#10;- userDTO 안 getPassword 추가(securityConfiguration 할 때 OAuth2 완성 후 삭제 가능)&#10;&#10;수정&#10;- ReviewDTO 오타 수정&#10;- application.properties : DB 경로 수정(jdbc:mysql//localhost -&gt; jdbc:mysql://localhost로 변경)&#10;- getAllLoans로 변경(LoanMapper, loan-mapper.xml)&#10;&#10;삭제 &#10;- isbn으로 베스트셀러 조회 삭제(BookMapper, book-mapper.xml)&#10;- book-mapper.xml의 isnert문에서 user_id 삭제(DB의 book 테이블에서도 컬럼 삭제)&#10;- BookDTO의 userId 삭제(DB의 user_id컬럼 삭제)&#10;- BestSellerDTO 삭제(DB의 bestseller 테이블 삭제)&#10;- 책 정보 수정(book-mapper.xml)안 update 문 user_id 삭제" />
+    <MESSAGE value="2020-01-10&#10;&#10;추가&#10;- book_image DB 추가(BookImageDTO 추가)&#10;- insertBook, insertBookImages 추가(AdminMapper, admin-mapper.xml)&#10;- bookDTO 안 List&lt;BookImageDTO&gt; images 추가&#10;- user-mapper.xml, Usermapper : ci로 유저 정보 조회, 리뷰 삽입, sns등록&#10;- 책 제목으로 리뷰 검색(BookMapper, book-mapper.xml)&#10;- book-mapper.xml 안 createBook + category 추가&#10;- book-mapper.xml 안 resultMap 추가(searchBooksByName 조회할 때 이미지 조회하기 위해)&#10;&#10;수정&#10;- Review 안 tag 컬럼 NN 로 변경&#10;- book-mapper.xml searchBooksByName&#10;- pom.xml 의존성 추가&#10;- configuration.xml BookImage 경로 추가&#10;&#10;삭제&#10;- bookDTO 안의 coverimage 삭제(DB, book-mapper.xml 안 cover_image 삭제)&#10;- user-mapper.xml : book_isbn 삭제(createUser)&#10;- Review 안 viewCount 삭제(DTO, DB), commnet 삭제, bookIsbn 삭제 &#10;&#10;&#10;보류(추가 안 함)&#10;01/09&#10;(리스트 받아오는 구현은 완료했으나 오류 생길 수도 있음)&#10;- static -&gt; bestseller -&gt; js, css에 index 파일 추가&#10;- templates -&gt; bestseller -&gt; index.html 생성&#10;- configuration -&gt; SecurityConfiguration 생성 &#10;- controller -&gt; BestsellerController 생성&#10;&#10;01/10&#10;- ControllerAspect&#10;- MainConfiguration&#10;- SecurityConfiguration&#10;- MultipartConverter" />
+    <MESSAGE value="2025-01-10&#10;book column 수정" />
+    <MESSAGE value="2025-01-11&#10;&#10;추가&#10;- AdminService&#10;- LoanService&#10;- 한 책은 50번의 대출을 생성할 수 있음. (조건)&#10;- 한 사람의 대출은 5권을 초과할 수 없음.(조건)&#10;- loan-mapper, LoanService, loan-mapper.xml : 대출 가능한 책 재고 확인, 특정 책의 재고 감소, 증가&#10;- 반납 날짜 = loan_date + 7&#10;- UserRestService&#10;- UserService&#10;- BookService&#10;&#10;수정&#10;- admin-mapper.xml : insertBook category 추가&#10;- user-mapper.xml : insertReview bookIsbn 조회 쿼리 변경&#10;- loan-mapper.xml : createLoan : return_date(loan_date + 7), status = '대출 중'으로 변경, updateloanStatus 쿼리문 변경, getLoansByUserId 모든 컬럼 조회에서 조건 조회로 변경, getAllLoans를 모든 사용자의 대출 기록 조회에서 대출 중인 모든 사용자 조회로 변경&#10;- loan-mapper : updateloanStatus에서 id와 status를 param으로 받아오는 것으로 변경, createLoan 컬럼 값 DEFAULT로 변경&#10;- Book DB copies_avaliable DEFAULT 50으로 수정&#10;&#10;삭제&#10;- LoanMapper, loan-mapper.xml : getLoanById 삭제" />
+    <MESSAGE value="2025-01-12&#10;&#10;추가&#10;- BookDTO : price 추가(DB)&#10;- LoanDTO : discountPrice(할인받은 금액), finalPrice(최종 금액) 추가(DB)&#10;- NotificationDTO : type 추가(DB, 알림의 종류를 결정)&#10;- BookMapper, book-mapper.xml : getBookDetails 추가&#10;- LoanMapper, loan-mapper.xml : getActiveloanByUserAndBook 추가&#10;- NotificationMapper, notification-mapper.xml 종류 별 알림 구현&#10;- UserMapper, user-mapper.xml : addPointTouser, getTopDiscussionUser, getTopCommentUserByDiscussionId, addPointGrantHistory, hasPointGrantedForReason, deductPoints 구현&#10;- getBookDetails로 UserService에서 대출시 책의 정보 상세 조회&#10;- LoanService : copiesAvailable 조절&#10;- NotificationService : 종류별 알림 서비스 구현&#10;- UserService : 포인트 부여 구현(discussion의 댓글이 다른 주제보다 많은 사용자, 댓글 중 공감이 가장 많은 사용자)&#10;&#10;수정&#10;- 모든 int 태그 -&gt; Integer로 변경&#10;&#10;&#10;삭제" />
+    <MESSAGE value="2025-01-13" />
+    <MESSAGE value="2025-01-19" />
+    <MESSAGE value="2025-01-19&#10;&#10;관리자 페이지&#10;- 관리자 등록&#10;- 책 등ㅇ록&#10;- 책 정보 수정&#10;- 책 삭제 &#10;- 공지사항 등록&#10;- 특정 관리자의 post 조회&#10;- post 모두 찾기&#10;- post 수정&#10;- post 삭제&#10;- 관리자 지정(구현해야됨)&#10;&#10;책 페이지&#10;- isbn으로 책 조회&#10;- 특정 책의 평균 별점 조회&#10;- 특정 책의 리뷰와 좋아요 개수 조회&#10;- 특정 책의 토론 주제 개수 조회&#10;- 특정 책의 토론 참여자 인원수 조회&#10;- 리뷰 관련 쿼리(개수, 평균 등)&#10;- 리뷰별 좋아요 개수&#10;- 대출 가능일&#10;- 대출 가능 여부&#10;&#10;카테고리 페이지&#10;- 책 제목으로 검색&#10;- 최신순, 제목순, 보기 설정&#10;- 책의 총 개수&#10;- 페이지네이션&#10;- 모든 책 리스트&#10;- 제목으로 책 검색&#10;&#10;토론 게시판&#10;- 모든 토론 주제 조회&#10;- 가장 최근에 남겨진 의견&#10;- sort, pagination&#10;- 페이징된 토론 개수&#10;- 토론의 모든 내용과 책의 이미지, 제목 반환&#10;&#10;토론 참여 게시판&#10;- 토론의 모든 내용 조회&#10;- 댓글 추가&#10;- 댓글 총 개수&#10;- 댓글 정렬 및 페이지네이션&#10;- 찬성, 반대(한 댓글 당 하나만)&#10;&#10;회원가입&#10;- 회원 등록&#10;&#10;로그인&#10;- 아이디 저장&#10;- SNS 정보 저장&#10;&#10;메인&#10;- 베스트셀러 (위 : 5, 아래 2개 노출)&#10;- 왼쪽 위 : 인기가 가장 많은 책&#10;- 오른쪽 위 : 최신 토론 주제&#10;- 왼쪽 아래 : 가장 인기가 많은 토론 주제의 의견 1&#10;- 오른쪽 아래 : 가장 인기가 많은 토론 주제의 의견 2&#10;&#10;회원정보 수정&#10;- 정보 업데이트&#10;&#10;카트&#10;- 카트 저장&#10;- 카트 삭제&#10;- 카트 조회&#10;&#10;컴플레인&#10;- 컴플레인 저장&#10;- 상태 업데이트('', '답장완료')&#10;&#10;나의 대여 목록&#10;- 대출 기록 생성&#10;- 모든 사용자의 대출 조회&#10;- 반납 처리&#10;- 최신순/이름순 정렬&#10;- 페이지네이션 삭제(5권 제한이라 없어도 될 것 같음)&#10;- 대출 중인 책 반환" />
+    <MESSAGE value="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정" />
+    <MESSAGE value="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가" />
+    <MESSAGE value="2025-01-20&#10;login - develop 합병" />
+    <MESSAGE value="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid" />
+    <MESSAGE value="2025-01-20&#10;merge 준비 완" />
+    <MESSAGE value="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
+  </component>
+</project>

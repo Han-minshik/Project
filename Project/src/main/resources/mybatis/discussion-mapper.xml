@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.DiscussionMapper">
+    <!-- 토론 주제 생성 -->
+    <insert id="createDiscussion">
+        INSERT INTO discussion (id, topic, contents, created_at, updated_at, user_id, book_isbn)
+        VALUES (NULL, #{topic}, #{contents}, DEFAULT, DEFAULT, #{userId}, #{bookIsbn})
+    </insert>
+    <!-- 가장 최근에 남겨진 의견 -->
+    <select id="getRecentCommentByDiscussionId" resultType="string">
+        SELECT c.content
+        FROM discussion_comment c
+        WHERE c.discussion_id = #{discussionId}
+        ORDER BY c.created_at DESC
+        LIMIT 1
+    </select>
+    <!-- 특정 Discussion 에 대한 댓글 수 조회 -->
+    <select id="getCommentCountByDiscussion" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion_comment
+        WHERE discussion_id = #{discussionId}
+    </select>
+    <!-- 가장 최근의 토론 주제 -->
+    <select id="getCurrentDiscussion" resultType="DiscussionDTO">
+        SELECT topic, discussion.contents FROM discussion
+        ORDER BY created_at DESC
+        LIMIT 1
+    </select>
+    <!-- 페이징된 토론의 총 개수 조회 -->
+    <select id="selectPaginatedDiscussionsTotalCount" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion d
+    </select>
+    <!-- 토론의 모든 내용과 책의 이미지, 제목 반환 -->
+    <select id="getDiscussionsWithBookInfo" resultType="DiscussionDTO">
+        SELECT
+        d.*,
+        b.title AS book_title,
+        b.image AS book_image
+        FROM discussion d
+        LEFT JOIN book b ON d.book_isbn = b.isbn
+        <choose>
+            <!-- 최신순 정렬 -->
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY d.created_at DESC
+            </when>
+            <!-- 제목순 정렬 -->
+            <when test="pageInfo.sort == 'title'">
+                ORDER BY d.topic ASC
+            </when>
+            <!-- 기본 정렬: 최신순 -->
+            <otherwise>
+                ORDER BY d.created_at DESC
+            </otherwise>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+    </select>
+    <!-- discussion_id 로 토론 조회 -->
+    <select id="getDiscussion" resultType="DiscussionDTO">
+        SELECT * FROM discussion WHERE discussion.id = #{discussionID}
+    </select>
+</mapper>
