@@ -4,6 +4,7 @@ import com.project.dto.*;
 import com.project.mapper.AdminMapper;
 import com.project.mapper.LoanMapper;
 import com.project.service.BookService;
+import com.project.service.LoanService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import com.project.mapper.UserMapper;
@@ -32,6 +33,7 @@ public class UserController {
     @Autowired
     private BookService bookService;
     @Autowired private LoanMapper loanMapper;
+    private LoanService loanService;
 
     /***********************************************/
 
@@ -129,8 +131,12 @@ public class UserController {
             Model model
     ) {
         if (auth != null) {
-            List<CartDTO> wishlist = bookService.getCartsByUser(auth.getName());
+            String userId = auth.getName();
+            List<CartDTO> wishlist = bookService.getCartsByUser(userId);
+            Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
+
             model.addAttribute("wishlist", wishlist);
+            model.addAttribute("activeLoanCount", activeLoanCount);
             return "user/wishlist";
         }
         return "redirect:/user/login";
