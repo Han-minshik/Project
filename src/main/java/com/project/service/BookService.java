@@ -32,44 +32,12 @@ public class BookService {
      * 책 제목으로 검색
      */
     public PageInfoDTO<BookDTO> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title) {
-        // 기본값 설정: 페이지 번호와 페이지 크기
-        pageInfo.setPage(Math.max(pageInfo.getPage(), 1)); // 페이지 번호가 1보다 작으면 1로 설정
-        pageInfo.setSize(pageInfo.getSize() != null && pageInfo.getSize() > 0 ? pageInfo.getSize() : 5); // 기본 크기: 5개
-
-        // 책 검색 결과 조회 (Mapper 호출)
-        List<Map<String, Object>> rawBooks = bookMapper.searchBooksByNameWithCount(pageInfo, title);
-
-        // 검색 결과가 있을 경우
-        if (rawBooks != null && !rawBooks.isEmpty()) {
-            // 총 검색 결과 개수 계산
-            Integer totalBookCount = rawBooks.stream()
-                    .map(bookMap -> (Integer) bookMap.get("totalCount"))
-                    .findFirst()
-                    .orElse(0);
-
-            List<BookDTO> books = rawBooks.stream().map(bookMap -> {
-                BookDTO book = new BookDTO();
-                book.setTitle((String) bookMap.get("title"));
-                book.setAuthor((String) bookMap.get("author"));
-                book.setImage((byte[]) bookMap.get("image"));
-                book.setDetail((String) bookMap.get("detail"));
-                book.setCopiesAvailable((Integer) bookMap.get("copiesAvailable"));
-                // 필요한 필드를 추가로 설정
-                return book;
-            }).toList();
-
-            pageInfo.setTotalElementCount(totalBookCount);
-            pageInfo.setElements(books);
-        } else {
-            // 검색 결과가 없을 경우 빈 리스트 설정
-            pageInfo.setTotalElementCount(0);
-            pageInfo.setElements(Collections.emptyList());
-        }
-
-        return pageInfo;
+        PageInfoDTO<BookDTO> result = bookMapper.searchBooksByNameWithCount(pageInfo, title);
+        PageInfoDTO<BookDTO> newPageInfo = new PageInfoDTO<>();
+        newPageInfo.setElements(result.getElements());
+        newPageInfo.setTotalElementCount(result.getTotalElementCount());
+        return newPageInfo;
     }
-
-
 
     /**
      * ISBN으로 책 조회
@@ -224,16 +192,16 @@ public class BookService {
     /**
      * 특정 책을 카트에서 삭제
      */
-    public void deleteBooksFromCart(List<CartDTO> carts, String userId) {
+    public void deleteBooksFromCart(Integer cartNo, String userId) {
         try {
-            if (carts == null || carts.isEmpty()) {
-                throw new IllegalArgumentException("Cart items cannot be null or empty.");
-            }
+//            if (carts == null || carts.isEmpty()) {
+//                throw new IllegalArgumentException("Cart items cannot be null or empty.");
+//            }
 
-            UserDTO user = new UserDTO();
-            user.setId(userId);
+            // UserDTO user = new UserDTO();
+            // user.setId(userId);
 
-            bookMapper.deleteBookFromCart(carts, user);
+            bookMapper.deleteBookFromCart(cartNo, userId);
         } catch (Exception e) {
             log.error("Error while deleting books from cart for userId: {}", userId, e);
             throw new RuntimeException("Failed to delete books from cart. Please try again later.");

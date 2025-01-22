@@ -63,8 +63,15 @@
     <!-- 사용자 id로 대출중인 책 반환 -->
     <select id="getActiveLoanByUserAndBook" resultType="LoanDTO">
         SELECT * FROM loan WHERE user_id = #{userId}
-        AND book_isbn = #{isbn}
         AND status = '대출 중'
+        <choose>
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY cart_no DESC
+            </when>
+            <when test="pageInfo.sort == 'name'">
+                ORDER BY book_title
+            </when>
+        </choose>
     </select>
     <!-- 책의 대출 가능 복사본이 0일 때, 첫 번째 대출자의 반납일 조회 -->
     <select id="getFirstReturnDateByBookIsbn" resultType="java.time.LocalDateTime">

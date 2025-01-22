@@ -52,11 +52,10 @@ public class DiscussionService {
     }
 
     /**
-     * 가장 최근의 토론 주제 반환 (최신 5개)
+     * 가장 최근의 토론 주제 반환
      */
     public List<DiscussionDTO> getCurrentDiscussions() {
-        List<DiscussionDTO> discussions = discussionMapper.getCurrentDiscussion();
-        return discussions.size() > 5 ? discussions.subList(0, 5) : discussions;
+        return discussionMapper.getCurrentDiscussion();
     }
 
     /**

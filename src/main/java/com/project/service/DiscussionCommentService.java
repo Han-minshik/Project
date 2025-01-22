@@ -86,4 +86,13 @@ public class DiscussionCommentService {
 
         return pageInfo;
     }
+
+    public DiscussionCommentDTO getFirstComment() {
+        return discussionCommentMapper.getFirstComment();
+    }
+
+    public DiscussionCommentDTO getSecondComment() {
+        return discussionCommentMapper.getSecondComment();
+    }
+
 }

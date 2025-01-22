@@ -2,6 +2,7 @@ package com.project.controller;
 
 import com.project.dto.BookDTO;
 import com.project.dto.UserDTO;
+import com.project.service.BookService;
 import com.project.service.EmailService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +28,8 @@ public class UserRestController {
     @Autowired private UserService userService;
     @Autowired private EmailService emailService;
     private final Map<String, String> emailCertRepository = new HashMap<>();
+    @Autowired
+    private BookService bookService;
 
     /*******************************************/
     @GetMapping("/id/{userId}")
@@ -105,9 +108,9 @@ public class UserRestController {
     }
 
     @PostMapping("/resetPw/password")
-    public ResponseEntity<Void> post_change_password(
-        Authentication auth,
-        @RequestBody String password
+    public ResponseEntity<Void> post_reset_password(
+            Authentication auth,
+            @RequestBody String password
     ){
         String id = auth.getName();
         userService.reset_password(id, password);
@@ -116,12 +119,12 @@ public class UserRestController {
 
 
     /******************************************/
-    @PostMapping("/changeInfo")
-    public ResponseEntity<Void> post_user_change_info(
+    @PostMapping("/info-revise")
+    public ResponseEntity<Void> post_info_revise(
             // 아이디/비번만 찾는다면 auth로 충분
             // 단, 다른 정보는 @AuthenticationPrincipal 써야됨
-            Authentication auth, 
-            @ModelAttribute @Validated UserDTO modifyingUser,
+            Authentication auth,
+            @ModelAttribute @Validated UserDTO reviseUser,
             BindingResult bindingResult
     ){
         // 로그인 했습니까?
@@ -129,7 +132,7 @@ public class UserRestController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         // 지금 로그인 한 나와 수정된 유저 객체가 같아야 한다
-        if(!auth.getName().equals(modifyingUser.getId())){
+        if(!auth.getName().equals(reviseUser.getId())){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         // 비밀번호, 기타 패턴 조건 안 맞을시
@@ -137,7 +140,7 @@ public class UserRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        boolean updateResult = userService.updateUser(modifyingUser);
+        boolean updateResult = userService.updateUser(reviseUser);
         if(!updateResult){
             // 업데이트 실패 시
             return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
@@ -150,9 +153,19 @@ public class UserRestController {
     public ResponseEntity<Void> post_user_info(
             @RequestBody Integer bookIsbn
     ){
-
         return ResponseEntity.status(HttpStatus.OK).build();
-
     }
+
+    /*************************************************/
+    @DeleteMapping("/wishlist/delete")
+    public ResponseEntity<Void> delete_wishlist(
+            Authentication auth,
+            @RequestBody Integer cartNo
+    ){
+        String userId = auth.getName();
+        bookService.deleteBooksFromCart(cartNo, userId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 
 }

@@ -1,91 +1,214 @@
 package com.project.controller;
 
-import com.project.dto.DiscussionDTO;
-import com.project.dto.ReviewDTO;
+import com.project.dto.*;
 import com.project.service.BookService;
+import com.project.service.DiscussionCommentService;
+import com.project.service.DiscussionService;
+import com.project.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.List;
 
 @Log4j2
 @Controller
 public class MainController {
     @Autowired private BookService bookService;
-
+    @Autowired private DiscussionService discussionService;
+    @Autowired private DiscussionCommentService discussionCommentService;
+    @Autowired private UserService userService;
 
     @GetMapping("/")
-    public String get_home () {
+    public String get_home (
+            Model model
+    ) {
+        List<BookDTO> pBook5 = bookService.getPopularBook5();
+        List<BookDTO> pBook = bookService.getPopularBook();
+        List<DiscussionDTO> cDiscussion = discussionService.getCurrentDiscussions();
+        DiscussionCommentDTO fComment = discussionCommentService.getFirstComment();
+        DiscussionCommentDTO sComment = discussionCommentService.getSecondComment();
+        List<BookDTO> pBook2 = bookService.getPopularBook2();
+
+        model.addAttribute("pBook5", pBook5);
+        model.addAttribute("pBook", pBook);
+        model.addAttribute("cDiscussion", cDiscussion);
+        model.addAttribute("fComment", fComment);
+        model.addAttribute("sComment", sComment);
+        model.addAttribute("pBook2", pBook2);
         return "main/home";
     }
+    /*************************************/
 
-    /************************************/
-    @GetMapping("/category")
-    public String get_category () {
-        return "main/category";
+    // 비밀번호 분실
+    @GetMapping("/resetPw")
+    public String get_reset_pw() {return "user/reset-pw";}
+
+    // 이것도 아마도 userRestController로 옮겨야 할듯
+    @PostMapping("/resetPw")
+    public String post_reset_pw(
+            String id,
+            @RequestParam("password") String newPw
+    ){
+        // 패턴 검사도 함
+        boolean resetPwResult =  userService.reset_password(id, newPw);
+        if (resetPwResult){
+            return "redirect:/";
+        }
+        return "user/reset-pw";
     }
 
-    /**********************************************/
+    @GetMapping("/book/category")
+    public String getBooks(
+            PageInfoDTO<BookDTO> bookPageInfo,
+            @RequestParam(required = false) String bookName,
+            Model model
+    ) {
+        PageInfoDTO<BookDTO> books;
+        if (bookName != null && !bookName.trim().isEmpty()) {
+            books = bookService.searchBooksByNameWithCount(bookPageInfo, bookName);
+        } else {
+            books = bookService.getPaginatedBooks(bookPageInfo);
+        }
+        model.addAttribute("books", books);
+        model.addAttribute("bookName", bookName);
+        return "book/book-category";
+    }
 
     // 책 페이지 불러오기
+    // ok
     @GetMapping("/book/{bookIsbn}")
-    public String get_book (
-            @PathVariable Integer bookIsbn
-    ){
-        return "main/book";
+    public String get_book(
+            @PathVariable String bookIsbn,
+            Model model
+    ) {
+        BookDTO book = bookService.getBookByIsbn(bookIsbn);
+        Integer bookDiscussionCount = bookService.getDiscussionCountByBookIsbn(bookIsbn);
+        Integer bookParticipantCount = bookService.getParticipantCountByBookIsbn(bookIsbn);
+        model.addAttribute("book", book);
+        model.addAttribute("bookDiscussionCount", bookDiscussionCount);
+        model.addAttribute("bookParticipantCount", bookParticipantCount);
+        return "book/book";
     }
 
     // 책 리뷰 불러오기
     // js로 태그 작성 같은걸 붙인다
-//    @GetMapping("/book/{bookIsbn}/review")
-//    public String get_book_review (
-//            @PathVariable Integer bookIsbn,
-//            PageInfoDTO < ReviewDTO > pageInfo,
-//            Model model
-//    ){
-//        Map<String, Map<String, Object>> rateMap = bookService.findReviewTitlesByBookTitle() // ??
-//        model.addAttribute("pageInfo", pageInfo);
-//        model.addAttribute("rateMap", rateMap);
-//        return "main/review-template";
-//
-//    }
-    /**********************************************/
-    @GetMapping("/discussion")
-    public String get_discussion () {
-        return "main/discussion";
+    // ok
+    @GetMapping("/book/{bookIsbn}/review")
+    public String get_book_review (
+            @PathVariable String bookIsbn,
+            Model model
+    ){
+        PageInfoDTO<ReviewDTO> paginatedReviews = bookService.getPaginatedReviews(new PageInfoDTO<>() ,bookIsbn);
+
+        model.addAttribute("paginatedReviews", paginatedReviews);
+        return "book/review-template";
+
     }
 
-    // 토론 페이지 불러오기
-//    @GetMapping("/discussion/{discussion_id}")
-//    public String get_discussion (
-//            @PathVariable Integer discussion_id,
-//            Model model
-//    ){
-//        DiscussionDTO discussion = discussionMapper.get
+    /********************** 리뷰 댓글 추가 ****************/
+    @PostMapping("/book/{bookIsbn}/review/add")
+    public String add_review (
+            Authentication auth,
+            @PathVariable String bookIsbn
+    ){
+        return "redirect:/book/" + bookIsbn; // not yet
+    }
+
+    /********************* 토론 **********************/
+    // 토론 게시글 목록
+    @GetMapping("/discussion/category")
+    public String get_discussion_category (
+            Model model
+    ) {
+        PageInfoDTO<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(new PageInfoDTO<>());
+        model.addAttribute("paginatedDiscussions", paginatedDiscussions);
+        return "content/discussion-category";
+    }
+
+    // 토론 페이지
+    @GetMapping("/discussion/{discussionId}")
+    public String get_discussion (
+            @PathVariable Integer discussionId,
+            Model model
+    ) {
+
 //        model.addAttribute("discussion", discussion);
-//
-//
-//    }
-    @GetMapping("/participation")
-    public String get_participate() {
-        return "main/participation";
+        return "discussion-category";
     }
 
     // 토론 페이지 댓글 불러오기 (어쩌면 fetch로 해야할지도)
-    @GetMapping("/discussion/{discussion_id}/comment")
+    @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
-            @PathVariable Integer discussion_id,
+            @PathVariable Integer discussionId,
             Model model
     ){
-//        model.addAttribute("discussion-comment", discussion_comment);
-        return "main/discussion-comment";
+        PageInfoDTO<DiscussionCommentDTO> paginatedDiscussionComment = discussionCommentService.getCommentsWithSortAndPagination(new PageInfoDTO<>() ,discussionId);
+        model.addAttribute("paginatedDiscussionComment-comment", paginatedDiscussionComment);
+        Integer commentCount = discussionService.getCommentCountByDiscussion(discussionId);
+        model.addAttribute("commentCount", commentCount);
+        return "content/discussion-comment";
     }
 
     /********************************************/
+    // 토론 페이지 생성
+    @GetMapping("/discussion/add")
+    public String get_discussion_add (
+    ){
+        return "content/discussion-add";
+    }
+
+    @PostMapping("/discussion/add")
+    public String post_discussion_add (
+            Authentication auth,
+            @RequestBody DiscussionDTO discussion
+
+    ){
+        String userId = auth.getName();
+        discussionService.createDiscussion(
+                discussion.getBookTitle(),
+                discussion.getTopic(),
+                discussion.getContents(),
+                userId,
+                discussion.getBookIsbn()
+        );
+        return "content/discussion-add";
+    }
+
+    // 토론 댓글 생성
+    @PostMapping("/comment/add")
+    public String post_discussion_comment_add (
+            Authentication auth,
+            @RequestParam Integer discussionId,
+            @RequestBody DiscussionCommentDTO discussionComment
+
+    ){
+        String userId = auth.getName();
+        discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
+        return "content/discussion-comment-add";
+    }
+
+    /****************** 좋아요 싫어요 *****************/
+    @GetMapping("/comment/{commentId}/like")
+    public String get_comment_like(
+            Authentication auth,
+            @PathVariable Integer commentId
+    ){
+        discussionCommentService.addLike(commentId, auth.getName());
+        return "content/discussion-comment-like";
+    }
+
+    @GetMapping("/comment/{commentId}/unlike")
+    public String get_comment_unlike(
+            Authentication auth,
+            @PathVariable Integer commentId
+    ){
+        discussionCommentService.addUnlike(commentId, auth.getName());
+        return "content/discussion-comment-unlike";
+    }
 
 
 }

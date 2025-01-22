@@ -11,8 +11,7 @@ import java.util.Map;
 @Mapper
 public interface BookMapper {
     List<BookDTO> getAllBooks();
-    @MapKey("isbn")
-    List<Map<String, Object>> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title);
+    PageInfoDTO<BookDTO> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title);
     BookDTO getBookByIsbn(String isbn);
     List<BookDTO> getPopularBook();
     Integer getDiscussionCountByBookIsbn(String isbn);
@@ -26,7 +25,7 @@ public interface BookMapper {
     List<BookDTO> getPopularBook2();
     List<CartDTO> selectCartsByUser(@Param("pageInfo") PageInfoDTO<CartDTO> pageInfo, String userId);
     void insertBookToCart(CartDTO cart);
-    void deleteBookFromCart(List<CartDTO> carts, UserDTO user);
+    void deleteBookFromCart(Integer cartNo, String userId);
     List<BookImageDTO> getImageByIsbn(String isbn);
     List<BookDTO> getASCBestseller();
     List<BookDTO> getDESCBestseller();

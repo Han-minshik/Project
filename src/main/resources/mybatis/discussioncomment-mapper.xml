@@ -121,4 +121,14 @@
         FROM discussion_comment
         WHERE discussion_id = #{discussionId}
     </select>
+    <!-- 첫 번째 인기있는 의견 -->
+    <select id="getFirstComment" resultType="DiscussionCommentDTO">
+#         SELECT * FROM discussion_comment ORDER BY `like` DESC
+        SELECT * FROM discussion_comment LIMIT 1
+    </select>
+    <!-- 두 번째 인기있는 의견 -->
+    <select id="getSecondComment" resultType="DiscussionCommentDTO">
+#         SELECT * FROM discussion_comment ORDER BY `like` DESC LIMIT 1 OFFSET 1
+        SELECt * FROM discussion_comment LIMIT 1 OFFSET 1
+    </select>
 </mapper>
