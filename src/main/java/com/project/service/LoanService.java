@@ -51,8 +51,13 @@ public class LoanService {
     /**
      * 특정 책의 대출 가능한 복사본 확인
      */
-    public Integer getAvailableCopies(String bookIsbn) {
-        return loanMapper.getAvailableCopies(bookIsbn);
+    public String getAvailableCopies(String bookIsbn) {
+        Integer availableCopies = loanMapper.getAvailableCopies(bookIsbn);
+
+        if(availableCopies == null || availableCopies == 0) {
+            return "불가";
+        }
+        return loanMapper.getAvailableCopies(bookIsbn).toString();
     }
 
     /**

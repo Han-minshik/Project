@@ -28,4 +28,6 @@ public interface BookMapper {
     void insertBookToCart(CartDTO cart);
     void deleteBookFromCart(List<CartDTO> carts, UserDTO user);
     List<BookImageDTO> getImageByIsbn(String isbn);
+    List<BookDTO> getASCBestseller();
+    List<BookDTO> getDESCBestseller();
 }

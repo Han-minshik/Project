@@ -15,8 +15,19 @@
                 WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')) AS totalCount
         FROM book b
         WHERE b.title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+        <choose>
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY b.publication_date DESC
+            </when>
+            <when test="pageInfo.sort == 'title'">
+                ORDER BY b.title ASC
+            </when>
+            <otherwise>
+                ORDER BY b.created_at DESC
+            </otherwise>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
-
     <!-- isbn 으로 책 조회 -->
     <select id="getBookByIsbn" resultType="BookDTO">
         SELECT * FROM book WHERE isbn = #{isbn}
@@ -77,7 +88,7 @@
     <select id="selectPaginatedBooksTotalCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM book
     </select>
-    <!-- 책 조회할 때의 pagination   -->
+    <!-- 책 조회할 때의 pagination -->
     <select id="getPaginatedBooks" resultType="BookDTO">
         SELECT *
         FROM book b
@@ -131,5 +142,13 @@
     <!-- viewer -->
     <select id="getImageByIsbn" resultType="BookImageDTO">
         SELECT * FROM book_image WHERE book_isbn = #{isbn}
+    </select>
+    <!-- 홈 화면 베트트셀러 5 -->
+    <select id="getASCBestseller" resultType="BookDTO">
+        SELECT * FROM book ORDER BY book.isbn LIMIT 5
+    </select>
+    <!-- 홈화면 베스트셀러 2 -->
+    <select id="getDESCBestseller" resultType="BookDTO">
+        SELECT * FROM book ORDER BY book.isbn DESC LIMIT 2
     </select>
 </mapper>

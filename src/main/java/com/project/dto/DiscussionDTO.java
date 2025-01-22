@@ -12,6 +12,7 @@ import java.util.List;
 @ToString
 public class DiscussionDTO {
     private Integer id;
+    private String bookTitle;
     private String topic;
     private String contents;
     private LocalDateTime createdAt;
@@ -19,6 +20,8 @@ public class DiscussionDTO {
 
     private String userId;
     private String bookIsbn;
+
+    private byte[] bookImage;
 
     private List<UserDTO> user;
     private List<BookDTO> book;

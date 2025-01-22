@@ -9,11 +9,14 @@ import java.util.List;
 
 @Mapper
 public interface DiscussionMapper {
-    void createDiscussion(@Param("topic") String topic, @Param("contents") String contents, @Param("userId") String userId, @Param("bookIsbn") String bookIsbn);
+    void createDiscussion(DiscussionDTO discussion);
     String getRecentCommentByDiscussionId(Integer discussionId);
     Integer getCommentCountByDiscussion(Integer discussionId);
     List<DiscussionDTO> getCurrentDiscussion();
     Integer selectPaginatedDiscussionsTotalCount(PageInfoDTO<DiscussionDTO> pageInfo);
-    List<DiscussionDTO> getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo);
-    List<DiscussionDTO> getDiscussion(Integer discussionID);
+    List<DiscussionDTO> getDiscussions(PageInfoDTO<DiscussionDTO> pageInfo);
+    List<DiscussionDTO> getDiscussionsByBookIsbn(String bookIsbn);
+    List<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title);
+    byte[] getBookImageByTitle(String title);
+    List<DiscussionDTO> getMyDiscussion(PageInfoDTO<DiscussionDTO> pageInfo, String userId);
 }

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -201,6 +202,20 @@ public class BookService {
             log.error("Error while fetching images for book ISBN: {}", isbn, e);
             throw new RuntimeException("Failed to fetch book images. Please try again later.");
         }
+    }
+
+    /**
+     * 홈 페이지 베스트셀러 조회
+     */
+    public List<BookDTO> getBooksForHomePage() {
+        List<BookDTO> ascBooks = bookMapper.getASCBestseller();
+        List<BookDTO> descBooks = bookMapper.getDESCBestseller();
+        List<BookDTO> homePageBooks = new ArrayList<>();
+
+        homePageBooks.addAll(ascBooks);
+        homePageBooks.addAll(descBooks);
+
+        return homePageBooks;
     }
 
 }
