@@ -70,9 +70,12 @@
         FROM discussion
         WHERE book_isbn = #{bookIsbn}
     </select>
-    <!-- Discussion 페이지 제목으로 토론 조회   -->
+    <!-- Discussion 페이지 제목으로 토론, 조회된 개수 조회   -->
     <select id="getDiscussionByBookTitle" resultType="DiscussionDTO">
-        SELECT d.*
+        SELECT d.*,
+               (SELECT COUNT(*)
+                FROM book
+                WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')) AS totalCount
         FROM discussion d
                  JOIN book b ON d.book_isbn = b.isbn
         WHERE b.title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
@@ -99,5 +102,9 @@
     <!-- 마이페이지, 내가 작성한 토론글 확인 -->
     <select id="getMyDiscussion" resultType="DiscussionDTO">
         SELECT * FROM discussion WHERE user_id = #{userId}
+    </select>
+    <!-- 각 discussion 조회 -->
+    <select id="selectDiscussionByDiscussionId" resultType="DiscussionDTO">
+        SELECT * FROM discussion WHERE id = #{discussionId}
     </select>
 </mapper>

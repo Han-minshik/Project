@@ -133,4 +133,8 @@ public class DiscussionService {
         }
         return pageInfo;
     }
+
+    public DiscussionDTO selectDiscussionByDiscussionId(Integer discussionId) {
+        return discussionMapper.selectDiscussionByDiscussionId(discussionId);
+    }
 }

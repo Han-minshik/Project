@@ -73,7 +73,7 @@ public class DiscussionCommentService {
             pageInfo.setPage(1);
         }
         if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(10);
+            pageInfo.setSize(3);
         }
 
         Integer totalCommentCount = discussionCommentMapper.getTotalCommentsByDiscussionId(discussionId);

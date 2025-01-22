@@ -32,7 +32,7 @@ public class UserController {
     @Autowired private AdminMapper adminMapper;
     @Autowired
     private BookService bookService;
-    @Autowired private LoanMapper loanMapper;
+    @Autowired
     private LoanService loanService;
 
     /***********************************************/
@@ -114,11 +114,15 @@ public class UserController {
     /************************************************/
 
     @GetMapping("/lendbook")
-    public String get_lendbook(Authentication auth) {
+    public String get_lendbook(Authentication auth, Model model) {
         if (auth != null) {
-            return "user/lendbook";
-//            List<BookDTO> lendbook =  loanMapper.getActiveLoanByUserAndBook(auth.getName()).getBook();
+            String userId = auth.getName();
 
+            List<LoanDTO> activeLoans = loanService.getLoansByUserId(userId);
+
+            model.addAttribute("activeLoans", activeLoans);
+
+            return "user/lendbook";
         }
         return "redirect:/user/login";
     }
@@ -128,15 +132,16 @@ public class UserController {
     @GetMapping("/wishlist")
     public String get_wishlist(
             Authentication auth,
-            Model model
+            Model model,
+            PageInfoDTO<CartDTO> pageInfo
     ) {
         if (auth != null) {
             String userId = auth.getName();
-            List<CartDTO> wishlist = bookService.getCartsByUser(userId);
-            Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
+            PageInfoDTO<CartDTO> wishlist = bookService.getCartsByUser(pageInfo, userId);
 
+            model.addAttribute("pageInfo", pageInfo);
+            model.addAttribute("totalCount", wishlist.getTotalElementCount());
             model.addAttribute("wishlist", wishlist);
-            model.addAttribute("activeLoanCount", activeLoanCount);
             return "user/wishlist";
         }
         return "redirect:/user/login";

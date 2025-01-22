@@ -19,4 +19,5 @@ public interface DiscussionMapper {
     List<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title);
     byte[] getBookImageByTitle(String title);
     List<DiscussionDTO> getMyDiscussion(PageInfoDTO<DiscussionDTO> pageInfo, String userId);
+    DiscussionDTO selectDiscussionByDiscussionId(Integer discussionId);
 }

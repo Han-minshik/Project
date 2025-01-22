@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-21&#10;프론트 merge">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/dto/DiscussionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/dto/DiscussionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/dto/PageInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/dto/PageInfoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionCommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/LoanService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +28,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -211,7 +212,9 @@
       <workItem from="1737457292673" duration="841000" />
       <workItem from="1737458176201" duration="602000" />
       <workItem from="1737467159775" duration="830000" />
-      <workItem from="1737516629325" duration="6303000" />
+      <workItem from="1737516629325" duration="6664000" />
+      <workItem from="1737530743938" duration="4000" />
+      <workItem from="1737536167340" duration="12971000" />
     </task>
     <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
       <option name="closed" value="true" />
@@ -429,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737516653567</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨">
+      <option name="closed" value="true" />
+      <created>1737523389492</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1737523389492</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,6 +465,8 @@
     <MESSAGE value="2025-01-20&#10;merge 준비 완" />
     <MESSAGE value="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
     <MESSAGE value="2025-01-21&#10;프론트 merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025-01-21&#10;프론트 merge" />
+    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정" />
+    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
   </component>
 </project>

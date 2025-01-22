@@ -7,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -29,14 +31,44 @@ public class BookService {
     /**
      * 책 제목으로 검색
      */
-    public List<Map<String, Object>> searchBooksByNameWithCount(String title) {
-        try {
-            return bookMapper.searchBooksByNameWithCount(title);
-        } catch (Exception e) {
-            log.error("Error while searching books by name with count: {}", title, e);
-            throw new RuntimeException("Failed to search books. Please try again later.");
+    public PageInfoDTO<BookDTO> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title) {
+        // 기본값 설정: 페이지 번호와 페이지 크기
+        pageInfo.setPage(Math.max(pageInfo.getPage(), 1)); // 페이지 번호가 1보다 작으면 1로 설정
+        pageInfo.setSize(pageInfo.getSize() != null && pageInfo.getSize() > 0 ? pageInfo.getSize() : 5); // 기본 크기: 5개
+
+        // 책 검색 결과 조회 (Mapper 호출)
+        List<Map<String, Object>> rawBooks = bookMapper.searchBooksByNameWithCount(pageInfo, title);
+
+        // 검색 결과가 있을 경우
+        if (rawBooks != null && !rawBooks.isEmpty()) {
+            // 총 검색 결과 개수 계산
+            Integer totalBookCount = rawBooks.stream()
+                    .map(bookMap -> (Integer) bookMap.get("totalCount"))
+                    .findFirst()
+                    .orElse(0);
+
+            List<BookDTO> books = rawBooks.stream().map(bookMap -> {
+                BookDTO book = new BookDTO();
+                book.setTitle((String) bookMap.get("title"));
+                book.setAuthor((String) bookMap.get("author"));
+                book.setImage((byte[]) bookMap.get("image"));
+                book.setDetail((String) bookMap.get("detail"));
+                book.setCopiesAvailable((Integer) bookMap.get("copiesAvailable"));
+                // 필요한 필드를 추가로 설정
+                return book;
+            }).toList();
+
+            pageInfo.setTotalElementCount(totalBookCount);
+            pageInfo.setElements(books);
+        } else {
+            // 검색 결과가 없을 경우 빈 리스트 설정
+            pageInfo.setTotalElementCount(0);
+            pageInfo.setElements(Collections.emptyList());
         }
+
+        return pageInfo;
     }
+
 
 
     /**
@@ -142,11 +174,27 @@ public class BookService {
     /**
      * 유저의 장바구니 상품 조회
      */
-    public List<CartDTO> getCartsByUser(String userId) {
-        UserDTO user = new UserDTO();
-        user.setId(userId);
-        return bookMapper.selectCartsByUser(user);
+    public PageInfoDTO<CartDTO> getCartsByUser(PageInfoDTO<CartDTO> pageInfo, String userId) {
+        // 페이지 번호 검증 및 초기화
+        if (pageInfo.getPage() < 1) {
+            pageInfo.setPage(1); // 기본값 설정
+        }
+        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
+            pageInfo.setSize(5); // 기본 페이지 크기 설정
+        }
+
+        // 카트 총 개수 조회
+        Integer totalCartCount = bookMapper.selectCartCountByUser(userId);
+        pageInfo.setTotalElementCount(totalCartCount);
+
+        if(totalCartCount != null && totalCartCount > 0) {
+            List<CartDTO> carts = bookMapper.selectCartsByUser(pageInfo, userId);
+            pageInfo.setElements(carts);
+        }
+
+        return pageInfo;
     }
+
 
 
     /**
@@ -216,6 +264,11 @@ public class BookService {
         homePageBooks.addAll(descBooks);
 
         return homePageBooks;
+    }
+
+    public List<CategoryDTO> getCategoryHierarchyByIsbn(String isbn) {
+        List<CategoryDTO> categoryHierarchy = bookMapper.selectCategoryByIsbn(isbn);
+        return categoryHierarchy;
     }
 
 }

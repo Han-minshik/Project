@@ -22,9 +22,6 @@
             <when test="pageInfo.sort == 'title'">
                 ORDER BY b.title ASC
             </when>
-            <otherwise>
-                ORDER BY b.created_at DESC
-            </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
@@ -99,9 +96,6 @@
             <when test="pageInfo.sort == 'title'">
                 ORDER BY b.title ASC
             </when>
-            <otherwise>
-                ORDER BY b.created_at DESC
-            </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
@@ -125,7 +119,18 @@
     </select>
     <!-- 유저 카트 조회 -->
     <select id="selectCartsByUser" resultType="CartDTO">
-        SELECT * FROM `select_carts_by_user_view` WHERE `user_id` = #{id}
+        SELECT *
+        FROM `select_carts_by_user_view`
+        WHERE `user_id` = #{id}
+        <choose>
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY cart_no DESC
+            </when>
+            <when test="pageInfo.sort == 'name'">
+                ORDER BY book_title
+            </when>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
     <!-- 카트에 책 추가 -->
     <insert id="insertBookToCart">
@@ -150,5 +155,40 @@
     <!-- 홈화면 베스트셀러 2 -->
     <select id="getDESCBestseller" resultType="BookDTO">
         SELECT * FROM book ORDER BY book.isbn DESC LIMIT 2
+    </select>
+    <!-- 유저 카트 개수 조회 -->
+    <select id="selectCartCountByUser" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM cart WHERE user_id = #{userId}
+    </select>
+    <!-- 책 카테고리 조회 -->
+    <select id="selectCategoryByIsbn" resultType="CategoryDTO">
+        WITH RECURSIVE CategoryHierarchy AS (
+            SELECT
+                c.no AS category_no,
+                c.name AS category_name,
+                c.parent AS parent_category,
+                c.level AS category_level
+            FROM
+                category c
+                    JOIN
+                project.book b ON c.no = b.category
+            WHERE
+                b.isbn = #{isbn}
+
+            UNION ALL
+
+            SELECT
+                c.no AS category_no,
+                c.name AS category_name,
+                c.parent AS parent_category,
+                c.level AS category_level
+            FROM
+                category c
+                    JOIN
+                CategoryHierarchy ch ON c.no = ch.parent_category
+        )
+        SELECT *
+        FROM CategoryHierarchy
+        ORDER BY category_level;
     </select>
 </mapper>
