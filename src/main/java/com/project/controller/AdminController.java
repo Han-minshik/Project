@@ -47,8 +47,11 @@ public class AdminController {
 
     /*******************************************/
 
-    @GetMapping("/book/update")
-    public void updateBook(){}
+//    @GetMapping("/book/update")
+//    public String updateBook(@AuthenticationPrincipal UserDTO user,
+//                             Model model){
+//
+//    }
 
     @PatchMapping("/book/update")
     public String updateBook(
@@ -66,7 +69,15 @@ public class AdminController {
     /********************************************/
 
     @GetMapping("/book/delete")
-    public void deleteBook(){}
+    public String deleteBook(@AuthenticationPrincipal UserDTO user,
+                             Model model){
+        if(user.getRole().equals("관리자")) {
+            List<BookDTO> books = bookService.getAllBooks();
+            model.addAttribute("books", books);
+            return "redirect:/admin/books";
+        }
+        return "redirect:/";
+    }
 
     @DeleteMapping("/book/delete")
     public String deleteBook(
@@ -80,10 +91,34 @@ public class AdminController {
         return "redirect:/";
     }
 
-    /******************* 강제 퇴출 ********************/
+    /******************* 유저 관련 ********************/
+    @GetMapping("/admin/user")
+    public String getUserList(@AuthenticationPrincipal UserDTO user, Model model) {
+        if(user.getRole().equals("관리자")) {
+            List<UserDTO> users = adminService.getAllUser();
+            model.addAttribute("users", users);
+            return "redirect:/admin/user";
+        }
+        return "redirect:/";
+    }
 
-    @GetMapping("/drop-user")
-    public void dropUser() {}
+    @PostMapping("/update-user")
+    public String updateUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
+        if(user.getRole().equals("관리자")) {
+            adminService.promoteToAdmin(userId);
+            return "redirect:/admin/user";
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/drop-user")
+    public String dropUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
+        if(user.getRole().equals("관리자")) {
+            adminService.deleteUser(userId);
+            return "redirect:/admin/user";
+        }
+        return "redirect:/";
+    }
 
     // 아마도 RestController로 가야할 듯
 //    @PostMapping("/drop-user")

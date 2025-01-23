@@ -35,11 +35,7 @@ public class AdminService {
     /**
      * 관리자 권한 부여
      */
-    public void promoteToAdmin(String adminId, String userId) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public void promoteToAdmin(String userId) {
         adminMapper.createAdmin(userId);
         log.info("사용자 {}에게 관리자 권한을 부여했습니다.", userId);
     }
@@ -128,5 +124,19 @@ public class AdminService {
     public void deleteAdminPost(Integer postId) {
         adminMapper.deleteAdminPost(postId);
         log.info("공지사항을 삭제했습니다. ID: {}", postId);
+    }
+
+    /**
+     * 모든 유저 반환
+     */
+    public List<UserDTO> getAllUser() {
+        return adminMapper.getAllUser();
+    }
+
+    /**
+     * 유저 삭제
+     */
+    public void deleteUser(String userId) {
+        adminMapper.deleteUser(userId);
     }
 }

@@ -52,4 +52,11 @@
         FROM user
         WHERE updated_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)
     </select>
+    <select id="getAllUser" resultType="UserDTO">
+        SELECt * FROM user
+    </select>
+    <!-- 사용자 삭제 -->
+    <delete id="deleteUser">
+        DELETE user FROM user WHERE id = #{userId}
+    </delete>
 </mapper>

@@ -205,7 +205,7 @@
       <workItem from="1737536167340" duration="13919000" />
       <workItem from="1737553636510" duration="12724000" />
       <workItem from="1737617101029" duration="3119000" />
-      <workItem from="1737622800100" duration="6769000" />
+      <workItem from="1737622800100" duration="7107000" />
     </task>
     <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
       <option name="closed" value="true" />
@@ -479,7 +479,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737630056856</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="2025-01-23&#10;관리자 페이지&#10;- 책 수정&#10;- 책 삭제 &#10;- 사용자 제거(사용자 리스트를 볼 수 있는 매핑)&#10;- 공지사항 페이지(구현 여부 확인)&#10;&#10;메인&#10;- 홈&#10;- 비밀번호 분실&#10;- 책 페이지(제목 검색 포함)&#10;- 각 책 페이지 불러오기&#10;- 책 리뷰 불러오기&#10;- 리뷰 불러오기&#10;- 리뷰(댓글 추가)&#10;- 토론 게시글 목록&#10;- 각 토론 페이지&#10;- 토론 페이지 댓글 불러오기&#10;- 토론 페이지 생성&#10;- 토론 댓글 생성&#10;- 토론 댓글 좋아요 싫어요&#10;- 컴플레인&#10;&#10;유저 페이지&#10;- 회원등록&#10;- 로그인&#10;- 마이페이지&#10;- 책 대여 목록&#10;- 카트 &#10;- 회원 정보 수정&#10;- 공지사항 조회&#10;- 탈퇴&#10;&#10;유저 rest&#10;- 아이디 찾기&#10;- 전화번호 인증&#10;- 이메일 인증&#10;- 비밀번호 초기화(찾기)&#10;- 회원정보 수정&#10;- 카트 목록 삭제&#10;&#10;추가해야할 것&#10;- 나의 토론글 조회 페이지&#10;- discussion 서비스 -&gt; maincontroller(discussionid로 토론 게시판 조회)&#10;- 토론 게시판 댓글 템플릿 따로 생성&#10;- 헤더랑 푸터 따로 템플릿 생성 -&gt; 로그인하면 그냥 홈으로 리디렉션 -&gt; 헤더만 바뀌에(authenti)&#10;- 관리자 페이지(삭제 눌렀을 때 책 목록 나오게), 관리자 페이지(사용자 리스트, 버튼 누르면 일주일 내 사용자 정보 수정한 유저, 관리자 승격 메서드)&#10;- 관리자가 문의사항 전체를 볼 수 있는 컨트롤러(메서드)&#10;(회원, 비회원 : 작성버튼 / 회원 중에 관리자랑 일반 유저 : 대댓글(페이지 필요))&#10;- 아이디 찾기 페이지(model)&#10;- 회원정보 수정 페이지 model&#10;- my-talk 컨트롤러 &#10;- reset-pw 수정&#10;- 카트 목록 삭제(컨트롤러 수정)&#10;- 토론 글쓰기, 컴플레인 글쓰기  &#10;&#10;삭제&#10;- 공지사항&#10;&#10;discussion&#10;manager&#10;find-id&#10;info-revise&#10;my-talk&#10;reset-pw&#10;wishlist&#10;write(토론 글쓰기, 컴플레인 글쓰기)&#10;헤더 푸터 분리 -&gt; 로그인하면 authentication으로 헤더만 바뀌게(로그인시 그냥 홈으로 리다이렉트)&#10;                            &lt;th:block sec:authorize=&quot;not authenticated&quot;&gt;&#10;complain 페이지에서 관리자가 대댓글 달 수 있도록(페이지)">
+      <option name="closed" value="true" />
+      <created>1737630091968</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1737630091968</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

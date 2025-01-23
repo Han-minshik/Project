@@ -19,4 +19,6 @@ public interface AdminMapper {
     void updateAdminPost(AdminPostDTO adminPost);
     void deleteAdminPost(Integer id);
     List<UserDTO> getUpdatedUser();
+    List<UserDTO> getAllUser();
+    void deleteUser(String userId);
 }

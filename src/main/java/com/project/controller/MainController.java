@@ -142,8 +142,8 @@ public class MainController {
             @PathVariable Integer discussionId,
             Model model
     ) {
-
-//        model.addAttribute("discussion", discussion);
+        DiscussionDTO discussion = discussionService.selectDiscussionByDiscussionId(discussionId);
+        model.addAttribute("discussion", discussion);
         return "content/discussion";
     }
 
