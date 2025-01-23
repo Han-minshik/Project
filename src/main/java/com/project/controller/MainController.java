@@ -1,10 +1,7 @@
 package com.project.controller;
 
 import com.project.dto.*;
-import com.project.service.BookService;
-import com.project.service.DiscussionCommentService;
-import com.project.service.DiscussionService;
-import com.project.service.UserService;
+import com.project.service.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Log4j2
@@ -21,6 +20,7 @@ public class MainController {
     @Autowired private DiscussionService discussionService;
     @Autowired private DiscussionCommentService discussionCommentService;
     @Autowired private UserService userService;
+    @Autowired private LoanService loanService;
 
     @GetMapping("/")
     public String get_home (
@@ -88,11 +88,16 @@ public class MainController {
             Model model
     ) {
         BookDTO book = bookService.getBookByIsbn(bookIsbn);
-        Integer bookDiscussionCount = bookService.getDiscussionCountByBookIsbn(bookIsbn);
-        Integer bookParticipantCount = bookService.getParticipantCountByBookIsbn(bookIsbn);
         model.addAttribute("book", book);
+        Integer bookDiscussionCount = bookService.getDiscussionCountByBookIsbn(bookIsbn);
         model.addAttribute("bookDiscussionCount", bookDiscussionCount);
+        Integer bookParticipantCount = bookService.getParticipantCountByBookIsbn(bookIsbn);
         model.addAttribute("bookParticipantCount", bookParticipantCount);
+
+        Integer AvailableCopies = loanService.getAvailableCopies(bookIsbn);
+        model.addAttribute("AvailableCopies", AvailableCopies);
+        LocalDateTime firstReturnDate = loanService.getFirstReturnDateByBookIsbn(bookIsbn);
+        model.addAttribute("firstReturnDate", firstReturnDate);
         return "book/book";
     }
 
@@ -139,7 +144,7 @@ public class MainController {
     ) {
 
 //        model.addAttribute("discussion", discussion);
-        return "discussion-category";
+        return "content/discussion";
     }
 
     // 토론 페이지 댓글 불러오기 (어쩌면 fetch로 해야할지도)
@@ -169,15 +174,19 @@ public class MainController {
             @RequestBody DiscussionDTO discussion
 
     ){
-        String userId = auth.getName();
-        discussionService.createDiscussion(
-                discussion.getBookTitle(),
-                discussion.getTopic(),
-                discussion.getContents(),
-                userId,
-                discussion.getBookIsbn()
-        );
-        return "content/discussion-add";
+        if(auth != null){
+            String userId = auth.getName();
+            discussionService.createDiscussion(
+                    discussion.getBookTitle(),
+                    discussion.getTopic(),
+                    discussion.getContents(),
+                    userId,
+                    discussion.getBookIsbn()
+            );
+            return "content/discussion-add";
+        }
+        return "redirect:/user/login";
+
     }
 
     // 토론 댓글 생성
@@ -188,9 +197,13 @@ public class MainController {
             @RequestBody DiscussionCommentDTO discussionComment
 
     ){
-        String userId = auth.getName();
-        discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
-        return "content/discussion-comment-add";
+        if(auth != null){
+            String userId = auth.getName();
+            discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
+            return "content/discussion-comment-add";
+        }
+        return "redirect:/user/login";
+
     }
 
     /****************** 좋아요 싫어요 *****************/
@@ -199,8 +212,12 @@ public class MainController {
             Authentication auth,
             @PathVariable Integer commentId
     ){
-        discussionCommentService.addLike(commentId, auth.getName());
-        return "content/discussion-comment-like";
+        if(auth != null){
+            discussionCommentService.addLike(commentId, auth.getName());
+            return "content/discussion-comment-like";
+        }
+        return "redirect:/user/login";
+
     }
 
     @GetMapping("/comment/{commentId}/unlike")
@@ -208,8 +225,50 @@ public class MainController {
             Authentication auth,
             @PathVariable Integer commentId
     ){
-        discussionCommentService.addUnlike(commentId, auth.getName());
-        return "content/discussion-comment-unlike";
+        if(auth != null){
+            discussionCommentService.addUnlike(commentId, auth.getName());
+            return "content/discussion-comment-unlike";
+        }
+        return "redirect:/user/login";
+
+    }
+
+    /******************* 컴플레인(문의사항) ********************/
+    @PostMapping("/complain/add")
+    public String post_complain_add (
+            Authentication auth,
+            @RequestParam String title,
+            @RequestParam String contents
+    ){
+        if(auth != null){
+            userService.createComplain(title, contents, auth.getName());
+            return "content/complain-add";
+        }
+        return "redirect:/user/login";
+    }
+
+    @PatchMapping("/complain/update")
+    public String patch_complain_update (
+            Authentication auth,
+            @RequestParam Integer compainId
+    ){
+        if(auth != null){
+            userService.updateComplain(compainId, auth.getName());
+            return "content/complain-update";
+        }
+        return "redirect:/user/login";
+    }
+
+    @DeleteMapping("/complain/delete")
+    public String delete_complain_delete (
+            Authentication auth,
+            @RequestParam Integer compainId
+    ){
+        if(auth != null){
+            userService.deleteComplain(compainId);
+            return "content/complain-delete";
+        }
+        return "redirect:/user/login";
     }
 
 

@@ -31,10 +31,11 @@ public class UserController {
     @Autowired private UserMapper userMapper;
     @Autowired private PortOneSerivce portOneSerivce;
     @Autowired private AdminMapper adminMapper;
-    @Autowired
-    private BookService bookService;
-    @Autowired
-    private LoanService loanService;
+    @Autowired private BookService bookService;
+    @Autowired private LoanMapper loanMapper;
+    @Autowired private LoanService loanService;
+
+    /***********************************************/
 
     @GetMapping("/join")
     public String get_join(Authentication auth) {
@@ -99,7 +100,6 @@ public class UserController {
         System.out.println("로그인 안되어있음");
         return "user/login";
     }
-    /************************************************/
 
 
     /***********************************************/
@@ -120,12 +120,40 @@ public class UserController {
             Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
             try {
                 Map<LoanDTO, BookDTO> loanBookMap = loanService.getActiveLoanByUser(userId);
+                model.addAttribute("activeLoanCount", activeLoanCount);
                 model.addAttribute("loanBookMap", loanBookMap);
             } catch (IllegalArgumentException e) {
                 // 대출 중인 책이 없을 경우 처리
                 model.addAttribute("loanBookMap", null);
             }
             return "user/lendbook";
+        }
+        return "redirect:/user/login";
+    }
+
+    @GetMapping("/lendbook/all")
+    public String get_lendbook_all(
+            Authentication auth,
+            Model model
+    ){
+        if (auth != null) {
+            List<LoanDTO> allLendBooks = loanService.getLoansByUserId(auth.getName());
+            model.addAttribute("allLendBooks", allLendBooks);
+            return "user/lendbook";
+        }
+        return "redirect:/user/login";
+    }
+
+    // 책 대출하기
+    @PostMapping("/lendbook/lend")
+    public String post_lendbook_lend(
+            Authentication auth,
+            @ModelAttribute LoanDTO lendbook,
+            @RequestParam Integer points
+    ){
+        if (auth != null) {
+            loanService.createLoanWithPoints(lendbook, points);
+            return "redirect:/user/lendbook";
         }
         return "redirect:/user/login";
     }
@@ -159,7 +187,6 @@ public class UserController {
         return "redirect:/user/wishlist";
     }
 
-    /************************************************/
     // 회원 정보 수정
     @GetMapping("/info-revise")
     public String get_user_info_revise(
@@ -208,7 +235,6 @@ public class UserController {
             return "user/all-admin-post";
         }
         return "redirect:/user/login";
-
     }
 
     // 공지사항 한 페이지

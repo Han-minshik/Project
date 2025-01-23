@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/LoanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,6 +211,8 @@
       <workItem from="1737530743938" duration="4000" />
       <workItem from="1737536167340" duration="13919000" />
       <workItem from="1737553636510" duration="12724000" />
+      <workItem from="1737617101029" duration="3119000" />
+      <workItem from="1737622800100" duration="5706000" />
     </task>
     <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
       <option name="closed" value="true" />
@@ -453,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737566306319</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝">
+      <option name="closed" value="true" />
+      <created>1737619623847</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1737619623847</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
