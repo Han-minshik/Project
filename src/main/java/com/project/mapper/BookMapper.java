@@ -20,7 +20,7 @@ public interface BookMapper {
     @MapKey("rate")
     Map<String, Map<String, Object>> selectPaginatedReviewTotalCountByIsbn(String isbn);
     Integer selectPaginatedBooksTotalCount(PageInfoDTO<BookDTO> pageInfo);
-    List<BookDTO> getPaginatedBooks(@Param("pageInfo") PageInfoDTO<BookDTO> pageInfo);
+    List<BookDTO> getPaginatedBooks(PageInfoDTO<BookDTO> pageInfo);
     List<BookDTO> getPopularBook5();
     List<BookDTO> getPopularBook2();
     List<CartDTO> selectCartsByUser(@Param("pageInfo") PageInfoDTO<CartDTO> pageInfo, String userId);

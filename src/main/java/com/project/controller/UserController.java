@@ -3,13 +3,10 @@ package com.project.controller;
 import com.project.dto.*;
 import com.project.mapper.AdminMapper;
 import com.project.mapper.LoanMapper;
-import com.project.service.BookService;
-import com.project.service.LoanService;
+import com.project.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import com.project.mapper.UserMapper;
-import com.project.service.PortOneSerivce;
-import com.project.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -34,6 +31,7 @@ public class UserController {
     @Autowired private BookService bookService;
     @Autowired private LoanMapper loanMapper;
     @Autowired private LoanService loanService;
+    @Autowired private DiscussionService discussionService;
 
     /***********************************************/
 
@@ -111,6 +109,19 @@ public class UserController {
         }
         return "redirect:/user/login";
     }
+
+    /************************************************/
+    @GetMapping("/discussion")
+    public String get_my_discussion(Authentication auth, Model model) {
+        if(auth != null) {
+            String userId = auth.getName();
+            PageInfoDTO<DiscussionDTO> myDiscussion =  discussionService.getMyDiscussion(new PageInfoDTO<>(), userId);
+            model.addAttribute("myDiscussion", myDiscussion);
+            return "user/my-talk";
+        }
+        return "redirect:/user/login";
+    }
+
     /************************************************/
 
     @GetMapping("/lendbook")
