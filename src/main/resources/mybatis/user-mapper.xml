@@ -99,7 +99,13 @@
     <delete id="deleteComplain">
         DELETE FROM complain WHERE user_id = #{userId}
     </delete>
+    <!-- 아이디 찾기 -->
     <select id="findIdByEmail" resultType="java.lang.String">
         SELECT user.id FROM user WHERE email = #{email}
+    </select>
+    <!-- 모든 컴플레인 조회 -->
+    <select id="getComplains" resultType="ComplainDTO">
+        SELECT * FROM complain ORDER BY no
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
 </mapper>

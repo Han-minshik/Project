@@ -52,6 +52,7 @@
         FROM user
         WHERE updated_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)
     </select>
+    <!-- 모든 사용자 조회 -->
     <select id="getAllUser" resultType="UserDTO">
         SELECt * FROM user
     </select>

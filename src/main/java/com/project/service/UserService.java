@@ -1,9 +1,6 @@
 package com.project.service;
 
-import com.project.dto.BookDTO;
-import com.project.dto.ComplainDTO;
-import com.project.dto.LoanDTO;
-import com.project.dto.UserDTO;
+import com.project.dto.*;
 import com.project.mapper.BookMapper;
 import com.project.mapper.LoanMapper;
 import com.project.mapper.UserMapper;
@@ -182,5 +179,15 @@ public class UserService {
         loan.setFinalPrice(finalPrice);
         loanMapper.createLoan(loan);
         return finalPrice;
+    }
+
+    public PageInfoDTO<ComplainDTO> getComplains(PageInfoDTO<ComplainDTO> pageInfo) {
+        if(pageInfo.getPage() < 1) {
+            pageInfo.setSize(1);
+        }
+        if(pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
+            pageInfo.setSize(5);
+        }
+        return pageInfo;
     }
 }

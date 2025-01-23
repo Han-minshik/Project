@@ -133,6 +133,9 @@ public class DiscussionService {
         return pageInfo;
     }
 
+    /**
+     * 각 토론 페이지 조회
+     */
     public DiscussionDTO selectDiscussionByDiscussionId(Integer discussionId) {
         return discussionMapper.selectDiscussionByDiscussionId(discussionId);
     }

@@ -25,7 +25,7 @@ public class AdminController {
     @Autowired private AdminMapper adminMapper;
     @Autowired private BookService bookService;
 
-    /**********************************************/
+    /*********************문의사항 조회*************************/
 
 
 
@@ -96,6 +96,8 @@ public class AdminController {
     public String getUserList(@AuthenticationPrincipal UserDTO user, Model model) {
         if(user.getRole().equals("관리자")) {
             List<UserDTO> users = adminService.getAllUser();
+            List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
+            model.addAttribute("updatedUsers", updatedUsers);
             model.addAttribute("users", users);
             return "redirect:/admin/user";
         }

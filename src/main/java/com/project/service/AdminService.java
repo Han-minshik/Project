@@ -43,11 +43,7 @@ public class AdminService {
     /**
      * 최근 1주일 내 정보를 변경한 사용자 조회
      */
-    public List<UserDTO> getRecentlyUpdatedUsers(String adminId) {
-        if (!isAdmin(adminId)) {
-            throw new SecurityException("관리자 권한이 없습니다.");
-        }
-
+    public List<UserDTO> getRecentlyUpdatedUsers() {
         List<UserDTO> updatedUsers = adminMapper.getUpdatedUser();
         log.info("최근 1주일 동안 업데이트된 사용자 목록을 조회했습니다. 총 {}명의 사용자가 있습니다.", updatedUsers.size());
         return updatedUsers;
