@@ -68,12 +68,14 @@ public class MainController {
             Model model
     ) {
         PageInfoDTO<BookDTO> books;
-        if (bookName != null && !bookName.trim().isEmpty()) {
+        if(bookName != null && !bookName.trim().isEmpty()) {
             books = bookService.searchBooksByNameWithCount(bookPageInfo, bookName);
-        } else {
+        }
+        else {
             books = bookService.getPaginatedBooks(bookPageInfo);
         }
-        model.addAttribute("books", books);
+        model.addAttribute("books", books.getElements());
+        model.addAttribute("totalCount", books.getTotalElementCount());
         model.addAttribute("bookName", bookName);
         return "book/book-category";
     }

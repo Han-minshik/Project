@@ -11,7 +11,10 @@ import com.project.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -115,13 +118,42 @@ public class AdminController {
 
 
     /********************* 공지 사항 **********************/
+    @GetMapping("/adminPost")
+    public String get_adminPost(
+            @AuthenticationPrincipal UserDTO user,
+            Model model
+    ){
+        if(user.getRole().equals("admin")){
+            List<AdminPostDTO> posts = adminService.getAllAdminPosts();
+            model.addAttribute("posts", posts);
+            return "redirect:/admin/posts";
+
+        }
+        return "redirect:/user/login";
+    }
+
+    //특정 공지사항 조회
+    @GetMapping("/adminPost/{adminPostId}")
+    public String get_adminPost_by_id(
+            @AuthenticationPrincipal UserDTO user,
+            @PathVariable Integer adminPostId,
+            Model model
+    ){
+        if(user.getRole().equals("admin")){
+            AdminPostDTO adminPost = adminService.getAdminPostById(adminPostId);
+            model.addAttribute("adminPost", adminPost);
+            return "redirect:/admin/posts";
+        }
+        return "redirect:/user/login";
+    }
+
     @PostMapping("/adminPost/add")
     public String post_addAdminPost(
             @AuthenticationPrincipal UserDTO user,
             AdminPostDTO adminPost
     ){
         if(user.getRole().equals("admin")){
-            adminMapper.createAdminPost(adminPost);
+            adminService.addAdminPost(adminPost);
             return "redirect:/admin/admins";
         }
         return "redirect:/user/login";
