@@ -5,40 +5,39 @@
 >
 <head>
     <meta charset="UTF-8">
+	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>나의 찜목록</title>
     <link rel="stylesheet" href="../../static/css/content/lendbook.css" type="text/css">
+	<script src="../../static/js/user/wishlist.js" defer></script>
 </head>
 <body>
     <h1>나의 찜 목록</h1>
     <header>
         <div>
-            <span th:text="#{category.registed-item}">대여한 권수:</span>
+            <span>찜한 권수:</span>
             <b th:text="${pageInfo.totalElementCount} + '건'">13건</b>
         </div>
 
-        <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='recent')}">최신순</a>
-        </li>
-        <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='name')}">이름순</a>
-        </li>
-        <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='low-price')}">삭제하기</a>
-        </li>
-        <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='high-price')}">대여하기</a>
-        </li>
-        <li>
-            <label>
-                <span>보기설정</span>
-                <select id="view-size-select">
-                    <option value="10" th:selected="${pageInfo.size == 10}">10개</option>
-                    <option value="25" th:selected="${pageInfo.size == 25}">25개</option>
-                    <option value="30" th:selected="${pageInfo.size == 30}">30개</option>
-                    <option value="50" th:selected="${pageInfo.size == 50}">50개</option>
-                </select>
-            </label>
-        </li>
+	    <ul>
+		    <li>
+			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='recent')}">최신순</a>
+		    </li>
+		    <li>
+			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='name')}">이름순</a>
+		    </li>
+	    </ul>
+
+	    <div>
+		    <label>
+			    <span>보기설정</span>
+			    <select id="view-size-select">
+				    <option value="10" th:selected="${pageInfo.size == 10}">10개</option>
+				    <option value="25" th:selected="${pageInfo.size == 25}">25개</option>
+				    <option value="30" th:selected="${pageInfo.size == 30}">30개</option>
+				    <option value="50" th:selected="${pageInfo.size == 50}">50개</option>
+			    </select>
+		    </label>
+	    </div>
 
     </header>
 
@@ -48,7 +47,7 @@
         <h2>책 목록</h2>
         <div class="wishlist" id="wishlist-container">
             <p>대여한 책이 없어요ㅠㅠ</p>
-            <a href="../book/category.html" class="link">책 보러가기!</a>
+            <a href="../book/book-category.html" class="link">책 보러가기!</a>
         </div>
     </main>
 

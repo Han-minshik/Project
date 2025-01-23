@@ -7,6 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Book;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -28,15 +31,13 @@ public class BookService {
     /**
      * 책 제목으로 검색
      */
-    public List<Map<String, Object>> searchBooksByNameWithCount(String title) {
-        try {
-            return bookMapper.searchBooksByNameWithCount(title);
-        } catch (Exception e) {
-            log.error("Error while searching books by name with count: {}", title, e);
-            throw new RuntimeException("Failed to search books. Please try again later.");
-        }
+    public PageInfoDTO<BookDTO> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title) {
+        PageInfoDTO<BookDTO> result = bookMapper.searchBooksByNameWithCount(pageInfo, title);
+        PageInfoDTO<BookDTO> newPageInfo = new PageInfoDTO<>();
+        newPageInfo.setElements(result.getElements());
+        newPageInfo.setTotalElementCount(result.getTotalElementCount());
+        return newPageInfo;
     }
-
 
     /**
      * ISBN으로 책 조회
@@ -141,11 +142,27 @@ public class BookService {
     /**
      * 유저의 장바구니 상품 조회
      */
-    public List<CartDTO> getCartsByUser(String userId) {
-        UserDTO user = new UserDTO();
-        user.setId(userId);
-        return bookMapper.selectCartsByUser(user);
+    public PageInfoDTO<CartDTO> getCartsByUser(PageInfoDTO<CartDTO> pageInfo, String userId) {
+        // 페이지 번호 검증 및 초기화
+        if (pageInfo.getPage() < 1) {
+            pageInfo.setPage(1); // 기본값 설정
+        }
+        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
+            pageInfo.setSize(5); // 기본 페이지 크기 설정
+        }
+
+        // 카트 총 개수 조회
+        Integer totalCartCount = bookMapper.selectCartCountByUser(userId);
+        pageInfo.setTotalElementCount(totalCartCount);
+
+        if(totalCartCount != null && totalCartCount > 0) {
+            List<CartDTO> carts = bookMapper.selectCartsByUser(pageInfo, userId);
+            pageInfo.setElements(carts);
+        }
+
+        return pageInfo;
     }
+
 
 
     /**
@@ -175,16 +192,16 @@ public class BookService {
     /**
      * 특정 책을 카트에서 삭제
      */
-    public void deleteBooksFromCart(List<CartDTO> carts, String userId) {
+    public void deleteBooksFromCart(Integer cartNo, String userId) {
         try {
-            if (carts == null || carts.isEmpty()) {
-                throw new IllegalArgumentException("Cart items cannot be null or empty.");
-            }
+//            if (carts == null || carts.isEmpty()) {
+//                throw new IllegalArgumentException("Cart items cannot be null or empty.");
+//            }
 
-            UserDTO user = new UserDTO();
-            user.setId(userId);
+            // UserDTO user = new UserDTO();
+            // user.setId(userId);
 
-            bookMapper.deleteBookFromCart(carts, user);
+            bookMapper.deleteBookFromCart(cartNo, userId);
         } catch (Exception e) {
             log.error("Error while deleting books from cart for userId: {}", userId, e);
             throw new RuntimeException("Failed to delete books from cart. Please try again later.");
@@ -201,6 +218,25 @@ public class BookService {
             log.error("Error while fetching images for book ISBN: {}", isbn, e);
             throw new RuntimeException("Failed to fetch book images. Please try again later.");
         }
+    }
+
+    /**
+     * 홈 페이지 베스트셀러 조회
+     */
+    public List<BookDTO> getBooksForHomePage() {
+        List<BookDTO> ascBooks = bookMapper.getASCBestseller();
+        List<BookDTO> descBooks = bookMapper.getDESCBestseller();
+        List<BookDTO> homePageBooks = new ArrayList<>();
+
+        homePageBooks.addAll(ascBooks);
+        homePageBooks.addAll(descBooks);
+
+        return homePageBooks;
+    }
+
+    public List<CategoryDTO> getCategoryHierarchyByIsbn(String isbn) {
+        List<CategoryDTO> categoryHierarchy = bookMapper.selectCategoryByIsbn(isbn);
+        return categoryHierarchy;
     }
 
 }

@@ -23,4 +23,6 @@ public interface DiscussionCommentMapper {
     List<DiscussionCommentDTO> getCommentsWithSortAndPagination(@Param("pageInfo") PageInfoDTO<DiscussionCommentDTO> pageInfo,
                                                                 @Param("discussionId") Integer discussionId);
     Integer getTotalCommentsByDiscussionId(Integer discussionId);
+    DiscussionCommentDTO getFirstComment();
+    DiscussionCommentDTO getSecondComment();
 }

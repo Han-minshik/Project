@@ -21,6 +21,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Log4j2
 @Controller
@@ -30,10 +31,9 @@ public class UserController {
     @Autowired private UserMapper userMapper;
     @Autowired private PortOneSerivce portOneSerivce;
     @Autowired private AdminMapper adminMapper;
-    @Autowired
-    private BookService bookService;
+    @Autowired private BookService bookService;
     @Autowired private LoanMapper loanMapper;
-    private LoanService loanService;
+    @Autowired private LoanService loanService;
 
     /***********************************************/
 
@@ -89,7 +89,6 @@ public class UserController {
     }
 
     /***********************************************/
-
     @GetMapping("/login")
     public String get_login(Authentication auth) {
         if (auth != null) {
@@ -102,23 +101,59 @@ public class UserController {
         return "user/login";
     }
 
-    /***********************************************/
 
+    /***********************************************/
+    // 내 회원 정보 메뉴
     @GetMapping("/mypage")
     public String get_my_page(Authentication auth) {
         if (auth != null) {
-            return "user/mypage";
+            return "user/my-page";
         }
         return "redirect:/user/login";
     }
     /************************************************/
 
     @GetMapping("/lendbook")
-    public String get_lendbook(Authentication auth) {
+    public String get_lendbook(Authentication auth, Model model) {
         if (auth != null) {
+            String userId = auth.getName();
+            Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
+            try {
+                Map<LoanDTO, BookDTO> loanBookMap = loanService.getActiveLoanByUser(userId);
+                model.addAttribute("activeLoanCount", activeLoanCount);
+                model.addAttribute("loanBookMap", loanBookMap);
+            } catch (IllegalArgumentException e) {
+                // 대출 중인 책이 없을 경우 처리
+                model.addAttribute("loanBookMap", null);
+            }
             return "user/lendbook";
-//            List<BookDTO> lendbook =  loanMapper.getActiveLoanByUserAndBook(auth.getName()).getBook();
+        }
+        return "redirect:/user/login";
+    }
 
+    @GetMapping("/lendbook/all")
+    public String get_lendbook_all(
+            Authentication auth,
+            Model model
+    ){
+        if (auth != null) {
+            List<LoanDTO> allLendBooks = loanService.getLoansByUserId(auth.getName());
+            model.addAttribute("allLendBooks", allLendBooks);
+            return "user/lendbook";
+        }
+        return "redirect:/user/login";
+    }
+
+    // 책 대출하기
+    @PostMapping("/lendbook/lend")
+    public String post_lendbook_lend(
+            Authentication auth,
+            @ModelAttribute LoanDTO lendbook,
+            @RequestParam Integer points
+    ){
+        if (auth != null) {
+            loanService.createLoanWithPoints(lendbook, points);
+            return "redirect:/user/lendbook";
         }
         return "redirect:/user/login";
     }
@@ -128,23 +163,31 @@ public class UserController {
     @GetMapping("/wishlist")
     public String get_wishlist(
             Authentication auth,
-            Model model
+            Model model,
+            PageInfoDTO<CartDTO> pageInfo
     ) {
         if (auth != null) {
             String userId = auth.getName();
-            List<CartDTO> wishlist = bookService.getCartsByUser(userId);
-            Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
+            PageInfoDTO<CartDTO> wishlist = bookService.getCartsByUser(pageInfo, userId);
 
+            model.addAttribute("pageInfo", pageInfo);
+            model.addAttribute("totalCount", wishlist.getTotalElementCount());
             model.addAttribute("wishlist", wishlist);
-            model.addAttribute("activeLoanCount", activeLoanCount);
             return "user/wishlist";
         }
         return "redirect:/user/login";
     }
 
+    @GetMapping("/wishlist/add")
+    public String get_wishlist_add(
+            Authentication auth,
+            @RequestParam String bookIsbn
+    ) {
+        bookService.insertBookToCart(auth.getName(), bookIsbn);
+        return "redirect:/user/wishlist";
+    }
 
-    /************************************************/
-    // 회원 정보 수정 하는 메서드
+    // 회원 정보 수정
     @GetMapping("/info-revise")
     public String get_user_info_revise(
             @AuthenticationPrincipal UserDTO user,
@@ -178,23 +221,8 @@ public class UserController {
 
     }
 
-    /************************************************/
-    // 비밀번호 분실
-    // 이것도 아마도 userRestController로 옮겨야 할듯
-    @PostMapping("/resetPw")
-    public String post_reset_pw(
-            String id,
-            @RequestParam("password") String newPw
-    ){
-        // 패턴 검사도 함
-        boolean resetPwResult =  userService.reset_password(id, newPw);
-        if (resetPwResult){
-            return "redirect:/";
-        }
-        return "user/reset-pw";
-    }
-
-    /******************************************/
+    /*********************** 공지사항 *********************/
+    // 어쩌면 메인으로 가야하는건가?
     // 공지사항 목록
     @GetMapping("/adminPost")
     public String get_allAdminPost(
@@ -207,7 +235,6 @@ public class UserController {
             return "user/all-admin-post";
         }
         return "redirect:/user/login";
-
     }
 
     // 공지사항 한 페이지
@@ -227,20 +254,16 @@ public class UserController {
 
     /******************************/
     // 탈퇴
-    @GetMapping("/resign-user")
-    public void get_resignUser(){}
+    @GetMapping("/resign")
+    public void get_user_resign(){}
 
-    @PostMapping("/resign-user")
-    public String post_resignUser(
+    @PostMapping("/resign")
+    public String post_user_resign(
             Authentication auth
     ){
         if (auth != null) {
             userMapper.deleteUser(auth.getName());
         }
-        return "redirect:/";
+        return "redirect:/user/logout";
     }
-
-
-
-
 }

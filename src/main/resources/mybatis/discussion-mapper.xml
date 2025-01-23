@@ -4,9 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.DiscussionMapper">
     <!-- 토론 주제 생성 -->
-    <insert id="createDiscussion">
-        INSERT INTO discussion (id, topic, contents, created_at, updated_at, user_id, book_isbn)
-        VALUES (NULL, #{topic}, #{contents}, DEFAULT, DEFAULT, #{userId}, #{bookIsbn})
+    <insert id="createDiscussion" parameterType="DiscussionDTO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO discussion (
+            id, book_title, topic, contents, created_at, updated_at, user_id, book_isbn, book_image
+        )
+        VALUES (
+                   NULL,
+                   #{bookTitle},
+                   #{topic},
+                   #{contents},
+                   DEFAULT,
+                   DEFAULT,
+                   #{userId},
+                   #{bookIsbn},
+                   (SELECT image FROM book WHERE title LIKE CONCAT('%', REPLACE(#{bookTitle}, ' ', ''), '%') LIMIT 1)
+               )
     </insert>
     <!-- 가장 최근에 남겨진 의견 -->
     <select id="getRecentCommentByDiscussionId" resultType="string">
@@ -33,14 +45,9 @@
         SELECT COUNT(*)
         FROM discussion d
     </select>
-    <!-- 토론의 모든 내용과 책의 이미지, 제목 반환 -->
-    <select id="getDiscussionsWithBookInfo" resultType="DiscussionDTO">
-        SELECT
-        d.*,
-        b.title AS book_title,
-        b.image AS book_image
-        FROM discussion d
-        LEFT JOIN book b ON d.book_isbn = b.isbn
+    <!-- 토론의 모든 내용 반환 -->
+    <select id="getDiscussions" resultType="DiscussionDTO">
+        SELECT * FROM discussion
         <choose>
             <!-- 최신순 정렬 -->
             <when test="pageInfo.sort == 'recent'">
@@ -57,8 +64,47 @@
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
-    <!-- discussion_id 로 토론 조회 -->
-    <select id="getDiscussion" resultType="DiscussionDTO">
-        SELECT * FROM discussion WHERE discussion.id = #{discussionID}
+    <!-- isbn 으로 토론 조회 -->
+    <select id="getDiscussionsByBookIsbn" resultType="DiscussionDTO">
+        SELECT *
+        FROM discussion
+        WHERE book_isbn = #{bookIsbn}
+    </select>
+    <!-- Discussion 페이지 제목으로 토론, 조회된 개수 조회   -->
+    <select id="getDiscussionByBookTitle" resultType="DiscussionDTO">
+        SELECT d.*,
+               (SELECT COUNT(*)
+                FROM book
+                WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')) AS totalCount
+        FROM discussion d
+                 JOIN book b ON d.book_isbn = b.isbn
+        WHERE b.title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+        <choose>
+            <!-- 최신순 정렬 -->
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY d.created_at DESC
+            </when>
+            <!-- 제목순 정렬 -->
+            <when test="pageInfo.sort == 'title'">
+                ORDER BY d.topic ASC
+            </when>
+            <!-- 기본 정렬: 최신순 -->
+            <otherwise>
+                ORDER BY d.created_at DESC
+            </otherwise>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+    </select>
+    <!-- 토론 생성할 때 제목으로 이미지를 반환 -->
+    <select id="getBookImageByTitle">
+        SELECT image FROM book WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+    </select>
+    <!-- 마이페이지, 내가 작성한 토론글 확인 -->
+    <select id="getMyDiscussion" resultType="DiscussionDTO">
+        SELECT * FROM discussion WHERE user_id = #{userId}
+    </select>
+    <!-- 각 discussion 조회 -->
+    <select id="selectDiscussionByDiscussionId" resultType="DiscussionDTO">
+        SELECT * FROM discussion WHERE id = #{discussionId}
     </select>
 </mapper>

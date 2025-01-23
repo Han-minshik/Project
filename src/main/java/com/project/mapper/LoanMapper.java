@@ -1,6 +1,9 @@
 package com.project.mapper;
 
+import com.project.dto.BookDTO;
+import com.project.dto.CartDTO;
 import com.project.dto.LoanDTO;
+import com.project.dto.PageInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,7 +20,7 @@ public interface LoanMapper {
     Integer getAvailableCopies(String bookIsbn); // Integer → String
     void decreaseCopiesAvailable( String bookIsbn); // Integer → String
     void increaseCopiesAvailable(String bookIsbn); // Integer → String
-    LoanDTO getActiveLoanByUserAndBook(String userId); // Integer → String
+    List<LoanDTO> getActiveLoanByUserAndBook(String userId); // Integer → String
     LocalDateTime getFirstReturnDateByBookIsbn(String isbn);
 }
 

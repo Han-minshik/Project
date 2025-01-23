@@ -8,27 +8,33 @@
         SELECT * FROM book
     </select>
     <!-- 제목으로 책 검색 -->
-    <select id="searchBooksByNameWithCount" parameterType="string" resultType="map">
+    <select id="searchBooksByNameWithCount" resultType="com.project.dto.BookDTO">
         SELECT b.*,
-               (SELECT COUNT(*)
-                FROM book
-                WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')) AS totalCount
+        (SELECT COUNT(*)
+        FROM book
+        WHERE title LIKE CONCAT('%', #{title}, '%')) AS totalCount
         FROM book b
-        WHERE b.title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+        WHERE title LIKE CONCAT('%', #{title}, '%')
+        ORDER BY
+        <choose>
+            <when test="pageInfo.sort == 'recent'">b.publication_date DESC</when>
+            <when test="pageInfo.sort == 'title'">b.title ASC</when>
+            <otherwise>b.isbn</otherwise>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
-
     <!-- isbn 으로 책 조회 -->
     <select id="getBookByIsbn" resultType="BookDTO">
         SELECT * FROM book WHERE isbn = #{isbn}
     </select>
     <!-- 평균 평점이 가장 높은 책 반환 -->
     <select id="getPopularBook" resultType="BookDTO">
-        SELECT *
-        FROM book b
-                 JOIN review r ON b.isbn = r.book_isbn
-        GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
-        ORDER BY AVG(r.rate) DESC
-        LIMIT 1
+#         SELECT *
+#         FROM book b
+#                  JOIN review r ON b.isbn = r.book_isbn
+#         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
+#         ORDER BY AVG(r.rate) DESC
+        SELECT * FROM book LIMIT 1
     </select>
     <!-- 특정 책의 토론 주제 개수 조회 -->
     <select id="getDiscussionCountByBookIsbn" resultType="java.lang.Integer">
@@ -77,7 +83,7 @@
     <select id="selectPaginatedBooksTotalCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM book
     </select>
-    <!-- 책 조회할 때의 pagination   -->
+    <!-- 책 조회할 때의 pagination -->
     <select id="getPaginatedBooks" resultType="BookDTO">
         SELECT *
         FROM book b
@@ -88,33 +94,43 @@
             <when test="pageInfo.sort == 'title'">
                 ORDER BY b.title ASC
             </when>
-            <otherwise>
-                ORDER BY b.created_at DESC
-            </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
     <!-- 평균 평점이 가장 높은 책 5권 반환 -->
     <select id="getPopularBook5" resultType="BookDTO">
-        SELECT *
-        FROM book b
-                 JOIN review r ON b.isbn = r.book_isbn
-        GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
-        ORDER BY AVG(r.rate) DESC
-        LIMIT 5
+#         SELECT *
+#         FROM book b
+#                  JOIN review r ON b.isbn = r.book_isbn
+#         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
+#         ORDER BY AVG(r.rate) DESC
+#         LIMIT 5
+        SELECT * FROM book ORDER BY isbn LIMIT 5
     </select>
     <!-- 평균 평점이 가장 높은 책 2권 반환 -->
     <select id="getPopularBook2" resultType="BookDTO">
-        SELECT *
-        FROM book b
-                 JOIN review r ON b.isbn = r.book_isbn
-        GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
-        ORDER BY AVG(r.rate) DESC
-        LIMIT 2
+#         SELECT *
+#         FROM book b
+#                  JOIN review r ON b.isbn = r.book_isbn
+#         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
+#         ORDER BY AVG(r.rate) DESC
+#         LIMIT 2
+        SELECT * FROM book ORDER BY isbn DESC LIMIT 2
     </select>
     <!-- 유저 카트 조회 -->
     <select id="selectCartsByUser" resultType="CartDTO">
-        SELECT * FROM `select_carts_by_user_view` WHERE `user_id` = #{id}
+        SELECT *
+        FROM `select_carts_by_user_view`
+        WHERE `user_id` = #{id}
+        <choose>
+            <when test="pageInfo.sort == 'recent'">
+                ORDER BY cart_no DESC
+            </when>
+            <when test="pageInfo.sort == 'name'">
+                ORDER BY book_title
+            </when>
+        </choose>
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
     <!-- 카트에 책 추가 -->
     <insert id="insertBookToCart">
@@ -123,13 +139,56 @@
     </insert>
     <!-- 카트에서 특정 책 삭제 -->
     <delete id="deleteBookFromCart">
-        DELETE FROM `cart` WHERE user_id = #{user.id} AND cart.no IN
+        DELETE FROM `cart` WHERE user_id = #{userId} AND cart.no IN
         <foreach collection="carts" item="cart" open="(" close=")" separator=",">
-            #{cart.no}
+            #{cartNo}
         </foreach>
     </delete>
     <!-- viewer -->
     <select id="getImageByIsbn" resultType="BookImageDTO">
         SELECT * FROM book_image WHERE book_isbn = #{isbn}
+    </select>
+    <!-- 홈 화면 베트트셀러 5 -->
+    <select id="getASCBestseller" resultType="BookDTO">
+        SELECT * FROM book ORDER BY book.isbn LIMIT 5
+    </select>
+    <!-- 홈화면 베스트셀러 2 -->
+    <select id="getDESCBestseller" resultType="BookDTO">
+        SELECT * FROM book ORDER BY book.isbn DESC LIMIT 2
+    </select>
+    <!-- 유저 카트 개수 조회 -->
+    <select id="selectCartCountByUser" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM cart WHERE user_id = #{userId}
+    </select>
+    <!-- 책 카테고리 조회 -->
+    <select id="selectCategoryByIsbn" resultType="CategoryDTO">
+        WITH RECURSIVE CategoryHierarchy AS (
+            SELECT
+                c.no AS category_no,
+                c.name AS category_name,
+                c.parent AS parent_category,
+                c.level AS category_level
+            FROM
+                category c
+                    JOIN
+                project.book b ON c.no = b.category
+            WHERE
+                b.isbn = #{isbn}
+
+            UNION ALL
+
+            SELECT
+                c.no AS category_no,
+                c.name AS category_name,
+                c.parent AS parent_category,
+                c.level AS category_level
+            FROM
+                category c
+                    JOIN
+                CategoryHierarchy ch ON c.no = ch.parent_category
+        )
+        SELECT *
+        FROM CategoryHierarchy
+        ORDER BY category_level;
     </select>
 </mapper>

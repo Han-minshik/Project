@@ -73,10 +73,18 @@ public class UserService {
             throw new IllegalArgumentException("최대 5권까지 대출 가능합니다.");
         }
 
-        LoanDTO existingLoan = loanMapper.getActiveLoanByUserAndBook(userId);
-        if (existingLoan != null) {
-            throw new IllegalArgumentException("이미 대출 중인 책이 있습니다: " + existingLoan.getBookIsbn());
+        List<LoanDTO> existingLoan = loanMapper.getActiveLoanByUserAndBook(userId);
+
+        if (existingLoan != null && !existingLoan.isEmpty()) {
+            StringBuilder isbnList = new StringBuilder("이미 대출 중인 책이 있습니다: ");
+            for (LoanDTO loan : existingLoan) {
+                isbnList.append(loan.getBookIsbn()).append(", ");
+            }
+            // 마지막 쉼표 제거
+            String message = isbnList.substring(0, isbnList.length() - 2);
+            throw new IllegalArgumentException(message);
         }
+
 
         BookDTO book = bookMapper.getBookByIsbn(isbn);
         if (book == null) {
@@ -119,15 +127,30 @@ public class UserService {
             throw new IllegalArgumentException("반납하려는 책의 ISBN이 필요합니다.");
         }
 
-        LoanDTO loan = loanMapper.getActiveLoanByUserAndBook(userId);
-        if (loan == null) {
+        // 대출 기록 조회
+        List<LoanDTO> loans = loanMapper.getActiveLoanByUserAndBook(userId);
+        if (loans == null || loans.isEmpty()) {
             throw new IllegalArgumentException("반납할 대출 기록이 없습니다.");
         }
 
-        loanMapper.updateLoanStatus(loan.getId(), "반납 완료");
-        loanMapper.increaseCopiesAvailable(isbn);
-        log.info("책이 성공적으로 반납되었습니다: ISBN {}", isbn);
+        // 리스트를 순회하면서 해당 ISBN과 일치하는 대출 기록 처리
+        boolean isReturned = false;
+        for (LoanDTO loan : loans) {
+            if (loan.getBookIsbn().equals(isbn)) {
+                loanMapper.updateLoanStatus(loan.getId(), "반납 완료");
+                loanMapper.increaseCopiesAvailable(isbn);
+                log.info("책이 성공적으로 반납되었습니다: ISBN {}", isbn);
+                isReturned = true;
+                break; // ISBN이 일치하는 책을 처리한 후 종료
+            }
+        }
+
+        // ISBN에 해당하는 대출 기록이 없으면 예외 처리
+        if (!isReturned) {
+            throw new IllegalArgumentException("반납하려는 책의 대출 기록이 없습니다: ISBN " + isbn);
+        }
     }
+
 
     public void createComplain(String title, String contents, String userId) {
         ComplainDTO complain = new ComplainDTO();
