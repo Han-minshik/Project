@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.project.dto.DiscussionCommentDTO;
 import com.project.dto.DiscussionDTO;
 import com.project.dto.PageInfoDTO;
 import com.project.mapper.DiscussionMapper;
@@ -62,24 +63,21 @@ public class DiscussionService {
      * 페이징된 토론 목록 반환 (책 정보 포함)
      */
     public PageInfoDTO<DiscussionDTO> getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo) {
-        // 기본 페이지 설정
         if (pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
         if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
             pageInfo.setSize(5); // 기본 5개씩 노출
         }
-
-        // 총 토론 개수 조회
         Integer totalDiscussionCount = discussionMapper.selectPaginatedDiscussionsTotalCount(pageInfo);
-
-        // 데이터가 존재할 경우 페이징 처리
         if (totalDiscussionCount != null && totalDiscussionCount > 0) {
             List<DiscussionDTO> discussions = discussionMapper.getDiscussions(pageInfo);
             pageInfo.setTotalElementCount(totalDiscussionCount);
             pageInfo.setElements(discussions);
+        } else {
+            pageInfo.setTotalElementCount(0);
+            pageInfo.setElements(List.of());
         }
-
         return pageInfo;
     }
 

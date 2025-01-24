@@ -3,6 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.DiscussionMapper">
+    <resultMap id="DiscussionDTOResultMap" type="com.project.dto.DiscussionDTO">
+        <result property="id" column="id"/>
+        <result property="bookTitle" column="book_title"/>
+        <result property="topic" column="topic"/>
+        <result property="contents" column="contents"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+        <result property="latestComment" column="latest_comment"/> <!-- 최신 댓글 매핑 -->
+    </resultMap>
     <!-- 토론 주제 생성 -->
     <insert id="createDiscussion" parameterType="DiscussionDTO" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO discussion (
@@ -46,21 +55,21 @@
         FROM discussion d
     </select>
     <!-- 토론의 모든 내용 반환 -->
-    <select id="getDiscussions" resultType="DiscussionDTO">
-        SELECT * FROM discussion d
+    <select id="getDiscussions" resultMap="DiscussionDTOResultMap">
+        SELECT d.*,
+        (SELECT c.content
+        FROM discussion_comment c
+        WHERE c.discussion_id = d.id
+        ORDER BY c.created_at DESC
+        LIMIT 1) AS latest_comment
+        FROM discussion d
         <choose>
-            <!-- 최신순 정렬 -->
             <when test="pageInfo.sort == 'recent'">
                 ORDER BY d.created_at DESC
             </when>
-            <!-- 제목순 정렬 -->
             <when test="pageInfo.sort == 'title'">
                 ORDER BY d.topic ASC
             </when>
-            <!-- 기본 정렬: 최신순 -->
-            <otherwise>
-                ORDER BY d.created_at DESC
-            </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>

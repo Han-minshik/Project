@@ -26,4 +26,6 @@ public class DiscussionDTO {
     private List<UserDTO> user;
     private List<BookDTO> book;
     private List<DiscussionCommentDTO> comment;
+
+    private String latestComment;
 }
