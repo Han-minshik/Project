@@ -130,8 +130,11 @@ public class MainController {
     // 토론 게시글 목록
     @GetMapping("/discussion/category")
     public String get_discussion_category (
-            Model model
+            Model model,
+            Integer discussionId
     ) {
+        String recentDiscussion = discussionService.getRecentCommentByDiscussionId(discussionId);
+        model.addAttribute("recentDiscussion", recentDiscussion);
         PageInfoDTO<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(new PageInfoDTO<>());
         model.addAttribute("paginatedDiscussions", paginatedDiscussions);
         return "content/discussion-category";

@@ -23,10 +23,20 @@ public class BookDTO {
     private String detail;
     private CategoryDTO category;
     private byte[] image;
+    private String base64Image;
     // 등록일자
     private LocalDateTime createdAt;
     private Integer itemId;
     private Integer pageCount;
 
     private List<BookImageDTO> bookImages;
+
+    public void setImage(byte[] image) {
+        this.image = image;
+        if (image != null) {
+            this.base64Image = "data:image/jpeg;base64," + java.util.Base64.getEncoder().encodeToString(image);
+        } else {
+            this.base64Image = null;
+        }
+    }
 }

@@ -47,7 +47,7 @@
     </select>
     <!-- 토론의 모든 내용 반환 -->
     <select id="getDiscussions" resultType="DiscussionDTO">
-        SELECT * FROM discussion
+        SELECT * FROM discussion d
         <choose>
             <!-- 최신순 정렬 -->
             <when test="pageInfo.sort == 'recent'">
