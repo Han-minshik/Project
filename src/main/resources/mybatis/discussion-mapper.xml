@@ -97,10 +97,6 @@
             <when test="pageInfo.sort == 'title'">
                 ORDER BY d.topic ASC
             </when>
-            <!-- 기본 정렬: 최신순 -->
-            <otherwise>
-                ORDER BY d.created_at DESC
-            </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
