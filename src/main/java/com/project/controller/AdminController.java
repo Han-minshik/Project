@@ -2,6 +2,7 @@ package com.project.controller;
 
 import com.project.dto.AdminPostDTO;
 import com.project.dto.BookDTO;
+import com.project.dto.PageInfoDTO;
 import com.project.dto.UserDTO;
 import com.project.mapper.AdminMapper;
 import com.project.mapper.BookMapper;
@@ -93,12 +94,13 @@ public class AdminController {
 
     /******************* 유저 관련 ********************/
     @GetMapping("/admin/user")
-    public String getUserList(@AuthenticationPrincipal UserDTO user, Model model) {
+    public String getUserList(@AuthenticationPrincipal UserDTO user, Model model, PageInfoDTO<UserDTO> pageInfo) {
         if(user.getRole().equals("관리자")) {
             List<UserDTO> users = adminService.getAllUser();
             List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
             model.addAttribute("updatedUsers", updatedUsers);
             model.addAttribute("users", users);
+            model.addAttribute("pageInfo", pageInfo);
             return "redirect:/admin/user";
         }
         return "redirect:/";

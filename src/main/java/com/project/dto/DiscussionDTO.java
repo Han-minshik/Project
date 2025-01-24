@@ -23,9 +23,20 @@ public class DiscussionDTO {
 
     private byte[] bookImage;
 
+    private String base64Image;
+
     private List<UserDTO> user;
     private List<BookDTO> book;
     private List<DiscussionCommentDTO> comment;
 
     private String latestComment;
+
+    public void setImage(byte[] image) {
+        this.bookImage = image;
+        if (image != null) {
+            this.base64Image = "data:image/jpeg;base64," + java.util.Base64.getEncoder().encodeToString(image);
+        } else {
+            this.base64Image = null;
+        }
+    }
 }

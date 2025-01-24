@@ -78,6 +78,7 @@ public class MainController {
         model.addAttribute("books", books.getElements());
         model.addAttribute("totalCount", books.getTotalElementCount());
         model.addAttribute("bookName", bookName);
+        model.addAttribute("bookPageInfo", bookPageInfo);
         return "book/book-category";
     }
 
@@ -108,10 +109,12 @@ public class MainController {
     @GetMapping("/book/{bookIsbn}/review")
     public String get_book_review (
             @PathVariable String bookIsbn,
-            Model model
+            Model model,
+            PageInfoDTO<ReviewDTO> pageInfo
     ){
         PageInfoDTO<ReviewDTO> paginatedReviews = bookService.getPaginatedReviews(new PageInfoDTO<>() ,bookIsbn);
 
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("paginatedReviews", paginatedReviews);
         return "book/review-template";
 
@@ -156,12 +159,14 @@ public class MainController {
     @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
             @PathVariable Integer discussionId,
-            Model model
+            Model model,
+            PageInfoDTO<DiscussionCommentDTO> pageInfo
     ){
         PageInfoDTO<DiscussionCommentDTO> paginatedDiscussionComment = discussionCommentService.getCommentsWithSortAndPagination(new PageInfoDTO<>() ,discussionId);
         model.addAttribute("paginatedDiscussionComment-comment", paginatedDiscussionComment);
         Integer commentCount = discussionService.getCommentCountByDiscussion(discussionId);
         model.addAttribute("commentCount", commentCount);
+        model.addAttribute("pageInfo", pageInfo);
         return "content/discussion-comment";
     }
 
@@ -240,9 +245,10 @@ public class MainController {
 
     /******************* 컴플레인(문의사항) ********************/
     @GetMapping("/complain")
-    public String complain(Model model) {
+    public String complain(Model model, PageInfoDTO<ComplainDTO> pageInfo) {
         PageInfoDTO<ComplainDTO> complains = userService.getComplains(new PageInfoDTO<>());
         model.addAttribute("complains", complains);
+        model.addAttribute("pageInfo", pageInfo);
         return "content/complain";
     }
 

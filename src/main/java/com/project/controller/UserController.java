@@ -112,11 +112,12 @@ public class UserController {
 
     /************************************************/
     @GetMapping("/discussion")
-    public String get_my_discussion(Authentication auth, Model model) {
+    public String get_my_discussion(Authentication auth, Model model, PageInfoDTO<DiscussionDTO> pageInfo) {
         if(auth != null) {
             String userId = auth.getName();
             PageInfoDTO<DiscussionDTO> myDiscussion =  discussionService.getMyDiscussion(new PageInfoDTO<>(), userId);
             model.addAttribute("myDiscussion", myDiscussion);
+            model.addAttribute("pageInfo", pageInfo);
             return "user/my-talk";
         }
         return "redirect:/user/login";
@@ -125,7 +126,7 @@ public class UserController {
     /************************************************/
 
     @GetMapping("/lendbook")
-    public String get_lendbook(Authentication auth, Model model) {
+    public String get_lendbook(Authentication auth, Model model, PageInfoDTO<CartDTO> pageInfo) {
         if (auth != null) {
             String userId = auth.getName();
             Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
@@ -133,6 +134,7 @@ public class UserController {
                 Map<LoanDTO, BookDTO> loanBookMap = loanService.getActiveLoanByUser(userId);
                 model.addAttribute("activeLoanCount", activeLoanCount);
                 model.addAttribute("loanBookMap", loanBookMap);
+                model.addAttribute("pageInfo", pageInfo);
             } catch (IllegalArgumentException e) {
                 // 대출 중인 책이 없을 경우 처리
                 model.addAttribute("loanBookMap", null);
@@ -145,11 +147,13 @@ public class UserController {
     @GetMapping("/lendbook/all")
     public String get_lendbook_all(
             Authentication auth,
-            Model model
+            Model model,
+            PageInfoDTO<CartDTO> pageInfo
     ){
         if (auth != null) {
             List<LoanDTO> allLendBooks = loanService.getLoansByUserId(auth.getName());
             model.addAttribute("allLendBooks", allLendBooks);
+            model.addAttribute("pageInfo", pageInfo);
             return "user/lendbook";
         }
         return "redirect:/user/login";
