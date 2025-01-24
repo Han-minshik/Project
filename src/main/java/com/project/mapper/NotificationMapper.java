@@ -11,9 +11,9 @@ public interface NotificationMapper {
     void createNotification(NotificationDTO notification);
     void updateNotificationStatus(Integer id, String status);
     List<NotificationDTO> getNotificationByUserId(String userId);
-    void createLoanReminderNotification(@Param("userId") String userId, @Param("message") String message, @Param("type") String type);
-    void createPointEarnedNotification(@Param("userId") String userId, @Param("message") String message, @Param("type") String type);
-    void createPurchaseNotification(@Param("userId") String userId, @Param("message") String message, @Param("type") String type);
-    void createDiscussionNotification(@Param("userId") String userId, @Param("message") String message, @Param("type") String type);
-    void createSignUpNotification(@Param("userId") String userId, @Param("message") String message, @Param("type") String type);
+    void createLoanReminderNotification(String userId, String message, String type);
+    void createPointEarnedNotification(String userId, String message, String type);
+    void createPurchaseNotification(String userId, String message, String type);
+    void createDiscussionNotification(String userId, String message, String type);
+    void createSignUpNotification(String userId, String message, String type);
 }

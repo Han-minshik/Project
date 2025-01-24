@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -120,6 +121,8 @@ public class UserController {
             model.addAttribute("myDiscussionCount", myDiscussionCount);
             model.addAttribute("myDiscussion", myDiscussion);
             model.addAttribute("pageInfo", pageInfo);
+            log.error(myDiscussion);
+            log.error(myDiscussionCount);
             return "user/my-talk";
         }
         return "redirect:/user/login";
@@ -137,6 +140,8 @@ public class UserController {
                 model.addAttribute("activeLoanCount", activeLoanCount);
                 model.addAttribute("loanBookMap", loanBookMap);
                 model.addAttribute("pageInfo", pageInfo);
+                log.error(activeLoanCount);
+                log.error(loanBookMap);
             } catch (IllegalArgumentException e) {
                 // 대출 중인 책이 없을 경우 처리
                 model.addAttribute("loanBookMap", null);
@@ -186,10 +191,11 @@ public class UserController {
         if (auth != null) {
             String userId = auth.getName();
             PageInfoDTO<CartDTO> wishlist = bookService.getCartsByUser(pageInfo, userId);
-
             model.addAttribute("pageInfo", pageInfo);
             model.addAttribute("totalCount", wishlist.getTotalElementCount());
             model.addAttribute("wishlist", wishlist);
+            log.error(wishlist);
+            log.error(wishlist.getTotalElementCount());
             return "user/wishlist";
         }
         return "redirect:/user/login";

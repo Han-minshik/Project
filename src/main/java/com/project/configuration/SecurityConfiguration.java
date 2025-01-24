@@ -24,13 +24,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configure -> {
-            configure.requestMatchers("/static/**").permitAll();
-            configure.requestMatchers("/").permitAll();
-            configure.requestMatchers("/user/join").permitAll();
-            configure.requestMatchers("/user/id/*", "/user/name/*", "user/findId/**").permitAll();
-            configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
-            configure.requestMatchers("/book/**","/discussion/**").permitAll();
-            configure.anyRequest().authenticated();
+//            configure.requestMatchers("/static/**").permitAll();
+//            configure.requestMatchers("/").permitAll();
+//            configure.requestMatchers("/user/join").permitAll();
+//            configure.requestMatchers("/user/id/*", "/user/name/*", "user/findId/**").permitAll();
+//            configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
+//            configure.requestMatchers("/book/*","/discussion/**").permitAll();
+//            configure.anyRequest().authenticated();
+            configure.anyRequest().permitAll();
         });
 
         // 관리자만 접근 가능한 authorizeHttpRequests가 필요함

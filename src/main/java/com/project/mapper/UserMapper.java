@@ -8,24 +8,24 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    void createUser(UserDTO user);
-    UserDTO getUserById(String id);
-    UserDTO getUserByCi(String ci);
+    void createUser(@Param("user") UserDTO user);
+    UserDTO getUserById(@Param("id") String id);
+    UserDTO getUserByCi(@Param("ci") String ci);
     List<UserDTO> getAllUsers();
-    void updateUser(UserDTO userDTO);
-    void deleteUser(String id);
-    List<ReviewDTO> getReviewsByUserId(String userId);
-    void insertSnsInfo(SnsInfoDTO snsInfo);
-    void insertReview(ReviewDTO review);
+    void updateUser(@Param("userDTO") UserDTO userDTO);
+    void deleteUser(@Param("id") String id);
+    List<ReviewDTO> getReviewsByUserId(@Param("userId") String userId);
+    void insertSnsInfo(@Param("snsInfo") SnsInfoDTO snsInfo);
+    void insertReview(@Param("review") ReviewDTO review);
     void addPointToUser(@Param("userId") String userId, @Param("points") Integer points);
     String getTopDiscussionUser();
-    String getTopCommentUserByDiscussionId(Integer discussionId);
+    String getTopCommentUserByDiscussionId(@Param("discussionId") Integer discussionId);
     Integer deductPoints(@Param("userId") String userId, @Param("points") Integer points);
     Integer getCommentCountByUserInDiscussion(@Param("userId") String userId, @Param("discussionId") Integer discussionId);
-    List<Integer> getAllDiscussionsByUser(String userId);
-    void insertComplain(ComplainDTO userId);
-    void updateComplain(ComplainDTO complain);
-    void deleteComplain(Integer complainNo);
-    String findIdByEmail(String email);
-    List<ComplainDTO> getComplains(PageInfoDTO<ComplainDTO> pageInfo);
+    List<Integer> getAllDiscussionsByUser(@Param("userId") String userId);
+    void insertComplain(@Param("userId") ComplainDTO userId);
+    void updateComplain(@Param("complain") ComplainDTO complain);
+    void deleteComplain(@Param("complainNo") Integer complainNo);
+    String findIdByEmail(@Param("email") String email);
+    List<ComplainDTO> getComplains(@Param("pageInfo") PageInfoDTO<ComplainDTO> pageInfo);
 }

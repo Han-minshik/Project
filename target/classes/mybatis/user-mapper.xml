@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.UserMapper">
+    <!-- 유저 등록 -->
+    <insert id="createUser">
+        INSERT INTO user (id, password, ci, tel, email,
+                          join_date, point, profile_image,
+                          updated_at, role, nickname)
+        VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
+                DEFAULT, #{profileImage}, NULL, '일반', #{nickname})
+    </insert>
+    <!-- id로 사용자 조회 -->
+    <select id="getUserById" resultType="UserDTO">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+    <!-- ci로 사용자 조회 -->
+    <select id="getUserByCi" resultType="UserDTO">
+        SELECT *, USER.id AS user_id, SNS_INFO.id AS sns_id
+        FROM user USER
+                 LEFT OUTER JOIN sns_info SNS_INFO ON USER.id = SNS_INFO.user_id
+        WHERE USER.ci = #{ci}
+    </select>
+    <!-- 모든 사용자 조회 -->
+    <select id="getAllUsers" resultType="UserDTO">
+        SELECT * FROM user
+    </select>
+    <!-- 사용자 정보 업데이트 -->
+    <update id="updateUser">
+        UPDATE user
+        SET password = #{password}, tel = #{tel}, email = #{email}, nickname = #{nickname}, updated_at = DEFAULT
+        WHERE id = #{id}
+    </update>
+    <!-- 사용자 정보 삭제 -->
+    <delete id="deleteUser">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+    <!-- 사용자 id로 남긴 review 조회 -->
+    <select id="getReviewsByUserId" resultType="ReviewDTO">
+        SELECT a.*
+        FROM review a
+        WHERE a.user_id = #{userId}
+    </select>
+    <!-- sns 등록 -->
+    <insert id="insertSnsInfo">
+        INSERT INTO sns_info (id, user_id, name)
+        VALUES (#{id}, #{userId}, #{name})
+    </insert>
+    <!-- 리뷰 등록 -->
+    <insert id="insertReview">
+        INSERT INTO review (user_id, book_isbn, content, `like`, rate, updated_at)
+        VALUES (#{userId}, #{bookIsbn}, #{content}, DEFAULT, 0, DEFAULT)
+    </insert>
+    <!-- 사용자에게 포인트 부여 -->
+    <update id="addPointToUser">
+        UPDATE user SET point = point + #{points}
+        WHERE id = #{userId}
+    </update>
+    <!-- 가장 많은 댓글이 달린 토론 ID 조회(포인트 부여하기 위함) -->
+    <select id="getTopDiscussionUser" resultType="java.lang.String">
+        SELECT d.user_id FROM discussion d
+                                  JOIN (SELECT discussion_id, COUNT(*) AS comment_count FROM discussion_comment
+                                        GROUP BY discussion_id ORDER BY comment_count DESC LIMIT 1)
+            AS top_discussion ON d.id = top_discussion.discussion_id
+    </select>
+    <!-- 특정 discussion_comment 중 좋아요가 가장 많은 댓글의 작성자 ID 조회(포인트 부여) -->
+    <select id="getTopCommentUserByDiscussionId" resultType="java.lang.String">
+        SELECT user_id FROM discussion_comment
+        WHERE discussion_id = #{discussionId}
+        ORDER BY `like` DESC LIMIT 1
+    </select>
+    <!-- 사용 포인트 감소 -->
+    <update id="deductPoints">
+        UPDATE user SET point = point - #{points}
+        WHERE id = #{userId} AND point >= #{points}
+    </update>
+    <!-- 특정 사용자가 작성한 모든 Discussion 조회 -->
+    <select id="getAllDiscussionsByUser" resultType="java.lang.Integer">
+        SELECT id
+        FROM discussion
+        WHERE user_id = #{userId}
+    </select>
+    <!-- 특정 사용자가 작성한 Discussion 내의 댓글 수 조회 -->
+    <select id="getCommentCountByUserInDiscussion" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion_comment
+        WHERE user_id = #{userId} AND discussion_id = #{discussionId}
+    </select>
+    <!-- 컴플레인 생성 -->
+    <insert id="insertComplain">
+        INSERT INTO complain VALUES (NULL, #{title}, #{contents}, #{userId}, '');
+    </insert>
+    <!-- 컴플레인 답변 완료 -->
+    <update id="updateComplain">
+        UPDATE complain SET status = '답장완료' WHERE user_id = #{userId}
+    </update>
+    <!-- 컴플레인 삭제 -->
+    <delete id="deleteComplain">
+        DELETE FROM complain WHERE user_id = #{userId}
+    </delete>
+    <!-- 아이디 찾기 -->
+    <select id="findIdByEmail" resultType="java.lang.String">
+        SELECT user.id FROM user WHERE email = #{email}
+    </select>
+    <!-- 모든 컴플레인 조회 -->
+    <select id="getComplains" resultType="ComplainDTO">
+        SELECT * FROM complain ORDER BY no
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+    </select>
+</mapper>

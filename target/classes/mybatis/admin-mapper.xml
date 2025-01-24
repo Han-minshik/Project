@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.AdminMapper">
+    <!-- 관리자 등록 -->
+    <update id="createAdmin">
+        UPDATE user SET role = '관리자' WHERE id = #{userId}
+    </update>
+    <!-- 책 등록 -->
+    <insert id="insertBook">
+        INSERT INTO book VALUES (#{isbn}, #{title}, #{author}, #{publisher}, #{publicationDate}, #{price}, 50, #{detail}, #{category.no}, #{image}, DEFAULT, #{ItemId}, #{pageCount})
+    </insert>
+    <!-- 책 정보 수정 -->
+    <update id="updateBook">
+        UPDATE book
+        SET title = #{title}, author = #{author}, publisher = #{publisher}, publication_date = #{publicationDate},
+            price = #{price}, copies_available = #{copiesAvailable}, detail = #{detail}, category = #{category.no},
+            image = #{image}, created_at = DEFAULT
+        WHERE isbn = #{isbn}
+    </update>
+    <!-- 책 삭제 -->
+    <delete id="deleteBook">
+        DELETE FROM book WHERE isbn = #{isbn}
+    </delete>
+    <!-- 공지사항 등록 -->
+    <insert id="createAdminPost">
+        INSERT INTO admin_post (title, content, created_at, updated_at, user_id)
+        VALUES (#{title}, #{content}, DEFAULT, DEFAULT, #{userId})
+    </insert>
+    <!-- 특정 관리자의 post 찾기 -->
+    <select id="getAdminPostById" resultType="AdminPostDTO">
+        SELECT * FROM admin_post WHERE id = #{id}
+    </select>
+    <!-- 관리자 post 모두 찾기 -->
+    <select id="getAllAdminPosts" resultType="AdminPostDTO">
+        SELECT * FROM admin_post
+    </select>
+    <!-- post 수정 -->
+    <update id="updateAdminPost">
+        UPDATE admin_post
+        SET title = #{title}, content = #{content}, updated_at = DEFAULT
+        WHERE id = #{id}
+    </update>
+    <!-- 삭제  -->
+    <delete id="deleteAdminPost">
+        DELETE FROM admin_post WHERE id = #{id}
+    </delete>
+    <!-- 최근 1주일 동안 정보를 변경한 유저 -->
+    <select id="getUpdatedUser" resultType="UserDTO">
+        SELECT *
+        FROM user
+        WHERE updated_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)
+    </select>
+    <!-- 모든 사용자 조회 -->
+    <select id="getAllUser" resultType="UserDTO">
+        SELECt * FROM user
+    </select>
+    <!-- 사용자 삭제 -->
+    <delete id="deleteUser">
+        DELETE user FROM user WHERE id = #{userId}
+    </delete>
+</mapper>

@@ -16,7 +16,7 @@ import java.util.Random;
 
 @Log4j2
 @Service
-@PropertySource("classpath:my.properties")
+//@PropertySource("classpath:my.properties")
 public class EmailService {
     // 원래 에러 뜹니다 but 문제 없습니다 -> application.properties에 없고, my.properties에 있어서 그렇습니다
     @Autowired private JavaMailSender mailSender;

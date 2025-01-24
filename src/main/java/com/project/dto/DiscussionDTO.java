@@ -29,7 +29,7 @@ public class DiscussionDTO {
     private List<BookDTO> book;
     private List<DiscussionCommentDTO> comment;
 
-    private String latestComment;
+    private String recentComment;
 
     public void setImage(byte[] image) {
         this.bookImage = image;

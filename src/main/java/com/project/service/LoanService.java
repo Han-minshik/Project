@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -90,26 +91,38 @@ public class LoanService {
      * 특정 사용자가 대출 중인 책 확인
      */
     public Map<LoanDTO, BookDTO> getActiveLoanByUser(String userId) {
+        // 사용자의 대출 목록 조회
         List<LoanDTO> loans = loanMapper.getActiveLoanByUserAndBook(userId);
-        if (loans == null) {
+        if (loans == null || loans.isEmpty()) {
             throw new IllegalArgumentException("현재 사용자가 대출 중인 기록이 없습니다.");
         }
+
+        // 대출 목록에서 ISBN 추출
         List<String> isbns = loans.stream()
                 .map(LoanDTO::getBookIsbn)
                 .distinct()
                 .toList();
 
-        List<BookDTO> books = new ArrayList<>();
-        for(String isbn : isbns) {
-            BookDTO book = bookMapper.getBookByIsbn(isbn);
-            if(book != null) {
-                books.add(book);
-            }
-        }
-        Map<String, BookDTO> bookmap = books.stream().collect(Collectors.toMap(BookDTO::getIsbn, book -> book));
+        List<BookDTO> books = isbns.stream()
+                .map(isbn -> {
+                    BookDTO book = bookMapper.getBookByIsbn(isbn);
+                    return book;
+                })
+                .filter(Objects::nonNull)
+                .toList();
 
-        return loans.stream().collect(Collectors.toMap(loan -> loan, loan -> bookmap.get(loan.getBookIsbn())));
+        // ISBN을 키로 하는 맵 생성
+        Map<String, BookDTO> bookMap = books.stream()
+                .collect(Collectors.toMap(BookDTO::getIsbn, book -> book));
+
+        // LoanDTO와 BookDTO를 매핑
+        return loans.stream()
+                .collect(Collectors.toMap(
+                        loan -> loan,
+                        loan -> bookMap.get(loan.getBookIsbn())
+                ));
     }
+
 
     /**
      * 특정 책의 첫 번째 반납 예정일 조회

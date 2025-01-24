@@ -78,6 +78,12 @@ public class DiscussionService {
             List<DiscussionDTO> discussions = discussionMapper.getDiscussions(pageInfo);
             pageInfo.setTotalElementCount(totalDiscussionCount);
             pageInfo.setElements(discussions);
+
+            // 각 토론 게시글의 최근 댓글 가져오기
+            for (DiscussionDTO discussion : discussions) {
+                String recentComment = discussionMapper.getRecentCommentByDiscussionId(discussion.getId());
+                discussion.setRecentComment(recentComment);
+            }
         }
 
         return pageInfo;
