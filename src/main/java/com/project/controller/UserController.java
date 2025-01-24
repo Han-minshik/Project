@@ -116,6 +116,8 @@ public class UserController {
         if(auth != null) {
             String userId = auth.getName();
             PageInfoDTO<DiscussionDTO> myDiscussion =  discussionService.getMyDiscussion(new PageInfoDTO<>(), userId);
+            Integer myDiscussionCount = myDiscussion.getTotalElementCount();
+            model.addAttribute("myDiscussionCount", myDiscussionCount);
             model.addAttribute("myDiscussion", myDiscussion);
             model.addAttribute("pageInfo", pageInfo);
             return "user/my-talk";

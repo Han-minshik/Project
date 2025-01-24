@@ -20,4 +20,6 @@ public interface DiscussionMapper {
     byte[] getBookImageByTitle(String title);
     List<DiscussionDTO> getMyDiscussion(PageInfoDTO<DiscussionDTO> pageInfo, String userId);
     DiscussionDTO selectDiscussionByDiscussionId(Integer discussionId);
+    Integer getTotalCountByTitle(String title);
+    Integer getTotalCountByUser(String userId);
 }

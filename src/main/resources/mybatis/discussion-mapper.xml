@@ -81,13 +81,9 @@
     </select>
     <!-- Discussion 페이지 제목으로 토론, 조회된 개수 조회   -->
     <select id="getDiscussionByBookTitle" resultType="DiscussionDTO">
-        SELECT d.*,
-               (SELECT COUNT(*)
-                FROM book
-                WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')) AS totalCount
+        SELECT d.*
         FROM discussion d
-                 JOIN book b ON d.book_isbn = b.isbn
-        WHERE b.title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+        WHERE d.book_title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
         <choose>
             <!-- 최신순 정렬 -->
             <when test="pageInfo.sort == 'recent'">
@@ -98,8 +94,9 @@
                 ORDER BY d.topic ASC
             </when>
         </choose>
-        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.getOffset()}
     </select>
+
     <!-- 토론 생성할 때 제목으로 이미지를 반환 -->
     <select id="getBookImageByTitle">
         SELECT image FROM book WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
@@ -111,5 +108,15 @@
     <!-- 각 discussion 조회 -->
     <select id="selectDiscussionByDiscussionId" resultType="DiscussionDTO">
         SELECT * FROM discussion WHERE id = #{discussionId}
+    </select>
+    <!-- 제목으로 검색된 토론의 수 반환 -->
+    <select id="getTotalCountByTitle" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM discussion d
+        WHERE d.book_title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+    </select>
+    <!-- 사용자가 작성한 토론 글 -->
+    <select id="getTotalCountByUser" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM discussion WHERE user_id = #{userId}
     </select>
 </mapper>
