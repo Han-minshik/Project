@@ -9,15 +9,17 @@ import java.util.List;
 
 @Mapper
 public interface DiscussionMapper {
-    void createDiscussion(DiscussionDTO discussion);
-    String getRecentCommentByDiscussionId(Integer discussionId);
-    Integer getCommentCountByDiscussion(Integer discussionId);
+    void createDiscussion(@Param("discussion") DiscussionDTO discussion);
+    String getRecentCommentByDiscussionId(@Param("discussion") Integer discussionId);
+    Integer getCommentCountByDiscussion(@Param("discussion") Integer discussionId);
     List<DiscussionDTO> getCurrentDiscussion();
-    Integer selectPaginatedDiscussionsTotalCount(PageInfoDTO<DiscussionDTO> pageInfo);
-    List<DiscussionDTO> getDiscussions(PageInfoDTO<DiscussionDTO> pageInfo);
-    List<DiscussionDTO> getDiscussionsByBookIsbn(String bookIsbn);
-    List<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title);
-    byte[] getBookImageByTitle(String title);
-    List<DiscussionDTO> getMyDiscussion(PageInfoDTO<DiscussionDTO> pageInfo, String userId);
-    DiscussionDTO selectDiscussionByDiscussionId(Integer discussionId);
+    Integer selectPaginatedDiscussionsTotalCount(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo);
+    List<DiscussionDTO> getDiscussions(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo);
+    List<DiscussionDTO> getDiscussionsByBookIsbn(@Param("bookIsbn") String bookIsbn);
+    List<DiscussionDTO> getDiscussionByBookTitle(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo, @Param("title") String title);
+    byte[] getBookImageByTitle(@Param("title") String title);
+    List<DiscussionDTO> getMyDiscussion(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo, @Param("userId") String userId);
+    DiscussionDTO selectDiscussionByDiscussionId(@Param("discussionId") Integer discussionId);
+    Integer getTotalCountByTitle(@Param("title") String title);
+    Integer getTotalCountByUser(@Param("userId") String userId);
 }

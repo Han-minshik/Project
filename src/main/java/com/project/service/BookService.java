@@ -32,12 +32,15 @@ public class BookService {
      * 책 제목으로 검색
      */
     public PageInfoDTO<BookDTO> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title) {
-        PageInfoDTO<BookDTO> result = bookMapper.searchBooksByNameWithCount(pageInfo, title);
+        List<BookDTO> result = bookMapper.searchBooksByNameWithCount(pageInfo, title);
+        int totalElementCount = result.size();
         PageInfoDTO<BookDTO> newPageInfo = new PageInfoDTO<>();
-        newPageInfo.setElements(result.getElements());
-        newPageInfo.setTotalElementCount(result.getTotalElementCount());
+        newPageInfo.setElements(result);
+        newPageInfo.setTotalElementCount(totalElementCount);
         return newPageInfo;
     }
+
+
 
     /**
      * ISBN으로 책 조회
@@ -143,25 +146,28 @@ public class BookService {
      * 유저의 장바구니 상품 조회
      */
     public PageInfoDTO<CartDTO> getCartsByUser(PageInfoDTO<CartDTO> pageInfo, String userId) {
-        // 페이지 번호 검증 및 초기화
         if (pageInfo.getPage() < 1) {
-            pageInfo.setPage(1); // 기본값 설정
+            pageInfo.setPage(1);
         }
         if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(5); // 기본 페이지 크기 설정
+            pageInfo.setSize(5);
         }
-
-        // 카트 총 개수 조회
         Integer totalCartCount = bookMapper.selectCartCountByUser(userId);
         pageInfo.setTotalElementCount(totalCartCount);
-
-        if(totalCartCount != null && totalCartCount > 0) {
+        if (totalCartCount != null && totalCartCount > 0) {
             List<CartDTO> carts = bookMapper.selectCartsByUser(pageInfo, userId);
+            carts.forEach(cart -> {
+                BookDTO book = cart.getBook();
+                if (book != null && book.getImage() != null) {
+                    String base64Image = "data:image/jpeg;base64," + java.util.Base64.getEncoder().encodeToString(book.getImage());
+                    book.setBase64Image(base64Image); // BookDTO에 Base64 이미지 설정
+                }
+            });
             pageInfo.setElements(carts);
         }
-
         return pageInfo;
     }
+
 
 
 
@@ -237,6 +243,10 @@ public class BookService {
     public List<CategoryDTO> getCategoryHierarchyByIsbn(String isbn) {
         List<CategoryDTO> categoryHierarchy = bookMapper.selectCategoryByIsbn(isbn);
         return categoryHierarchy;
+    }
+
+    public void insertReview(String userId, String isbn, String content) {
+        bookMapper.insertReview(userId, isbn, content);
     }
 
 }

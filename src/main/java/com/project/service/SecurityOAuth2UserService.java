@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@PropertySource("classpath:my.properties")
+//@PropertySource("classpath:my.properties")
 @Log4j2
 @Service
 public class SecurityOAuth2UserService extends DefaultOAuth2UserService {

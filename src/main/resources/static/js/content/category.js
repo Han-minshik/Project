@@ -1,7 +1,6 @@
 const heartButton = document.querySelector('.book-heart-button');
 const rentButton = document.querySelector('.book-heart-button');
 
-const viewSizeSelect = document.getElementById('view-size-select');
 
 const input = document.querySelector('.search-input');
 const button = document.querySelector('.search-button');
@@ -23,66 +22,69 @@ button.onclick = () => {
 };
 
 const executeSearch = () => {
+    const input = document.querySelector('.search-input');
     const inputValue = input.value.trim();
 
-    if (inputValue === "") {
-        alert("검색을 해주세요");
-        input.value = ""; // 입력 필드 초기화
+    if (!inputValue) {
+        location.href = '/book/book-category';
     }
 
-    fetch('/search', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ query: inputValue }) // 객체로 감싸서 전달
+    fetch(`/book/book-category/search?bookName=${encodeURIComponent(inputValue)}`, {
+        method: 'GET',
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('네트워크 응답에 문제가 있습니다.');
+            }
+            return response.json();
+        })
         .then(data => {
-            // 기존 검색 결과 초기화
             const resultDiv = document.querySelector('.all-book');
-            resultDiv.innerHTML = ''; // 이전 검색 결과 지우기
+            resultDiv.innerHTML = '';
 
-            if (data.length > 0) {
-                // 검색 결과가 있을 경우
-                data.forEach(book => {
+            if (data.elements && data.elements.length > 0) {
+                data.elements.forEach(book => {
                     const searchBook = document.createElement('div');
                     searchBook.className = 'one-book';
                     searchBook.innerHTML = `
-                    <div class="image-container">
-                        <img src="${book.image || '../../static/images/book_main.jpg'}" alt="${book.title}"/>
-                    </div>
-                    <div class="book-info">
-                        <h2>
-                            <a href="/book">${book.title}</a>
-                        </h2>
-                        <div class="author-publisher">
-                            <span class="author">${book.author}</span>
-                            <span>/</span>
-                            <span class="publisher">${book.publisher}</span>
+                        <div class="image-container">
+                            <img src="${book.base64Image || '../../static/images/book_main.jpg'}" alt="${book.title}" />
                         </div>
-                        <div class="rent-available">
-                            <span>대출가능여부: </span>
-                            <span class="rent-status">${book.rentStatus}</span>
+                        <div class="book-info">
+                            <h2>
+                                <a href="/book/${book.isbn}">${book.title}</a>
+                            </h2>
+                            <div class="author-publisher">
+                                <span class="author">${book.author}</span>
+                                <span>/</span>
+                                <span class="publisher">${book.publisher}</span>
+                            </div>
+                            <div class="rent-available">
+                                <span>대출가능여부: </span>
+                                <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
+                            </div>
+                            <div class="plot">
+                                <p>${book.detail}</p>
+                            </div>
+                            <div class="rent-button-section">
+                                <button class="book-heart-button">찜하기</button>
+                                <button class="book-rent-button" ${book.copiesAvailable === 0 ? 'disabled' : ''}>대출하기</button>
+                            </div>
                         </div>
-                        <div class="plot">
-                            <p>${book.plot}</p>
-                        </div>
-                        <div class="rent-button-section">
-                            <button class="book-heart-button">찜하기</button>
-                            <button class="book-rent-button">대출하기</button>
-                        </div>
-                    </div>
-                `;
-                    resultDiv.appendChild(searchBook); // 검색 결과를 결과 영역에 추가
+                    `;
+                    resultDiv.appendChild(searchBook);
                 });
             } else {
-                // 검색 결과가 없을 경우
                 resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            alert('검색 중 문제가 발생했습니다. 나중에 다시 시도해주세요.');
+        });
 };
+
+
 /**************************************/
 
 // 찜하기 버튼을 눌렀을 때
@@ -102,8 +104,9 @@ rentButton.onclick = () => {
 /*******************************************/
 
 // 보기설정
+const viewSizeSelect = document.getElementById('view-size-select');
 viewSizeSelect.onchange = () => {
     const searchParams = new URLSearchParams(location.search);
     searchParams.set('size', viewSizeSelect.value);
-    location.href = `/book?${searchParams.toString()}`;
+    location.href = `/book/book-category?${searchParams.toString()}`;
 }

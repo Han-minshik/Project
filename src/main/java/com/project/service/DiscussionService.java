@@ -1,6 +1,5 @@
 package com.project.service;
 
-import com.project.dto.DiscussionCommentDTO;
 import com.project.dto.DiscussionDTO;
 import com.project.dto.PageInfoDTO;
 import com.project.mapper.DiscussionMapper;
@@ -63,21 +62,30 @@ public class DiscussionService {
      * 페이징된 토론 목록 반환 (책 정보 포함)
      */
     public PageInfoDTO<DiscussionDTO> getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo) {
+        // 기본 페이지 설정
         if (pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
         if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
             pageInfo.setSize(5); // 기본 5개씩 노출
         }
+
+        // 총 토론 개수 조회
         Integer totalDiscussionCount = discussionMapper.selectPaginatedDiscussionsTotalCount(pageInfo);
+
+        // 데이터가 존재할 경우 페이징 처리
         if (totalDiscussionCount != null && totalDiscussionCount > 0) {
             List<DiscussionDTO> discussions = discussionMapper.getDiscussions(pageInfo);
             pageInfo.setTotalElementCount(totalDiscussionCount);
             pageInfo.setElements(discussions);
-        } else {
-            pageInfo.setTotalElementCount(0);
-            pageInfo.setElements(List.of());
+
+            // 각 토론 게시글의 최근 댓글 가져오기
+            for (DiscussionDTO discussion : discussions) {
+                String recentComment = discussionMapper.getRecentCommentByDiscussionId(discussion.getId());
+                discussion.setRecentComment(recentComment);
+            }
         }
+
         return pageInfo;
     }
 
@@ -92,24 +100,31 @@ public class DiscussionService {
     /**
      * 책 제목으로 토론 검색
      */
-    public PageInfoDTO<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo,
-                                                               String title) {
-        if(pageInfo.getPage() < 1) {
+    public PageInfoDTO<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title) {
+        // 기본 페이지 설정
+        if (pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
         if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
             pageInfo.setSize(5); // 기본 5개씩 노출
         }
 
-        Integer totalDiscussionCount = discussionMapper.selectPaginatedDiscussionsTotalCount(pageInfo);
+        // 책 제목으로 필터링된 총 개수 조회
+        Integer totalDiscussionCount = discussionMapper.getTotalCountByTitle(title);
+        pageInfo.setTotalElementCount(totalDiscussionCount != null ? totalDiscussionCount : 0);
 
-        if(totalDiscussionCount != null && totalDiscussionCount > 0) {
+        // 페이징된 데이터 조회
+        if (pageInfo.getTotalElementCount() > 0) {
             List<DiscussionDTO> discussions = discussionMapper.getDiscussionByBookTitle(pageInfo, title);
-            pageInfo.setTotalElementCount(totalDiscussionCount);
             pageInfo.setElements(discussions);
+        } else {
+            // 데이터가 없으면 빈 리스트 설정
+            pageInfo.setElements(List.of());
         }
+
         return pageInfo;
     }
+
 
     /**
      * 마이 페이지, 내가 작성한 토론 글 조회
@@ -121,7 +136,7 @@ public class DiscussionService {
         if(pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
             pageInfo.setSize(5);
         }
-        Integer totalDiscussionCount = discussionMapper.selectPaginatedDiscussionsTotalCount(pageInfo);
+        Integer totalDiscussionCount = discussionMapper.getTotalCountByUser(userId);
 
         if(totalDiscussionCount != null && totalDiscussionCount > 0) {
             List<DiscussionDTO> discussions = discussionMapper.getMyDiscussion(pageInfo, userId);

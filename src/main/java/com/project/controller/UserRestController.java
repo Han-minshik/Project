@@ -117,36 +117,35 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-
     /******************************************/
-    @PostMapping("/info-revise")
-    public ResponseEntity<Void> post_info_revise(
-            // 아이디/비번만 찾는다면 auth로 충분
-            // 단, 다른 정보는 @AuthenticationPrincipal 써야됨
-            Authentication auth,
-            @ModelAttribute @Validated UserDTO reviseUser,
-            BindingResult bindingResult
-    ){
-        // 로그인 했습니까?
-        if(auth == null){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        // 지금 로그인 한 나와 수정된 유저 객체가 같아야 한다
-        if(!auth.getName().equals(reviseUser.getId())){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
-        // 비밀번호, 기타 패턴 조건 안 맞을시
-        if(bindingResult.hasErrors()){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-
-        boolean updateResult = userService.updateUser(reviseUser);
-        if(!updateResult){
-            // 업데이트 실패 시
-            return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).build();
-    }
+//    @PostMapping("/info-revise")
+//    public ResponseEntity<Void> post_info_revise(
+//            // 아이디/비번만 찾는다면 auth로 충분
+//            // 단, 다른 정보는 @AuthenticationPrincipal 써야됨
+//            Authentication auth,
+//            @ModelAttribute @Validated UserDTO reviseUser,
+//            BindingResult bindingResult
+//    ){
+//        // 로그인 했습니까?
+//        if(auth == null){
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+//        }
+//        // 지금 로그인 한 나와 수정된 유저 객체가 같아야 한다
+//        if(!auth.getName().equals(reviseUser.getId())){
+//            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+//        }
+//        // 비밀번호, 기타 패턴 조건 안 맞을시
+//        if(bindingResult.hasErrors()){
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//        }
+//
+//        boolean updateResult = userService.updateUser(reviseUser);
+//        if(!updateResult){
+//            // 업데이트 실패 시
+//            return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
+//        }
+//        return ResponseEntity.status(HttpStatus.OK).build();
+//    }
 
     /***************************************************/
     @PostMapping("/info")

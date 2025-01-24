@@ -9,20 +9,20 @@
     </select>
     <!-- 제목으로 책 검색 -->
     <select id="searchBooksByNameWithCount" resultType="com.project.dto.BookDTO">
-        SELECT b.*,
-        (SELECT COUNT(*)
-        FROM book
-        WHERE title LIKE CONCAT('%', #{title}, '%')) AS totalCount
+        SELECT b.*
         FROM book b
         WHERE title LIKE CONCAT('%', #{title}, '%')
-        ORDER BY
-        <choose>
-            <when test="pageInfo.sort == 'recent'">b.publication_date DESC</when>
-            <when test="pageInfo.sort == 'title'">b.title ASC</when>
-            <otherwise>b.isbn</otherwise>
-        </choose>
+        <if test="pageInfo.sort != null">
+            ORDER BY
+            <choose>
+                <when test="pageInfo.sort == 'recent'">b.publication_date DESC</when>
+                <when test="pageInfo.sort == 'title'">b.title ASC</when>
+                <otherwise>b.isbn</otherwise>
+            </choose>
+        </if>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
+
     <!-- isbn 으로 책 조회 -->
     <select id="getBookByIsbn" resultType="BookDTO">
         SELECT * FROM book WHERE isbn = #{isbn}
@@ -34,7 +34,7 @@
 #                  JOIN review r ON b.isbn = r.book_isbn
 #         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
 #         ORDER BY AVG(r.rate) DESC
-        SELECT * FROM book LIMIT 1
+        SELECT * FROM book ORDER BY created_at DESC LIMIT 1
     </select>
     <!-- 특정 책의 토론 주제 개수 조회 -->
     <select id="getDiscussionCountByBookIsbn" resultType="java.lang.Integer">
@@ -191,4 +191,9 @@
         FROM CategoryHierarchy
         ORDER BY category_level;
     </select>
+    <!-- 사용자 리뷰 추가 -->
+    <insert id="insertReview">
+        INSERT INTO review VALUES (user_id = #{userId}, book_isbn = #{bookIsbn},
+                                   content = #{content}, `like` = 0, rate = 0, updated_at = DEFAULT)
+    </insert>
 </mapper>

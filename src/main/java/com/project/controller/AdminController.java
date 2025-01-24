@@ -9,6 +9,8 @@ import com.project.mapper.BookMapper;
 import com.project.mapper.UserMapper;
 import com.project.service.AdminService;
 import com.project.service.BookService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+    private static final Logger log = LogManager.getLogger(AdminController.class);
     @Autowired private BookMapper bookMapper;
     @Autowired private UserMapper userMapper;
     @Autowired private AdminService adminService;
@@ -101,6 +104,8 @@ public class AdminController {
             model.addAttribute("updatedUsers", updatedUsers);
             model.addAttribute("users", users);
             model.addAttribute("pageInfo", pageInfo);
+            log.error(updatedUsers);
+            log.error(users);
             return "redirect:/admin/user";
         }
         return "redirect:/";
@@ -110,6 +115,7 @@ public class AdminController {
     public String updateUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
         if(user.getRole().equals("관리자")) {
             adminService.promoteToAdmin(userId);
+            log.error(userId);
             return "redirect:/admin/user";
         }
         return "redirect:/";
@@ -119,6 +125,7 @@ public class AdminController {
     public String dropUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
         if(user.getRole().equals("관리자")) {
             adminService.deleteUser(userId);
+            log.error(userId);
             return "redirect:/admin/user";
         }
         return "redirect:/";
@@ -131,96 +138,96 @@ public class AdminController {
 //        return "redirect:/admin/drop-user";
 //    }
 
-    /****************** 규칙 위반 게시글 삭제 *******************/
-
-    @DeleteMapping("/discussion/delete")
-    public String deleteDiscussion(@RequestParam("discussionId") Integer discussionId) {
-        return "redirect:/admin/deleted-discussion-page";
-        // "규정 위반으로 삭제된 게시글입니다"
-    }
-
-    /****************** 규칙 위반 리뷰 삭제 ******************/
-
-    @PatchMapping("/review/delete") // 완전 삭제는 아니고, 삭제된 걸로 바꾸는 트릭
-    public String deleteReview(@RequestParam("id") Integer id) {
-        return "redirect:/admin/reviews";
-        // "규정 위반으로 삭제된 리뷰입니다"
-    }
-
-    /****************** 규칙 위반 댓글 삭제 ********************/
-
-    @PatchMapping("/comment/delete")
-    public String deleteComment(@RequestParam("id") Integer id) {
-        return "redirect:/admin/books/" + id;
-        // "규정 위반으로 삭제된 댓글입니다"
-    }
-
-
-    /********************* 공지 사항 **********************/
-    @GetMapping("/adminPost")
-    public String get_adminPost(
-            @AuthenticationPrincipal UserDTO user,
-            Model model
-    ){
-        if(user.getRole().equals("admin")){
-            List<AdminPostDTO> posts = adminService.getAllAdminPosts();
-            model.addAttribute("posts", posts);
-            return "redirect:/admin/posts";
-
-        }
-        return "redirect:/user/login";
-    }
-
-    //특정 공지사항 조회
-    @GetMapping("/adminPost/{adminPostId}")
-    public String get_adminPost_by_id(
-            @AuthenticationPrincipal UserDTO user,
-            @PathVariable Integer adminPostId,
-            Model model
-    ){
-        if(user.getRole().equals("admin")){
-            AdminPostDTO adminPost = adminService.getAdminPostById(adminPostId);
-            model.addAttribute("adminPost", adminPost);
-            return "redirect:/admin/posts";
-        }
-        return "redirect:/user/login";
-    }
-
-    @PostMapping("/adminPost/add")
-    public String post_addAdminPost(
-            @AuthenticationPrincipal UserDTO user,
-            AdminPostDTO adminPost
-    ){
-        if(user.getRole().equals("admin")){
-            adminService.addAdminPost(adminPost);
-            return "redirect:/admin/admins";
-        }
-        return "redirect:/user/login";
-    }
-
-    @PatchMapping("/adminPost/update")
-    public String updateAdminPost(
-            @AuthenticationPrincipal UserDTO user,
-            AdminPostDTO adminPost
-    ){
-        if(user.getRole().equals("admin")){
-            adminService.updateAdminPost(adminPost);
-            return "redirect:/admin/admins";
-        }
-        return "redirect:/user/login";
-    }
-
-    @DeleteMapping("/adminPost/delete")
-    public String deleteAdminPost(
-            @AuthenticationPrincipal UserDTO user,
-            Integer adminPostId
-    ){
-        if(user.getRole().equals("admin")){
-            adminService.deleteAdminPost(adminPostId);
-            return "redirect:/admin/admins";
-        }
-        return "redirect:/user/login";
-    }
+//    /****************** 규칙 위반 게시글 삭제 *******************/
+//
+//    @DeleteMapping("/discussion/delete")
+//    public String deleteDiscussion(@RequestParam("discussionId") Integer discussionId) {
+//        return "redirect:/admin/deleted-discussion-page";
+//        // "규정 위반으로 삭제된 게시글입니다"
+//    }
+//
+//    /****************** 규칙 위반 리뷰 삭제 ******************/
+//
+//    @PatchMapping("/review/delete") // 완전 삭제는 아니고, 삭제된 걸로 바꾸는 트릭
+//    public String deleteReview(@RequestParam("id") Integer id) {
+//        return "redirect:/admin/reviews";
+//        // "규정 위반으로 삭제된 리뷰입니다"
+//    }
+//
+//    /****************** 규칙 위반 댓글 삭제 ********************/
+//
+//    @PatchMapping("/comment/delete")
+//    public String deleteComment(@RequestParam("id") Integer id) {
+//        return "redirect:/admin/books/" + id;
+//        // "규정 위반으로 삭제된 댓글입니다"
+//    }
+//
+//
+//    /********************* 공지 사항 **********************/
+//    @GetMapping("/adminPost")
+//    public String get_adminPost(
+//            @AuthenticationPrincipal UserDTO user,
+//            Model model
+//    ){
+//        if(user.getRole().equals("admin")){
+//            List<AdminPostDTO> posts = adminService.getAllAdminPosts();
+//            model.addAttribute("posts", posts);
+//            return "redirect:/admin/posts";
+//
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    //특정 공지사항 조회
+//    @GetMapping("/adminPost/{adminPostId}")
+//    public String get_adminPost_by_id(
+//            @AuthenticationPrincipal UserDTO user,
+//            @PathVariable Integer adminPostId,
+//            Model model
+//    ){
+//        if(user.getRole().equals("admin")){
+//            AdminPostDTO adminPost = adminService.getAdminPostById(adminPostId);
+//            model.addAttribute("adminPost", adminPost);
+//            return "redirect:/admin/posts";
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    @PostMapping("/adminPost/add")
+//    public String post_addAdminPost(
+//            @AuthenticationPrincipal UserDTO user,
+//            AdminPostDTO adminPost
+//    ){
+//        if(user.getRole().equals("admin")){
+//            adminService.addAdminPost(adminPost);
+//            return "redirect:/admin/admins";
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    @PatchMapping("/adminPost/update")
+//    public String updateAdminPost(
+//            @AuthenticationPrincipal UserDTO user,
+//            AdminPostDTO adminPost
+//    ){
+//        if(user.getRole().equals("admin")){
+//            adminService.updateAdminPost(adminPost);
+//            return "redirect:/admin/admins";
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    @DeleteMapping("/adminPost/delete")
+//    public String deleteAdminPost(
+//            @AuthenticationPrincipal UserDTO user,
+//            Integer adminPostId
+//    ){
+//        if(user.getRole().equals("admin")){
+//            adminService.deleteAdminPost(adminPostId);
+//            return "redirect:/admin/admins";
+//        }
+//        return "redirect:/user/login";
+//    }
 
 
 }

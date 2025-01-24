@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.List;
 
 @Log4j2
@@ -62,44 +63,84 @@ public class MainController {
         return "user/reset-pw";
     }
 
-    @GetMapping("/book/category")
+//    @GetMapping("/book/book-category")
+//    public String getBooks(
+//            PageInfoDTO<BookDTO> pageInfo,
+//            @RequestParam(required = false) String bookName,
+//            Model model
+//    ) {
+//        PageInfoDTO<BookDTO> books;
+//        if(bookName != null && !bookName.trim().isEmpty()) {
+//            books = bookService.searchBooksByNameWithCount(pageInfo, bookName);
+//        }
+//        else {
+//            books = bookService.getPaginatedBooks(pageInfo);
+//        }
+//        model.addAttribute("books", books.getElements());
+//        model.addAttribute("totalCount", books.getTotalElementCount());
+//        model.addAttribute("bookName", bookName);
+//        model.addAttribute("pageInfo", pageInfo);
+//        return "book/book-category";
+//    }
+
+    // 전체 책 반환 컨트롤러
+    @GetMapping("/book/book-category")
     public String getBooks(
-            PageInfoDTO<BookDTO> bookPageInfo,
-            @RequestParam(required = false) String bookName,
+            PageInfoDTO<BookDTO> pageInfo,
             Model model
     ) {
-        PageInfoDTO<BookDTO> books;
-        if(bookName != null && !bookName.trim().isEmpty()) {
-            books = bookService.searchBooksByNameWithCount(bookPageInfo, bookName);
-        }
-        else {
-            books = bookService.getPaginatedBooks(bookPageInfo);
-        }
+        // 모든 책을 페이지네이션 처리하여 반환
+        PageInfoDTO<BookDTO> books = bookService.getPaginatedBooks(pageInfo);
+
+        // 모델에 데이터 추가
         model.addAttribute("books", books.getElements());
         model.addAttribute("totalCount", books.getTotalElementCount());
-        model.addAttribute("bookName", bookName);
-        model.addAttribute("bookPageInfo", bookPageInfo);
+        model.addAttribute("pageInfo", pageInfo);
+
         return "book/book-category";
     }
+
+    // 제목 검색 컨트롤러
+    @GetMapping("/book/book-category/search")
+    @ResponseBody
+    public PageInfoDTO<BookDTO> searchBooksByName(
+            PageInfoDTO<BookDTO> pageInfo,
+            @RequestParam String bookName
+    ) {
+        // 제목으로 책을 검색
+        PageInfoDTO<BookDTO> books = bookService.searchBooksByNameWithCount(pageInfo, bookName);
+
+        return books; // JSON 형태로 반환
+    }
+
 
     // 책 페이지 불러오기
     // ok
     @GetMapping("/book/{bookIsbn}")
     public String get_book(
             @PathVariable String bookIsbn,
-            Model model
+            Model model, PageInfoDTO<BookDTO> pageInfo
     ) {
         BookDTO book = bookService.getBookByIsbn(bookIsbn);
         model.addAttribute("book", book);
+        log.error(book);
+
         Integer bookDiscussionCount = bookService.getDiscussionCountByBookIsbn(bookIsbn);
         model.addAttribute("bookDiscussionCount", bookDiscussionCount);
+        log.error(bookDiscussionCount);
+
         Integer bookParticipantCount = bookService.getParticipantCountByBookIsbn(bookIsbn);
         model.addAttribute("bookParticipantCount", bookParticipantCount);
+        log.error(bookParticipantCount);
 
         Integer AvailableCopies = loanService.getAvailableCopies(bookIsbn);
         model.addAttribute("AvailableCopies", AvailableCopies);
+        log.error(AvailableCopies);
+
         LocalDateTime firstReturnDate = loanService.getFirstReturnDateByBookIsbn(bookIsbn);
         model.addAttribute("firstReturnDate", firstReturnDate);
+        log.error(firstReturnDate);
+
         return "book/book";
     }
 
@@ -133,14 +174,23 @@ public class MainController {
     @GetMapping("/discussion/category")
     public String getDiscussionCategory(
             Model model,
+            @RequestParam(required = false) String bookName,
             PageInfoDTO<DiscussionDTO> pageInfo
     ) {
+        PageInfoDTO<DiscussionDTO> paginatedByTitle = discussionService.getDiscussionByBookTitle(pageInfo, bookName);
         PageInfoDTO<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
+        Integer paginatedCount = paginatedByTitle.getTotalElementCount();
+        model.addAttribute("paginatedByTitle", paginatedByTitle);
+        model.addAttribute("paginatedCount", paginatedCount);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("paginatedDiscussions", paginatedDiscussions);
+        log.error(paginatedByTitle);
+        log.error(paginatedCount);
+        log.error(pageInfo);
+        log.error(paginatedDiscussions);
+
         return "content/discussion-category";
     }
-
 
     // 토론 페이지
     @GetMapping("/discussion/{discussionId}")
@@ -150,6 +200,7 @@ public class MainController {
     ) {
         DiscussionDTO discussion = discussionService.selectDiscussionByDiscussionId(discussionId);
         model.addAttribute("discussion", discussion);
+        log.error(discussion);
         return "content/discussion";
     }
 
@@ -247,7 +298,8 @@ public class MainController {
         PageInfoDTO<ComplainDTO> complains = userService.getComplains(new PageInfoDTO<>());
         model.addAttribute("complains", complains);
         model.addAttribute("pageInfo", pageInfo);
-        return "content/complain";
+        log.error(complains);
+        return "user/complain";
     }
 
     @PostMapping("/complain/add")
