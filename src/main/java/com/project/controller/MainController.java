@@ -127,15 +127,19 @@ public class MainController {
     }
 
     /********************* 토론 **********************/
-    // 토론 게시글 목록
     @GetMapping("/discussion/category")
-    public String get_discussion_category (
-            Model model
+    public String getDiscussionCategory(
+            Model model,
+            @RequestParam(required = false, defaultValue = "1") Integer page,
+            @RequestParam(required = false, defaultValue = "5") Integer size,
+            @RequestParam(required = false, defaultValue = "recent") String sort
     ) {
-        PageInfoDTO<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(new PageInfoDTO<>());
+        PageInfoDTO<DiscussionDTO> pageInfo = new PageInfoDTO<>();
+        PageInfoDTO<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
         model.addAttribute("paginatedDiscussions", paginatedDiscussions);
         return "content/discussion-category";
     }
+
 
     // 토론 페이지
     @GetMapping("/discussion/{discussionId}")
