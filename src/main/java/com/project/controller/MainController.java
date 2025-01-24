@@ -133,12 +133,10 @@ public class MainController {
     @GetMapping("/discussion/category")
     public String getDiscussionCategory(
             Model model,
-            @RequestParam(required = false, defaultValue = "1") Integer page,
-            @RequestParam(required = false, defaultValue = "5") Integer size,
-            @RequestParam(required = false, defaultValue = "recent") String sort
+            PageInfoDTO<DiscussionDTO> pageInfo
     ) {
-        PageInfoDTO<DiscussionDTO> pageInfo = new PageInfoDTO<>();
         PageInfoDTO<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("paginatedDiscussions", paginatedDiscussions);
         return "content/discussion-category";
     }
