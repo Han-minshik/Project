@@ -31,7 +31,7 @@ public interface BookMapper {
     List<BookDTO> getASCBestseller();
     List<BookDTO> getDESCBestseller();
     Integer selectCartCountByUser(@Param("userId")String userId);
-    List<CategoryDTO> selectCategoryByIsbn(@Param("isbn")String isbn);
+    List<CategoryDTO> selectCategoryByIsbn(@Param("isbn") String isbn);
     void insertReview(@Param("userId")String userId, @Param("isbn") String isbn, @Param("content")String content);
     // 제목으로 검색된 총 책 개수 조회
     @Select("SELECT COUNT(*) FROM book WHERE title LIKE CONCAT('%', #{title}, '%')")

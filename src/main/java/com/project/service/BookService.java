@@ -114,29 +114,20 @@ public class BookService {
     /**
      * 페이징된 리뷰 리스트와 통계 정보 반환
      */
-    public PageInfoDTO<ReviewDTO> getPaginatedReviews(PageInfoDTO<ReviewDTO> pageInfo, String isbn) {
-        // 기본값 설정
-        if (pageInfo.getPage() < 1) {
-            pageInfo.setPage(1);
-        }
-        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(3); // 기본 페이지 크기: 3개
-        }
-
-        // 총 리뷰 개수 및 통계 정보 조회
-        Map<String, Map<String, Object>> reviewStats = bookMapper.selectPaginatedReviewTotalCountByIsbn(isbn);
-
-        if (reviewStats != null && !reviewStats.isEmpty()) {
-            // 총 리뷰 개수 가져오기
-            Integer totalReviewCount = Integer.parseInt(reviewStats.get("result").get("count").toString());
-            pageInfo.setTotalElementCount(totalReviewCount);
-
-            // 페이징된 리뷰 리스트 조회
-            List<ReviewDTO> reviews = bookMapper.selectPaginatedReviewsByBookIsbn(pageInfo, isbn);
-            pageInfo.setElements(reviews);
-        }
-
-        return pageInfo;
+    public Map<String, Map<String, Object>> getPaginatedReviews(PageInfoDTO<ReviewDTO> pageInfo, String isbn) {
+       pageInfo.setSize(3);
+       if(pageInfo.getSize() < 1) {
+           return null;
+       }
+       Map<String, Map<String, Object>> result = bookMapper.selectPaginatedReviewTotalCountByIsbn(isbn);
+       log.error(result);
+       if(!result.isEmpty()) {
+           Integer totalElementCount = Integer.parseInt(result.get("result").get("count").toString());
+           var reviews = bookMapper.selectPaginatedReviewsByBookIsbn(pageInfo, isbn);
+           pageInfo.setTotalElementCount(totalElementCount);
+           pageInfo.setElements(reviews);
+       }
+       return result;
     }
 
     /**
@@ -239,6 +230,7 @@ public class BookService {
 
     public List<CategoryDTO> getCategoryHierarchyByIsbn(String isbn) {
         List<CategoryDTO> categoryHierarchy = bookMapper.selectCategoryByIsbn(isbn);
+        log.error(categoryHierarchy);
         return categoryHierarchy;
     }
 
