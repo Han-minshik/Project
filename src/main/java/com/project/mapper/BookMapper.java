@@ -4,6 +4,7 @@ import com.project.dto.*;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -32,4 +33,7 @@ public interface BookMapper {
     Integer selectCartCountByUser(@Param("userId")String userId);
     List<CategoryDTO> selectCategoryByIsbn(@Param("isbn")String isbn);
     void insertReview(@Param("userId")String userId, @Param("isbn") String isbn, @Param("content")String content);
+    // 제목으로 검색된 총 책 개수 조회
+    @Select("SELECT COUNT(*) FROM book WHERE title LIKE CONCAT('%', #{title}, '%')")
+    Integer getTotalBookCountByTitle(@Param("title") String title);
 }
