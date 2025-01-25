@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import com.project.mapper.UserMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Base64;
 import java.util.List;
@@ -104,12 +106,24 @@ public class UserController {
     /***********************************************/
     // 내 회원 정보 메뉴
     @GetMapping("/mypage")
-    public String get_my_page(Authentication auth) {
+    public String get_my_page(Authentication auth, Model model) {
         if (auth != null) {
+            String userId = auth.getName();
+            UserDTO user = userMapper.getUserById(userId);
+            if (user.getProfileImage() != null) {
+                String base64Image = "data:image/jpeg;base64," +
+                        Base64.getEncoder().encodeToString(user.getProfileImage());
+                user.setBase64Image(base64Image);
+            } else {
+                user.setBase64Image("data:image/jpeg;base64,[defaultBase64EncodedImage]");
+            }
+            model.addAttribute("user", user);
             return "user/my-page";
         }
         return "redirect:/user/login";
     }
+
+
 
     /************************************************/
     @GetMapping("/discussion")

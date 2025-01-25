@@ -13,10 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Setter
@@ -35,11 +32,11 @@ public class UserDTO implements UserDetails, OAuth2User {
     private String email;
     private LocalDateTime joinDate;
     private Integer point;
-    private byte[] profileImage;
+    private String base64Image;
     private LocalDateTime updatedAt;
     private String role;
     private String nickname;
-
+    private byte[] profileImage;
 
     private List<SnsInfoDTO> snsInfo; // 이 유저가 로그인 할 때 사용한 SNS 데이터
 
@@ -64,4 +61,5 @@ public class UserDTO implements UserDetails, OAuth2User {
     public String getPassword() {
         return this.password;
     }
+
 }
