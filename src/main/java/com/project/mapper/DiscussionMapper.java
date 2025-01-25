@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface DiscussionMapper {
     void createDiscussion(@Param("discussion") DiscussionDTO discussion);
-    String getRecentCommentByDiscussionId(@Param("discussion") Integer discussionId);
-    Integer getCommentCountByDiscussion(@Param("discussion") Integer discussionId);
+    String getRecentCommentByDiscussionId(@Param("discussionId") Integer discussionId);
+    Integer getCommentCountByDiscussion(@Param("discussionId") Integer discussionId);
     List<DiscussionDTO> getCurrentDiscussion();
     Integer selectPaginatedDiscussionsTotalCount(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo);
     List<DiscussionDTO> getDiscussions(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo);

@@ -50,7 +50,7 @@
     </select>
     <!-- 책 리뷰 조회 -->
     <select id="selectPaginatedReviewsByBookIsbn" resultType="ReviewDTO">
-        SELECT REVIEW.*, USER.username AS user_name
+        SELECT REVIEW.*, USER.nickname AS user_name
         FROM (
         SELECT * FROM review
         WHERE book_isbn = #{isbn}
@@ -163,10 +163,10 @@
     <select id="selectCategoryByIsbn" resultType="CategoryDTO">
         WITH RECURSIVE CategoryHierarchy AS (
             SELECT
-                c.no AS category_no,
-                c.name AS category_name,
-                c.parent AS parent_category,
-                c.level AS category_level
+                c.no,
+                c.name,
+                c.parent,
+                c.level
             FROM
                 category c
                     JOIN
@@ -177,18 +177,18 @@
             UNION ALL
 
             SELECT
-                c.no AS category_no,
-                c.name AS category_name,
-                c.parent AS parent_category,
-                c.level AS category_level
+                c.no,
+                c.name,
+                c.parent,
+                c.level
             FROM
                 category c
                     JOIN
-                CategoryHierarchy ch ON c.no = ch.parent_category
+                CategoryHierarchy ch ON c.no = ch.parent
         )
         SELECT *
         FROM CategoryHierarchy
-        ORDER BY category_level;
+        ORDER BY level;
     </select>
     <!-- 사용자 리뷰 추가 -->
     <insert id="insertReview">
