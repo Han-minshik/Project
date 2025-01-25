@@ -17,14 +17,14 @@
     <div class="my-opinion-container">
         <div class="discussion-book-title">
             <span>책 제목: </span>
-            <span>소년이 온다</span>
+            <span th:text="${discussion.getBookTitle()}">소년이 온다</span>
         </div>
         <div class="discussion-title">
             <span>토론 주제: </span>
-            <p>내가 '소년이 온다'를 좋아하는 이유는?</p>
+            <p th:text="${discussion.getTopic()}">내가 '소년이 온다'를 좋아하는 이유는?</p>
         </div>
         <div class="my-opinion">
-            <p>나의 의견은 ~~~~해</p>
+            <p th:text="${discussion.getContents()}">나의 의견은 ~~~~해</p>
         </div>
     </div>
     <div class="my-opinion-chat">
