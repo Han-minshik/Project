@@ -33,14 +33,11 @@ public class BookService {
      */
     public PageInfoDTO<BookDTO> searchBooksByNameWithCount(PageInfoDTO<BookDTO> pageInfo, String title) {
         List<BookDTO> result = bookMapper.searchBooksByNameWithCount(pageInfo, title);
-        int totalElementCount = result.size();
-        PageInfoDTO<BookDTO> newPageInfo = new PageInfoDTO<>();
-        newPageInfo.setElements(result);
-        newPageInfo.setTotalElementCount(totalElementCount);
-        return newPageInfo;
+        Integer totalElementCount = bookMapper.getTotalBookCountByTitle(title); // 총 개수 가져오기
+        pageInfo.setTotalElementCount(totalElementCount);
+        pageInfo.setElements(result);
+        return pageInfo;
     }
-
-
 
     /**
      * ISBN으로 책 조회

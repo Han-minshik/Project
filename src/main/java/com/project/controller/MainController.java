@@ -101,18 +101,19 @@ public class MainController {
     }
 
     // 제목 검색 컨트롤러
+    // 제목 검색 컨트롤러
     @GetMapping("/book/book-category/search")
     @ResponseBody
     public PageInfoDTO<BookDTO> searchBooksByName(
             PageInfoDTO<BookDTO> pageInfo,
-            @RequestParam String bookName
+            @RequestParam String bookName,
+            Model model
     ) {
-        // 제목으로 책을 검색
         PageInfoDTO<BookDTO> books = bookService.searchBooksByNameWithCount(pageInfo, bookName);
-
-        return books; // JSON 형태로 반환
+        pageInfo.setTotalElementCount(books.getTotalElementCount());
+        model.addAttribute("pageInfo", pageInfo);
+        return books;
     }
-
 
     // 책 페이지 불러오기
     // ok

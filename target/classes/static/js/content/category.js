@@ -27,22 +27,21 @@ const executeSearch = () => {
 
     if (!inputValue) {
         location.href = '/book/book-category';
+        return;
     }
 
     fetch(`/book/book-category/search?bookName=${encodeURIComponent(inputValue)}`, {
         method: 'GET',
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('네트워크 응답에 문제가 있습니다.');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             const resultDiv = document.querySelector('.all-book');
-            resultDiv.innerHTML = '';
+            const totalCountElement = document.getElementById('total-count');
 
+            // 검색 결과 렌더링
+            resultDiv.innerHTML = '';
             if (data.elements && data.elements.length > 0) {
+                totalCountElement.textContent = data.totalElementCount; // 총 개수 업데이트
                 data.elements.forEach(book => {
                     const searchBook = document.createElement('div');
                     searchBook.className = 'one-book';
@@ -63,18 +62,12 @@ const executeSearch = () => {
                                 <span>대출가능여부: </span>
                                 <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
                             </div>
-                            <div class="plot">
-                                <p>${book.detail}</p>
-                            </div>
-                            <div class="rent-button-section">
-                                <button class="book-heart-button">찜하기</button>
-                                <button class="book-rent-button" ${book.copiesAvailable === 0 ? 'disabled' : ''}>대출하기</button>
-                            </div>
                         </div>
                     `;
                     resultDiv.appendChild(searchBook);
                 });
             } else {
+                totalCountElement.textContent = 0; // 검색 결과가 없을 경우
                 resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
             }
         })
@@ -83,7 +76,6 @@ const executeSearch = () => {
             alert('검색 중 문제가 발생했습니다. 나중에 다시 시도해주세요.');
         });
 };
-
 
 /**************************************/
 

@@ -22,7 +22,6 @@
         </if>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
-
     <!-- isbn 으로 책 조회 -->
     <select id="getBookByIsbn" resultType="BookDTO">
         SELECT * FROM book WHERE isbn = #{isbn}

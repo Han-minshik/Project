@@ -24,12 +24,12 @@
     </div>
   </section>
   <header>
-    <div>
-      <span>총: </span>
-      <b th:text="${pageInfo.getTotalElementCount()}">13</b>
-      <span>건</span>
-    </div>
-    <ul>
+	  <div>
+		  <span>총: </span>
+		  <b id="total-count" th:text="${pageInfo.getTotalElementCount()}">0</b>
+		  <span>건</span>
+	  </div>
+	  <ul>
       <li>
         <a th:href="@{/book/book-category(size=${pageInfo.size}, sort='recent')}">최신순</a>
       </li>
