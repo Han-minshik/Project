@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환">
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
-    </list>
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -225,6 +220,7 @@
       <workItem from="1737776537499" duration="298000" />
       <workItem from="1737785511712" duration="17691000" />
       <workItem from="1737809665072" duration="3315000" />
+      <workItem from="1737850570260" duration="146000" />
     </task>
     <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
       <option name="closed" value="true" />
@@ -610,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737812871374</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환">
+      <option name="closed" value="true" />
+      <created>1737850639215</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1737850639215</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
