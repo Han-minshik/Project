@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="로그인하고 실행하는 페이지나 기타 컨트롤러 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환">
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +224,7 @@
       <workItem from="1737776424766" duration="100000" />
       <workItem from="1737776537499" duration="298000" />
       <workItem from="1737785511712" duration="17691000" />
-      <workItem from="1737809665072" duration="3041000" />
+      <workItem from="1737809665072" duration="3315000" />
     </task>
     <task id="LOCAL-00001" summary="searchBooksByName(BookMapper, book-mapper.xml)에 추가">
       <option name="closed" value="true" />
@@ -604,14 +602,21 @@
       <option name="project" value="LOCAL" />
       <updated>1737803158654</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환">
+      <option name="closed" value="true" />
+      <created>1737812871374</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1737812871374</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-12&#10;&#10;추가&#10;- BookDTO : price 추가(DB)&#10;- LoanDTO : discountPrice(할인받은 금액), finalPrice(최종 금액) 추가(DB)&#10;- NotificationDTO : type 추가(DB, 알림의 종류를 결정)&#10;- BookMapper, book-mapper.xml : getBookDetails 추가&#10;- LoanMapper, loan-mapper.xml : getActiveloanByUserAndBook 추가&#10;- NotificationMapper, notification-mapper.xml 종류 별 알림 구현&#10;- UserMapper, user-mapper.xml : addPointTouser, getTopDiscussionUser, getTopCommentUserByDiscussionId, addPointGrantHistory, hasPointGrantedForReason, deductPoints 구현&#10;- getBookDetails로 UserService에서 대출시 책의 정보 상세 조회&#10;- LoanService : copiesAvailable 조절&#10;- NotificationService : 종류별 알림 서비스 구현&#10;- UserService : 포인트 부여 구현(discussion의 댓글이 다른 주제보다 많은 사용자, 댓글 중 공감이 가장 많은 사용자)&#10;&#10;수정&#10;- 모든 int 태그 -&gt; Integer로 변경&#10;&#10;&#10;삭제" />
     <MESSAGE value="2025-01-13" />
     <MESSAGE value="2025-01-19" />
     <MESSAGE value="2025-01-19&#10;&#10;관리자 페이지&#10;- 관리자 등록&#10;- 책 등ㅇ록&#10;- 책 정보 수정&#10;- 책 삭제 &#10;- 공지사항 등록&#10;- 특정 관리자의 post 조회&#10;- post 모두 찾기&#10;- post 수정&#10;- post 삭제&#10;- 관리자 지정(구현해야됨)&#10;&#10;책 페이지&#10;- isbn으로 책 조회&#10;- 특정 책의 평균 별점 조회&#10;- 특정 책의 리뷰와 좋아요 개수 조회&#10;- 특정 책의 토론 주제 개수 조회&#10;- 특정 책의 토론 참여자 인원수 조회&#10;- 리뷰 관련 쿼리(개수, 평균 등)&#10;- 리뷰별 좋아요 개수&#10;- 대출 가능일&#10;- 대출 가능 여부&#10;&#10;카테고리 페이지&#10;- 책 제목으로 검색&#10;- 최신순, 제목순, 보기 설정&#10;- 책의 총 개수&#10;- 페이지네이션&#10;- 모든 책 리스트&#10;- 제목으로 책 검색&#10;&#10;토론 게시판&#10;- 모든 토론 주제 조회&#10;- 가장 최근에 남겨진 의견&#10;- sort, pagination&#10;- 페이징된 토론 개수&#10;- 토론의 모든 내용과 책의 이미지, 제목 반환&#10;&#10;토론 참여 게시판&#10;- 토론의 모든 내용 조회&#10;- 댓글 추가&#10;- 댓글 총 개수&#10;- 댓글 정렬 및 페이지네이션&#10;- 찬성, 반대(한 댓글 당 하나만)&#10;&#10;회원가입&#10;- 회원 등록&#10;&#10;로그인&#10;- 아이디 저장&#10;- SNS 정보 저장&#10;&#10;메인&#10;- 베스트셀러 (위 : 5, 아래 2개 노출)&#10;- 왼쪽 위 : 인기가 가장 많은 책&#10;- 오른쪽 위 : 최신 토론 주제&#10;- 왼쪽 아래 : 가장 인기가 많은 토론 주제의 의견 1&#10;- 오른쪽 아래 : 가장 인기가 많은 토론 주제의 의견 2&#10;&#10;회원정보 수정&#10;- 정보 업데이트&#10;&#10;카트&#10;- 카트 저장&#10;- 카트 삭제&#10;- 카트 조회&#10;&#10;컴플레인&#10;- 컴플레인 저장&#10;- 상태 업데이트('', '답장완료')&#10;&#10;나의 대여 목록&#10;- 대출 기록 생성&#10;- 모든 사용자의 대출 조회&#10;- 반납 처리&#10;- 최신순/이름순 정렬&#10;- 페이지네이션 삭제(5권 제한이라 없어도 될 것 같음)&#10;- 대출 중인 책 반환" />
@@ -636,6 +641,7 @@
     <MESSAGE value="홈 화면/책 목록 페이지 컨트롤러 완료" />
     <MESSAGE value="홈 화면/책 목록 페이지(제목 검색) 컨트롤러 완료" />
     <MESSAGE value="로그인하고 실행하는 페이지나 기타 컨트롤러 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="로그인하고 실행하는 페이지나 기타 컨트롤러 추가" />
+    <MESSAGE value="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환" />
+    <option name="LAST_COMMIT_MESSAGE" value="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환" />
   </component>
 </project>
