@@ -8,11 +8,11 @@
         <version>3.3.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.koreait</groupId>
-    <artifactId>store</artifactId>
+    <groupId>com.project</groupId>
+    <artifactId>project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Cookie Run Store</name>
-    <description>Cookie Run Store</description>
+    <name>project</name>
+    <description>project</description>
     <url/>
     <licenses>
         <license/>
