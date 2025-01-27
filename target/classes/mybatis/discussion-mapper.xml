@@ -81,7 +81,7 @@
                 ORDER BY d.topic ASC
             </when>
         </choose>
-        LIMIT #{pageInfo.size} OFFSET #{pageInfo.getOffset()}
+        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
     <!-- 토론 생성할 때 제목으로 이미지를 반환 -->
     <select id="getBookImageByTitle">
@@ -104,5 +104,8 @@
     <!-- 사용자가 작성한 토론 글 -->
     <select id="getTotalCountByUser" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM discussion WHERE user_id = #{userId}
+    </select>
+    <select id="selectDiscussionNoByIsbn" resultType="java.lang.Integer">
+        SELECT id FROM discussion WHERE book_isbn = #{bookIsbn}
     </select>
 </mapper>
