@@ -21,6 +21,24 @@
                 <td>작성자</td>
                 <td>작성날짜</td>
             </tr>
+	        <tr>
+		        <td>1</td>
+		        <td th:text="${myComplains[0].getTitle()}"></td>
+		        <td th:text="${myComplains[0].getUserId()}"></td>
+		        <td th:text="${myComplains[0].getUploadedAt()}"></td>
+	        </tr>
+	        <tr>
+		        <td>2</td>
+		        <td th:text="${myComplains[1].getTitle()}"></td>
+		        <td th:text="${myComplains[1].getUserId()}"></td>
+		        <td th:text="${myComplains[1].getUploadedAt()}"></td>
+	        </tr>
+<!--	        <tr>-->
+<!--		        <td>3</td>-->
+<!--		        <td th:text="${myComplains[2].getTitle()}"></td>-->
+<!--		        <td th:text="${myComplains[2].getUserId()}"></td>-->
+<!--		        <td th:text="${myComplains[2].getUploadedAt()}"></td>-->
+<!--	        </tr>-->
         </table>
         <br>
         <table>

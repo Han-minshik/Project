@@ -29,7 +29,8 @@ public class MainController {
 
     @GetMapping("/")
     public String get_home (
-            Model model
+            Model model,
+            String userId
     ) {
         List<BookDTO> pBook5 = bookService.getPopularBook5();
         List<BookDTO> pBook = bookService.getPopularBook();
@@ -37,7 +38,9 @@ public class MainController {
         DiscussionCommentDTO fComment = discussionCommentService.getFirstComment();
         DiscussionCommentDTO sComment = discussionCommentService.getSecondComment();
         List<BookDTO> pBook2 = bookService.getPopularBook2();
+        UserDTO user = userService.find_user(userId);
 
+        model.addAttribute("user", user);
         model.addAttribute("pBook5", pBook5);
         model.addAttribute("pBook", pBook);
         model.addAttribute("cDiscussion", cDiscussion);
@@ -305,11 +308,9 @@ public class MainController {
 
     /******************* 컴플레인(문의사항) ********************/
     @GetMapping("/complain")
-    public String complain(Model model, PageInfoDTO<ComplainDTO> pageInfo) {
-        PageInfoDTO<ComplainDTO> complains = userService.getComplains(new PageInfoDTO<>());
+    public String complain(Model model) {
+        List<ComplainDTO> complains = userService.getComplains();
         model.addAttribute("complains", complains);
-        model.addAttribute("pageInfo", pageInfo);
-        log.error(complains);
         return "user/complain";
     }
 

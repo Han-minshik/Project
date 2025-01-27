@@ -29,6 +29,10 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public UserDTO find_user(String userId) {
+        return userMapper.getUserById(userId);
+    }
+
     public boolean join_user(UserDTO joinUser) {
         UserDTO findUser = userMapper.getUserById(joinUser.getId());
         if (findUser != null) {
@@ -162,7 +166,6 @@ public class UserService {
         ComplainDTO complain = new ComplainDTO();
         complain.setNo(complainId);
         complain.setContents(newContents);
-        userMapper.updateComplain(complain);
         log.info("컴플레인이 성공적으로 수정되었습니다: ID {}", complainId);
     }
 
@@ -181,13 +184,11 @@ public class UserService {
         return finalPrice;
     }
 
-    public PageInfoDTO<ComplainDTO> getComplains(PageInfoDTO<ComplainDTO> pageInfo) {
-        if(pageInfo.getPage() < 1) {
-            pageInfo.setSize(1);
-        }
-        if(pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(5);
-        }
-        return pageInfo;
+    public List<ComplainDTO> getComplains() {
+        return userMapper.getComplains();
+    }
+
+    public List<ComplainDTO> getMyComplains(String userId) {
+        return userMapper.getMyComplains(userId);
     }
 }

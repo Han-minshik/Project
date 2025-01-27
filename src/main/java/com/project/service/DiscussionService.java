@@ -127,7 +127,7 @@ public class DiscussionService {
     /**
      * 마이 페이지, 내가 작성한 토론 글 조회
      */
-    public PageInfoDTO<DiscussionDTO> getMyDiscussion(PageInfoDTO<DiscussionDTO> pageInfo, String userId) {
+    public List<DiscussionDTO> getMyDiscussion(PageInfoDTO<DiscussionDTO> pageInfo, String userId) {
         if(pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
@@ -141,7 +141,11 @@ public class DiscussionService {
             pageInfo.setTotalElementCount(totalDiscussionCount);
             pageInfo.setElements(discussions);
         }
-        return pageInfo;
+        return discussionMapper.getMyDiscussion(pageInfo, userId);
+    }
+
+    public Integer getMyDiscussionCount(String userId) {
+        return discussionMapper.getTotalCountByUser(userId);
     }
 
     /**

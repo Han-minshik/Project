@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
@@ -109,7 +110,7 @@ public class UserController {
     public String get_my_page(Authentication auth, Model model) {
         if (auth != null) {
             String userId = auth.getName();
-            UserDTO user = userMapper.getUserById(userId);
+            UserDTO user = userService.find_user(userId);
             if (user.getProfileImage() != null) {
                 String base64Image = "data:image/jpeg;base64," +
                         Base64.getEncoder().encodeToString(user.getProfileImage());
@@ -126,12 +127,12 @@ public class UserController {
 
 
     /************************************************/
-    @GetMapping("/discussion")
+    @GetMapping("/my-talk")
     public String get_my_discussion(Authentication auth, Model model, PageInfoDTO<DiscussionDTO> pageInfo) {
         if(auth != null) {
             String userId = auth.getName();
-            PageInfoDTO<DiscussionDTO> myDiscussion =  discussionService.getMyDiscussion(new PageInfoDTO<>(), userId);
-            Integer myDiscussionCount = myDiscussion.getTotalElementCount();
+            List<DiscussionDTO> myDiscussion =  discussionService.getMyDiscussion(new PageInfoDTO<>(), userId);
+            Integer myDiscussionCount = discussionService.getMyDiscussionCount(userId);
             model.addAttribute("myDiscussionCount", myDiscussionCount);
             model.addAttribute("myDiscussion", myDiscussion);
             model.addAttribute("pageInfo", pageInfo);
@@ -145,75 +146,74 @@ public class UserController {
     /************************************************/
 
     @GetMapping("/lendbook")
-    public String get_lendbook(Authentication auth, Model model, PageInfoDTO<CartDTO> pageInfo) {
+    public String get_lendbook(Authentication auth, Model model, PageInfoDTO<LoanDTO> pageInfo) {
         if (auth != null) {
             String userId = auth.getName();
+            Map<LoanDTO, BookDTO> loanBookMap = loanService.getActiveLoanByUser(userId);
             Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
-            try {
-                Map<LoanDTO, BookDTO> loanBookMap = loanService.getActiveLoanByUser(userId);
-                model.addAttribute("activeLoanCount", activeLoanCount);
-                model.addAttribute("loanBookMap", loanBookMap);
-                model.addAttribute("pageInfo", pageInfo);
-                log.error(activeLoanCount);
-                log.error(loanBookMap);
-            } catch (IllegalArgumentException e) {
-                // 대출 중인 책이 없을 경우 처리
-                model.addAttribute("loanBookMap", null);
-            }
-            return "user/lendbook";
+            model.addAttribute("activeLoanCount", activeLoanCount);
+            model.addAttribute("loanBookMap", loanBookMap);
+            model.addAttribute("pageInfo", pageInfo);
+            log.error(activeLoanCount);
+            log.error(loanBookMap);
         }
-        return "redirect:/user/login";
+        return "user/lendbook";
     }
 
-    @GetMapping("/lendbook/all")
-    public String get_lendbook_all(
-            Authentication auth,
-            Model model,
-            PageInfoDTO<CartDTO> pageInfo
-    ){
-        if (auth != null) {
-            List<LoanDTO> allLendBooks = loanService.getLoansByUserId(auth.getName());
-            model.addAttribute("allLendBooks", allLendBooks);
-            model.addAttribute("pageInfo", pageInfo);
-            return "user/lendbook";
-        }
-        return "redirect:/user/login";
-    }
+//    @GetMapping("/lendbook/all")
+//    public String get_lendbook_all(
+//            Authentication auth,
+//            Model model,
+//            PageInfoDTO<CartDTO> pageInfo
+//    ){
+//        if (auth != null) {
+//            List<LoanDTO> allLendBooks = loanService.getLoansByUserId(auth.getName());
+//            model.addAttribute("allLendBooks", allLendBooks);
+//            model.addAttribute("pageInfo", pageInfo);
+//            return "user/lendbook";
+//        }
+//        return "redirect:/user/login";
+//    }
 
     // 책 대출하기
-    @PostMapping("/lendbook/lend")
-    public String post_lendbook_lend(
-            Authentication auth,
-            @ModelAttribute LoanDTO lendbook,
-            @RequestParam Integer points
-    ){
-        if (auth != null) {
-            loanService.createLoanWithPoints(lendbook, points);
-            return "redirect:/user/lendbook";
-        }
-        return "redirect:/user/login";
-    }
+//    @PostMapping("/lendbook/lend")
+//    public String post_lendbook_lend(
+//            Authentication auth,
+//            @ModelAttribute LoanDTO lendbook,
+//            @RequestParam Integer points
+//    ){
+//        if (auth != null) {
+//            loanService.createLoanWithPoints(lendbook, points);
+//            return "redirect:/user/lendbook";
+//        }
+//        return "redirect:/user/login";
+//    }
 
     /************************************************/
 
     @GetMapping("/wishlist")
-    public String get_wishlist(
-            Authentication auth,
-            Model model,
-            PageInfoDTO<CartDTO> pageInfo
-    ) {
+    public String getWishlist(Authentication auth, Model model) {
         if (auth != null) {
             String userId = auth.getName();
-            PageInfoDTO<CartDTO> wishlist = bookService.getCartsByUser(pageInfo, userId);
-            model.addAttribute("pageInfo", pageInfo);
-            model.addAttribute("totalCount", wishlist.getTotalElementCount());
+            UserDTO user = new UserDTO();
+            user.setId(userId);
+
+            List<CartDTO> wishlist = bookService.getCartsByUser(user);
+            wishlist = wishlist.stream()
+                    .filter(cart -> cart != null && cart.getBook() != null)
+                    .collect(Collectors.toList()); // Null 요소 제거
+
+            Integer cartCount = bookService.getCartCountByUser(userId);
+
+            model.addAttribute("cartCount", cartCount);
             model.addAttribute("wishlist", wishlist);
-            log.error(wishlist);
-            log.error(wishlist.getTotalElementCount());
+
             return "user/wishlist";
         }
         return "redirect:/user/login";
     }
+
+
 
     @GetMapping("/wishlist/add")
     public String get_wishlist_add(
@@ -258,49 +258,61 @@ public class UserController {
 
     }
 
-    /*********************** 공지사항 *********************/
-    // 어쩌면 메인으로 가야하는건가?
-    // 공지사항 목록
-    @GetMapping("/adminPost")
-    public String get_allAdminPost(
-            Authentication auth,
-            Model model
-    ){
-        if (auth != null) {
-            List<AdminPostDTO> allAdminPost = adminMapper.getAllAdminPosts();
-            model.addAttribute("allAdminPost", allAdminPost);
-            return "user/all-admin-post";
+    @GetMapping("/complain")
+    public String get_my_complain(Model model,
+                                  Authentication auth) {
+        if(auth != null) {
+            String userId = auth.getName();
+            List<ComplainDTO> myComplains = userService.getMyComplains(userId);
+            model.addAttribute("myComplains", myComplains);
+            return "user/complain";
         }
         return "redirect:/user/login";
     }
 
-    // 공지사항 한 페이지
-    @GetMapping("/adminPost/{adminPostId}")
-    public String get_adminPost(
-            Authentication auth,
-            @PathVariable Integer adminPostId,
-            Model model
-    ){
-        if (auth != null) {
-            List<AdminPostDTO> adminPost = adminMapper.getAdminPostById(adminPostId);
-            model.addAttribute("adminPost", adminPost);
-            return "user/admin-post";
-        }
-        return "redirect:/user/login";
-    }
-
-    /******************************/
-    // 탈퇴
-    @GetMapping("/resign")
-    public void get_user_resign(){}
-
-    @PostMapping("/resign")
-    public String post_user_resign(
-            Authentication auth
-    ){
-        if (auth != null) {
-            userMapper.deleteUser(auth.getName());
-        }
-        return "redirect:/user/logout";
-    }
+//    /*********************** 공지사항 *********************/
+//    // 어쩌면 메인으로 가야하는건가?
+//    // 공지사항 목록
+//    @GetMapping("/adminPost")
+//    public String get_allAdminPost(
+//            Authentication auth,
+//            Model model
+//    ){
+//        if (auth != null) {
+//            List<AdminPostDTO> allAdminPost = adminMapper.getAllAdminPosts();
+//            model.addAttribute("allAdminPost", allAdminPost);
+//            return "user/all-admin-post";
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    // 공지사항 한 페이지
+//    @GetMapping("/adminPost/{adminPostId}")
+//    public String get_adminPost(
+//            Authentication auth,
+//            @PathVariable Integer adminPostId,
+//            Model model
+//    ){
+//        if (auth != null) {
+//            List<AdminPostDTO> adminPost = adminMapper.getAdminPostById(adminPostId);
+//            model.addAttribute("adminPost", adminPost);
+//            return "user/admin-post";
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    /******************************/
+//    // 탈퇴
+//    @GetMapping("/resign")
+//    public void get_user_resign(){}
+//
+//    @PostMapping("/resign")
+//    public String post_user_resign(
+//            Authentication auth
+//    ){
+//        if (auth != null) {
+//            userMapper.deleteUser(auth.getName());
+//        }
+//        return "redirect:/user/logout";
+//    }
 }
