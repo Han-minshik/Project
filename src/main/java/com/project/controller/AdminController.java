@@ -31,7 +31,7 @@ public class AdminController {
 
     @GetMapping("/manager")
     public String manager() {
-        return "manager/manager1";
+        return "manager/manager";
     }
 
     /*********************문의사항 조회*************************/

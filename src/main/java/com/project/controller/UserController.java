@@ -293,6 +293,11 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+    @GetMapping("/write_QA")
+    public void write_complain() {
+
+    }
+
 //    /*********************** 공지사항 *********************/
 //    // 어쩌면 메인으로 가야하는건가?
 //    // 공지사항 목록

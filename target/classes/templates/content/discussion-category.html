@@ -70,10 +70,10 @@
 				</div>
 				<div class="discussion-button-section">
 					<button class="book-button">
-						<a th:href="@{/book/${discussion.bookIsbn}}">책 보러가기</a>
+						<a th:href="@{/book/{isbn}(isbn=${discussion.bookIsbn})}">책 보러가기</a>
 					</button>
 					<button class="discussion-button">
-						<a th:href="@{/discussion/${discussion.id}}">토론 참여하기</a>
+						<a th:href="@{/discussion/{id}(id=${discussion.id})}">토론 참여하기</a>
 					</button>
 				</div>
 			</div>

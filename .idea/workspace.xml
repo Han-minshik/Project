@@ -4,146 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="합병 전 백업 파일">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="테스트 진행 중">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/book.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/category.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/participation.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/zim.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/login/join.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/login/login-header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/login/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/info-revise.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/login-home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/manager/manager.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/public/public.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/info-revise.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/my-page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/my-talk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/reset-pw.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/book1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/book2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/book3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/book_main.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/free-icon-email-6129053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/free-icon-kakao-talk-3669990.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/free-icon-more-information-2740648.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/free-icon-stack-of-books-5833290.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/icorn/google_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/icorn/kakao_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/icorn/naver_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/login_book.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/main/예시 프로필.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/book.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/category.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/participation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/zim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login/login-header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/login-home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/info-revise.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/wishlist.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/login-home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manager/manager1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/join.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/participation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/participation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/login-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/login-home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/method.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/myTalk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/book.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/category.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/discussion.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/discussion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/participation.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/login/login-header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/login-home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/manager/manager.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/manager/manager.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/method.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/my-page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/my-talk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/reset-pw.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/write.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/book1.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/book2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/book3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/book_main.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/free-icon-email-6129053.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/free-icon-kakao-talk-3669990.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/free-icon-more-information-2740648.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/free-icon-stack-of-books-5833290.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/icorn/google_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/icorn/kakao_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/icorn/naver_login_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/login_book.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/main/예시 프로필.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/book.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/participation.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/participation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/login/login-header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/login/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/manager/manager.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/method.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/wishlist.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/participation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/participation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/main/login-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/login-home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/manager/manager1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/join.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/method.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/myTalk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/mypage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,23 +276,7 @@
       <workItem from="1737857804564" duration="81000" />
       <workItem from="1737863670163" duration="1579000" />
       <workItem from="1737869485844" duration="17347000" />
-      <workItem from="1737942046678" duration="18808000" />
-    </task>
-    <task id="LOCAL-00004" summary="오타 수정(2025/01/09)">
-      <option name="closed" value="true" />
-      <created>1736397671038</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1736397671038</updated>
-    </task>
-    <task id="LOCAL-00005" summary="추가&#10;- 이름으로 책 조회&#10;- userDTO 안 getPassword 추가(securityConfiguration 할 때 OAuth2 완성 후 삭제 가능)&#10;&#10;수정&#10;- ReviewDTO 오타 수정&#10;- application.properties : DB 경로 수정(jdbc:mysql//localhost -&gt; jdbc:mysql://localhost로 변경)&#10;- getAllLoans로 변경(LoanMapper, loan-mapper.xml)&#10;&#10;삭제 &#10;- isbn으로 베스트셀러 조회 삭제(BookMapper, book-mapper.xml)&#10;- book-mapper.xml의 isnert문에서 user_id 삭제(DB의 book 테이블에서도 컬럼 삭제)&#10;- BookDTO의 userId 삭제(DB의 user_id컬럼 삭제)&#10;- BestSellerDTO 삭제(DB의 bestseller 테이블 삭제)">
-      <option name="closed" value="true" />
-      <created>1736413327647</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1736413327647</updated>
+      <workItem from="1737942046678" duration="21456000" />
     </task>
     <task id="LOCAL-00006" summary="추가&#10;- 이름으로 책 조회&#10;- userDTO 안 getPassword 추가(securityConfiguration 할 때 OAuth2 완성 후 삭제 가능)&#10;&#10;수정&#10;- ReviewDTO 오타 수정&#10;- application.properties : DB 경로 수정(jdbc:mysql//localhost -&gt; jdbc:mysql://localhost로 변경)&#10;- getAllLoans로 변경(LoanMapper, loan-mapper.xml)&#10;&#10;삭제 &#10;- isbn으로 베스트셀러 조회 삭제(BookMapper, book-mapper.xml)&#10;- book-mapper.xml의 isnert문에서 user_id 삭제(DB의 book 테이블에서도 컬럼 삭제)&#10;- BookDTO의 userId 삭제(DB의 user_id컬럼 삭제)&#10;- BestSellerDTO 삭제(DB의 bestseller 테이블 삭제)&#10;- 책 정보 수정(book-mapper.xml)안 update 문 user_id 삭제">
       <option name="closed" value="true" />
@@ -778,14 +654,29 @@
       <option name="project" value="LOCAL" />
       <updated>1737942165017</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="테스트 진행 중">
+      <option name="closed" value="true" />
+      <created>1737961112180</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1737961112180</updated>
+    </task>
+    <task id="LOCAL-00054" summary="테스트 진행 중">
+      <option name="closed" value="true" />
+      <created>1737961133468</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1737961133468</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-19" />
     <MESSAGE value="2025-01-19&#10;&#10;관리자 페이지&#10;- 관리자 등록&#10;- 책 등ㅇ록&#10;- 책 정보 수정&#10;- 책 삭제 &#10;- 공지사항 등록&#10;- 특정 관리자의 post 조회&#10;- post 모두 찾기&#10;- post 수정&#10;- post 삭제&#10;- 관리자 지정(구현해야됨)&#10;&#10;책 페이지&#10;- isbn으로 책 조회&#10;- 특정 책의 평균 별점 조회&#10;- 특정 책의 리뷰와 좋아요 개수 조회&#10;- 특정 책의 토론 주제 개수 조회&#10;- 특정 책의 토론 참여자 인원수 조회&#10;- 리뷰 관련 쿼리(개수, 평균 등)&#10;- 리뷰별 좋아요 개수&#10;- 대출 가능일&#10;- 대출 가능 여부&#10;&#10;카테고리 페이지&#10;- 책 제목으로 검색&#10;- 최신순, 제목순, 보기 설정&#10;- 책의 총 개수&#10;- 페이지네이션&#10;- 모든 책 리스트&#10;- 제목으로 책 검색&#10;&#10;토론 게시판&#10;- 모든 토론 주제 조회&#10;- 가장 최근에 남겨진 의견&#10;- sort, pagination&#10;- 페이징된 토론 개수&#10;- 토론의 모든 내용과 책의 이미지, 제목 반환&#10;&#10;토론 참여 게시판&#10;- 토론의 모든 내용 조회&#10;- 댓글 추가&#10;- 댓글 총 개수&#10;- 댓글 정렬 및 페이지네이션&#10;- 찬성, 반대(한 댓글 당 하나만)&#10;&#10;회원가입&#10;- 회원 등록&#10;&#10;로그인&#10;- 아이디 저장&#10;- SNS 정보 저장&#10;&#10;메인&#10;- 베스트셀러 (위 : 5, 아래 2개 노출)&#10;- 왼쪽 위 : 인기가 가장 많은 책&#10;- 오른쪽 위 : 최신 토론 주제&#10;- 왼쪽 아래 : 가장 인기가 많은 토론 주제의 의견 1&#10;- 오른쪽 아래 : 가장 인기가 많은 토론 주제의 의견 2&#10;&#10;회원정보 수정&#10;- 정보 업데이트&#10;&#10;카트&#10;- 카트 저장&#10;- 카트 삭제&#10;- 카트 조회&#10;&#10;컴플레인&#10;- 컴플레인 저장&#10;- 상태 업데이트('', '답장완료')&#10;&#10;나의 대여 목록&#10;- 대출 기록 생성&#10;- 모든 사용자의 대출 조회&#10;- 반납 처리&#10;- 최신순/이름순 정렬&#10;- 페이지네이션 삭제(5권 제한이라 없어도 될 것 같음)&#10;- 대출 중인 책 반환" />
     <MESSAGE value="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정" />
     <MESSAGE value="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가" />
@@ -810,6 +701,7 @@
     <MESSAGE value="로그인하고 실행하는 페이지나 기타 컨트롤러 추가" />
     <MESSAGE value="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환" />
     <MESSAGE value="합병 전 백업 파일" />
-    <option name="LAST_COMMIT_MESSAGE" value="합병 전 백업 파일" />
+    <MESSAGE value="테스트 진행 중" />
+    <option name="LAST_COMMIT_MESSAGE" value="테스트 진행 중" />
   </component>
 </project>
