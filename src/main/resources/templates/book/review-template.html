@@ -42,7 +42,6 @@
 <div class="review-sort-container">
 	<ul>
 		<li><a onclick="load_review(event, this.href)" th:href="@{'/book/' + ${bookIsbn} + '/review'(page=1,sort='recent')}" active>최신순</a></li>
-		<li><a onclick="load_review(event, this.href)" th:href="@{'/book/' + ${bookIsbn} + '/review'(page=1,sort='best')}">인기순</a></li>
 		<li><a onclick="load_review(event, this.href)" th:href="@{'/book/' + ${bookIsbn} + '/review'(page=1,sort='high-rate')}">평점 높은 순</a></li>
 		<li><a onclick="load_review(event, this.href)" th:href="@{'/book/' + ${bookIsbn} + '/review'(page=1,sort='low-rate')}">평점 낮은 순</a></li>
 	</ul>

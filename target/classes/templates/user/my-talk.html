@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../static/css/user/my-talk.css" type="text/css">
+    <link rel="stylesheet" href="../../../../../../src/main/resources/static/css/user/my-talk.css" type="text/css">
     <script src="../../static/js/user/method.js" defer></script>
 </head>
 
@@ -21,11 +21,5 @@
             </tr>
         </table>
         <br>
-		<section id = "discussion-list">
-			<b>no : </b>
-			<b th:text="${myDiscussion[0].getTopic()}">title : </b>
-			<b th:text="${myDiscussion[0].getCreatedAt()}">작성날짜 : </b>
-
-		</section>
 </body>
 </html>

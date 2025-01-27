@@ -22,4 +22,5 @@ public interface DiscussionMapper {
     DiscussionDTO selectDiscussionByDiscussionId(@Param("discussionId") Integer discussionId);
     Integer getTotalCountByTitle(@Param("title") String title);
     Integer getTotalCountByUser(@Param("userId") String userId);
+    Integer selectDiscussionNoByIsbn(@Param("bookIsbn") String bookIsbn);
 }

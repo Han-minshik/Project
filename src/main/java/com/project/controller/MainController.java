@@ -1,9 +1,13 @@
 package com.project.controller;
 
 import com.project.dto.*;
+import com.project.mapper.DiscussionMapper;
 import com.project.service.*;
 import lombok.extern.log4j.Log4j2;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -26,6 +30,8 @@ public class MainController {
     @Autowired private DiscussionCommentService discussionCommentService;
     @Autowired private UserService userService;
     @Autowired private LoanService loanService;
+    @Autowired
+    private DiscussionMapper discussionMapper;
 
     @GetMapping("/")
     public String get_home (
@@ -168,7 +174,7 @@ public class MainController {
     ){
         Map<String, Map<String, Object>> rateMap = bookService.getPaginatedReviews(pageInfo, bookIsbn);
         model.addAttribute("pageInfo", pageInfo);
-        model.addAttribute("rateMap", rateMap != null ? rateMap : Collections.emptyMap());
+        model.addAttribute("rateMap", rateMap);
         return "book/review-template";
     }
 
@@ -197,12 +203,13 @@ public class MainController {
     @ResponseBody
     public PageInfoDTO<DiscussionDTO> searchDiscussionByTitle(
             @RequestParam String bookName,
-            PageInfoDTO<DiscussionDTO> pageInfo
+            PageInfoDTO<DiscussionDTO> pageInfo,
+            Model model
     ) {
-        List<DiscussionDTO> paginatedByTitle = discussionService.getDiscussionByBookTitle(pageInfo, bookName);
-        pageInfo.setElements(paginatedByTitle);
-        pageInfo.setTotalElementCount(discussionService.getTotalCountByTitle(bookName));
-        return pageInfo;
+        PageInfoDTO<DiscussionDTO> discussions = discussionService.getDiscussionByBookTitle(pageInfo, bookName);
+        pageInfo.setTotalElementCount(discussions.getTotalElementCount());
+        model.addAttribute("pageInfo", pageInfo);
+        return discussions;
     }
 
 
@@ -327,29 +334,29 @@ public class MainController {
         return "redirect:/user/login";
     }
 
-    @PatchMapping("/complain/update")
-    public String patch_complain_update (
-            Authentication auth,
-            @RequestParam Integer compainId
-    ){
-        if(auth != null){
-            userService.updateComplain(compainId, auth.getName());
-            return "content/complain-update";
-        }
-        return "redirect:/user/login";
-    }
-
-    @DeleteMapping("/complain/delete")
-    public String delete_complain_delete (
-            Authentication auth,
-            @RequestParam Integer compainId
-    ){
-        if(auth != null){
-            userService.deleteComplain(compainId);
-            return "content/complain-delete";
-        }
-        return "redirect:/user/login";
-    }
+//    @PatchMapping("/complain/update")
+//    public String patch_complain_update (
+//            Authentication auth,
+//            @RequestParam Integer compainId
+//    ){
+//        if(auth != null){
+//            userService.updateComplain(compainId, auth.getName());
+//            return "content/complain-update";
+//        }
+//        return "redirect:/user/login";
+//    }
+//
+//    @DeleteMapping("/complain/delete")
+//    public String delete_complain_delete (
+//            Authentication auth,
+//            @RequestParam Integer compainId
+//    ){
+//        if(auth != null){
+//            userService.deleteComplain(compainId);
+//            return "content/complain-delete";
+//        }
+//        return "redirect:/user/login";
+//    }
 
 
 }

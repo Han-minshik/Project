@@ -50,24 +50,17 @@
     </select>
     <!-- 책 리뷰 조회 -->
     <select id="selectPaginatedReviewsByBookIsbn" resultType="ReviewDTO">
-        SELECT REVIEW.*, USER.nickname AS user_name
-        FROM (
-        SELECT * FROM review
+        SELECT * FROM review REVIEW
         WHERE book_isbn = #{isbn}
         <choose>
-            <when test="pageInfo.sort == 'high-rate'">
-                ORDER BY rate DESC
-            </when>
             <when test="pageInfo.sort == 'low-rate'">
-                ORDER BY rate
+                ORDER BY REVIEW.`rate`
             </when>
-            <otherwise>
-                ORDER BY updated_at DESC
-            </otherwise>
+            <when test="pageInfo.sort == 'high-rate'">
+                ORDER BY REVIEW.`rate` DESC
+            </when>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
-        ) REVIEW
-        INNER JOIN user USER ON REVIEW.user_id = USER.id
     </select>
     <!-- 리뷰 관련 쿼리(개수, 평균 등) -->
     <select id="selectPaginatedReviewTotalCountByIsbn" resultType="java.util.Map">
@@ -134,9 +127,9 @@
         </association>
     </resultMap>
     <!-- 카트에 책 추가 -->
-    <insert id="insertBookToCart">
+    <insert id="insertBookToCart" useGeneratedKeys="true" keyProperty="cart.no">
         INSERT INTO cart (no, user_id, book_isbn)
-        VALUES (NULL, #{user_id}, #{book_isbn})
+        VALUES (NULL, #{user.id}, #{cart.book.isbn})
     </insert>
     <!-- 카트에서 특정 책 삭제 -->
     <delete id="deleteBookFromCart">

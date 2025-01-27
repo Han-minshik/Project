@@ -6,55 +6,98 @@
 <head>
 	<meta charset="UTF-8">
 	<title>토론 게시판</title>
-	<link rel="stylesheet" href="../../static/css/content/discussion.css">
-	<script src="../../static/js/content/discussion.js" defer></script>
+	<link rel="stylesheet" href="../../static/css/content/discussion-category.css">
+	<script src="../../static/js/content/discussion-category.js" defer></script>
 </head>
 <body>
 <main>
 	<h1>토론 게시판</h1>
+	<!-- 검색 섹션 -->
+	<section>
+		<div class="book-title-search">
+			<span>책제목:</span>
+			<label>
+				<input type="text" class="search-input" placeholder="책 제목을 검색해주세요">
+				<button class="search-button"><i class="bi bi-search"></i></button>
+			</label>
+		</div>
+	</section>
+
+
+	<!-- 통계 및 정렬 옵션 -->
 	<header>
 		<div>
 			<span>등록주제:</span>
-			<b th:text="${paginatedCount}">0개</b>
+			<b id="total-count" th:text="${pageInfo.totalElementCount}">13</b>
+			<span>개</span>
 		</div>
 		<ul>
-			<li><a href="#" th:href="@{/discussion/category(size=${pageInfo.size}, sort = 'recent')}">최신순</a></li>
-			<li><a href="#" th:href="@{/discussion/category(size=${pageInfo.size}, sort = 'title')}">제목순</a></li>
+			<li>
+				<a th:href="@{/discussion/category(page=1, size=${pageInfo.size}, sort='recent')}">최신순</a>
+			</li>
+			<li>
+				<a th:href="@{/discussion/category(page=1, size=${pageInfo.size}, sort='title')}">제목순</a>
+			</li>
 			<li>
 				<label>
 					<span>보기설정</span>
 					<select id="view-size-select">
+						<option value="5" th:selected="${pageInfo.size == 5}">5개</option>
 						<option value="10" th:selected="${pageInfo.size == 10}">10개</option>
 						<option value="15" th:selected="${pageInfo.size == 15}">15개</option>
-						<option value="20" th:selected="${pageInfo.size == 20}">20개</option>
 					</select>
 				</label>
 			</li>
 		</ul>
 	</header>
 
+	<!-- 토론 리스트 -->
 	<section class="all-book-discussion">
-		<div class="one-book-discussion" th:each="discussion : ${paginatedDiscussions}">
+		<div class="one-book-discussion" th:each="discussion: ${pageInfo.elements}">
 			<div class="image-container">
-				<img th:src="${discussion.base64Image != null ? discussion.base64Image : null}" alt="도서 이미지"/>
+				<img th:src="${discussion.base64Image}" src="../../static/images/book_main.jpg" alt="메인이미지" />
 			</div>
 			<div class="discussion-title-recent">
-				<h2 th:text="${discussion.getBookTitle()}">책 제목</h2>
+				<h2>
+					<a th:href="@{/discussion/${discussion.id}}" th:text="${discussion.bookTitle}">소년이 온다</a>
+				</h2>
 				<div class="discussion-title">
 					<span>토론 주제:</span>
-					<p th:text="${discussion.getTopic()}">토론 주제 내용</p>
+					<p th:text="${discussion.topic}">내가 '소년이 온다'를 좋아하는 이유는?</p>
 				</div>
 				<div class="discussion-recent">
-					<p th:text="${discussion.getRecentComment()}">가장 최근에 남겨진 의견</p>
+					<p th:text="${discussion.recentComment}">최근 댓글 없음</p>
 				</div>
 				<div class="discussion-button-section">
-					<input type="hidden" name="isbn" th:value="${discussion.getBookIsbn()}">
-<!--					<button class="book-button" th:onclick="'location.href=/book/details/' + ${discussion.getBookIsbn()}">책 보러가기</button>-->
-<!--					<button class="discussion-button" th:onclick="'location.href=/discussion/details/' + ${discussion.getId()}">토론 참여하기</button>-->
+					<button class="book-button">
+						<a th:href="@{/book/${discussion.bookIsbn}}">책 보러가기</a>
+					</button>
+					<button class="discussion-button">
+						<a th:href="@{/discussion/${discussion.id}}">토론 참여하기</a>
+					</button>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<!-- 페이지네이션 -->
+	<ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">
+		<li th:if="${pageInfo.startPage != 1}">
+			<a th:href="@{/discussion/category(page=${pageInfo.startPage - 1}, size=${pageInfo.size}, sort=${pageInfo.sort})}">
+				<i class="bi bi-caret-left-fill"></i>
+			</a>
+		</li>
+		<li th:each="pageNumber: ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+			<a th:href="@{/discussion/category(page=${pageNumber}, size=${pageInfo.size}, sort=${pageInfo.sort})}"
+			   th:text="${pageNumber}"
+			   th:active="${pageInfo.page == pageNumber}">1</a>
+		</li>
+		<li th:if="${pageInfo.endPage != pageInfo.totalPageCount}">
+			<a th:href="@{/discussion/category(page=${pageInfo.endPage + 1}, size=${pageInfo.size}, sort=${pageInfo.sort})}">
+				<i class="bi bi-caret-right-fill"></i>
+			</a>
+		</li>
+	</ol>
 </main>
 </body>
 </html>

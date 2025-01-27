@@ -4,63 +4,63 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
-    <title>나의 찜목록</title>
-    <link rel="stylesheet" href="../../static/css/content/wishlist.css" type="text/css">
+	<title>나의 찜목록</title>
+	<link rel="stylesheet" href="../../static/css/content/wishlist.css" type="text/css">
 	<script src="../../static/js/user/wishlist.js" defer></script>
 </head>
 <body>
-    <h1>나의 찜 목록</h1>
-    <header>
-        <div>
-            <span>찜한 권수:</span>
-            <b th:text="${cartCount} + '건'">13건</b>
-        </div>
+<h1>나의 찜 목록</h1>
+<header>
+	<div>
+		<span>찜한 권수:</span>
+		<b th:text="${cartCount} + '건'">13건</b>
+	</div>
 
-	    <ul>
-<!--		    <li>-->
-<!--			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='recent')}">최신순</a>-->
-<!--		    </li>-->
-<!--		    <li>-->
-<!--			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='name')}">이름순</a>-->
-<!--		    </li>-->
-	    </ul>
+	<ul>
+		<!--		    <li>-->
+		<!--			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='recent')}">최신순</a>-->
+		<!--		    </li>-->
+		<!--		    <li>-->
+		<!--			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='name')}">이름순</a>-->
+		<!--		    </li>-->
+	</ul>
 
-	    <div>
-		    <label>
-			    <span>보기설정</span>
-			    <select id="view-size-select">
-<!--				    <option value="10" th:selected="${pageInfo.size == 10}">10개</option>-->
-<!--				    <option value="25" th:selected="${pageInfo.size == 25}">25개</option>-->
-<!--				    <option value="30" th:selected="${pageInfo.size == 30}">30개</option>-->
-<!--				    <option value="50" th:selected="${pageInfo.size == 50}">50개</option>-->
-			    </select>
-		    </label>
-	    </div>
+	<div>
+		<label>
+			<span>보기설정</span>
+			<select id="view-size-select">
+				<!--				    <option value="10" th:selected="${pageInfo.size == 10}">10개</option>-->
+				<!--				    <option value="25" th:selected="${pageInfo.size == 25}">25개</option>-->
+				<!--				    <option value="30" th:selected="${pageInfo.size == 30}">30개</option>-->
+				<!--				    <option value="50" th:selected="${pageInfo.size == 50}">50개</option>-->
+			</select>
+		</label>
+	</div>
 
-    </header>
+</header>
 
-    <hr/>
+<hr/>
 
-    <main>
-	    <h2>책 목록</h2>
-	    <div class="wishlist" id="wishlist-container">
-		    <!-- 책 목록이 있는 경우 -->
-			    <ul class="book-list">
-				    <li th:each="wish : ${wishlist}" class="book-item">
-					    <div class="book-card">
-						    <!-- Null 검증 후 렌더링 -->
-						    <img th:if="${wish.book != null}" th:src="${wish.book.getBase64Image()}" alt="책 이미지" class="book-image">
-						    <div th:if="${wish.book != null}" class="book-info">
-							    <h3 th:text="${wish.book.getTitle()}"></h3>
-							    <p th:text="'가격: ' + ${wish.book.getPrice()} + '원'"></p>
-						    </div>
-					    </div>
-				    </li>
-			    </ul>
-	    </div>
-    </main>
+<main>
+	<h2>책 목록</h2>
+	<div class="wishlist" id="wishlist-container">
+		<!-- 책 목록이 있는 경우 -->
+		<ul class="book-list">
+			<li th:each="wish : ${wishlist}" class="book-item">
+				<div class="book-card">
+					<!-- Null 검증 후 렌더링 -->
+					<img th:if="${wish.book != null}" th:src="${wish.book.getBase64Image()}" alt="책 이미지" class="book-image">
+					<div th:if="${wish.book != null}" class="book-info">
+						<h3 th:text="${wish.book.getTitle()}"></h3>
+						<p th:text="'가격: ' + ${wish.book.getPrice()} + '원'"></p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</main>
 
 <!--    <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">-->
 <!--        <li th:if="${pageInfo.startPage != 1}">-->
