@@ -21,5 +21,11 @@
             </tr>
         </table>
         <br>
+		<section id = "discussion-list">
+			<b>no : </b>
+			<b th:text="${myDiscussion[0].getTopic()}">title : </b>
+			<b th:text="${myDiscussion[0].getCreatedAt()}">작성날짜 : </b>
+
+		</section>
 </body>
 </html>

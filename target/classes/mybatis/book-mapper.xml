@@ -117,20 +117,22 @@
         SELECT * FROM book ORDER BY isbn DESC LIMIT 2
     </select>
     <!-- 유저 카트 조회 -->
-    <select id="selectCartsByUser" resultType="CartDTO">
+    <select id="selectCartsByUser" resultMap="cartResultMap">
         SELECT *
         FROM `select_carts_by_user_view`
         WHERE `user_id` = #{id}
-        <choose>
-            <when test="pageInfo.sort == 'recent'">
-                ORDER BY cart_no DESC
-            </when>
-            <when test="pageInfo.sort == 'name'">
-                ORDER BY book_title
-            </when>
-        </choose>
-        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
+    <resultMap id="cartResultMap" type="CartDTO">
+        <!-- CartDTO 매핑 -->
+        <result property="no" column="cart_no"/>
+        <association property="book" javaType="BookDTO">
+            <!-- BookDTO 매핑 -->
+            <result property="isbn" column="book_isbn"/>
+            <result property="title" column="book_title"/>
+            <result property="price" column="book_price"/>
+            <result property="image" column="book_image"/>
+        </association>
+    </resultMap>
     <!-- 카트에 책 추가 -->
     <insert id="insertBookToCart">
         INSERT INTO cart (no, user_id, book_isbn)

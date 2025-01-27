@@ -13,18 +13,18 @@
     <h1>나의 대여 목록</h1>
     <header>
         <div>
-            <span th:text="#{category.registed-item}">대여한 권수:</span>
-            <b th:text="${pageInfo.totalElementCount} + '건'">13건</b>
+            <span>대여한 권수:</span>
+            <b th:text="${pageInfo.getTotalElementCount()} + '건'">13건</b>
         </div>
 
         <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='recent')}">최신순</a>
+            <a th:href="@{/lendbook(size=${pageInfo.size},sort='recent')}">최신순</a>
         </li>
         <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='name')}">이름순</a>
+            <a th:href="@{/lendbook(size=${pageInfo.size},sort='name')}">이름순</a>
         </li>
         <li>
-            <a th:href="@{/product(categoryNo=${pageInfo.categoryNo},page=1,size=${pageInfo.size},sort='low-price')}">대여기간</a>
+            <a th:href="@{/lendbook(size=${pageInfo.size},sort='low-price')}">대여기간</a>
         </li>
 
         <li>
@@ -44,16 +44,41 @@
     <hr/>
 
     <main>
-        <div class="wishlist" id="wishlist-container">
-            <p>대여한 책이 없어요ㅠㅠ</p>
-            <a href="../book/book-category.html" class="link">책 보러가기!</a>
-        </div>
+	    <div class="wishlist" id="wishlist-container">
+		    <div th:if="${loanBookMap.isEmpty()}">
+			    <p>대여한 책이 없어요ㅠㅠ</p>
+			    <a href="../book/book-category" class="link">책 보러가기!</a>
+		    </div>
+		    <div th:if="${!loanBookMap.isEmpty()}">
+			    <ul>
+				    <li th:each="entry : ${loanBookMap}">
+					    <div class="book-item">
+						    <!-- Book Image -->
+						    <img th:src="${entry.value.getBase64Image()}" alt="Book Cover" class="book-cover" />
+
+						    <!-- Book Title and Author -->
+						    <div class="book-details">
+							    <h3 th:text="${entry.value.getTitle()}">Book Title</h3>
+							    <p th:text="${entry.value.getAuthor()}">Author</p>
+						    </div>
+
+						    <!-- Loan Return Date -->
+						    <div class="loan-info">
+							    <p th:text="'반납 예정일: ' + ${#temporals.format(entry.key.getReturnDate(), 'yyyy-MM-dd')}">
+								    반납 예정일
+							    </p>
+						    </div>
+					    </div>
+				    </li>
+			    </ul>
+		    </div>
+	    </div>
+
     </main>
 
     <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">
         <li th:if="${pageInfo.startPage != 1}">
-            <a th:href="@{/product(
-                    categoryNo=${pageInfo.categoryNo},
+            <a th:href="@{/lendbook(
                     page=${pageInfo.startPage - 1},
                     size=${pageInfo.size},
                     sort=${pageInfo.sort}
@@ -63,8 +88,7 @@
         </li>
 
         <li th:if="${pageInfo.startPage <= pageInfo.endPage}" th:each="pageNumber: ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-            <a th:href="@{/product(
-                    categoryNo=${pageInfo.categoryNo},
+            <a th:href="@{/lendbook(
                     page=${pageNumber},
                     size=${pageInfo.size},
                     sort=${pageInfo.sort})}"

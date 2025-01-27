@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>나의 찜목록</title>
-    <link rel="stylesheet" href="../../static/css/content/lendbook.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/content/wishlist.css" type="text/css">
 	<script src="../../static/js/user/wishlist.js" defer></script>
 </head>
 <body>
@@ -15,26 +15,26 @@
     <header>
         <div>
             <span>찜한 권수:</span>
-            <b th:text="${pageInfo.totalElementCount} + '건'">13건</b>
+            <b th:text="${cartCount} + '건'">13건</b>
         </div>
 
 	    <ul>
-		    <li>
-			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='recent')}">최신순</a>
-		    </li>
-		    <li>
-			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='name')}">이름순</a>
-		    </li>
+<!--		    <li>-->
+<!--			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='recent')}">최신순</a>-->
+<!--		    </li>-->
+<!--		    <li>-->
+<!--			    <a th:href="@{/wishlist(page=1,size=${pageInfo.size},sort='name')}">이름순</a>-->
+<!--		    </li>-->
 	    </ul>
 
 	    <div>
 		    <label>
 			    <span>보기설정</span>
 			    <select id="view-size-select">
-				    <option value="10" th:selected="${pageInfo.size == 10}">10개</option>
-				    <option value="25" th:selected="${pageInfo.size == 25}">25개</option>
-				    <option value="30" th:selected="${pageInfo.size == 30}">30개</option>
-				    <option value="50" th:selected="${pageInfo.size == 50}">50개</option>
+<!--				    <option value="10" th:selected="${pageInfo.size == 10}">10개</option>-->
+<!--				    <option value="25" th:selected="${pageInfo.size == 25}">25개</option>-->
+<!--				    <option value="30" th:selected="${pageInfo.size == 30}">30개</option>-->
+<!--				    <option value="50" th:selected="${pageInfo.size == 50}">50개</option>-->
 			    </select>
 		    </label>
 	    </div>
@@ -44,45 +44,53 @@
     <hr/>
 
     <main>
-        <h2>책 목록</h2>
-        <div class="wishlist" id="wishlist-container">
-            <p>대여한 책이 없어요ㅠㅠ</p>
-            <a href="../book/book-category.html" class="link">책 보러가기!</a>
-        </div>
+	    <h2>책 목록</h2>
+	    <div class="wishlist" id="wishlist-container">
+		    <!-- 책 목록이 있는 경우 -->
+			    <ul class="book-list">
+				    <li th:each="wish : ${wishlist}" class="book-item">
+					    <div class="book-card">
+						    <!-- Null 검증 후 렌더링 -->
+						    <img th:if="${wish.book != null}" th:src="${wish.book.getBase64Image()}" alt="책 이미지" class="book-image">
+						    <div th:if="${wish.book != null}" class="book-info">
+							    <h3 th:text="${wish.book.getTitle()}"></h3>
+							    <p th:text="'가격: ' + ${wish.book.getPrice()} + '원'"></p>
+						    </div>
+					    </div>
+				    </li>
+			    </ul>
+	    </div>
     </main>
 
-    <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">
-        <li th:if="${pageInfo.startPage != 1}">
-            <a th:href="@{/product(
-                    categoryNo=${pageInfo.categoryNo},
-                    page=${pageInfo.startPage - 1},
-                    size=${pageInfo.size},
-                    sort=${pageInfo.sort}
-                )}">
-                <i class="bi bi-caret-left-fill"></i>
-            </a>
-        </li>
+<!--    <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">-->
+<!--        <li th:if="${pageInfo.startPage != 1}">-->
+<!--            <a th:href="@{/product(-->
+<!--                    page=${pageInfo.startPage - 1},-->
+<!--                    size=${pageInfo.size},-->
+<!--                    sort=${pageInfo.sort}-->
+<!--                )}">-->
+<!--                <i class="bi bi-caret-left-fill"></i>-->
+<!--            </a>-->
+<!--        </li>-->
 
-        <li th:if="${pageInfo.startPage <= pageInfo.endPage}" th:each="pageNumber: ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-            <a th:href="@{/product(
-                    categoryNo=${pageInfo.categoryNo},
-                    page=${pageNumber},
-                    size=${pageInfo.size},
-                    sort=${pageInfo.sort})}"
-               th:text="${pageNumber}"
-               th:active="${pageInfo.page == pageNumber}">1</a>
-        </li>
-        <li th:if="${pageInfo.endPage != pageInfo.totalPageCount}">
-            <a th:href="@{/product(
-                    categoryNo=${pageInfo.categoryNo},
-                    page=${pageInfo.endPage + 1},
-                    size=${pageInfo.size},
-                    sort=${pageInfo.sort}
-                )}">
-                <i class="bi bi-caret-right-fill"></i>
-            </a>
-        </li>
-    </ol>
+<!--        <li th:if="${pageInfo.startPage <= pageInfo.endPage}" th:each="pageNumber: ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">-->
+<!--            <a th:href="@{/product(-->
+<!--                    page=${pageNumber},-->
+<!--                    size=${pageInfo.size},-->
+<!--                    sort=${pageInfo.sort})}"-->
+<!--               th:text="${pageNumber}"-->
+<!--               th:active="${pageInfo.page == pageNumber}">1</a>-->
+<!--        </li>-->
+<!--        <li th:if="${pageInfo.endPage != pageInfo.totalPageCount}">-->
+<!--            <a th:href="@{/product(-->
+<!--                    page=${pageInfo.endPage + 1},-->
+<!--                    size=${pageInfo.size},-->
+<!--                    sort=${pageInfo.sort}-->
+<!--                )}">-->
+<!--                <i class="bi bi-caret-right-fill"></i>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ol>-->
 
 </body>
 </html>

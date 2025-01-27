@@ -89,12 +89,8 @@
     </select>
     <!-- 컴플레인 생성 -->
     <insert id="insertComplain">
-        INSERT INTO complain VALUES (NULL, #{title}, #{contents}, #{userId}, '');
+        INSERT INTO complain VALUES (NULL, #{title}, #{contents}, #{userId}, DEFAULT);
     </insert>
-    <!-- 컴플레인 답변 완료 -->
-    <update id="updateComplain">
-        UPDATE complain SET status = '답장완료' WHERE user_id = #{userId}
-    </update>
     <!-- 컴플레인 삭제 -->
     <delete id="deleteComplain">
         DELETE FROM complain WHERE user_id = #{userId}
@@ -106,6 +102,9 @@
     <!-- 모든 컴플레인 조회 -->
     <select id="getComplains" resultType="ComplainDTO">
         SELECT * FROM complain ORDER BY no
-        LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
+    </select>
+    <!-- 사용자 컴플레인 조회 -->
+    <select id="getMyComplains" resultType="ComplainDTO">
+        SELECT * FROM complain WHERE user_id = #{userId}
     </select>
 </mapper>

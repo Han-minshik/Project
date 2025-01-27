@@ -29,6 +29,11 @@ public class AdminController {
     @Autowired private AdminMapper adminMapper;
     @Autowired private BookService bookService;
 
+    @GetMapping("/manager")
+    public String manager() {
+        return "manager/manager1";
+    }
+
     /*********************문의사항 조회*************************/
 
 

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -133,31 +134,23 @@ public class BookService {
     /**
      * 유저의 장바구니 상품 조회
      */
-    public PageInfoDTO<CartDTO> getCartsByUser(PageInfoDTO<CartDTO> pageInfo, String userId) {
-        if (pageInfo.getPage() < 1) {
-            pageInfo.setPage(1);
-        }
-        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(5);
-        }
-        Integer totalCartCount = bookMapper.selectCartCountByUser(userId);
-        pageInfo.setTotalElementCount(totalCartCount);
-        if (totalCartCount != null && totalCartCount > 0) {
-            List<CartDTO> carts = bookMapper.selectCartsByUser(pageInfo, userId);
-            carts.forEach(cart -> {
-                BookDTO book = cart.getBook();
-                if (book != null && book.getImage() != null) {
-                    String base64Image = "data:image/jpeg;base64," + java.util.Base64.getEncoder().encodeToString(book.getImage());
-                    book.setBase64Image(base64Image); // BookDTO에 Base64 이미지 설정
-                }
-            });
-            pageInfo.setElements(carts);
-        }
-        return pageInfo;
+    public List<CartDTO> getCartsByUser(UserDTO user) {
+        List<CartDTO> wishlist = bookMapper.selectCartsByUser(user);
+        log.error("Raw Wishlist: {}", wishlist);
+
+        // Null 요소 제거
+        wishlist = wishlist.stream()
+                .filter(cart -> cart != null && cart.getBook() != null)
+                .collect(Collectors.toList());
+
+        log.error("Filtered Wishlist: {}", wishlist);
+        return wishlist;
     }
 
 
-
+    public Integer getCartCountByUser(String userId) {
+        return bookMapper.selectCartCountByUser(userId);
+    }
 
     /**
      * 특정 책을 카트에 추가

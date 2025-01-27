@@ -24,8 +24,8 @@ public interface UserMapper {
     Integer getCommentCountByUserInDiscussion(@Param("userId") String userId, @Param("discussionId") Integer discussionId);
     List<Integer> getAllDiscussionsByUser(@Param("userId") String userId);
     void insertComplain(@Param("userId") ComplainDTO userId);
-    void updateComplain(@Param("complain") ComplainDTO complain);
     void deleteComplain(@Param("complainNo") Integer complainNo);
     String findIdByEmail(@Param("email") String email);
-    List<ComplainDTO> getComplains(@Param("pageInfo") PageInfoDTO<ComplainDTO> pageInfo);
+    List<ComplainDTO> getComplains();
+    List<ComplainDTO> getMyComplains(@Param("userId") String userId);
 }

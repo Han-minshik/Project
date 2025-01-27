@@ -1078,7 +1078,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="293" parent="1" name="project">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-01-25.13:31:35</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-01-26.10:11:58</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="294" parent="1" name="sys">
@@ -1401,10 +1401,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>4</Position>
       <StoredType>char(15)|0s</StoredType>
     </column>
-    <column id="359" parent="305" name="status">
+    <column id="359" parent="305" name="uploaded_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StoredType>enum(&apos;&apos;, &apos;답장완료&apos;)|0e</StoredType>
+      <StoredType>datetime|0s</StoredType>
     </column>
     <index id="360" parent="305" name="PRIMARY">
       <ColNames>no</ColNames>
