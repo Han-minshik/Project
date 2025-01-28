@@ -25,7 +25,7 @@ public interface BookMapper {
     List<BookDTO> getPopularBook5();
     List<BookDTO> getPopularBook2();
     List<CartDTO> selectCartsByUser(UserDTO user);
-    void insertBookToCart(@Param("cart")CartDTO cart);
+    void insertBookToCart(@Param("cart") CartDTO cart, @Param("user") UserDTO user);
     void deleteBookFromCart(@Param("cartNo")Integer cartNo, @Param("userId")String userId);
     List<BookImageDTO> getImageByIsbn(@Param("isbn")String isbn);
     List<BookDTO> getASCBestseller();

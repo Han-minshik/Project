@@ -9,7 +9,7 @@
                           join_date, point, profile_image,
                           updated_at, role, nickname)
         VALUES (#{id}, #{password}, #{ci}, #{tel}, #{email}, DEFAULT,
-                DEFAULT, #{profileImage}, NULL, '일반', #{nickname})
+                DEFAULT, #{profileImage}, DEFAULT, '일반', #{nickname})
     </insert>
     <!-- id로 사용자 조회 -->
     <select id="getUserById" resultType="UserDTO">

@@ -9,44 +9,11 @@
     justify-content: space-between;
 }
 
-.search-box {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 100px;
-}
-
-.search-box-input {
-    padding: 5px;
-    border-radius: 5px 0px 0px 5px;
-    border: 1px solid lightgrey;
-    width: 150px;
-    transition: width 1s;
-}
-
-.search-box-input:focus {
-    width:300px;
-}
-
-.search-box-btn {
-    background-color: #343940;
-    color: white;
-    border: none;
-    border-radius: 0px 5px 5px 0px;
-    height: 36px;
-    width: 40px;
-}
 
 .notification {
     display: flex;
     margin-right: 20px;
     align-items: center;
-}
-
-.notification-icon {
-    font-size: x-large;
-    margin-left: 60px;
-    color: #808080;
-    margin-bottom: 20px;
 }
 
 #notification-name {
@@ -61,10 +28,8 @@
     height: 100%;
     padding: 25px;
     position: fixed;
-    z-index: 5;
     transition: all 1s;
     text-align: center;
-    transform: translateX(-150px);
 }
 
 .ani-navbar:hover {
@@ -73,12 +38,12 @@
 }
 
 .ani-navbar-menu {
-    display: flex;
-    align-items: center;
-    padding: 15px;
+    cursor: pointer;
+    /*background-color: #f4f4f4;*/
+    padding: 10px;
 }
 
-.ani-navbar-menu menu-title {
+.ani-navbar-menu .menu-title {
     margin: 0;
     margin-left: 10px;
 }
@@ -92,6 +57,200 @@
     color: grey;
 }
 
-div > * {
+.content {
     display: none;
+    padding: 20px;
+    background-color: #e2e2e2;
+    margin-top: 10px;
+    text-align: center;
+    padding-left: 250px;
 }
+/*최신회원 정보 */
+#delete{
+    position: static;
+    margin-left: 1500px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#li1 {
+    padding: 20px;
+}
+#delete:hover {
+    background-color: gray;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+td {
+    border: 1px solid #ddd;
+}
+
+
+/*체크리스트 2번 회원정보 css*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+#peo {
+    padding: 35px;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: gray;
+}
+
+#delete{
+    margin: 10px;
+    padding: 10px;
+}
+/*책 정보 버튼 수정*/
+
+/*!* 표 간단한 스타일 *!*/
+/*table {*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*th {*/
+/*    background-color: #f4f4f4;*/
+/*    padding: 10px;*/
+/*}*/
+
+/*td {*/
+/*    padding: 10px;*/
+/*    border-bottom: 1px solid black;*/
+/*}*/
+
+/*#li2{*/
+/*    padding: 20px;*/
+/*}*/
+
+/*#deletebtn {*/
+/*    position: static;*/
+/*    padding: 10px;*/
+/*    background-color: #4CAF50;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 16px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*#editbtn {*/
+/*    position: static;*/
+/*    padding: 10px;*/
+/*    background-color: #4CAF50;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 16px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*4*/
+#reply-box {
+    width: 300px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+
+.reply-content {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.reply-form {
+    margin-top: 10px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.reply-form button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.checklist5 {
+    width: 100%;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
+.checklist5 li {
+    margin: 10px 0;
+}
+
+.checklist5 td{
+
+}
+#rebtn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#rebtn:hover {
+    background-color: gray;
+}
+
+
+
+
+.reply-form button:hover {
+    background-color: gray;
+}
+

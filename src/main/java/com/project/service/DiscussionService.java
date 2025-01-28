@@ -61,29 +61,31 @@ public class DiscussionService {
     /**
      * 페이징된 토론 목록 반환 (책 정보 포함)
      */
-    public List<DiscussionDTO> getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo) {
+    public PageInfoDTO<DiscussionDTO> getDiscussionsWithBookInfo(PageInfoDTO<DiscussionDTO> pageInfo) {
         if (pageInfo.getPage() < 1) {
             pageInfo.setPage(1);
         }
         if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
             pageInfo.setSize(5); // 기본 5개씩 노출
         }
+
         Integer totalDiscussionCount = discussionMapper.selectPaginatedDiscussionsTotalCount(pageInfo);
+        pageInfo.setTotalElementCount(totalDiscussionCount != null ? totalDiscussionCount : 0);
+
         if (totalDiscussionCount != null && totalDiscussionCount > 0) {
             List<DiscussionDTO> discussions = discussionMapper.getDiscussions(pageInfo);
-            pageInfo.setTotalElementCount(totalDiscussionCount);
-            pageInfo.setElements(discussions);
             for (DiscussionDTO discussion : discussions) {
                 String recentComment = discussionMapper.getRecentCommentByDiscussionId(discussion.getId());
                 discussion.setRecentComment(recentComment);
             }
-            return discussions;
+            pageInfo.setElements(discussions);
         } else {
-            pageInfo.setTotalElementCount(0);
             pageInfo.setElements(Collections.emptyList());
-            return Collections.emptyList();
         }
+
+        return pageInfo;
     }
+
 
 
     /**
@@ -97,29 +99,12 @@ public class DiscussionService {
     /**
      * 책 제목으로 토론 검색
      */
-    public List<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title) {
-        // 기본 페이지 설정
-        if (pageInfo.getPage() < 1) {
-            pageInfo.setPage(1);
-        }
-        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(5); // 기본 5개씩 노출
-        }
-
-        // 책 제목으로 필터링된 총 개수 조회
-        Integer totalDiscussionCount = discussionMapper.getTotalCountByTitle(title);
-        pageInfo.setTotalElementCount(totalDiscussionCount != null ? totalDiscussionCount : 0);
-
-        // 페이징된 데이터 조회
-        if (pageInfo.getTotalElementCount() > 0) {
-            List<DiscussionDTO> discussions = discussionMapper.getDiscussionByBookTitle(pageInfo, title);
-            pageInfo.setElements(discussions);
-            return discussions;
-        } else {
-            // 데이터가 없으면 빈 리스트 설정
-            pageInfo.setElements(Collections.emptyList());
-            return Collections.emptyList();
-        }
+    public PageInfoDTO<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title) {
+        List<DiscussionDTO> result = discussionMapper.getDiscussionByBookTitle(pageInfo, title);
+        Integer totalElementCount = discussionMapper.getTotalCountByTitle(title);
+        pageInfo.setTotalElementCount(totalElementCount);
+        pageInfo.setElements(result);
+        return pageInfo;
     }
 
 

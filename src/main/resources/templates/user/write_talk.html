@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+	<meta charset="UTF-8">
+	<title>토론글을 작성하는 곳입니다 자유롭게 적어보세요!</title>
+	<link rel="stylesheet" href="../../static/css/user/write.css?ver=1" type="text/css">
+</head>
+<body>
+<form th:action="@{/discussion/add}" method="post">
+	<table>
+		<tr><td><h2>토론 글쓰기</h2></td></tr>
+		<tr><td class="header">Title</td></tr>
+		<tr><td><input type="text" placeholder="토론제목을 입력하세요" name="title"></td></tr>
+		<tr><td class="header">Comment</td></tr>
+		<tr><td><textarea placeholder="토론내용을 입력하세요" name="detail"></textarea></td></tr>
+		<tr><td><input type="submit" value="등록" onclick="alert('토론계시판에 등록되었습니다!')"></td></tr>
+	</table>
+</form>
+</body>
+</html>

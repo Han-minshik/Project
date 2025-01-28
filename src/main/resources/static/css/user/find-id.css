@@ -19,7 +19,7 @@ main h1{
     border-bottom: 5px solid black;
 }
 /*************************************/
-form{
+.find-id-section{
     position: relative;
     background-color: transparent;
     font-size: var(--font-size-normal);
@@ -27,89 +27,7 @@ form{
     padding: 60px 80px;
     width: 800px;
 }
-form span{
-    text-align: left;
-    width: 250px;
-    justify-content: center;
-}
-form input{
-    font-size: var(--font-size-small);
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid black;
-    border-radius: 2px;
-}
-form > section > div{
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-form > section > div > label{
-    display: flex;
-    width: 100%;
-}
-.user-info-revise-section{
-    padding: 70px 50px;
-    border-top: 2px solid #512e02;
-}
-.user-info-revise-section > div > label > button{
-    font-family: Medium;
-    font-size: var(--font-size-small);
-    width: 150px;
-    margin-left: 5px;
-    padding: 0 10px;
-    background-color: var(--Summer-spring-decoration-design-elements-2-rgba);
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    &:hover{
-        opacity: 0.8;
-    }
-}
-/********************************/
-.find-btn-section{
-    /*margin: 20px 0 20px 0;*/
-    text-align: center;
-    padding: 0 50px;
-}
-.find-btn-section > button {
-    /*margin: 0 20px;*/
-    padding: 10px 20px;
-    width: 100%;
-    font-size: var(--font-size-small);
-    cursor: pointer;
-    border-radius: 20px;
-    border: none;
-    transition-duration: 0.2s;
-    background-color: var(--Summer-spring-decoration-design-elements-2-rgba);
-    &:hover {
-        opacity: 0.8;
-    }
-}
-/********************************/
-.error-container{
-    display: none;
-    margin-top: 10px;
-    font-size: var(--font-size-small);
-}
-.error-container span{
-    width: 100%;
-    color: indianred;
-}
-.error-container[active]{
-    display: block;
-}
-/*******************************/
-.find-id-section{
-    display: none;
-    position: absolute;
-    top: 110px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 60px 80px;
-    width: 800px;
-}
+
 .find-id-container{
     display: flex;
     flex-direction: column;
@@ -140,3 +58,18 @@ form > section > div > label{
         opacity: 0.8;
     }
 }
+
+/********************************/
+.error-container{
+    display: none;
+    margin-top: 10px;
+    font-size: var(--font-size-small);
+}
+.error-container span{
+    width: 100%;
+    color: indianred;
+}
+.error-container[active]{
+    display: block;
+}
+/*******************************/

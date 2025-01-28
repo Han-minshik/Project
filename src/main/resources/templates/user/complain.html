@@ -5,45 +5,45 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../static/css/user/method.css" type="text/css">
-    <script src="../../static/js/user/method.js" defer></script>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="../../static/css/user/method.css" type="text/css">
+	<script src="../../static/js/user/method.js" defer></script>
 </head>
 
 
 <body>
-        <table class="table">
-            <tr><td colspan="2"><h2>문의 사항이 있다면 자유롭게 남겨보세요.</h2></td></tr>
-            <tr class="header">
-                <td class="num">번호</td>
-                <td class="title">제목</td>
-                <td>작성자</td>
-                <td>작성날짜</td>
-            </tr>
-	        <tr>
-		        <td>1</td>
-		        <td th:text="${myComplains[0].getTitle()}"></td>
-		        <td th:text="${myComplains[0].getUserId()}"></td>
-		        <td th:text="${myComplains[0].getUploadedAt()}"></td>
-	        </tr>
-	        <tr>
-		        <td>2</td>
-		        <td th:text="${myComplains[1].getTitle()}"></td>
-		        <td th:text="${myComplains[1].getUserId()}"></td>
-		        <td th:text="${myComplains[1].getUploadedAt()}"></td>
-	        </tr>
-<!--	        <tr>-->
-<!--		        <td>3</td>-->
-<!--		        <td th:text="${myComplains[2].getTitle()}"></td>-->
-<!--		        <td th:text="${myComplains[2].getUserId()}"></td>-->
-<!--		        <td th:text="${myComplains[2].getUploadedAt()}"></td>-->
-<!--	        </tr>-->
-        </table>
-        <br>
-        <table>
-            <tr>
-                <td><button onclick="location.href='write.html'">글쓰기</button></td>
-            </tr>
-        </table>
+<table class="table">
+	<tr><td colspan="2"><h2>문의 사항이 있다면 자유롭게 남겨보세요.</h2></td></tr>
+	<tr class="header">
+		<td class="num">번호</td>
+		<td class="title">제목</td>
+		<td>작성자</td>
+		<td>작성날짜</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td th:text="${myComplains[0].getTitle()}"></td>
+		<td th:text="${myComplains[0].getUserId()}"></td>
+		<td th:text="${myComplains[0].getUploadedAt()}"></td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td th:text="${myComplains[1].getTitle()}"></td>
+		<td th:text="${myComplains[1].getUserId()}"></td>
+		<td th:text="${myComplains[1].getUploadedAt()}"></td>
+	</tr>
+	<!--	        <tr>-->
+	<!--		        <td>3</td>-->
+	<!--		        <td th:text="${myComplains[2].getTitle()}"></td>-->
+	<!--		        <td th:text="${myComplains[2].getUserId()}"></td>-->
+	<!--		        <td th:text="${myComplains[2].getUploadedAt()}"></td>-->
+	<!--	        </tr>-->
+</table>
+<br>
+<table>
+	<tr>
+		<td><button onclick="location.href='write_QA'">글쓰기</button></td>
+	</tr>
+</table>
 </body>

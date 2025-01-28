@@ -1,18 +1,23 @@
 @import url("../public/public.css");
 
-body{
+body {
     position: relative;
-    width: 1200px;
-    margin: 120px auto;
+    margin: 15px auto;
     text-align: center;
+}
+
+table h2{
+    text-align: center;
+    margin-right: -950px;
 }
 
 table {
     margin: auto;
-    width: 700px;
+    width:1500px;
     border-radius: 5px;
     border-collapse: collapse;
     border-top: none;
+    text-align: center;
 }
 .header {
     background-color: rgb(218, 231, 255);
@@ -54,4 +59,8 @@ button:active {
     outline: 1.5px rgb(27, 76, 155) solid;
     padding-left: 10px;
     background-color: rgb(68, 136, 244);
+}
+
+#writeButtonContainer {
+    display: none;
 }

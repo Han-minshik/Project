@@ -26,7 +26,7 @@ public class SecurityOAuth2UserService extends DefaultOAuth2UserService {
     private final String CI;
 
     public SecurityOAuth2UserService(
-        @Value("${CI}") String ci
+            @Value("${CI}") String ci
     ) {
         CI = ci;
     }

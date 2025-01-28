@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    void createUser(@Param("user") UserDTO user);
+    void createUser(UserDTO user);
     UserDTO getUserById(@Param("id") String id);
     UserDTO getUserByCi(@Param("ci") String ci);
     List<UserDTO> getAllUsers();

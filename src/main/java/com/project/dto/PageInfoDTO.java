@@ -33,4 +33,5 @@ public class PageInfoDTO<T> {
         this.startPage = Math.max(1, page - pageViewOffset);
         this.endPage = Math.min(page + pageViewOffset, totalPageCount);
     }
+
 }

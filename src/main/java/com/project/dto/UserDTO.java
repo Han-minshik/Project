@@ -23,10 +23,10 @@ public class UserDTO implements UserDetails, OAuth2User {
     @Pattern(regexp = "^[a-z][0-9a-zA-Z]*$")
     private String id;
     @NotBlank
-    @Pattern(regexp = "^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}")
+    @Pattern(regexp = "^[0-9a-zA-Z~!@#$%^&*()_=+.-]{4,10}")
     private String password;
     private String ci;
-    @Pattern(regexp = "^(010|011|017|019|018)-[0-9]{3,4}-[0-9]{4}$")
+    @Pattern(regexp = "^(010|011|017|019|018)[0-9]{3,4}[0-9]{4}$")
     private String tel;
     @Email
     private String email;
@@ -39,6 +39,15 @@ public class UserDTO implements UserDetails, OAuth2User {
     private byte[] profileImage;
 
     private List<SnsInfoDTO> snsInfo; // 이 유저가 로그인 할 때 사용한 SNS 데이터
+
+//    public void setTel(String tel) {
+//        this.tel = tel.replace(",", "-");
+//        System.out.println("setTel: " + tel);
+//    }
+
+    public void setEmail(String email) {
+        this.email = email.replace(",", "@");
+    }
 
     @Override
     public String getName() {

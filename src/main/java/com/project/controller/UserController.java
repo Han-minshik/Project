@@ -7,9 +7,9 @@ import com.project.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import com.project.mapper.UserMapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,9 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -30,7 +28,7 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired private UserService userService;
     @Autowired private UserMapper userMapper;
-    @Autowired private PortOneSerivce portOneSerivce;
+    @Autowired private PortOneService portOneService;
     @Autowired private AdminMapper adminMapper;
     @Autowired private BookService bookService;
     @Autowired private LoanMapper loanMapper;
@@ -66,7 +64,8 @@ public class UserController {
             return "user/join";
         }
         // 포트원 인증 통과 여부
-        String ci = portOneSerivce.tel_authentication(impUid, joinUser.getTel());
+        log.info("Tel:" + joinUser.getTel());
+        String ci = portOneService.tel_authentication(impUid, joinUser.getTel());
         if(ci == null) {
             log.error("포트원 인증 확인 실패");
             return "user/join";
@@ -90,6 +89,8 @@ public class UserController {
         return "user/join";
     }
 
+
+
     /***********************************************/
     @GetMapping("/login")
     public String get_login(Authentication auth) {
@@ -106,14 +107,14 @@ public class UserController {
 
     /***********************************************/
     // 내 회원 정보 메뉴
-    @GetMapping("/mypage")
+    @GetMapping("/my-page")
     public String get_my_page(Authentication auth, Model model) {
         if (auth != null) {
             String userId = auth.getName();
             UserDTO user = userService.find_user(userId);
             if (user.getProfileImage() != null) {
                 String base64Image = "data:image/jpeg;base64," +
-                        Base64.getEncoder().encodeToString(user.getProfileImage());
+                        java.util.Base64.getEncoder().encodeToString(user.getProfileImage());
                 user.setBase64Image(base64Image);
             } else {
                 user.setBase64Image("data:image/jpeg;base64,[defaultBase64EncodedImage]");
@@ -160,6 +161,22 @@ public class UserController {
         return "user/lendbook";
     }
 
+
+    // 책 대출하기
+    @PostMapping("/lendbook/lend")
+    public String post_lendbook_lend(
+            Authentication auth,
+            @ModelAttribute LoanDTO lendbook,
+            @RequestParam Integer points
+    ){
+        if (auth != null) {
+            loanService.createLoanWithPoints(lendbook, points);
+            return "redirect:/user/lendbook";
+        }
+        return "redirect:/user/login";
+    }
+
+
 //    @GetMapping("/lendbook/all")
 //    public String get_lendbook_all(
 //            Authentication auth,
@@ -175,19 +192,6 @@ public class UserController {
 //        return "redirect:/user/login";
 //    }
 
-    // 책 대출하기
-//    @PostMapping("/lendbook/lend")
-//    public String post_lendbook_lend(
-//            Authentication auth,
-//            @ModelAttribute LoanDTO lendbook,
-//            @RequestParam Integer points
-//    ){
-//        if (auth != null) {
-//            loanService.createLoanWithPoints(lendbook, points);
-//            return "redirect:/user/lendbook";
-//        }
-//        return "redirect:/user/login";
-//    }
 
     /************************************************/
 
@@ -213,15 +217,32 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-
-
-    @GetMapping("/wishlist/add")
-    public String get_wishlist_add(
-            Authentication auth,
-            @RequestParam String bookIsbn
+    /********* 카트 목록 추가 *************/
+    @PostMapping("/wishlist/add")
+    public ResponseEntity<?> addBookToWishlist(
+            @RequestBody BookDTO book,
+            Authentication auth
     ) {
-        bookService.insertBookToCart(auth.getName(), bookIsbn);
-        return "redirect:/user/wishlist";
+        log.info("Received BookDTO: {}", book);
+
+        if (book.getIsbn() == null || book.getIsbn().isEmpty()) {
+            log.error("ISBN 값이 누락되었습니다!");
+            return ResponseEntity.badRequest().body(Map.of("message", "ISBN 값이 필요합니다."));
+        }
+
+        if (auth == null || !auth.isAuthenticated()) {
+            log.error("인증되지 않은 사용자가 접근 시도");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "로그인이 필요합니다."));
+        }
+
+        String userId = auth.getName();
+        UserDTO user = new UserDTO();
+        user.setId(userId);
+        log.info("User Info: {}", user);
+
+        bookService.insertBookToCart(book, user);
+
+        return ResponseEntity.ok(Map.of("message", "찜하기 성공"));
     }
 
     // 회원 정보 수정
@@ -268,6 +289,11 @@ public class UserController {
             return "user/complain";
         }
         return "redirect:/user/login";
+    }
+
+    @GetMapping("/write_QA")
+    public void write_complain() {
+
     }
 
 //    /*********************** 공지사항 *********************/

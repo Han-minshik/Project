@@ -95,7 +95,7 @@
         dc.like AS like_count,
         dc.unlike AS dislike_count,
         u.id AS user_id,
-        u.name AS user_name
+#         u.name AS user_name
         FROM discussion_comment dc
         INNER JOIN user u ON dc.user_id = u.id
         WHERE dc.discussion_id = #{discussionId}

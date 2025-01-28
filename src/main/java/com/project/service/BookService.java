@@ -116,20 +116,21 @@ public class BookService {
      * 페이징된 리뷰 리스트와 통계 정보 반환
      */
     public Map<String, Map<String, Object>> getPaginatedReviews(PageInfoDTO<ReviewDTO> pageInfo, String isbn) {
-       pageInfo.setSize(3);
-       if(pageInfo.getSize() < 1) {
-           return null;
-       }
-       Map<String, Map<String, Object>> result = bookMapper.selectPaginatedReviewTotalCountByIsbn(isbn);
-       log.error(result);
-       if(!result.isEmpty()) {
-           Integer totalElementCount = Integer.parseInt(result.get("result").get("count").toString());
-           var reviews = bookMapper.selectPaginatedReviewsByBookIsbn(pageInfo, isbn);
-           pageInfo.setTotalElementCount(totalElementCount);
-           pageInfo.setElements(reviews);
-       }
-       return result;
+        pageInfo.setSize(3);
+        if(pageInfo.getPage() < 1) {
+            return null;
+        }
+        Map<String, Map<String,Object>> result = bookMapper.selectPaginatedReviewTotalCountByIsbn(isbn);
+        log.error(result);
+        if(!result.isEmpty()) {
+            Integer totalElementCount = Integer.parseInt(result.get("result").get("count").toString());
+            var reviews = bookMapper.selectPaginatedReviewsByBookIsbn(pageInfo, isbn);
+            pageInfo.setTotalElementCount(totalElementCount);
+            pageInfo.setElements(reviews);
+        }
+        return result;
     }
+
 
     /**
      * 유저의 장바구니 상품 조회
@@ -155,24 +156,19 @@ public class BookService {
     /**
      * 특정 책을 카트에 추가
      */
-    public void insertBookToCart(String userId, String bookIsbn) {
-        try {
-            // CartDTO 객체 생성 및 값 설정
-            CartDTO cart = new CartDTO();
-
-            UserDTO user = new UserDTO();
-            user.setId(userId);
-            cart.setUser(user);
-
-            BookDTO book = new BookDTO();
-            book.setIsbn(bookIsbn);
-            cart.setBook(book);
-
-            bookMapper.insertBookToCart(cart);
-        } catch (Exception e) {
-            log.error("Error while adding book to cart for userId: {} and bookIsbn: {}", userId, bookIsbn, e);
-            throw new RuntimeException("Failed to add book to cart. Please try again later.");
+    public CartDTO insertBookToCart(BookDTO book, UserDTO user) {
+        if (book == null || user == null) {
+            throw new IllegalArgumentException("책 정보나 사용자 정보가 null입니다.");
         }
+        log.info("Book Info: {}", book);
+        log.info("User Info: {}", user);
+
+        CartDTO cart = new CartDTO();
+        cart.setBook(book);
+        cart.setUser(user);
+
+        bookMapper.insertBookToCart(cart, user); // MyBatis 매퍼 호출
+        return cart;
     }
 
 
