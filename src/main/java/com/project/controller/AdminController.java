@@ -39,20 +39,20 @@ public class AdminController {
 
 
     /*********************************************/
-    @GetMapping("/book/add")
-    public void insertBook(){}
-
-    @PostMapping("/book/add")
-    public String insertBook(
-            @AuthenticationPrincipal UserDTO user,
-            BookDTO book
-    ){
-        if(user.getRole().equals("관리자")){
-            adminService.insertBook(book);
-            return "redirect:/admin/books";
-        }
-        return "redirect:/";
-    }
+//    @GetMapping("/book/add")
+//    public void insertBook(){}
+//
+//    @PostMapping("/book/add")
+//    public String insertBook(
+//            @AuthenticationPrincipal UserDTO user,
+//            BookDTO book
+//    ){
+//        if(user.getRole().equals("관리자")){
+//            adminService.insertBook(book);
+//            return "redirect:/admin/books";
+//        }
+//        return "redirect:/";
+//    }
 
     /*******************************************/
 
@@ -62,18 +62,18 @@ public class AdminController {
 //
 //    }
 
-    @PatchMapping("/book/update")
-    public String updateBook(
-            @AuthenticationPrincipal UserDTO user,
-            BookDTO book
-    ) {
-        if(user.getRole().equals("관리자")){
-            adminService.updateBook(book);
-            return "redirect:/admin/books";
-
-        }
-        return "redirect:/";
-    }
+//    @PatchMapping("/book/update")
+//    public String updateBook(
+//            @AuthenticationPrincipal UserDTO user,
+//            BookDTO book
+//    ) {
+//        if(user.getRole().equals("관리자")){
+//            adminService.updateBook(book);
+//            return "redirect:/admin/books";
+//
+//        }
+//        return "redirect:/";
+//    }
 
     /********************************************/
 

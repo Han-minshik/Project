@@ -7,8 +7,6 @@ import com.project.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import com.project.mapper.UserMapper;
-import org.apache.coyote.Response;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +17,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Base64;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -33,7 +28,7 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired private UserService userService;
     @Autowired private UserMapper userMapper;
-    @Autowired private PortOneSerivce portOneSerivce;
+    @Autowired private PortOneService portOneService;
     @Autowired private AdminMapper adminMapper;
     @Autowired private BookService bookService;
     @Autowired private LoanMapper loanMapper;
@@ -69,7 +64,8 @@ public class UserController {
             return "user/join";
         }
         // 포트원 인증 통과 여부
-        String ci = portOneSerivce.tel_authentication(impUid, joinUser.getTel());
+        log.info("Tel:" + joinUser.getTel());
+        String ci = portOneService.tel_authentication(impUid, joinUser.getTel());
         if(ci == null) {
             log.error("포트원 인증 확인 실패");
             return "user/join";
@@ -93,6 +89,8 @@ public class UserController {
         return "user/join";
     }
 
+
+
     /***********************************************/
     @GetMapping("/login")
     public String get_login(Authentication auth) {
@@ -109,7 +107,7 @@ public class UserController {
 
     /***********************************************/
     // 내 회원 정보 메뉴
-    @GetMapping("/mypage")
+    @GetMapping("/my-page")
     public String get_my_page(Authentication auth, Model model) {
         if (auth != null) {
             String userId = auth.getName();

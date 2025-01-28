@@ -3,7 +3,7 @@ const discussionContainer = document.querySelector('.all-discussion-container');
 
 const writeBtn = document.querySelector('.my-opinion-form button');
 
-writeBtn.onclick = event => {
+writeBtn.onsubmit = event => {
     event.preventDefault(); // 기본 폼 제출 방지
 
     const textArea = document.querySelector('.opinion-text');

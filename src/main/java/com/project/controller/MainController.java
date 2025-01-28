@@ -3,6 +3,9 @@ package com.project.controller;
 import com.project.dto.*;
 import com.project.mapper.DiscussionMapper;
 import com.project.service.*;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -96,35 +97,84 @@ public class MainController {
 //    }
 
     // 전체 책 반환 컨트롤러
+
+
+    // 모든 책 목록
+    // ok
     @GetMapping("/book/book-category")
     public String getBooks(
             PageInfoDTO<BookDTO> pageInfo,
-            Model model
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response
     ) {
-        // 모든 책을 페이지네이션 처리하여 반환
-        PageInfoDTO<BookDTO> books = bookService.getPaginatedBooks(pageInfo);
+        // 쿠키에서 검색 키워드 가져오기
+        String searchKeyword = getSearchKeywordFromCookies(request, response);
+
+        PageInfoDTO<BookDTO> books;
+
+        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+            // 검색 조건이 있는 경우 검색 수행
+            books = bookService.searchBooksByNameWithCount(pageInfo, searchKeyword);
+        } else {
+            // 검색 조건이 없는 경우 전체 데이터 조회
+            books = bookService.getPaginatedBooks(pageInfo);
+        }
+
+        // 디버깅 로그 추가
+        System.out.println("Search Keyword: " + searchKeyword);
+        System.out.println("Books: " + books);
 
         // 모델에 데이터 추가
         model.addAttribute("books", books.getElements());
         model.addAttribute("totalCount", books.getTotalElementCount());
-        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("pageInfo", books); // 검색 결과 반영된 PageInfo 전달
+        model.addAttribute("isSearch", searchKeyword != null);
 
         return "book/book-category";
     }
 
-    // 제목 검색 컨트롤러
+    // ok(밑의 필드 두 개는 검색할 때 타임리프 작성의 편의를 위해 로직을 분리하고 템플릿에 삼항식으로 걸어둠)
     @GetMapping("/book/book-category/search")
     @ResponseBody
     public PageInfoDTO<BookDTO> searchBooksByName(
-            PageInfoDTO<BookDTO> pageInfo,
             @RequestParam String bookName,
-            Model model
+            HttpServletResponse response
     ) {
-        PageInfoDTO<BookDTO> books = bookService.searchBooksByNameWithCount(pageInfo, bookName);
-        pageInfo.setTotalElementCount(books.getTotalElementCount());
-        model.addAttribute("pageInfo", pageInfo);
+        saveSearchKeywordToCookie(response, bookName);
+        PageInfoDTO<BookDTO> books = bookService.searchBooksByNameWithCount(new PageInfoDTO<>(), bookName);
+        books.setTotalElementCount(books.getTotalElementCount());
         return books;
     }
+
+    // 쿠키에서 검색 키워드 가져오기
+    private String getSearchKeywordFromCookies(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if ("searchKeyword".equals(cookie.getName())) {
+                    String searchKeyword = cookie.getValue();
+
+                    // 쿠키 삭제
+                    Cookie deleteCookie = new Cookie("searchKeyword", null);
+                    deleteCookie.setMaxAge(0);
+                    deleteCookie.setPath("/");
+                    response.addCookie(deleteCookie);
+
+                    return searchKeyword;
+                }
+            }
+        }
+        return null;
+    }
+
+    // 검색 키워드를 쿠키에 저장
+    private void saveSearchKeywordToCookie(HttpServletResponse response, String searchKeyword) {
+        Cookie cookie = new Cookie("searchKeyword", searchKeyword);
+        cookie.setPath("/");
+        cookie.setMaxAge(60 * 5); // 쿠키 유효기간 설정 (5분)
+        response.addCookie(cookie);
+    }
+
 
     // 책 페이지 불러오기
     // ok
@@ -147,10 +197,12 @@ public class MainController {
             model.addAttribute("bookParticipantCount", bookParticipantCount);
 
             Integer availableCopies = loanService.getAvailableCopies(bookIsbn);
-            model.addAttribute("AvailableCopies", availableCopies);
+            model.addAttribute("availableCopies", availableCopies);
 
             LocalDateTime firstReturnDate = loanService.getFirstReturnDateByBookIsbn(bookIsbn);
-            model.addAttribute("firstReturnDate", firstReturnDate);
+            String formattedDate = (firstReturnDate != null) ? firstReturnDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : "대출 가능일 없음";
+            model.addAttribute("formattedDate", formattedDate);
+            model.addAttribute("formattedDate", formattedDate);
 
             List<CategoryDTO> categories = bookService.getCategoryHierarchyByIsbn(bookIsbn);
             model.addAttribute("categories", categories);
@@ -212,7 +264,6 @@ public class MainController {
         return discussions;
     }
 
-
     // 토론 페이지
     @GetMapping("/discussion/{discussionId}")
     public String get_discussion (
@@ -245,7 +296,7 @@ public class MainController {
     @GetMapping("/discussion/add")
     public String get_discussion_add (
     ){
-        return "content/discussion-add";
+        return "user/write_talk";
     }
 
     @PostMapping("/discussion/add")
@@ -263,7 +314,7 @@ public class MainController {
                     userId,
                     discussion.getBookIsbn()
             );
-            return "content/discussion-add";
+            return "content/discussion/category";
         }
         return "redirect:/user/login";
 
@@ -280,7 +331,7 @@ public class MainController {
         if(auth != null){
             String userId = auth.getName();
             discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
-            return "content/discussion-comment-add";
+            return "content/discussion/" + discussionId;
         }
         return "redirect:/user/login";
 
@@ -329,7 +380,7 @@ public class MainController {
     ){
         if(auth != null){
             userService.createComplain(title, contents, auth.getName());
-            return "content/complain-add";
+            return "user/write_QA";
         }
         return "redirect:/user/login";
     }

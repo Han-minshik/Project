@@ -32,7 +32,7 @@
             <h3>
                 나의 의견은?
             </h3>
-            <form method="post" class="my-opinion-form">
+            <form th:action="@{/comment/add}" method="post" class="my-opinion-form">
                 <label><textarea name="text" class="opinion-text"></textarea></label>
                 <button type="submit">작성하기</button>
             </form>

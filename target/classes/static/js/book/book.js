@@ -1,13 +1,14 @@
+const bookForm = document.forms.namedItem('book');
+const bookIsbn = bookForm.id;
+
 const discussionBtn = document.querySelector(".discussion-btn");
 const loanBtn = document.querySelector(".loan-btn");
 const cartBtn = document.querySelector(".heart-btn");
-const reviewForm = document.getElementById('review-form');
+
 const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('content'); // CSRF 토큰 가져오기
-const bookForm = document.forms.namedItem('book'); // 폼 요소 선택
-const bookIsbn = bookForm.id;
-/**
- * 토론하러 가기 버튼 클릭 이벤트
- */
+
+const reviewForm = document.getElementById('review-form')
+
 discussionBtn.onclick = () => {
     const bookTitle = document.querySelector('h1').innerText.trim(); // 동적으로 책 제목 가져오기
 
@@ -16,9 +17,9 @@ discussionBtn.onclick = () => {
     location.href = `/discussion/category?bookName=${encodedBookTitle}`;
 };
 
-/**
- * 찜하기 버튼 클릭 이벤트
- */
+/*******************************************/
+
+// 찜하기 버튼을 눌렀을 때
 cartBtn.onclick = () => {
     const cartObject = createCartObject();
     console.log("bookForm:", bookForm); // bookForm 객체 출력
@@ -60,15 +61,12 @@ cartBtn.onclick = () => {
     }
 };
 
-
-/**
- * 대출하기 버튼 클릭 이벤트
- */
+// 대출하기 버튼을 눌렀을 때
 loanBtn.onclick = () => {
     if (confirm('대출하시겠습니까?')) {
         const bookObject = createLoanObject();
 
-        request('/my-page', bookObject.loan).then(() => {
+        request('/user/my-page', bookObject.loan).then(() => {
             if (confirm('대출이 완료되었습니다. 대출 내역을 확인하시겠습니까?')) {
                 location.href = '/user/my-page';
             }
@@ -76,10 +74,7 @@ loanBtn.onclick = () => {
     }
 };
 
-/**
- * 상품 정보를 JSON 객체로 생성
- */
-// 주문하려는 상품 객체 생성
+
 function createCartObject() {
     const bookForm = document.forms.namedItem('book'); // 폼 요소 선택
     if (!bookForm) {
@@ -102,43 +97,31 @@ function createCartObject() {
 }
 
 
-
-/**
- * 대출 요청 객체 생성
- */
-function createLoanObject() {
-    return {
-        loan: {
-            id: bookForm.id,
-        },
-    };
-}
-
-/**
- * 공통 요청 함수
- */
-function request(url, requestBody) {
+// 찜/대출하기 페이지에 상품 추가하는 요청
+function request(url, requestBody){
+    const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('content');
+    // 대출하기에 POST 요청 전송
     return fetch(url, {
         method: "POST",
         headers: {
             "X-CSRF-TOKEN": csrfToken,
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify(requestBody)
     }).then(response => {
-        if (response.status === 401) {
-            alert('로그인을 먼저 해주세요.');
-            throw new Error('Unauthorized');
-        } else if (!response.ok) {
+        // 로그인이 안된 유저가 클릭 시
+        if(response.status === 401){
+            alert('로그인을 먼저 해주세요');
+            throw new Error();
+        }
+        else if(!response.ok){
             alert('시스템 에러 발생!');
-            throw new Error('System Error');
+            throw new Error();
         }
     });
 }
 
-/**
- * 리뷰 작성 버튼 클릭 이벤트
- */
+/**************************************/
 const writeBtn = document.querySelector('.my-opinion-form button');
 
 writeBtn.onclick = event => {
@@ -148,47 +131,46 @@ writeBtn.onclick = event => {
     const commentText = textArea.value.trim();
 
     if (commentText !== "") {
+        // 댓글 추가
         const discussionContainer = document.querySelector('.review-container');
         const reviewCount = document.querySelector('.review-total-count');
 
         const newComment = document.createElement('div');
         newComment.className = 'review';
         newComment.innerHTML = `
-            <section class="review-user-section">
-                <div>
-                    <div class="review-user-image" style="background-image: url('https://spy-family.net/tvseries/assets/img/top/chara_thumb3.png')"></div>
-                    <span class="review-user-name">YOR FORGER</span>
-                </div>
-                <div>
-                    <div class="review-user-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                </div>
-            </section>
-            <section class="review-section">
-                <span class="review-content">${commentText}</span>
-            </section>
-            <section class="review-recommend-section">
-                <div>
-                    <i class="fa-solid fa-thumbs-up"></i>
-                    <span>1</span>
-                </div>
-            </section>
-        `;
+                <section class="review-user-section">
+                        <div>
+                            <div class="review-user-image" style="background-image: url('https://spy-family.net/tvseries/assets/img/top/chara_thumb3.png')"></div>
+                            <span class="review-user-name">YOR FORGER</span>
+                        </div>
+                        <div>
+                            <div class="review-user-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="review-section">
+                        <span class="review-content">${commentText}</span>
+                    </section>
+                    <section class="review-recommend-section">
+                        <div>
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            <span>1</span>
+                        </div>
+                    </section>
+            `;
 
         discussionContainer.appendChild(newComment); // 댓글 추가
         reviewCount.textContent = parseInt(reviewCount.textContent) + 1 + '개'; // 댓글 수 업데이트
         textArea.value = "";
     }
-};
+}
 
-/**
- * 리뷰 로드 함수
- */
+/**************************************/
 load_review(null, `/book/${bookIsbn}/review`);
 /// 상품에 대한 리뷰 불러오기
 function load_review(event, url){

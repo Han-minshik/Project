@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<link rel="stylesheet" href="../../static/css/login/login.css">
-	<script src="../../static/js/login/login.js" defer></script>
+	<script src="../../static/js/user/login.js" defer></script>
 </head>
 <body>
 <main>
@@ -36,21 +36,21 @@
 					</label>
 				</section>
 				<section class="link-section">
-					<a href="#">아이디 찾기</a>
-					<a href="#">패스워드 변경</a>
-					<a href="#">회원가입</a>
+					<a th:href="@{/user/email-auth}">아이디 찾기</a>
+					<a th:href="@{/user/email-auth}">패스워드 변경</a>
+					<a th:href="@{/user/join}">회원가입</a>
 				</section>
 				<button id="login-btn" type="submit">로그인</button>
 			</form>
 			<section class="sns-login-btn-section">
-				<a href="#">
-					<img src="../../static/img/icorn/naver_login_icon.png" alt="네이버 로그인 버튼 아이콘"/>
+				<a href="/oauth2/authorization/naver">
+					<img src="../../static/img/icon/naver_login_icon.png" alt="네이버 로그인 버튼 아이콘"/>
 				</a>
-				<a href="#">
-					<img src="../../static/img/icorn/kakao_login_icon.png" alt="카카오 로그인 버튼 아이콘"/>
+				<a href="/oauth2/authorization/kakao">
+					<img src="../../static/img/icon/kakao_login_icon.png" alt="카카오 로그인 버튼 아이콘"/>
 				</a>
-				<a href="#">
-					<img src="../../static/img/icorn/google_login_icon.png" alt="구글 로그인 버튼 아이콘"/>
+				<a href="/oauth2/authorization/google">
+					<img src="../../static/img/icon/google_login_icon.png" alt="구글 로그인 버튼 아이콘"/>
 				</a>
 			</section>
 		</div>

@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import com.project.dto.BookDTO;
+import com.project.dto.LoanDTO;
 import com.project.dto.UserDTO;
 import com.project.service.BookService;
 import com.project.service.EmailService;
@@ -69,7 +70,6 @@ public class UserRestController {
             @RequestParam String certNumber,
             HttpSession session
     ) {
-        log.info("email = " + emailCertRepository.get(email));
         if(certNumber == null || !emailCertRepository.get(email).equals(certNumber)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -83,7 +83,6 @@ public class UserRestController {
     public ResponseEntity<Void> post_email_auth(
             @RequestBody String email_to
     ){
-        log.info("post_email_auth");
         try{
             String certNumber = emailService.send_cert_mail(email_to);
             emailCertRepository.put(email_to, certNumber);
@@ -165,6 +164,40 @@ public class UserRestController {
         bookService.deleteBooksFromCart(cartNo, userId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    /*************************************************/
+
+//    // 사용자가 주문 페이지에서 상품을 주문
+//    @PostMapping("/lend")
+//    public ResponseEntity<Void> post_lend(
+//            @RequestBody LoanDTO loan, // RequestBody의 자료를 자동으로 loanDTO에 넣어준다
+//            @SessionAttribute("carts") List<CartDTO> carts, // 미리 설정해놓은 주문할 상품들
+//            @AuthenticationPrincipal UserDTO user
+//    ){
+//        loan.setUser(user); // 주문하려는 유저를 설정
+//        loan.setCarts(carts); // 주문하려는 상품 정보를 등록
+//        // 전달된 imp_uid 값이 잘못되었거나, Portone과의 연계가 실패(요청실패) 했을 경우 NULL
+//        LoanDTO paymentInfo = portOneSerivce.payments_authentication(loan.getImpUid());
+//        // imp_uid로 조회한 주문번호가 사용자가 대출 페이지에서 전달한 대출번호와 다르다?
+//        if(Objects.isNull(paymentInfo) || !paymentInfo.getId().equals(loan.getId())){
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        }
+//        //// 기존에 대출하려고 하는 상품을 DB에서 조회하고, 실제 결제 내역과 비교
+//        boolean result = orderService.check_order_total_price(orderDTO, paymentInfo);
+//        if(!result){ // 결과값 다르다면 (포트원 != 실제 주문 금액)
+//            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+//        }
+//        // 결제가 정확하다면 대출 이력에 추가해야 한다
+//        try {
+//            orderService.add_order(orderDTO);
+//        } catch (Exception e) {
+//            log.error("대출 이력 추가 중 에러 발생: " + e.getMessage());
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//        // 최종 주문 완료
+//        return ResponseEntity.status(HttpStatus.CREATED).build();
+//    }
+
 
 
 }
