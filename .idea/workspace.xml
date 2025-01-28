@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion-category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,15 +257,7 @@
       <workItem from="1737942046678" duration="22513000" />
       <workItem from="1737984515931" duration="8425000" />
       <workItem from="1737993562145" duration="24000" />
-      <workItem from="1738028971348" duration="14409000" />
-    </task>
-    <task id="LOCAL-00008" summary="2020-01-10&#10;&#10;추가&#10;- book_image DB 추가(BookImageDTO 추가)&#10;- insertBook, insertBookImages 추가(AdminMapper, admin-mapper.xml)&#10;- bookDTO 안 List&lt;BookImageDTO&gt; images 추가&#10;- user-mapper.xml, Usermapper : ci로 유저 정보 조회, 리뷰 삽입, sns등록&#10;- 책 제목으로 리뷰 검색(BookMapper, book-mapper.xml)&#10;- book-mapper.xml 안 createBook + category 추가&#10;- book-mapper.xml 안 resultMap 추가(searchBooksByName 조회할 때 이미지 조회하기 위해)&#10;&#10;수정&#10;- Review 안 tag 컬럼 NN 로 변경&#10;- book-mapper.xml searchBooksByName&#10;- pom.xml 의존성 추가&#10;- configuration.xml BookImage 경로 추가&#10;&#10;삭제&#10;- bookDTO 안의 coverimage 삭제(DB, book-mapper.xml 안 cover_image 삭제)&#10;- user-mapper.xml : book_isbn 삭제(createUser)&#10;- Review 안 viewCount 삭제(DTO, DB), commnet 삭제, bookIsbn 삭제 &#10;&#10;&#10;보류(추가 안 함)&#10;01/09&#10;(리스트 받아오는 구현은 완료했으나 오류 생길 수도 있음)&#10;- static -&gt; bestseller -&gt; js, css에 index 파일 추가&#10;- templates -&gt; bestseller -&gt; index.html 생성&#10;- configuration -&gt; SecurityConfiguration 생성 &#10;- controller -&gt; BestsellerController 생성&#10;&#10;01/10&#10;- ControllerAspect&#10;- MainConfiguration&#10;- SecurityConfiguration&#10;- MultipartConverter">
-      <option name="closed" value="true" />
-      <created>1736493278811</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1736493278811</updated>
+      <workItem from="1738028971348" duration="17189000" />
     </task>
     <task id="LOCAL-00009" summary="2025-01-10&#10;book column 수정">
       <option name="closed" value="true" />
@@ -644,7 +643,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738043719039</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
+      <option name="closed" value="true" />
+      <created>1738044494565</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1738044494565</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -240,31 +240,49 @@ public class MainController {
     }
 
     /********************* 토론 **********************/
+    // ok
     @GetMapping("/discussion/category")
     public String getDiscussionCategory(
             Model model,
-            PageInfoDTO<DiscussionDTO> pageInfo
+            PageInfoDTO<DiscussionDTO> pageInfo,
+            HttpServletRequest request,
+            HttpServletResponse response
     ) {
-        List<DiscussionDTO> paginatedDiscussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
-        model.addAttribute("paginatedDiscussions", paginatedDiscussions);
-        model.addAttribute("pageInfo", pageInfo);
+        String searchKeyword = getSearchKeywordFromCookies(request, response);
+        PageInfoDTO<DiscussionDTO> discussions;
+
+        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+            // 검색어가 있을 경우 검색 수행
+            discussions = discussionService.getDiscussionByBookTitle(pageInfo, searchKeyword);
+            model.addAttribute("isSearch", true);
+            model.addAttribute("searchKeyword", searchKeyword);
+        } else {
+            // 검색어가 없을 경우 기본 리스트 반환
+            discussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
+            model.addAttribute("isSearch", false);
+        }
+
+        model.addAttribute("pageInfo", discussions);
         return "content/discussion-category";
     }
 
+
+    // ok
     @GetMapping("/discussion/category/search")
     @ResponseBody
     public PageInfoDTO<DiscussionDTO> searchDiscussionByTitle(
             @RequestParam String bookName,
             PageInfoDTO<DiscussionDTO> pageInfo,
-            Model model
+            HttpServletResponse response
     ) {
-        PageInfoDTO<DiscussionDTO> discussions = discussionService.getDiscussionByBookTitle(pageInfo, bookName);
-        pageInfo.setTotalElementCount(discussions.getTotalElementCount());
-        model.addAttribute("pageInfo", pageInfo);
-        return discussions;
+        saveSearchKeywordToCookie(response, bookName);
+        return discussionService.getDiscussionByBookTitle(pageInfo, bookName);
     }
 
+
+
     // 토론 페이지
+    // ok
     @GetMapping("/discussion/{discussionId}")
     public String get_discussion (
             @PathVariable Integer discussionId,
@@ -276,7 +294,7 @@ public class MainController {
         return "content/discussion";
     }
 
-    // 토론 페이지 댓글 불러오기 (어쩌면 fetch로 해야할지도)
+    // 토론 페이지 댓글 불러오기 (test 예정)
     @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
             @PathVariable Integer discussionId,
