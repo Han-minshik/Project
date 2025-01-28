@@ -33,10 +33,10 @@
 		</div>
 		<ul>
 			<li>
-				<a th:href="@{/discussion/category(page=1, size=${pageInfo.size}, sort='recent')}">최신순</a>
+				<a th:href="@{/discussion/category(size=${pageInfo.size}, sort='recent')}">최신순</a>
 			</li>
 			<li>
-				<a th:href="@{/discussion/category(page=1, size=${pageInfo.size}, sort='title')}">제목순</a>
+				<a th:href="@{/discussion/category(size=${pageInfo.size}, sort='title')}">제목순</a>
 			</li>
 			<li>
 				<label>
