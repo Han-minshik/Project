@@ -238,28 +238,47 @@ public class MainController {
     public ResponseEntity<String> addReview(
             Authentication auth,
             @PathVariable String bookIsbn,
-            @RequestBody Map<String, String> requestBody
+            @RequestBody Map<String, Object> requestBody
     ) {
         if (auth == null || !auth.isAuthenticated()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
 
         String userId = auth.getName(); // 현재 로그인된 사용자 ID
-        String content = requestBody.get("content");
-        Integer rate = Integer.parseInt(requestBody.get("rate"));
+        String content = (String) requestBody.get("content");
+
+        // 🔥 Integer 변환 (서버에서도 추가 변환)
+        Integer rate;
+        try {
+            rate = Integer.parseInt(requestBody.get("rate").toString());
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body("별점은 숫자로 입력해야 합니다.");
+        }
 
         if (content == null || content.trim().isEmpty()) {
             return ResponseEntity.badRequest().body("리뷰 내용을 입력해주세요.");
         }
 
-        if (rate > 5) {
-            return ResponseEntity.badRequest().body("별점을 올바르게 선택해주세요.");
+        if (rate < 0 || rate > 5) {
+            return ResponseEntity.badRequest().body("별점은 1~5 사이여야 합니다.");
         }
 
-        // 리뷰 추가
-        bookService.insertReview(userId, bookIsbn, content, rate);
-        return ResponseEntity.ok("리뷰가 성공적으로 작성되었습니다.");
+        // 🔍 서버 로그 출력 (디버깅용)
+        System.out.println("User: " + userId);
+        System.out.println("Book ISBN: " + bookIsbn);
+        System.out.println("Content: " + content);
+        System.out.println("Rate: " + rate);
+
+        try {
+            bookService.insertReview(userId, bookIsbn, content, rate);
+            return ResponseEntity.ok("리뷰가 성공적으로 작성되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류: 리뷰 저장 실패");
+        }
     }
+
+
+
 
 
     /********************* 토론 **********************/

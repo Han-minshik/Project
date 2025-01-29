@@ -232,7 +232,15 @@ public class BookService {
     }
 
     public void insertReview(String userId, String isbn, String content, Integer rate) {
-        bookMapper.insertReview(userId, isbn, content, rate);
+        try {
+            System.out.println("[DEBUG] SQL 실행 전 - User: " + userId + ", ISBN: " + isbn + ", Content: " + content + ", Rate: " + rate);
+            bookMapper.insertReview(userId, isbn, content, rate);
+            System.out.println("[DEBUG] SQL 실행 완료!");
+        } catch (Exception e) {
+            System.err.println("[ERROR] 리뷰 저장 중 오류 발생!");
+            e.printStackTrace(); // 🔥 에러 출력
+            throw e; // 예외 다시 던짐
+        }
     }
 
 }

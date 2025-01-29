@@ -123,15 +123,18 @@ function request(url, requestBody){
 
 /**************************************/
 document.addEventListener("DOMContentLoaded", function () {
-    let form;
+    const reviewFormContainer = document.getElementById("review-form");
 
+    // ⭐ 리뷰 폼 초기화
     function initializeReviewForm() {
-        form = document.querySelector(".my-opinion-form");
+        const form = document.querySelector(".my-opinion-form");
 
         if (!form) {
-            console.warn("리뷰 작성 폼을 찾을 수 없습니다. 동적 로딩을 기다립니다...");
+            console.warn("⏳ 리뷰 작성 폼을 찾을 수 없습니다. 대기 중...");
             return;
         }
+
+        console.log("✅ 리뷰 작성 폼을 찾았습니다!");
 
         const stars = document.querySelectorAll(".star-rating i");
         const ratingInput = document.getElementById("rating-value");
@@ -151,41 +154,47 @@ document.addEventListener("DOMContentLoaded", function () {
         // ⭐ 별점 선택 이벤트
         stars.forEach((star) => {
             star.addEventListener("click", function () {
-                const value = parseInt(this.getAttribute("data-value"));
-                ratingInput.value = value; // hidden input에 값 저장
+                const value = parseInt(this.getAttribute("data-value"), 10);
+                ratingInput.value = value;
                 updateStars(value);
             });
 
-            // 마우스 오버 효과
             star.addEventListener("mouseover", function () {
-                const value = parseInt(this.getAttribute("data-value"));
-                updateStars(value);
+                updateStars(parseInt(this.getAttribute("data-value"), 10));
             });
 
-            // 마우스가 별점 영역을 벗어나면 선택된 별점만 유지
             star.addEventListener("mouseleave", function () {
                 updateStars(parseInt(ratingInput.value) || 0);
             });
         });
 
-        // 폼 제출 이벤트 (AJAX 요청)
+        // ⭐ 폼 제출 이벤트 (AJAX 요청)
         form.addEventListener("submit", function (event) {
-            event.preventDefault(); // 기본 폼 제출 방지
+            event.preventDefault();
 
-            const bookIsbn = window.location.pathname.split("/")[2]; // 현재 URL에서 ISBN 추출
+            const bookForm = document.forms.namedItem("book");
+            if (!bookForm) {
+                console.error("🚨 책 정보를 찾을 수 없습니다.");
+                return;
+            }
+
+            const bookIsbn = bookForm.id;
             const textArea = form.querySelector("textarea");
             const reviewContent = textArea.value.trim();
-            const ratingValue = ratingInput.value; // 선택한 별점 값
+            const ratingValue = parseInt(ratingInput.value, 10);
 
             if (reviewContent === "") {
                 alert("리뷰 내용을 입력해주세요.");
                 return;
             }
 
-            if (ratingValue === "0") {
-                alert("별점을 선택해주세요.");
+            if (!ratingValue || ratingValue < 1 || ratingValue > 5) {
+                alert("별점을 올바르게 선택해주세요.");
                 return;
             }
+
+            const reviewData = { content: reviewContent, rate: ratingValue };
+            console.log("📤 보낼 데이터:", JSON.stringify(reviewData));
 
             fetch(`/book/${bookIsbn}/review/add`, {
                 method: "POST",
@@ -193,25 +202,43 @@ document.addEventListener("DOMContentLoaded", function () {
                     "Content-Type": "application/json",
                     "X-CSRF-TOKEN": document.querySelector("meta[name='_csrf']").getAttribute("content")
                 },
-                body: JSON.stringify({ content: reviewContent, rate: ratingValue })
+                body: JSON.stringify(reviewData)
             })
                 .then(response => {
                     if (response.ok) {
-                        return response.text();
+                        console.log("✅ 리뷰 작성 완료, 최신 리뷰 불러오는 중...");
+                        return fetch(`/book/${bookIsbn}/review`);
                     } else {
                         throw new Error("리뷰 작성에 실패했습니다.");
                     }
                 })
-                .then(html => {
-                    const reviewSection = document.getElementById("review-form");
-                    reviewSection.innerHTML = html; // 새로운 리뷰 템플릿 업데이트
-                    initializeReviewForm(); // 새롭게 추가된 폼에도 이벤트 바인딩
+                .then(response => response.text())
+                .then(reviewHtml => {
+                    console.log("🔄 최신 리뷰 업데이트 완료!");
+
+                    reviewFormContainer.innerHTML = reviewHtml;
+                    initializeReviewForm(); // 리뷰 폼 재초기화
                 })
-                .catch(error => console.error("Error:", error));
+                .catch(error => console.error("❌ Error:", error));
         });
     }
 
-    // 📌 MutationObserver를 사용하여 `.my-opinion-form`이 동적으로 추가될 때 감지
+    // ⭐ 리뷰 목록 불러오기
+    function load_review(event, url) {
+        if (event) event.preventDefault();
+
+        console.log("🔄 리뷰 불러오는 중:", url);
+
+        fetch(url)
+            .then(response => response.text())
+            .then(reviewTemplate => {
+                reviewFormContainer.innerHTML = reviewTemplate;
+                initializeReviewForm(); // 리뷰 폼 초기화
+            })
+            .catch(error => console.error("❌ 리뷰 로딩 실패:", error));
+    }
+
+    // 📌 `review-form`이 변경될 때 자동으로 감지하여 `initializeReviewForm()` 실행
     const observer = new MutationObserver(() => {
         if (document.querySelector(".my-opinion-form")) {
             observer.disconnect();
@@ -219,10 +246,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    observer.observe(document.body, { childList: true, subtree: true });
+    if (reviewFormContainer) {
+        observer.observe(reviewFormContainer, { childList: true, subtree: true });
+    }
 
-    // 초기 실행 (기본 폼이 있는 경우)
-    initializeReviewForm();
+    // 📌 페이지 로딩 시 리뷰 자동 로드
+    const bookForm = document.forms.namedItem("book");
+    if (bookForm) {
+        const bookIsbn = bookForm.id;
+        load_review(null, `/book/${bookIsbn}/review`);
+    }
 });
 
 

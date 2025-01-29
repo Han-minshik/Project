@@ -191,9 +191,8 @@
     <!-- 사용자 리뷰 추가 -->
     <insert id="insertReview">
         INSERT INTO review (user_id, book_isbn, content, `like`, rate, updated_at, user_image)
-        VALUES (#{userId}, #{bookIsbn}, #{content}, 0, #{rate}, DEFAULT,
+        VALUES (#{userId}, #{isbn}, #{content}, 0, #{rate}, DEFAULT,
                 (SELECT profile_image FROM user WHERE id = #{userId})
                );
-
     </insert>
 </mapper>
