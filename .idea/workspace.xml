@@ -5,19 +5,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/mypage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/my.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/my.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icorn/google_login_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/icon/google_login_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icorn/kakao_login_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/icon/kakao_login_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icorn/naver_login_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/icon/naver_login_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/zim.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/wishlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/info-revise.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/info-revise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/join.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/join.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/email-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail/email-auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/pw-email-auth-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail/pw-email-auth-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/participation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/review-template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/mypage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/my.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/my.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icorn/google_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icorn/kakao_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icorn/naver_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/zim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/info-revise.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/info-revise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/join.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/join.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/pw-email-auth-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/mail/pw-email-auth-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +70,17 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main-test(금동현,250127)" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -66,43 +113,44 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.project의 static.img.main.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.project의 전부 (1).executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.project의 전부.executor&quot;: &quot;Debug&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.project의 static.img.main.executor": "Debug",
+    "JUnit.project의 전부 (1).executor": "Debug",
+    "JUnit.project의 전부.executor": "Debug",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ProjectApplication.executor": "Run",
+    "git-widget-placeholder": "main-test(금동현,250129)",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/reko2/OneDrive/문서/GitHub/Project/src/main/resources/templates/user",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\reko2\OneDrive\문서\GitHub\Project\src\main\resources\templates\user" />
+      <recent name="C:\Users\reko2\OneDrive\문서\GitHub\Project\src\main\resources\templates\mail" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\user" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\book" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />

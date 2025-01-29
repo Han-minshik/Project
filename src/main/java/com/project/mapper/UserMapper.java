@@ -12,7 +12,7 @@ public interface UserMapper {
     UserDTO getUserById(@Param("id") String id);
     UserDTO getUserByCi(@Param("ci") String ci);
     List<UserDTO> getAllUsers();
-    void updateUser(@Param("userDTO") UserDTO userDTO);
+    void updateUser(UserDTO userDTO);
     void deleteUser(@Param("id") String id);
     List<ReviewDTO> getReviewsByUserId(@Param("userId") String userId);
     void insertSnsInfo(@Param("snsInfo") SnsInfoDTO snsInfo);

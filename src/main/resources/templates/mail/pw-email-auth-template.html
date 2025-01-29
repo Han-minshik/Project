@@ -10,7 +10,7 @@
 <body>
     <h4>아래 링크를 클릭하여 비밀번호를 변경하세요</h4>
     <p>
-        <a href="http://localhost:8080/user/find-pw">링크</a>
+        <a th:text="${passwordLink}" th:href="${passwordLink}"></a>
     </p>
 </body>
 </html>

@@ -16,8 +16,8 @@
 <main>
 	<nav id="category-nav">
 		<ol>
-			<li>
-				<a href="#">CATEGORY1</a>
+			<li th:each="category: ${categories}">
+				<a th:href="@{/book(categoryNo=${category.no})}" th:text="${category.name}">CATEGORY1</a>
 			</li>
 		</ol>
 	</nav>

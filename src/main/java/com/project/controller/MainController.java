@@ -6,6 +6,7 @@ import com.project.service.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,21 +60,41 @@ public class MainController {
     /*************************************/
 
     // 비밀번호 분실
-    @GetMapping("/resetPw")
-    public String get_reset_pw() {return "user/reset-pw";}
+    @GetMapping("/reset-pw")
+    public String get_reset_pw() {
+        return "user/reset-pw";
+    }
+
+    @GetMapping("/reset-pw-2")
+    public String get_reset_pw_2(
+            @RequestParam String code,
+            HttpSession session,
+            Model model
+    ) {
+        if(code.equals(session.getAttribute("code"))){
+            String id = session.getAttribute("id").toString();
+            log.info("reset-id :" + id);
+            model.addAttribute("id", id);
+            return "user/reset-pw-2";
+        }
+        return "user/reset-pw";
+    }
 
     // 이것도 아마도 userRestController로 옮겨야 할듯
-    @PostMapping("/resetPw")
+    @PostMapping("/reset-pw-2")
     public String post_reset_pw(
-            String id,
+            HttpSession session,
             @RequestParam("password") String newPw
     ){
         // 패턴 검사도 함
+        log.info("newPw: " + newPw);
+        String id = session.getAttribute("id").toString();
+        log.info("reset-2-id :" + id);
         boolean resetPwResult =  userService.reset_password(id, newPw);
         if (resetPwResult){
-            return "redirect:/";
+            return "redirect:/user/login";
         }
-        return "user/reset-pw";
+        return "user/reset-pw-2";
     }
 
 //    @GetMapping("/book/book-category")
@@ -317,26 +338,8 @@ public class MainController {
         return "user/write_talk";
     }
 
-    @PostMapping("/discussion/add")
-    public String post_discussion_add (
-            Authentication auth,
-            @RequestBody DiscussionDTO discussion
+//    @PostMapping("/discussion/add") -> MainRestController로 이동
 
-    ){
-        if(auth != null){
-            String userId = auth.getName();
-            discussionService.createDiscussion(
-                    discussion.getBookTitle(),
-                    discussion.getTopic(),
-                    discussion.getContents(),
-                    userId,
-                    discussion.getBookIsbn()
-            );
-            return "content/discussion/category";
-        }
-        return "redirect:/user/login";
-
-    }
 
     // 토론 댓글 생성
     @PostMapping("/comment/add")
@@ -349,7 +352,7 @@ public class MainController {
         if(auth != null){
             String userId = auth.getName();
             discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
-            return "content/discussion/" + discussionId;
+            return "redirect:/discussion/" + discussionId;
         }
         return "redirect:/user/login";
 
@@ -390,6 +393,11 @@ public class MainController {
         return "user/complain";
     }
 
+    @GetMapping("/complain/add")
+    public String get_complain_add(){
+        return "user/write_QA";
+    }
+
     @PostMapping("/complain/add")
     public String post_complain_add (
             Authentication auth,
@@ -398,7 +406,7 @@ public class MainController {
     ){
         if(auth != null){
             userService.createComplain(title, contents, auth.getName());
-            return "user/write_QA";
+            return "redirect:/complain";
         }
         return "redirect:/user/login";
     }
