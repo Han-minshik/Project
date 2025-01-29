@@ -333,8 +333,6 @@ public class MainController {
         return discussionService.getDiscussionByBookTitle(pageInfo, bookName);
     }
 
-
-
     // 토론 페이지
     // ok
     @GetMapping("/discussion/{discussionId}")

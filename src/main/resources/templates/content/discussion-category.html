@@ -86,20 +86,25 @@
 	</section>
 
 	<!-- 페이지네이션 -->
-	<ol class="pagination">
-		<!-- 페이지네이션이 필요한 경우 내부에 페이지를 추가 -->
-		<li th:if="${pageInfo.page > 1}">
-			<a th:href="@{/discussion/category(page=${pageInfo.page - 1}, size=${pageInfo.size}, sort=${pageInfo.sort})}">
+	<ol class="pagination" th:if="${pageInfo.totalPageCount > 1}">
+		<!-- 이전 페이지 버튼 -->
+		<li th:if="${pageInfo.startPage > 1}">
+			<a th:href="@{/discussion/category(page=${pageInfo.startPage - 1}, size=${pageInfo.size}, sort=${sort}, bookName=${bookName})}">
 				<i class="bi bi-caret-left-fill"></i>
 			</a>
 		</li>
+
+		<!-- 페이지 번호 -->
 		<li th:each="pageNumber : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-			<a th:href="@{/discussion/category(page=${pageNumber}, size=${pageInfo.size}, sort=${pageInfo.sort})}"
+			<a th:href="@{/discussion/category(page=${pageNumber}, size=${pageInfo.size}, sort=${sort}, bookName=${bookName})}"
 			   th:text="${pageNumber}"
-			   th:classappend="${pageInfo.page == pageNumber} ? 'active' : ''">1</a>
+			   th:classappend="${pageInfo.page == pageNumber} ? 'active' : ''">
+			</a>
 		</li>
-		<li th:if="${pageInfo.page < pageInfo.totalPageCount}">
-			<a th:href="@{/discussion/category(page=${pageInfo.page + 1}, size=${pageInfo.size}, sort=${pageInfo.sort})}">
+
+		<!-- 다음 페이지 버튼 -->
+		<li th:if="${pageInfo.endPage < pageInfo.totalPageCount}">
+			<a th:href="@{/discussion/category(page=${pageInfo.endPage + 1}, size=${pageInfo.size}, sort=${sort}, bookName=${bookName})}">
 				<i class="bi bi-caret-right-fill"></i>
 			</a>
 		</li>

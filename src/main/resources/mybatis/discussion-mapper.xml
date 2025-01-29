@@ -17,7 +17,7 @@
                    DEFAULT,
                    #{userId},
                    #{bookIsbn},
-                   (SELECT image FROM book WHERE title LIKE CONCAT('%', REPLACE(#{bookTitle}, ' ', ''), '%') LIMIT 1)
+                   (SELECT image FROM book WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1)
                )
     </insert>
     <!-- 가장 최근에 남겨진 의견 -->
@@ -70,7 +70,8 @@
     <select id="getDiscussionByBookTitle" resultType="DiscussionDTO">
         SELECT d.*
         FROM discussion d
-        WHERE d.book_title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+        WHERE REGEXP_REPLACE(d.book_title, '[^a-zA-Z0-9가-힣]', '')
+        LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
         <choose>
             <!-- 최신순 정렬 -->
             <when test="pageInfo.sort == 'recent'">
@@ -98,8 +99,9 @@
     <!-- 제목으로 검색된 토론의 수 반환 -->
     <select id="getTotalCountByTitle" resultType="java.lang.Integer">
         SELECT COUNT(*)
-        FROM discussion d
-        WHERE d.book_title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')
+        FROM discussion
+        WHERE REGEXP_REPLACE(book_title, '[^a-zA-Z0-9가-힣]', '')
+                  LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
     </select>
     <!-- 사용자가 작성한 토론 글 -->
     <select id="getTotalCountByUser" resultType="java.lang.Integer">

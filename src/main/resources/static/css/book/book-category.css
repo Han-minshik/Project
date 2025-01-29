@@ -199,3 +199,39 @@ main > ol a{
 main> ol a[active=true]{
     font-weight: bold;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 50px 0;
+}
+
+.pagination li {
+    margin: 0 8px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: black;
+    font-size: var(--font-size-x-small);
+    font-weight: normal;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active {
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+

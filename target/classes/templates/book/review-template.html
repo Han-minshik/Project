@@ -80,7 +80,7 @@
 		<section class="review-user-section">
 			<div>
 				<div class="review-user-image"
-				     th:style="'background-image: url(\'' + (${review.userImage} ?: '../../static/img/book_main.jpg') + '\');'">
+				     th:style="'background-image: url(\'' + (${review.getBase64Image()} ?: '../../static/img/book_main.jpg') + '\');'">
 				</div>
 				<span class="review-user-name" th:text="${review.userId}" data-user-id="${review.userId}">ANYA FORGER</span>
 			</div>

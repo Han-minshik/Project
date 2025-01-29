@@ -141,7 +141,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const resultDiv = document.querySelector('.all-book-discussion'); // 동적 요소가 추가될 부모 컨테이너
 
+    // 🔹 이벤트 위임: 부모 요소에 이벤트를 걸고 클릭된 요소가 버튼인지 확인
+    resultDiv.addEventListener("click", (event) => {
+        const target = event.target;
+
+        // 🎯 토론 참여하기 버튼 클릭 시 이동
+        if (target.classList.contains("discussion-button")) {
+            const discussionId = target.dataset.discussionId;
+            if (discussionId) {
+                location.href = `/discussion/${discussionId}`;
+            } else {
+                alert("❌ 토론 ID를 찾을 수 없습니다.");
+            }
+        }
+
+        // 🎯 책 보러가기 버튼 클릭 시 이동
+        if (target.classList.contains("book-button")) {
+            const bookIsbn = target.dataset.bookIsbn;
+            if (bookIsbn) {
+                location.href = `/book/${bookIsbn}`;
+            } else {
+                alert("❌ 책 ISBN을 찾을 수 없습니다.");
+            }
+        }
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     // 토론 참여하기 버튼 클릭 시 이동

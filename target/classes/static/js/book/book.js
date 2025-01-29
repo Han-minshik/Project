@@ -10,10 +10,50 @@ const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('conte
 const reviewForm = document.getElementById('review-form')
 
 discussionBtn.onclick = () => {
-    const bookTitle = document.querySelector('h1').innerText.trim(); // 동적으로 책 제목 가져오기
-    // 책 제목을 기반으로 토론 목록 페이지로 이동
+    const bookTitleElement = document.querySelector('h1'); // h1 태그 가져오기
+
+    if (!bookTitleElement) {
+        console.error("🚨 책 제목을 찾을 수 없습니다!");
+        return;
+    }
+
+    let bookTitle = bookTitleElement.innerText.trim();
+
+    if (bookTitle === "") {
+        console.error("🚨 책 제목이 비어 있습니다.");
+        return;
+    }
+
+    // 🔹 공백을 "-"(하이픈)으로 변환하여 URL과 쿠키에서 안전하게 사용
+    bookTitle = bookTitle.replace(/\s+/g, "-"); // 모든 공백을 "-"로 변경
+
+    // 🔹 URL 인코딩 적용
     const encodedBookTitle = encodeURIComponent(bookTitle);
-    location.href = `/discussion/category?bookName=${encodedBookTitle}`;
+
+    console.log(`📚 토론 검색 요청: ${bookTitle} -> /discussion/category/search?bookName=${encodedBookTitle}`);
+
+    // 컨트롤러의 @GetMapping("/discussion/category/search")에 맞게 요청을 보냄
+    fetch(`/discussion/category/search?bookName=${encodedBookTitle}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`❌ 서버 응답 오류: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("✅ 토론 검색 결과:", data);
+
+            // 검색 결과가 있을 경우 해당 페이지로 이동
+            if (data && data.elements && data.elements.length > 0) {
+                location.href = `/discussion/category?bookName=${encodedBookTitle}`;
+            } else {
+                alert("❌ 해당 책에 대한 토론이 없습니다.");
+            }
+        })
+        .catch(error => {
+            console.error("❌ 오류 발생:", error);
+            alert("토론 검색 중 오류가 발생했습니다.");
+        });
 };
 
 /*******************************************/
@@ -171,6 +211,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(error => console.error("❌ Error:", error));
         });
 
+        // ⭐ 별점 선택 기능 추가
+        const stars = document.querySelectorAll(".star-rating i");
+        const ratingValue = document.getElementById("rating-value");
+
+        stars.forEach(star => {
+            star.addEventListener("click", function () {
+                const value = this.getAttribute("data-value");
+                ratingValue.value = value;
+
+                // 클릭한 별과 그 이전 별들은 모두 채우기 (solid)
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.classList.remove("fa-regular");
+                        s.classList.add("fa-solid");
+                    } else {
+                        s.classList.remove("fa-solid");
+                        s.classList.add("fa-regular");
+                    }
+                });
+            });
+        });
+
         // 👍 좋아요 버튼 클릭 이벤트 바인딩
         document.querySelectorAll(".fa-thumbs-up").forEach(button => {
             button.addEventListener("click", function () {
@@ -208,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.text())
             .then(reviewTemplate => {
                 reviewFormContainer.innerHTML = reviewTemplate;
-                initializeReviewForm();
+                initializeReviewForm(); // 리뷰 폼 재초기화
             })
             .catch(error => console.error("❌ 리뷰 로딩 실패:", error));
     }
@@ -219,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateReviewSection(bookIsbn);
     }
 });
+
 
 
 
