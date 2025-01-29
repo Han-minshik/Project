@@ -348,7 +348,7 @@ public class MainController {
         return "content/discussion";
     }
 
-    // 토론 페이지 댓글 불러오기 (test 예정)ㅁ
+    // 토론 페이지 댓글 불러오기 (test 예정)
     @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
             @PathVariable Integer discussionId,
