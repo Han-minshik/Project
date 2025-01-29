@@ -80,9 +80,9 @@
 		<section class="review-user-section">
 			<div>
 				<div class="review-user-image"
-				     th:style="'background-image: url(\'' + (${review.base64Image} ?: '../../static/img/book_main.jpg') + '\');'">
+				     th:style="'background-image: url(\'' + (${review.userImage} ?: '../../static/img/book_main.jpg') + '\');'">
 				</div>
-				<span class="review-user-name" th:text="${review.getUserId()}">ANYA FORGER</span>
+				<span class="review-user-name" th:text="${review.userId}" data-user-id="${review.userId}">ANYA FORGER</span>
 			</div>
 			<div>
 				<div class="review-user-stars">
@@ -94,22 +94,17 @@
 			</div>
 		</section>
 		<section class="review-section">
-                <span class="review-content" th:text="${review.content}">
-                    평소 팩트는 22호 파운데이션은 21호 ~22호 사이를 섞어서 사용 합니다
-                    웜톤인데 코렉트 업베이지가 저랑은 색이 좀더 잘 맞네요
-                    코렉트 업베이지는 노란끼가 좀더 있는 거 같고
-                    코렉트 베이지는 붉은끼가 살짝 있는 듯 합니다
-                    얼굴에 커피반점이 생겨서 가리는 용으로 샀는데 코렉트업베지라 밝아서 가려질까 했는데 예상외로 자연스럽게 잘가려 줘요
-                </span>
+			<span class="review-content" th:text="${review.content}" data-content="${review.content}"></span>
 		</section>
 		<section class="review-recommend-section">
 			<div>
-				<i class="fa-solid fa-thumbs-up"></i>
+				<i class="fa-solid fa-thumbs-up" data-content="${review.content}" data-user-id="${review.userId}"></i>
 				<span th:text="${review.like}">112</span>
 			</div>
 		</section>
 	</div>
 </div>
+
 
 <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">
 	<li th:if="${pageInfo.startPage != 1}">

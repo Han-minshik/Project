@@ -1,10 +1,7 @@
 package com.project.mapper;
 
 import com.project.dto.*;
-import org.apache.ibatis.annotations.MapKey;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -36,4 +33,5 @@ public interface BookMapper {
     // 제목으로 검색된 총 책 개수 조회
     @Select("SELECT COUNT(*) FROM book WHERE title LIKE CONCAT('%', #{title}, '%')")
     Integer getTotalBookCountByTitle(@Param("title") String title);
+    Integer plusReviewLike(@Param("bookIsbn") String bookIsbn, @Param("content") String content, @Param("userId") String userId);
 }

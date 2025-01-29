@@ -195,4 +195,12 @@
                 (SELECT profile_image FROM user WHERE id = #{userId})
                );
     </insert>
+    <!-- 리뷰 좋아요 추가 -->
+    <update id="plusReviewLike">
+        UPDATE review
+        SET `like` = `like` + 1
+        WHERE book_isbn = #{bookIsbn}
+          AND content = #{content}
+          AND user_id = #{userId}
+    </update>
 </mapper>

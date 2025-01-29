@@ -243,4 +243,8 @@ public class BookService {
         }
     }
 
+    public Integer plusReviewLike(String bookIsbn, String content, String userId) {
+        return bookMapper.plusReviewLike(bookIsbn, content, userId);
+    }
+
 }

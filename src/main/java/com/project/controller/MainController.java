@@ -234,6 +234,7 @@ public class MainController {
     }
 
     /********************** 리뷰 댓글 추가 ****************/
+    // ok
     @PostMapping("/book/{bookIsbn}/review/add")
     public ResponseEntity<String> addReview(
             Authentication auth,
@@ -243,32 +244,24 @@ public class MainController {
         if (auth == null || !auth.isAuthenticated()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
-
         String userId = auth.getName(); // 현재 로그인된 사용자 ID
         String content = (String) requestBody.get("content");
-
-        // 🔥 Integer 변환 (서버에서도 추가 변환)
         Integer rate;
         try {
             rate = Integer.parseInt(requestBody.get("rate").toString());
         } catch (NumberFormatException e) {
             return ResponseEntity.badRequest().body("별점은 숫자로 입력해야 합니다.");
         }
-
         if (content == null || content.trim().isEmpty()) {
             return ResponseEntity.badRequest().body("리뷰 내용을 입력해주세요.");
         }
-
         if (rate < 0 || rate > 5) {
             return ResponseEntity.badRequest().body("별점은 1~5 사이여야 합니다.");
         }
-
-        // 🔍 서버 로그 출력 (디버깅용)
         System.out.println("User: " + userId);
         System.out.println("Book ISBN: " + bookIsbn);
         System.out.println("Content: " + content);
         System.out.println("Rate: " + rate);
-
         try {
             bookService.insertReview(userId, bookIsbn, content, rate);
             return ResponseEntity.ok("리뷰가 성공적으로 작성되었습니다.");
@@ -277,8 +270,27 @@ public class MainController {
         }
     }
 
+    /** 책 리뷰 좋아요 추가 **/
+    // ok
+    @PostMapping("/book/{bookIsbn}/review/like")
+    public ResponseEntity<Integer> plusReviewLike(
+            @PathVariable String bookIsbn,
+            @RequestParam String content,
+            @RequestParam String userId,  // 리뷰 작성자 ID 추가
+            Authentication auth
+    ) {
+        if (auth == null || auth.getName() == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 
+        Integer updatedRows = bookService.plusReviewLike(bookIsbn, content, userId);
 
+        if (updatedRows > 0) {
+            return ResponseEntity.ok(updatedRows);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
+        }
+    }
 
 
     /********************* 토론 **********************/

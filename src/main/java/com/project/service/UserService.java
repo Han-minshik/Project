@@ -47,7 +47,7 @@ public class UserService {
     }
 
     public boolean reset_password(String id, String newPw) {
-        boolean pwPatternResult = newPw.matches("^[0-9a-zA-Z~@#$%^&*()_=+.-]{4,10}");
+        boolean pwPatternResult = newPw.matches("^[0-9a-zA-Z~!@#$%^&*()_=+.-]{4,10}");
         if (!pwPatternResult) {
             return false;
         }
