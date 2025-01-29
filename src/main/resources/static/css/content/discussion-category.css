@@ -98,9 +98,9 @@ main > header a{
 }
 
 .image-container{
-    width: 510px;
+    width: 450px;
     display: flex;
-    padding: 50px 0 50px 60px;
+    padding: 50px 0 50px 50px;
 }
 .image-container img{
     width: 70%;

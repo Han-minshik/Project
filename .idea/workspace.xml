@@ -4,20 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="테스트 진행 중&#10;(review-template, book-template)">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/dto/ReviewDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/dto/ReviewDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion-category.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion-category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/mypage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/participation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/review-template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-pw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/mypage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/ReviewDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/ReviewDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/discussion-category.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/discussion-category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,14 +277,7 @@
       <workItem from="1738074102385" duration="1145000" />
       <workItem from="1738076492601" duration="77000" />
       <workItem from="1738105506264" duration="351000" />
-    </task>
-    <task id="LOCAL-00011" summary="2025-01-12&#10;&#10;추가&#10;- BookDTO : price 추가(DB)&#10;- LoanDTO : discountPrice(할인받은 금액), finalPrice(최종 금액) 추가(DB)&#10;- NotificationDTO : type 추가(DB, 알림의 종류를 결정)&#10;- BookMapper, book-mapper.xml : getBookDetails 추가&#10;- LoanMapper, loan-mapper.xml : getActiveloanByUserAndBook 추가&#10;- NotificationMapper, notification-mapper.xml 종류 별 알림 구현&#10;- UserMapper, user-mapper.xml : addPointTouser, getTopDiscussionUser, getTopCommentUserByDiscussionId, addPointGrantHistory, hasPointGrantedForReason, deductPoints 구현&#10;- getBookDetails로 UserService에서 대출시 책의 정보 상세 조회&#10;- LoanService : copiesAvailable 조절&#10;- NotificationService : 종류별 알림 서비스 구현&#10;- UserService : 포인트 부여 구현(discussion의 댓글이 다른 주제보다 많은 사용자, 댓글 중 공감이 가장 많은 사용자)&#10;&#10;수정&#10;- 모든 int 태그 -&gt; Integer로 변경&#10;&#10;&#10;삭제">
-      <option name="closed" value="true" />
-      <created>1736682390595</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1736682390595</updated>
+      <workItem from="1738128677709" duration="9113000" />
     </task>
     <task id="LOCAL-00012" summary="2025-01-13">
       <option name="closed" value="true" />
@@ -659,14 +663,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738047649577</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="테스트 진행 중&#10;(review-template, book-template)">
+      <option name="closed" value="true" />
+      <created>1738128885284</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1738128885284</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가" />
     <MESSAGE value="2025-01-20&#10;login - develop 합병" />
     <MESSAGE value="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid" />
     <MESSAGE value="2025-01-20&#10;merge 준비 완" />
@@ -691,6 +702,7 @@
     <MESSAGE value="테스트 진행 중" />
     <MESSAGE value="home&#10;- 타임리프(동적 링크 포함)&#10;- 헤더, 푸터 분리&#10;&#10;book/book-category : 완료&#10;&#10;book/isbn&#10;- 리뷰 추가 창 필요(review-template)&#10;(book 템플릿에는 있는데 리뷰 템플릿으로 옮겨주세요)&#10;- 카테고리 문자열 구현&#10;- 로그인했을 때 로그인 후 대출을 해보세요 삭제&#10;&#10;나의 찜 목록&#10;- sort 정렬 삭제&#10;- 반환된 값들 디자인만 &#10;&#10;discussion_category &#10;- 토론 글쓰기 버튼 추가&#10;&#10;lendbook&#10;- sort 정렬 삭제&#10;- 디자인&#10;&#10;complain &#10;- 디자인&#10;&#10;write_QA&#10;- 디자인 &#10;- postmapping controller 제작해야 됨&#10;&#10;write_talk&#10;- 양식&#10;- 디자인&#10;&#10;&#10;content-template&#10;- 상품 리뷰 템플릿 -&gt; 토론 댓글 작성 템플릿 &#10;(구조, 디자인) &#10;&#10;my-talk&#10;- 디자인&#10;- 타임리프&#10;- 들어가야할 내용 보고 수정&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;&#10;mypage&#10;완료&#10;&#10;book/isbn&#10;- 토론하러 가기 버튼 클릭시 해당 책의 제목을 가진 토론 페이지로 이동 : 완료&#10;- 찜하기 : 완료&#10;- 리뷰 정렬 : 완료&#10;&#10;discussion/category&#10;- 책 보러가기, 토론 참여하러 가기 : 완료&#10;&#10;&#10;테스트 진행 예정&#10;- 대여했을 때 결제 연동 -&gt; 결제 성공하면 lendbook 페이지로 &#10;- inforevise&#10;- join&#10;- email&#10;- discussion/discussionId 조회시 템플릿 &#10;- resetPw&#10;- findPw&#10;- findId" />
     <MESSAGE value="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환" />
-    <option name="LAST_COMMIT_MESSAGE" value="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환" />
+    <MESSAGE value="테스트 진행 중&#10;(review-template, book-template)" />
+    <option name="LAST_COMMIT_MESSAGE" value="테스트 진행 중&#10;(review-template, book-template)" />
   </component>
 </project>

@@ -122,57 +122,113 @@ function request(url, requestBody){
 }
 
 /**************************************/
-const writeBtn = document.querySelector('.my-opinion-form button');
+document.addEventListener("DOMContentLoaded", function () {
+    let form;
 
-writeBtn.onclick = event => {
-    event.preventDefault(); // 기본 폼 제출 방지
+    function initializeReviewForm() {
+        form = document.querySelector(".my-opinion-form");
 
-    const textArea = document.querySelector('.opinion-text');
-    const commentText = textArea.value.trim();
+        if (!form) {
+            console.warn("리뷰 작성 폼을 찾을 수 없습니다. 동적 로딩을 기다립니다...");
+            return;
+        }
 
-    if (commentText !== "") {
-        // 댓글 추가
-        const discussionContainer = document.querySelector('.review-container');
-        const reviewCount = document.querySelector('.review-total-count');
+        const stars = document.querySelectorAll(".star-rating i");
+        const ratingInput = document.getElementById("rating-value");
 
-        const newComment = document.createElement('div');
-        newComment.className = 'review';
-        newComment.innerHTML = `
-                <section class="review-user-section">
-                        <div>
-                            <div class="review-user-image" style="background-image: url('https://spy-family.net/tvseries/assets/img/top/chara_thumb3.png')"></div>
-                            <span class="review-user-name">YOR FORGER</span>
-                        </div>
-                        <div>
-                            <div class="review-user-stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="review-section">
-                        <span class="review-content">${commentText}</span>
-                    </section>
-                    <section class="review-recommend-section">
-                        <div>
-                            <i class="fa-solid fa-thumbs-up"></i>
-                            <span>1</span>
-                        </div>
-                    </section>
-            `;
+        function updateStars(value) {
+            stars.forEach((star, index) => {
+                if (index < value) {
+                    star.classList.remove("fa-regular");
+                    star.classList.add("fa-solid");
+                } else {
+                    star.classList.remove("fa-solid");
+                    star.classList.add("fa-regular");
+                }
+            });
+        }
 
-        discussionContainer.appendChild(newComment); // 댓글 추가
-        reviewCount.textContent = parseInt(reviewCount.textContent) + 1 + '개'; // 댓글 수 업데이트
-        textArea.value = "";
+        // ⭐ 별점 선택 이벤트
+        stars.forEach((star) => {
+            star.addEventListener("click", function () {
+                const value = parseInt(this.getAttribute("data-value"));
+                ratingInput.value = value; // hidden input에 값 저장
+                updateStars(value);
+            });
+
+            // 마우스 오버 효과
+            star.addEventListener("mouseover", function () {
+                const value = parseInt(this.getAttribute("data-value"));
+                updateStars(value);
+            });
+
+            // 마우스가 별점 영역을 벗어나면 선택된 별점만 유지
+            star.addEventListener("mouseleave", function () {
+                updateStars(parseInt(ratingInput.value) || 0);
+            });
+        });
+
+        // 폼 제출 이벤트 (AJAX 요청)
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // 기본 폼 제출 방지
+
+            const bookIsbn = window.location.pathname.split("/")[2]; // 현재 URL에서 ISBN 추출
+            const textArea = form.querySelector("textarea");
+            const reviewContent = textArea.value.trim();
+            const ratingValue = ratingInput.value; // 선택한 별점 값
+
+            if (reviewContent === "") {
+                alert("리뷰 내용을 입력해주세요.");
+                return;
+            }
+
+            if (ratingValue === "0") {
+                alert("별점을 선택해주세요.");
+                return;
+            }
+
+            fetch(`/book/${bookIsbn}/review/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector("meta[name='_csrf']").getAttribute("content")
+                },
+                body: JSON.stringify({ content: reviewContent, rate: ratingValue })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error("리뷰 작성에 실패했습니다.");
+                    }
+                })
+                .then(html => {
+                    const reviewSection = document.getElementById("review-form");
+                    reviewSection.innerHTML = html; // 새로운 리뷰 템플릿 업데이트
+                    initializeReviewForm(); // 새롭게 추가된 폼에도 이벤트 바인딩
+                })
+                .catch(error => console.error("Error:", error));
+        });
     }
-}
+
+    // 📌 MutationObserver를 사용하여 `.my-opinion-form`이 동적으로 추가될 때 감지
+    const observer = new MutationObserver(() => {
+        if (document.querySelector(".my-opinion-form")) {
+            observer.disconnect();
+            initializeReviewForm();
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // 초기 실행 (기본 폼이 있는 경우)
+    initializeReviewForm();
+});
+
 
 /**************************************/
-load_review(null, `/book/${bookIsbn}/review`);
 /// 상품에 대한 리뷰 불러오기
+load_review(null, `/book/${bookIsbn}/review`);
 function load_review(event, url){
     if(event !== null){
         event.preventDefault();

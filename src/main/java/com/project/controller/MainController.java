@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import com.project.dto.*;
+import com.project.mapper.BookMapper;
 import com.project.mapper.DiscussionMapper;
 import com.project.service.*;
 import jakarta.servlet.http.Cookie;
@@ -33,6 +34,8 @@ public class MainController {
     @Autowired private LoanService loanService;
     @Autowired
     private DiscussionMapper discussionMapper;
+    @Autowired
+    private BookMapper bookMapper;
 
     @GetMapping("/")
     public String get_home (
@@ -232,12 +235,32 @@ public class MainController {
 
     /********************** 리뷰 댓글 추가 ****************/
     @PostMapping("/book/{bookIsbn}/review/add")
-    public String add_review (
+    public ResponseEntity<String> addReview(
             Authentication auth,
-            @PathVariable String bookIsbn
-    ){
-        return "redirect:/book/" + bookIsbn; // not yet
+            @PathVariable String bookIsbn,
+            @RequestBody Map<String, String> requestBody
+    ) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
+        }
+
+        String userId = auth.getName(); // 현재 로그인된 사용자 ID
+        String content = requestBody.get("content");
+        Integer rate = Integer.parseInt(requestBody.get("rate"));
+
+        if (content == null || content.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("리뷰 내용을 입력해주세요.");
+        }
+
+        if (rate > 5) {
+            return ResponseEntity.badRequest().body("별점을 올바르게 선택해주세요.");
+        }
+
+        // 리뷰 추가
+        bookService.insertReview(userId, bookIsbn, content, rate);
+        return ResponseEntity.ok("리뷰가 성공적으로 작성되었습니다.");
     }
+
 
     /********************* 토론 **********************/
     // ok
@@ -294,7 +317,7 @@ public class MainController {
         return "content/discussion";
     }
 
-    // 토론 페이지 댓글 불러오기 (test 예정)
+    // 토론 페이지 댓글 불러오기 (test 예정)ㅁ
     @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
             @PathVariable Integer discussionId,
