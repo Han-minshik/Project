@@ -6,13 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion-category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-pw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/mypage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/participation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/review-template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-pw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/mypage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,36 +66,36 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.project의 static.img.main.executor": "Debug",
-    "JUnit.project의 전부 (1).executor": "Debug",
-    "JUnit.project의 전부.executor": "Debug",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ProjectApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.project의 static.img.main.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.project의 전부 (1).executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.project의 전부.executor&quot;: &quot;Debug&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ProjectApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources" />
@@ -257,23 +262,10 @@
       <workItem from="1737942046678" duration="22513000" />
       <workItem from="1737984515931" duration="8425000" />
       <workItem from="1737993562145" duration="24000" />
-      <workItem from="1738028971348" duration="17189000" />
-    </task>
-    <task id="LOCAL-00009" summary="2025-01-10&#10;book column 수정">
-      <option name="closed" value="true" />
-      <created>1736583907896</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1736583907896</updated>
-    </task>
-    <task id="LOCAL-00010" summary="2025-01-11&#10;&#10;추가&#10;- AdminService&#10;- LoanService&#10;- 한 책은 50번의 대출을 생성할 수 있음. (조건)&#10;- 한 사람의 대출은 5권을 초과할 수 없음.(조건)&#10;- loan-mapper, LoanService, loan-mapper.xml : 대출 가능한 책 재고 확인, 특정 책의 재고 감소, 증가&#10;- 반납 날짜 = loan_date + 7&#10;- UserRestService&#10;- UserService&#10;- BookService&#10;&#10;수정&#10;- admin-mapper.xml : insertBook category 추가&#10;- user-mapper.xml : insertReview bookIsbn 조회 쿼리 변경&#10;- loan-mapper.xml : createLoan : return_date(loan_date + 7), status = '대출 중'으로 변경, updateloanStatus 쿼리문 변경, getLoansByUserId 모든 컬럼 조회에서 조건 조회로 변경, getAllLoans를 모든 사용자의 대출 기록 조회에서 대출 중인 모든 사용자 조회로 변경&#10;- loan-mapper : updateloanStatus에서 id와 status를 param으로 받아오는 것으로 변경, createLoan 컬럼 값 DEFAULT로 변경&#10;- Book DB copies_avaliable DEFAULT 50으로 수정&#10;&#10;삭제&#10;- LoanMapper, loan-mapper.xml : getLoanById 삭제">
-      <option name="closed" value="true" />
-      <created>1736596987788</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1736596987789</updated>
+      <workItem from="1738028971348" duration="17960000" />
+      <workItem from="1738074102385" duration="1145000" />
+      <workItem from="1738076492601" duration="77000" />
+      <workItem from="1738105506264" duration="351000" />
     </task>
     <task id="LOCAL-00011" summary="2025-01-12&#10;&#10;추가&#10;- BookDTO : price 추가(DB)&#10;- LoanDTO : discountPrice(할인받은 금액), finalPrice(최종 금액) 추가(DB)&#10;- NotificationDTO : type 추가(DB, 알림의 종류를 결정)&#10;- BookMapper, book-mapper.xml : getBookDetails 추가&#10;- LoanMapper, loan-mapper.xml : getActiveloanByUserAndBook 추가&#10;- NotificationMapper, notification-mapper.xml 종류 별 알림 구현&#10;- UserMapper, user-mapper.xml : addPointTouser, getTopDiscussionUser, getTopCommentUserByDiscussionId, addPointGrantHistory, hasPointGrantedForReason, deductPoints 구현&#10;- getBookDetails로 UserService에서 대출시 책의 정보 상세 조회&#10;- LoanService : copiesAvailable 조절&#10;- NotificationService : 종류별 알림 서비스 구현&#10;- UserService : 포인트 부여 구현(discussion의 댓글이 다른 주제보다 많은 사용자, 댓글 중 공감이 가장 많은 사용자)&#10;&#10;수정&#10;- 모든 int 태그 -&gt; Integer로 변경&#10;&#10;&#10;삭제">
       <option name="closed" value="true" />
@@ -651,7 +643,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738044494565</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
+      <option name="closed" value="true" />
+      <created>1738047428200</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1738047428200</updated>
+    </task>
+    <task id="LOCAL-00059" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
+      <option name="closed" value="true" />
+      <created>1738047649577</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1738047649577</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
