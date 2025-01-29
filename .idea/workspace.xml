@@ -6,12 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,15 +262,7 @@
       <workItem from="1738074102385" duration="1145000" />
       <workItem from="1738076492601" duration="77000" />
       <workItem from="1738105506264" duration="351000" />
-      <workItem from="1738128677709" duration="20698000" />
-    </task>
-    <task id="LOCAL-00015" summary="2025-01-19">
-      <option name="closed" value="true" />
-      <created>1737281427613</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1737281427613</updated>
+      <workItem from="1738128677709" duration="22867000" />
     </task>
     <task id="LOCAL-00016" summary="2025-01-19&#10;&#10;관리자 페이지&#10;- 관리자 등록&#10;- 책 등ㅇ록&#10;- 책 정보 수정&#10;- 책 삭제 &#10;- 공지사항 등록&#10;- 특정 관리자의 post 조회&#10;- post 모두 찾기&#10;- post 수정&#10;- post 삭제&#10;- 관리자 지정(구현해야됨)&#10;&#10;책 페이지&#10;- isbn으로 책 조회&#10;- 특정 책의 평균 별점 조회&#10;- 특정 책의 리뷰와 좋아요 개수 조회&#10;- 특정 책의 토론 주제 개수 조회&#10;- 특정 책의 토론 참여자 인원수 조회&#10;- 리뷰 관련 쿼리(개수, 평균 등)&#10;- 리뷰별 좋아요 개수&#10;- 대출 가능일&#10;- 대출 가능 여부&#10;&#10;카테고리 페이지&#10;- 책 제목으로 검색&#10;- 최신순, 제목순, 보기 설정&#10;- 책의 총 개수&#10;- 페이지네이션&#10;- 모든 책 리스트&#10;- 제목으로 책 검색&#10;&#10;토론 게시판&#10;- 모든 토론 주제 조회&#10;- 가장 최근에 남겨진 의견&#10;- sort, pagination&#10;- 페이징된 토론 개수&#10;- 토론의 모든 내용과 책의 이미지, 제목 반환&#10;&#10;토론 참여 게시판&#10;- 토론의 모든 내용 조회&#10;- 댓글 추가&#10;- 댓글 총 개수&#10;- 댓글 정렬 및 페이지네이션&#10;- 찬성, 반대(한 댓글 당 하나만)&#10;&#10;회원가입&#10;- 회원 등록&#10;&#10;로그인&#10;- 아이디 저장&#10;- SNS 정보 저장&#10;&#10;메인&#10;- 베스트셀러 (위 : 5, 아래 2개 노출)&#10;- 왼쪽 위 : 인기가 가장 많은 책&#10;- 오른쪽 위 : 최신 토론 주제&#10;- 왼쪽 아래 : 가장 인기가 많은 토론 주제의 의견 1&#10;- 오른쪽 아래 : 가장 인기가 많은 토론 주제의 의견 2&#10;&#10;회원정보 수정&#10;- 정보 업데이트&#10;&#10;카트&#10;- 카트 저장&#10;- 카트 삭제&#10;- 카트 조회&#10;&#10;컴플레인&#10;- 컴플레인 저장&#10;- 상태 업데이트('', '답장완료')&#10;&#10;나의 대여 목록&#10;- 대출 기록 생성&#10;- 모든 사용자의 대출 조회&#10;- 반납 처리&#10;- 최신순/이름순 정렬&#10;- 페이지네이션 삭제(5권 제한이라 없어도 될 것 같음)&#10;- 대출 중인 책 반환">
       <option name="closed" value="true" />
@@ -654,7 +648,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738150368816</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
+      <option name="closed" value="true" />
+      <created>1738150887535</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1738150887535</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

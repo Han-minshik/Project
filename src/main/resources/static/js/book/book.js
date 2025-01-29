@@ -9,32 +9,12 @@ const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('conte
 
 const reviewForm = document.getElementById('review-form')
 
-discussionBtn.onclick = async () => {
-    const bookIsbn = bookForm.id; // 책 ISBN 가져오기
-
-    try {
-        // 서버에 해당 ISBN의 discussionId 요청
-        const response = await fetch(`/discussion/id?bookIsbn=${bookIsbn}`);
-
-        if (!response.ok) {
-            throw new Error("토론 ID를 가져오는 데 실패했습니다.");
-        }
-
-        const discussionId = await response.text(); // discussionId 반환받기
-
-        if (!discussionId) {
-            alert("해당 책의 토론이 없습니다.");
-            return;
-        }
-
-        // discussionId를 기반으로 이동
-        location.href = `/discussion/${discussionId}`;
-    } catch (error) {
-        console.error("❌ Error:", error);
-        alert("토론 페이지 이동 중 문제가 발생했습니다.");
-    }
+discussionBtn.onclick = () => {
+    const bookTitle = document.querySelector('h1').innerText.trim(); // 동적으로 책 제목 가져오기
+    // 책 제목을 기반으로 토론 목록 페이지로 이동
+    const encodedBookTitle = encodeURIComponent(bookTitle);
+    location.href = `/discussion/category?bookName=${encodedBookTitle}`;
 };
-
 
 /*******************************************/
 

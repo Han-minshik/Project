@@ -31,7 +31,6 @@ public interface BookMapper {
     List<CategoryDTO> selectCategoryByIsbn(@Param("isbn") String isbn);
     void insertReview(@Param("userId")String userId, @Param("isbn") String isbn, @Param("content")String content, @Param("rate") Integer rate);
     // 제목으로 검색된 총 책 개수 조회
-    @Select("SELECT COUNT(*) FROM book WHERE title LIKE CONCAT('%', #{title}, '%')")
     Integer getTotalBookCountByTitle(@Param("title") String title);
     Integer plusReviewLike(@Param("bookIsbn") String bookIsbn, @Param("content") String content, @Param("userId") String userId);
 }
