@@ -32,7 +32,6 @@ discussionBtn.onclick = () => {
 
     console.log(`📚 토론 검색 요청: ${bookTitle} -> /discussion/category/search?bookName=${encodedBookTitle}`);
 
-    // 컨트롤러의 @GetMapping("/discussion/category/search")에 맞게 요청을 보냄
     fetch(`/discussion/category/search?bookName=${encodedBookTitle}`)
         .then(response => {
             if (!response.ok) {

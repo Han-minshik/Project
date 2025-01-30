@@ -68,7 +68,15 @@
     </select>
     <!-- Discussion 페이지 제목으로 토론, 조회된 개수 조회   -->
     <select id="getDiscussionByBookTitle" resultType="DiscussionDTO">
-        SELECT d.*
+        SELECT
+        d.*,
+        (
+        SELECT dc.content
+        FROM discussion_comment dc
+        WHERE dc.discussion_id = d.id
+        ORDER BY dc.updated_at DESC
+        LIMIT 1
+        ) AS recentComment
         FROM discussion d
         WHERE REGEXP_REPLACE(d.book_title, '[^a-zA-Z0-9가-힣]', '')
         LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
@@ -84,6 +92,7 @@
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
+
     <!-- 토론 생성할 때 제목으로 이미지를 반환 -->
     <select id="getBookImageByTitle">
         SELECT image FROM book WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')

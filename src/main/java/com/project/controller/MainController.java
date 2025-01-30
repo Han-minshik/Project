@@ -17,6 +17,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -347,22 +348,106 @@ public class MainController {
     }
 
     // 토론 페이지 댓글 불러오기 (test 예정)
+    // ok
     @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
             @PathVariable Integer discussionId,
             Model model,
             PageInfoDTO<DiscussionCommentDTO> pageInfo
-    ){
-        PageInfoDTO<DiscussionCommentDTO> paginatedDiscussionComment = discussionCommentService.getCommentsWithSortAndPagination(new PageInfoDTO<>() ,discussionId);
-        model.addAttribute("paginatedDiscussionComment-comment", paginatedDiscussionComment);
+    ) {
+        // 페이지네이션을 처리하는 서비스 호출
+        PageInfoDTO<DiscussionCommentDTO> paginatedDiscussionComment = discussionCommentService.getCommentsWithSortAndPagination(pageInfo, discussionId);
+
+        model.addAttribute("paginatedDiscussionComment", paginatedDiscussionComment); // 댓글 목록
+        model.addAttribute("pageInfo", pageInfo); // 페이지네이션 정보
         Integer commentCount = discussionService.getCommentCountByDiscussion(discussionId);
-        model.addAttribute("commentCount", commentCount);
-        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("commentCount", commentCount); // 댓글 총 개수
+
         return "content/discussion-comment";
     }
 
+    // ok
+    @PostMapping("/discussion/{discussionId}/comment/add")
+    public ResponseEntity<String> postDiscussionCommentAdd(
+            Authentication auth,
+            @PathVariable Integer discussionId,
+            @RequestBody DiscussionCommentDTO discussionComment
+    ) {
+        if (auth == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
+        }
+        String userId = auth.getName();
+        discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
+        return ResponseEntity.ok("댓글 추가 성공");
+    }
+
+    /****************** 좋아요 싫어요 *****************/
+    // ok
+    @PostMapping("/discussion/{discussionId}/comment/{commentId}/like")
+    public ResponseEntity<Map<String, Integer>> post_comment_like(
+            Authentication auth,
+            @PathVariable Integer discussionId, // discussionId 추가
+            @PathVariable Integer commentId // commentId
+    ) {
+        if (auth == null || !auth.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String userId = auth.getName();
+        Map<String, Integer> response = new HashMap<>();
+
+        try {
+            // 좋아요 추가
+            discussionCommentService.addLike(commentId, userId);
+
+            // 업데이트된 좋아요와 싫어요 개수 가져오기
+            Integer updatedLikes = discussionCommentService.getLikeCount(commentId);
+            Integer updatedUnlikes = discussionCommentService.getUnlikeCount(commentId);
+
+            response.put("like", updatedLikes);
+            response.put("unlike", updatedUnlikes);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        return ResponseEntity.ok(response);
+    }
+
+    // ok
+    @PostMapping("/discussion/{discussionId}/comment/{commentId}/unlike")
+    public ResponseEntity<Map<String, Integer>> post_comment_unlike(
+            Authentication auth,
+            @PathVariable Integer discussionId,
+            @PathVariable Integer commentId
+    ) {
+        if (auth == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        String userId = auth.getName();
+        Map<String, Integer> response = new HashMap<>();
+
+        try {
+            discussionCommentService.addUnlike(commentId, userId);
+            Integer updatedLikes = discussionCommentService.getLikeCount(commentId);
+            Integer updatedUnlikes = discussionCommentService.getUnlikeCount(commentId);
+
+            response.put("like", updatedLikes);
+            response.put("unlike", updatedUnlikes);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        // 응답이 JSON 형식으로 반환되도록 명확히 설정
+        return ResponseEntity.ok(response);
+    }
+
+
+
+
     /********************************************/
     // 토론 페이지 생성
+    // ok
     @GetMapping("/discussion/add")
     public String get_discussion_add (
     ){
@@ -385,50 +470,6 @@ public class MainController {
                     discussion.getBookIsbn()
             );
             return "content/discussion/category";
-        }
-        return "redirect:/user/login";
-
-    }
-
-    // 토론 댓글 생성
-    @PostMapping("/comment/add")
-    public String post_discussion_comment_add (
-            Authentication auth,
-            @RequestParam Integer discussionId,
-            @RequestBody DiscussionCommentDTO discussionComment
-
-    ){
-        if(auth != null){
-            String userId = auth.getName();
-            discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
-            return "content/discussion/" + discussionId;
-        }
-        return "redirect:/user/login";
-
-    }
-
-    /****************** 좋아요 싫어요 *****************/
-    @GetMapping("/comment/{commentId}/like")
-    public String get_comment_like(
-            Authentication auth,
-            @PathVariable Integer commentId
-    ){
-        if(auth != null){
-            discussionCommentService.addLike(commentId, auth.getName());
-            return "content/discussion-comment-like";
-        }
-        return "redirect:/user/login";
-
-    }
-
-    @GetMapping("/comment/{commentId}/unlike")
-    public String get_comment_unlike(
-            Authentication auth,
-            @PathVariable Integer commentId
-    ){
-        if(auth != null){
-            discussionCommentService.addUnlike(commentId, auth.getName());
-            return "content/discussion-comment-unlike";
         }
         return "redirect:/user/login";
 

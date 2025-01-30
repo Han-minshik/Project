@@ -2,14 +2,17 @@ package com.project.service;
 
 import com.project.dto.DiscussionCommentDTO;
 import com.project.dto.PageInfoDTO;
+import com.project.dto.ReviewDTO;
 import com.project.mapper.DiscussionCommentMapper;
 import com.project.mapper.UserMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Log4j2
 public class DiscussionCommentService {
 
     @Autowired
@@ -36,56 +39,49 @@ public class DiscussionCommentService {
     }
 
     public void addLike(Integer commentId, String userId) {
-        handleVote(commentId, userId, true);
+        if (discussionCommentMapper.hasUserVoted(userId, commentId) > 0) {
+            throw new IllegalStateException("이미 투표한 댓글입니다.");
+        }
+        log.error("commentId: " + commentId + ", userId: " + userId);
+        discussionCommentMapper.addUserVote(commentId, userId);
+        discussionCommentMapper.incrementLike(commentId);
     }
 
     public void addUnlike(Integer commentId, String userId) {
-        handleVote(commentId, userId, false);
+        if (discussionCommentMapper.hasUserVoted(userId, commentId) > 0) {
+            throw new IllegalStateException("이미 투표한 댓글입니다.");
+        }
+        log.error("commentId: " + commentId + ", userId: " + userId);
+        discussionCommentMapper.addUserVote(commentId, userId);
+        discussionCommentMapper.incrementUnlike(commentId);
     }
 
-    private void handleVote(Integer commentId, String userId, boolean isLike) {
-        // 사용자가 이미 투표했는지 확인
-        Boolean hasVoted = discussionCommentMapper.hasUserVoted(userId, commentId);
-        if (Boolean.TRUE.equals(hasVoted)) {
-            throw new IllegalStateException("사용자는 이미 이 댓글에 투표했습니다.");
-        }
+    public Integer getLikeCount(Integer commentId) {
+        return discussionCommentMapper.getLikeCount(commentId);
+    }
 
-        // 사용자 투표 기록 추가
-        discussionCommentMapper.addUserVote(commentId, userId);
+    public Integer getUnlikeCount(Integer commentId) {
+        return discussionCommentMapper.getUnlikeCount(commentId);
+    }
 
-        // 찬성/반대 값 증가
-        if (isLike) {
-            discussionCommentMapper.incrementLike(commentId);
-        } else {
-            discussionCommentMapper.incrementUnlike(commentId);
-        }
-
-        // 찬/반 합산 값 확인 및 포인트 지급
-        Integer totalVotes = discussionCommentMapper.getTotalVotesByCommentId(commentId);
-        if (totalVotes >= 50) {
-            String authorId = discussionCommentMapper.getUserIdByCommentId(commentId);
-            userMapper.addPointToUser(authorId, POINTS_THRESHOLD);
-        }
+    public Integer getDiscussionIdByCommentId(Integer commentId) {
+        return discussionCommentMapper.getDiscussionIdByCommentId(commentId);
     }
 
     public PageInfoDTO<DiscussionCommentDTO> getCommentsWithSortAndPagination(PageInfoDTO<DiscussionCommentDTO> pageInfo, Integer discussionId) {
-        if (pageInfo.getPage() < 1) {
-            pageInfo.setPage(1);
+        pageInfo.setSize(3);
+        if(pageInfo.getPage() < 1) {
+            return null;
         }
-        if (pageInfo.getSize() == null || pageInfo.getSize() <= 0) {
-            pageInfo.setSize(3);
-        }
-
-        Integer totalCommentCount = discussionCommentMapper.getTotalCommentsByDiscussionId(discussionId);
-        pageInfo.setTotalElementCount(totalCommentCount);
-
-        if (totalCommentCount != null && totalCommentCount > 0) {
-            List<DiscussionCommentDTO> comments = discussionCommentMapper.getCommentsWithSortAndPagination(pageInfo, discussionId);
+        List<DiscussionCommentDTO> comments = discussionCommentMapper.getCommentsWithSortAndPagination(pageInfo, discussionId);
+        if(!comments.isEmpty()) {
+            Integer totalElementCount = discussionCommentMapper.getTotalCommentsByDiscussionId(discussionId);
+            pageInfo.setTotalElementCount(totalElementCount);
             pageInfo.setElements(comments);
         }
-
         return pageInfo;
     }
+
 
     public DiscussionCommentDTO getFirstComment() {
         return discussionCommentMapper.getFirstComment();

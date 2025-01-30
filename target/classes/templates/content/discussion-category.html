@@ -8,6 +8,8 @@
 	<title>토론 게시판</title>
 	<link rel="stylesheet" href="../../static/css/content/discussion-category.css">
 	<script src="../../static/js/content/discussion-category.js" defer></script>
+	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
+
 </head>
 <body>
 <main>
@@ -82,7 +84,7 @@
 		</div>
 	</section>
 	<section class="discussion-write-button-container">
-		<button class="discussion-write-button">토론 글쓰기</button>
+		<a class="discussion-write-button" th:href="@{/discussion/add}">토론 글쓰기</a>
 	</section>
 
 	<!-- 페이지네이션 -->
