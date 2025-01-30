@@ -44,31 +44,27 @@
 			</div>
 		</div>
 	</div>
-	<ol id="review-form" class="pagination-container" th:if="${pageInfo.totalPageCount > 1}">
+	<ol class="pagination-container" th:if="${pageInfo.page <= pageInfo.totalPageCount}">
 		<!-- 이전 페이지 버튼 -->
 		<li th:if="${pageInfo.startPage != 1}">
-			<a onclick="load_review(event, this.href)" th:href="@{|/discussion/${discussionId}?page=${pageInfo.startPage - 1}&sort=${pageInfo.sort}|}">
+			<a onclick="load_comment(event, this.href)" th:href="@{'/discussion/' + ${discussionId}(page=${pageInfo.endPage - 1},sort=${pageInfo.sort})}">
 				<i class="bi bi-caret-left-fill"></i>
 			</a>
 		</li>
-
 		<!-- 페이지 번호 -->
-		<li th:each="pageNumber : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-			<a onclick="load_review(event, this.href)"
-			   th:href="@{|/discussion/${discussionId}?page=${pageNumber}&sort=${pageInfo.sort}|}"
+		<li th:if="${pageInfo.startPage <= pageInfo.endPage}" th:each="pageNumber: ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+			<a onclick="load_comment(event, this.href)"
+			   th:href="@{'/discussion/' + ${discussionId}(page=${pageNumber},sort=${pageInfo.sort})}"
 			   th:text="${pageNumber}"
-			   th:attr="active=${pageInfo.page == pageNumber}">
-			</a>
+			   th:active="${pageInfo.page == pageNumber}">1</a>
 		</li>
-
 		<!-- 다음 페이지 버튼 -->
-		<li th:if="${pageInfo.endPage < pageInfo.totalPageCount}">
-			<a onclick="load_review(event, this.href)" th:href="@{|/discussion/${discussionId}?page=${pageInfo.endPage + 1}&sort=${pageInfo.sort}|}">
+		<li th:if="${pageInfo.endPage != pageInfo.totalPageCount}">
+			<a onclick="load_comment(event, this.href)" th:href="@{'/discussion/' + ${discussionId}(page=${pageInfo.endPage + 1}, sort=${pageInfo.sort})}">
 				<i class="bi bi-caret-right-fill"></i>
 			</a>
 		</li>
 	</ol>
-
 </div>
 </body>
 </html>

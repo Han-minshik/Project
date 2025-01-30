@@ -199,3 +199,25 @@ main h1{
 .agree{
     margin-right: 10px;
 }
+
+.all-discussion-container > ol {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-discussion-container > ol > li {
+    margin: 0 8px;
+}
+
+.all-discussion-container > ol a {
+    color: black;
+    font-size: var(--font-size-x-small);
+    font-weight: normal;
+}
+
+.all-discussion-container > ol a[active=true] {
+    font-weight: bold;
+}
+

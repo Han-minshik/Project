@@ -189,30 +189,14 @@ load_comment(null, `/discussion/${discussionId}/comment`);
 
 function load_comment(event, url) {
     if (event !== null) {
-        event.preventDefault(); // 기본 동작 방지
+        event.preventDefault();
     }
-
-    discussionContainer.innerHTML = ""; // 기존 댓글 목록 초기화
-
+    discussionContainer.innerHTML = "";
     fetch(url)
         .then(response => response.text())
         .then(commentTemplate => {
-            const parser = new DOMParser();
-            const newDocument = parser.parseFromString(commentTemplate, "text/html");
-
-            // 댓글 목록 업데이트
-            discussionContainer.innerHTML = newDocument.querySelector(".all-discussion").innerHTML;
-
-            // 페이지네이션 업데이트
-            const paginationContainer = document.querySelector(".all-discussion-container");
-            if (paginationContainer) {
-                paginationContainer.innerHTML = newDocument.querySelector(".all-discussion-container").innerHTML;
-            }
-
-            // 기존 기능 유지
+            discussionContainer.insertAdjacentHTML(`beforeend`, commentTemplate);
             initializeDiscussionForm();
             initializeVoteButtons();
-        })
-        .catch(error => console.error("Error loading comments:", error));
+        });
 }
-

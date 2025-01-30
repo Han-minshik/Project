@@ -347,7 +347,7 @@ public class MainController {
         return "content/discussion";
     }
 
-    // 토론 페이지 댓글 불러오기 (test 예정)
+    // 토론 페이지 댓글 불러오기
     // ok
     @GetMapping("/discussion/{discussionId}/comment")
     public String get_discussion_comment(
@@ -355,13 +355,12 @@ public class MainController {
             Model model,
             PageInfoDTO<DiscussionCommentDTO> pageInfo
     ) {
-        // 페이지네이션을 처리하는 서비스 호출
         PageInfoDTO<DiscussionCommentDTO> paginatedDiscussionComment = discussionCommentService.getCommentsWithSortAndPagination(pageInfo, discussionId);
 
-        model.addAttribute("paginatedDiscussionComment", paginatedDiscussionComment); // 댓글 목록
-        model.addAttribute("pageInfo", pageInfo); // 페이지네이션 정보
+        model.addAttribute("paginatedDiscussionComment", paginatedDiscussionComment);
+        model.addAttribute("pageInfo", pageInfo);
         Integer commentCount = discussionService.getCommentCountByDiscussion(discussionId);
-        model.addAttribute("commentCount", commentCount); // 댓글 총 개수
+        model.addAttribute("commentCount", commentCount);
 
         return "content/discussion-comment";
     }
