@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // 👍 좋아요 버튼 클릭 이벤트 바인딩
-        document.querySelectorAll(".fa-thumbs-up").forEach(button => {
+        document.querySelectorAll(".review-recommend-section").forEach(button => {
             button.addEventListener("click", function () {
                 const bookIsbn = document.forms.namedItem("book").id;
                 const reviewContent = this.closest(".review").querySelector(".review-content").innerText.trim();
