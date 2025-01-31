@@ -1,14 +1,12 @@
 package com.project.controller;
 
-import com.project.dto.AdminPostDTO;
-import com.project.dto.BookDTO;
-import com.project.dto.PageInfoDTO;
-import com.project.dto.UserDTO;
+import com.project.dto.*;
 import com.project.mapper.AdminMapper;
 import com.project.mapper.BookMapper;
 import com.project.mapper.UserMapper;
 import com.project.service.AdminService;
 import com.project.service.BookService;
+import com.project.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +26,18 @@ public class AdminController {
     @Autowired private AdminService adminService;
     @Autowired private AdminMapper adminMapper;
     @Autowired private BookService bookService;
+    @Autowired private UserService userService;
 
     @GetMapping("/manager")
-    public String manager() {
+    public String manager(Model model) {
+        List<UserDTO> users = adminService.getAllUser();
+        List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
+        List<BookDTO> books = bookService.getAllBooks();
+        List<ComplainDTO> complains = userService.getComplains();
+        model.addAttribute("books", books);
+        model.addAttribute("updatedUsers", updatedUsers);
+        model.addAttribute("users", users);
+        model.addAttribute("complains", complains);
         return "manager/manager";
     }
 

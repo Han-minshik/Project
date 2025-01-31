@@ -4,38 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book, content 끝">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/dto/DiscussionCommentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/dto/DiscussionCommentDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/book/book-category.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/book/book-category.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion-category.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion-category.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/discussion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionCommentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionCommentDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book-category.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/book/book-category.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/book/book.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/discussion-category.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/discussion-category.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/discussion.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/discussion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manager/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,15 +263,7 @@
       <workItem from="1738285161388" duration="3583000" />
       <workItem from="1738296090067" duration="2357000" />
       <workItem from="1738298672944" duration="323000" />
-      <workItem from="1738309567064" duration="11316000" />
-    </task>
-    <task id="LOCAL-00025" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
-      <option name="closed" value="true" />
-      <created>1737451438212</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1737451438212</updated>
+      <workItem from="1738309567064" duration="16526000" />
     </task>
     <task id="LOCAL-00026" summary="2025-01-21&#10;프론트 merge">
       <option name="closed" value="true" />
@@ -684,14 +649,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738298405249</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="book, content 끝">
+      <option name="closed" value="true" />
+      <created>1738321801801</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1738321801801</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정" />
     <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
     <MESSAGE value="2025-01-22&#10;프론트 수정" />
     <MESSAGE value="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝" />
@@ -716,6 +688,7 @@
     <MESSAGE value="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)" />
     <MESSAGE value="discussion/discussionId&#10;· pagination 완료" />
     <MESSAGE value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)" />
-    <option name="LAST_COMMIT_MESSAGE" value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)" />
+    <MESSAGE value="book, content 끝" />
+    <option name="LAST_COMMIT_MESSAGE" value="book, content 끝" />
   </component>
 </project>
