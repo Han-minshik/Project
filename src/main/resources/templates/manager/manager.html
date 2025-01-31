@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>관리자 페이지</title>
+	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 	<link rel="stylesheet" href="../../static/css/manager/manager.css?ver=1" type="text/css">
 	<script src="../../static/js/manager/manager1.js" defer></script>
 </head>
@@ -64,11 +65,11 @@
 			<th></th>
 		</tr>
 		</thead>
-		<tbody th:each="user, iterStat : ${users}">
+		<tbody th:each="user, iterStat : ${publicUsers}">
 		<tr>
 			<td th:text="${user.id}">NewUser456</td>
 			<td th:text="${user.joinDate}">2024-12-15</td>
-			<td><button>승급</button></td>
+			<td><button class="promote-btn">승급</button></td>
 		</tr>
 		</tbody>
 	</table>

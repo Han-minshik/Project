@@ -139,4 +139,8 @@ public class AdminService {
     public void answerToUser(Integer complainNo, String answer) {
         adminMapper.answerToUser(complainNo, answer);
     }
+
+    public List<UserDTO> getPublicUser() {
+        return adminMapper.getPublicUser();
+    }
 }

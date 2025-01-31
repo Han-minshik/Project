@@ -23,4 +23,5 @@ public interface AdminMapper {
     List<UserDTO> getAllUser();
     void deleteUser(@Param("id") String userId);
     void answerToUser(@Param("complainNo") Integer complainNo, @Param("answer") String answer);
+    List<UserDTO> getPublicUser();
 }

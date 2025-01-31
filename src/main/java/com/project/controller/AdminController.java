@@ -7,36 +7,52 @@ import com.project.mapper.UserMapper;
 import com.project.service.AdminService;
 import com.project.service.BookService;
 import com.project.service.UserService;
+import org.apache.coyote.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
     private static final Logger log = LogManager.getLogger(AdminController.class);
-    @Autowired private BookMapper bookMapper;
-    @Autowired private UserMapper userMapper;
-    @Autowired private AdminService adminService;
-    @Autowired private AdminMapper adminMapper;
-    @Autowired private BookService bookService;
-    @Autowired private UserService userService;
+    @Autowired
+    private BookMapper bookMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private AdminService adminService;
+    @Autowired
+    private AdminMapper adminMapper;
+    @Autowired
+    private BookService bookService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private View error;
 
     @GetMapping("/manager")
     public String manager(Model model) {
-        List<UserDTO> users = adminService.getAllUser();
+//        List<UserDTO> users = adminService.getAllUser();
         List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
         List<BookDTO> books = bookService.getAllBooks();
         List<ComplainDTO> complains = userService.getComplains();
+        List<UserDTO> publicUsers = adminService.getPublicUser();
+        model.addAttribute("publicUsers", publicUsers);
         model.addAttribute("books", books);
         model.addAttribute("updatedUsers", updatedUsers);
-        model.addAttribute("users", users);
+//        model.addAttribute("users", users);
         model.addAttribute("complains", complains);
         return "manager/manager";
     }
@@ -45,8 +61,8 @@ public class AdminController {
 
     @DeleteMapping("/book/delete")
     public String deleteBook(@AuthenticationPrincipal UserDTO user,
-                             Model model){
-        if(user.getRole().equals("관리자")) {
+                             Model model) {
+        if (user.getRole().equals("관리자")) {
             List<BookDTO> books = bookService.getAllBooks();
             model.addAttribute("books", books);
             return "redirect:/admin/books";
@@ -69,28 +85,31 @@ public class AdminController {
 //        }
 //        return "redirect:/";
 //    }
-
-    @PostMapping("/update-user")
-    public String updateUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
-        if(user.getRole().equals("관리자")) {
-            adminService.promoteToAdmin(userId);
-            log.error(userId);
-            return "redirect:/admin/user";
+    @PatchMapping("/update-user")
+    public ResponseEntity<String> updateUser(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, String> payload) {
+        if (!user.getRole().equals("관리자")) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한이 없습니다.");
         }
-        return "redirect:/";
+        String userId = payload.get("userId");
+        adminService.promoteToAdmin(userId);
+        return ResponseEntity.ok("유저 승격 완료");
     }
 
-    @PostMapping("/drop-user")
-    public String dropUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
+    @DeleteMapping("/drop-user")
+    public ResponseEntity<String> dropUser(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, List<String>> payload) {
         if(user.getRole().equals("관리자")) {
-            adminService.deleteUser(userId);
-            log.error(userId);
-            return "redirect:/admin/user";
+            List<String> userIds = payload.get("userIds");
+            for(String userId : userIds) {
+                adminService.deleteUser(userId);
+                log.error("삭제된 유저 ID : " + userId);
+            }
+            return ResponseEntity.ok("유저 삭제 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한 없음");
         }
-        return "redirect:/";
     }
 
-    // 아마도 RestController로 가야할 듯
+        // 아마도 RestController로 가야할 듯
 //    @PostMapping("/drop-user")
 //    public String dropUser(@RequestParam String id) {
 //        userMapper.deleteUser(username);
@@ -187,6 +206,4 @@ public class AdminController {
 //        }
 //        return "redirect:/user/login";
 //    }
-
-
 }

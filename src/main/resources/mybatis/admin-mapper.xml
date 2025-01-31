@@ -58,9 +58,12 @@
     </select>
     <!-- 사용자 삭제 -->
     <delete id="deleteUser">
-        DELETE user FROM user WHERE id = #{userId}
+        DELETE user FROM user WHERE id = #{id}
     </delete>
     <update id="answerToUser">
         UPDATE complain SET answer = #{answer} WHERE complain.no = #{complainNo}
     </update>
+    <select id="getPublicUser">
+        SELECT * FROm user WHERE role = '일반'
+    </select>
 </mapper>
