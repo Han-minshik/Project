@@ -41,50 +41,9 @@ public class AdminController {
         return "manager/manager";
     }
 
-    /*********************문의사항 조회*************************/
-
-
-
-    /*********************************************/
-//    @GetMapping("/book/add")
-//    public void insertBook(){}
-//
-//    @PostMapping("/book/add")
-//    public String insertBook(
-//            @AuthenticationPrincipal UserDTO user,
-//            BookDTO book
-//    ){
-//        if(user.getRole().equals("관리자")){
-//            adminService.insertBook(book);
-//            return "redirect:/admin/books";
-//        }
-//        return "redirect:/";
-//    }
-
-    /*******************************************/
-
-//    @GetMapping("/book/update")
-//    public String updateBook(@AuthenticationPrincipal UserDTO user,
-//                             Model model){
-//
-//    }
-
-//    @PatchMapping("/book/update")
-//    public String updateBook(
-//            @AuthenticationPrincipal UserDTO user,
-//            BookDTO book
-//    ) {
-//        if(user.getRole().equals("관리자")){
-//            adminService.updateBook(book);
-//            return "redirect:/admin/books";
-//
-//        }
-//        return "redirect:/";
-//    }
-
     /********************************************/
 
-    @GetMapping("/book/delete")
+    @DeleteMapping("/book/delete")
     public String deleteBook(@AuthenticationPrincipal UserDTO user,
                              Model model){
         if(user.getRole().equals("관리자")) {
@@ -95,33 +54,21 @@ public class AdminController {
         return "redirect:/";
     }
 
-    @DeleteMapping("/book/delete")
-    public String deleteBook(
-            @AuthenticationPrincipal UserDTO user,
-            @RequestParam("bookIsbn") String bookIsbn
-    ) {
-        if(user.getRole().equals("관리자")){
-            adminService.deleteBook(bookIsbn);
-            return "redirect:/admin/books";
-        }
-        return "redirect:/";
-    }
-
     /******************* 유저 관련 ********************/
-    @GetMapping("/admin/user")
-    public String getUserList(@AuthenticationPrincipal UserDTO user, Model model, PageInfoDTO<UserDTO> pageInfo) {
-        if(user.getRole().equals("관리자")) {
-            List<UserDTO> users = adminService.getAllUser();
-            List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
-            model.addAttribute("updatedUsers", updatedUsers);
-            model.addAttribute("users", users);
-            model.addAttribute("pageInfo", pageInfo);
-            log.error(updatedUsers);
-            log.error(users);
-            return "redirect:/admin/user";
-        }
-        return "redirect:/";
-    }
+//    @GetMapping("/admin/user")
+//    public String getUserList(@AuthenticationPrincipal UserDTO user, Model model, PageInfoDTO<UserDTO> pageInfo) {
+//        if(user.getRole().equals("관리자")) {
+//            List<UserDTO> users = adminService.getAllUser();
+//            List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
+//            model.addAttribute("updatedUsers", updatedUsers);
+//            model.addAttribute("users", users);
+//            model.addAttribute("pageInfo", pageInfo);
+//            log.error(updatedUsers);
+//            log.error(users);
+//            return "redirect:/admin/user";
+//        }
+//        return "redirect:/";
+//    }
 
     @PostMapping("/update-user")
     public String updateUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {

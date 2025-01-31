@@ -89,7 +89,7 @@
     </select>
     <!-- 컴플레인 생성 -->
     <insert id="insertComplain">
-        INSERT INTO complain VALUES (NULL, #{title}, #{contents}, #{userId}, DEFAULT);
+        INSERT INTO complain VALUES (NULL, #{title}, #{contents}, #{userId}, DEFAULT, DEFAULT);
     </insert>
     <!-- 컴플레인 삭제 -->
     <delete id="deleteComplain">
