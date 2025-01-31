@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>홈페이지 헤더</title>
+    <link rel="stylesheet" href="../../static/css/main/home.css" type="text/css">  <!-- CSS 링크 -->
+</head>
+<body>
+<header>
+    <nav>
+        <ul class="menu-bar">
+            <li><div class="logo">Read Talk Enjoy</div></li>
+            <li><a href="/book/book-category" class="link">책</a></li>
+            <li><a href="/discussion/category">토론 게시판</a></li>
+            <li><a href="/user/complain">문의하기</a></li>
+            <li>
+                <div class="auth-buttons">
+                    <button class="login-button" onclick="location.href='/user/login'">로그인</button>
+                    <button class="login-button" style="float: right" onclick="location.href='/user/join'">회원가입</button>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

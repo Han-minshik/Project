@@ -52,6 +52,7 @@
 				<div class="book-card">
 					<!-- Null 검증 후 렌더링 -->
 					<img th:if="${wish.book != null}" th:src="${wish.book.getBase64Image()}" alt="책 이미지" class="book-image">
+
 					<div th:if="${wish.book != null}" class="book-info">
 						<h3 th:text="${wish.book.getTitle()}"></h3>
 						<p th:text="'가격: ' + ${wish.book.getPrice()} + '원'"></p>

@@ -69,3 +69,69 @@ ol a{
 ol a[active=true]{
     font-weight: bold;
 }
+
+ul {
+    border: 1px solid black;
+    margin: 1px;
+    padding: 10px;
+    text-align: center;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열로 배치 */
+    gap: 20px; /* 항목 간의 간격을 설정 */
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+}
+
+.book-item {
+    /* 각 항목을 고정된 크기로 만들기 위해 명시적인 너비와 높이를 설정 */
+    width: 100%;
+    height: 300px; /* 원하는 높이를 설정 */
+    box-sizing: border-box; /* padding과 border를 포함하여 크기를 계산 */
+}
+
+.book-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 100%; /* book-card의 높이를 book-item과 맞춰줍니다 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.book-image {
+    max-width: 200px;
+    height: 200px;
+    /*object-fit: cover; */
+}
+
+.book-info h3 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.book-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+@media (max-width: 1024px) {
+    .book-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .book-list {
+        grid-template-columns: 1fr;
+    }
+}
