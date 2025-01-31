@@ -63,6 +63,9 @@
             <when test="pageInfo.sort == 'high-rate'">
                 ORDER BY REVIEW.rate DESC
             </when>
+                    <otherwise>
+                        ORDER BY REVIEW.updated_at DESC
+                    </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>

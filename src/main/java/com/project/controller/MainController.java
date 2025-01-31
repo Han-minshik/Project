@@ -350,7 +350,7 @@ public class MainController {
     // 토론 페이지 댓글 불러오기
     // ok
     @GetMapping("/discussion/{discussionId}/comment")
-    public String get_discussion_comment(
+    public String getDiscussionComment(
             @PathVariable Integer discussionId,
             Model model,
             PageInfoDTO<DiscussionCommentDTO> pageInfo
@@ -362,8 +362,10 @@ public class MainController {
         Integer commentCount = discussionService.getCommentCountByDiscussion(discussionId);
         model.addAttribute("commentCount", commentCount);
 
-        return "content/discussion-comment";
+        // ✅ Fragment만 반환하도록 변경
+        return "content/discussion-comment :: comment-section";
     }
+
 
     // ok
     @PostMapping("/discussion/{discussionId}/comment/add")

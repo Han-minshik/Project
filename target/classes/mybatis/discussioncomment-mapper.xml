@@ -90,11 +90,7 @@
     <!-- 댓글 정렬 및 페이지네이션 -->
     <select id="getCommentsWithSortAndPagination" resultType="DiscussionCommentDTO">
         SELECT
-        dc.id,
-        dc.content,
-        dc.created_at,
-        dc.like,
-        dc.unlike,
+        dc.*,
         u.id AS user_id
         FROM discussion_comment dc
         INNER JOIN user u ON dc.user_id = u.id
@@ -108,6 +104,9 @@
             <when test="pageInfo.sort == 'dislike'">
                 ORDER BY dc.unlike DESC
             </when>
+                    <otherwise>
+                        ORDER BY dc.created_at DESC
+                    </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>

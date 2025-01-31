@@ -186,17 +186,42 @@ function updateVoteUI(commentId, likeCount, unlikeCount, isLike) {
 
 /// ✅ 댓글 목록 불러오기
 load_comment(null, `/discussion/${discussionId}/comment`);
-
 function load_comment(event, url) {
     if (event !== null) {
         event.preventDefault();
     }
-    discussionContainer.innerHTML = "";
+
     fetch(url)
-        .then(response => response.text())
+        .then(response => response.text())  // ✅ 서버에서 Fragment HTML 받아오기
         .then(commentTemplate => {
-            discussionContainer.insertAdjacentHTML(`beforeend`, commentTemplate);
+            console.log("🚀 서버에서 받은 HTML:", commentTemplate);  // ✅ 서버에서 받은 HTML 로그 확인
+
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = commentTemplate.trim();  // ✅ 공백 제거
+
+            const newContainer = tempDiv.querySelector(".all-discussion-container");
+
+            if (!newContainer) {
+                console.error("🚨 불러온 템플릿에서 '.all-discussion-container'를 찾을 수 없습니다. 반환된 HTML:");
+                return;
+            }
+
+            // ✅ 기존 댓글 컨테이너 교체
+            const existingContainer = document.querySelector(".all-discussion-container");
+            if (existingContainer) {
+                existingContainer.replaceWith(newContainer);
+            } else {
+                document.querySelector("main").appendChild(newContainer);
+            }
+
             initializeDiscussionForm();
             initializeVoteButtons();
-        });
+        })
+        .catch(error => console.error("❌ 댓글 불러오기 실패:", error));
 }
+
+
+
+
+
+
