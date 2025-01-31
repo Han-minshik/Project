@@ -12,29 +12,8 @@
 	<script src="../../static/js/main/home.js" defer></script>
 </head>
 <body>
-<header>
-	<nav>
-		<ul class="menu-bar">
-			<li><div class="logo">Read Talk Enjoy</div></li>
-			<li><a th:href="@{/book/book-category}" class="link">책</a></li>
-			<li><a th:href="@{/discussion/category}">토론 게시판</a></li>
-			<li><a th:href="@{/complain}">문의하기</a></li>
-			<li>
-				<div class="auth-buttons">
-					<form sec:authorize="authenticated" name="logout-form" th:action="@{/user/logout}" method="post">
-						<button>
-							<i class="bi bi-door-open"></i>
-						</button>
-					</form>
-					<button sec:authorize="not authenticated" class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
-					<button sec:authorize="not authenticated" class="login-button" style="float: right" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
-				</div>
-			<li>
-		</ul>
-	</nav>
-</header>
 
-
+<div id="header-container"></div>
 
 <section class="banner">
 
@@ -108,10 +87,7 @@
 	</div>
 </section>
 
-<footer>
-	<p>© 2025 독서토론 | 이용 약관 | 개인정보 처리방침 <br> 문의하기 | 연락처:10004-10004 </p>
-</footer>
-
+<div id="footer-container"></div>
 
 </body>
 </html>

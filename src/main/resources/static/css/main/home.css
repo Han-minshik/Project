@@ -1,14 +1,17 @@
 @import url("../public/public.css");
+src/main/java/com/project/controller/HomeController.java
+
+
 
 body{
     /*width: 1000px;*/
-    /*margin: 120px auto;*/
-    text-align: center;
+    /*margin: 120px ;*/
+    /*text-align: center;*/
 }
 
 
 .header {
-    /*position: fixed;*/
+    position: fixed;
     top: 20px;
     left: 0;
     right: 0;
@@ -47,7 +50,7 @@ body{
 
 .menu-bar > li{
     position: relative;
-    padding: 50px 70px;
+    padding: 30px 80px;
     &:hover .header-child-menu{
         display: block;
     }
@@ -190,16 +193,16 @@ body{
     grid-template-columns:repeat(2, 1fr);
     grid-auto-rows: 250px;
     gap: 10px;
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 .box {
     background-color: #dddddd;
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
+    font-size: 10px;
 }
 
 
@@ -226,16 +229,22 @@ body{
     margin: 15px 0;
 }
 
-
-
-.books, .discussions {
-    padding: 20px;
+#h2{
+    padding: 50px;
+    margin: 50px;
+    font-size: large;
 }
+
+.books {
+    padding: 100px 400px;
+}
+
 
 .discussions li{
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: 100px 150px;
+
 }
 .discussions .image-container{
     width: 400px;
@@ -247,8 +256,10 @@ body{
 }
 
 .discussions p{
-    flex: 3;
+    flex: 1;
 }
+
+
 footer p {
     text-align: center;
     padding: 10px;
