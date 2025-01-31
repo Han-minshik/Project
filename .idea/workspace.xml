@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussioncomment-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussioncomment-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-comment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-comment.html" afterDir="false" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/discussionId&#10;· pagination 완료">
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,15 +258,7 @@
       <workItem from="1738128677709" duration="26724000" />
       <workItem from="1738218863675" duration="27497000" />
       <workItem from="1738247693831" duration="275000" />
-      <workItem from="1738285161388" duration="3221000" />
-    </task>
-    <task id="LOCAL-00021" summary="2025-01-20&#10;login - develop 합병">
-      <option name="closed" value="true" />
-      <created>1737377299768</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1737377299769</updated>
+      <workItem from="1738285161388" duration="3583000" />
     </task>
     <task id="LOCAL-00022" summary="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid">
       <option name="closed" value="true" />
@@ -662,14 +644,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738247707830</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="discussion/discussionId&#10;· pagination 완료">
+      <option name="closed" value="true" />
+      <created>1738288578268</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1738288578268</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
     <MESSAGE value="2025-01-21&#10;프론트 merge" />
     <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정" />
     <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
@@ -694,6 +683,7 @@
     <MESSAGE value="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트" />
     <MESSAGE value="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동" />
     <MESSAGE value="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)" />
-    <option name="LAST_COMMIT_MESSAGE" value="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)" />
+    <MESSAGE value="discussion/discussionId&#10;· pagination 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="discussion/discussionId&#10;· pagination 완료" />
   </component>
 </project>
