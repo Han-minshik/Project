@@ -1,12 +1,15 @@
 const input = document.querySelector('.search-input');
 const button = document.querySelector('.search-button');
 
+const heartbutton = document.querySelector('.book-heart-button');
+
+
 // CSRF 토큰 추출
 const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
 
 /******************************************/
 // 📌 이벤트 위임 방식으로 찜하기 이벤트 추가
-const addToWishlist = (button) => {
+function addToWishlist (button) {
     const book = {
         isbn: button.getAttribute('data-isbn'),
         title: button.getAttribute('data-title'),
@@ -43,9 +46,16 @@ const addToWishlist = (button) => {
             console.error('Error:', error);
             alert(error.message || '요청 처리 중 문제가 발생했습니다.');
         });
-};
+}
 
-
+// 📌 찜하기 버튼을 눌렀을 때 (이벤트 위임 방식)
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('book-heart-button')) {
+        if (confirm('찜하시겠습니까?')) {
+            addToWishlist(event.target);  // 클릭된 버튼을 전달
+        }
+    }
+});
 
 // 📌 대출하기 버튼을 눌렀을 때
 document.addEventListener("click", (event) => {
@@ -97,7 +107,6 @@ const executeSearch = () => {
             const resultDiv = document.querySelector('.all-book');
             const paginationDiv = document.querySelector('.pagination');
             const totalCountElement = document.getElementById('total-count');
-
             // 검색 결과 렌더링
             resultDiv.innerHTML = '';
             paginationDiv.innerHTML = ''; // 페이지네이션 초기화
@@ -157,6 +166,9 @@ const executeSearch = () => {
                 totalCountElement.textContent = 0; // 검색 결과가 없을 경우
                 resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
             }
+
+            // 검색 후 리디렉션
+            location.href = `/book/book-category?bookName=${encodeURIComponent(inputValue)}`;
         })
         .catch(error => {
             console.error('Error:', error);

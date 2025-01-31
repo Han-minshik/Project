@@ -67,7 +67,6 @@ cartBtn.onclick = () => {
         alert('책 정보를 가져올 수 없습니다.');
         return;
     }
-
     if (confirm('찜하시겠습니까?')) {
         // 서버 요청
         fetch(`/user/wishlist/add`, {
@@ -79,6 +78,8 @@ cartBtn.onclick = () => {
             body: JSON.stringify(cartObject), // JSON 형식으로 요청 본문 설정
         })
             .then(response => {
+                console.log('Error status:', response.status); // 상태 코드 출력
+                console.log('Error response:', response); // 오류 본문 출력
                 if (!response.ok) {
                     if (response.status === 401) {
                         throw new Error('로그인이 필요합니다.');
@@ -88,7 +89,7 @@ cartBtn.onclick = () => {
                 return response.json(); // 응답 처리
             })
             .then(cartNo => {
-                if (confirm(`찜했습니다. 장바구니 번호: ${cartNo}. 찜한 내역을 확인하시겠습니까?`)) {
+                if (confirm(`찜했습니다. 찜한 내역을 확인하시겠습니까?`)) {
                     location.href = '/user/wishlist'; // 찜한 목록 페이지로 이동
                 }
             })
