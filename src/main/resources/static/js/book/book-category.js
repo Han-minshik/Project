@@ -1,12 +1,15 @@
 const input = document.querySelector('.search-input');
 const button = document.querySelector('.search-button');
 
+const heartbutton = document.querySelector('.book-heart-button');
+
+
 // CSRF 토큰 추출
 const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
 
 /******************************************/
 // 📌 이벤트 위임 방식으로 찜하기 이벤트 추가
-const addToWishlist = (button) => {
+function addToWishlist (button) {
     const book = {
         isbn: button.getAttribute('data-isbn'),
         title: button.getAttribute('data-title'),
@@ -43,9 +46,16 @@ const addToWishlist = (button) => {
             console.error('Error:', error);
             alert(error.message || '요청 처리 중 문제가 발생했습니다.');
         });
-};
+}
 
-
+// 📌 찜하기 버튼을 눌렀을 때 (이벤트 위임 방식)
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('book-heart-button')) {
+        if (confirm('찜하시겠습니까?')) {
+            addToWishlist(event.target);  // 클릭된 버튼을 전달
+        }
+    }
+});
 
 // 📌 대출하기 버튼을 눌렀을 때
 document.addEventListener("click", (event) => {
@@ -82,6 +92,12 @@ const executeSearch = () => {
 
     // 검색 키워드를 쿠키에 저장
     document.cookie = `searchKeyword=${encodeURIComponent(inputValue)}; path=/`;
+
+    // 현재 URL에서 기존 bookName 제거 후 새 검색어 적용
+    const url = new URL(window.location.href);
+    url.searchParams.delete('bookName'); // 기존 bookName 제거
+    url.searchParams.set('bookName', inputValue); // 새 검색어 추가
+    history.replaceState(null, '', url.toString()); // URL 업데이트
 
     // bookName 파라미터를 포함하여 검색 요청
     fetch(`/book/book-category/search?bookName=${encodeURIComponent(inputValue)}`, {
@@ -125,10 +141,9 @@ const executeSearch = () => {
                                 <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
                             </div>
                             <div class="plot">
-                                <p th:text="${book.detail}">책의 줄거리나 설명</p>
+                                <p>${book.detail || '책의 줄거리나 설명'}</p>
                             </div>
                             <div class="rent-button-section">
-                                <!-- 찜하기 버튼에 book 정보를 data 속성으로 전달 -->
                                 <button class="book-heart-button"
                                     data-isbn="${book.isbn}"
                                     data-title="${book.title}">
@@ -163,6 +178,7 @@ const executeSearch = () => {
             alert('검색 중 문제가 발생했습니다. 다시 시도해주세요.');
         });
 };
+
 
 /**************************************/
 // 📌 보기설정 변경 시 페이지 새로고침
