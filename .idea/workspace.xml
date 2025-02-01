@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="합병 완">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/pw-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/pw-auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/pw-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/pw-auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/reset-pw-2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +43,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Han-minshik/Project.git&quot;,
-    &quot;accountId&quot;: &quot;6fa5aaa8-080a-4004-a62a-aa1bbfbbe890&quot;
+    &quot;accountId&quot;: &quot;3b2e9c9d-b90f-4168-9e8b-569121aa3a18&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -54,43 +63,43 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.project의 static.img.main.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.project의 전부 (1).executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.project의 전부.executor&quot;: &quot;Debug&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources/templates/user&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.project의 static.img.main.executor": "Debug",
+    "JUnit.project의 전부 (1).executor": "Debug",
+    "JUnit.project의 전부.executor": "Debug",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ProjectApplication.executor": "Run",
+    "git-widget-placeholder": "main__정예은__0131",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/yegkw/Desktop/GitHub/Project/src/main/resources/static/css/user",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yegkw\Desktop\GitHub\Project\src\main\resources\static\css\user" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\user" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\user" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\book" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />
@@ -144,7 +153,7 @@
     </configuration>
     <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="project" />
+      <module name="store" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.ProjectApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -161,8 +170,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -271,6 +280,9 @@
       <workItem from="1738386202626" duration="70000" />
       <workItem from="1738386307977" duration="2648000" />
       <workItem from="1738391603453" duration="302000" />
+      <workItem from="1738393533440" duration="47000" />
+      <workItem from="1738393592203" duration="20000" />
+      <workItem from="1738393632102" duration="2677000" />
     </task>
     <task id="LOCAL-00032" summary="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝">
       <option name="closed" value="true" />

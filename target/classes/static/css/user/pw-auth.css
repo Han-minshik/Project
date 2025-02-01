@@ -45,11 +45,11 @@ form > section > div{
     align-items: center;
     justify-content: space-between;
 }
-.user-info-revise-section{
+.password-input-section{
     padding: 70px 50px;
     border-top: 2px solid #512e02;
 }
-.user-info-revise-section button {
+.password-input-section button {
     padding: 10px 20px;
     width: 170px;
     height: 100%;
@@ -65,15 +65,17 @@ form > section > div{
     }
 }
 /********************************/
-.find-btn-section{
+.auth-btn-section{
     /*margin: 20px 0 20px 0;*/
+    display: flex;
+    justify-content: center;
     text-align: center;
     padding: 0 50px;
 }
-.find-btn-section > button {
-    /*margin: 0 20px;*/
+.auth-btn-section > button {
+    margin: 0 10px;
     padding: 10px 20px;
-    width: 100%;
+    width: 100px;
     font-size: var(--font-size-small);
     cursor: pointer;
     border-radius: 20px;
