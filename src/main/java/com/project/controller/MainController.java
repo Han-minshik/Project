@@ -7,6 +7,7 @@ import com.project.service.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,6 @@ public class MainController {
     @Autowired private DiscussionCommentService discussionCommentService;
     @Autowired private UserService userService;
     @Autowired private LoanService loanService;
-    @Autowired
-    private DiscussionMapper discussionMapper;
-    @Autowired
-    private BookMapper bookMapper;
 
     @GetMapping("/")
     public String get_home (
@@ -63,50 +60,46 @@ public class MainController {
         model.addAttribute("pBook2", pBook2);
         return "main/home";
     }
-    /*************************************/
+    /**************** 비밀번호 *********************/
 
-    // 비밀번호 분실
-    @GetMapping("/resetPw")
-    public String get_reset_pw() {return "user/reset-pw";}
+    @GetMapping("/reset-pw")
+    public String get_reset_pw() {
+        return "user/reset-pw";
+    }
 
-    // 이것도 아마도 userRestController로 옮겨야 할듯
-    @PostMapping("/resetPw")
-    public String post_reset_pw(
-            String id,
-            @RequestParam("password") String newPw
-    ){
-        // 패턴 검사도 함
-        boolean resetPwResult =  userService.reset_password(id, newPw);
-        if (resetPwResult){
-            return "redirect:/";
+    @GetMapping("/reset-pw-2")
+    public String get_reset_pw_2(
+            @RequestParam String code,
+            HttpSession session,
+            Model model
+    ) {
+        if(code.equals(session.getAttribute("code"))){
+            String id = session.getAttribute("id").toString();
+            log.info("reset-id :" + id);
+            model.addAttribute("id", id);
+            return "user/reset-pw-2";
         }
         return "user/reset-pw";
     }
 
-//    @GetMapping("/book/book-category")
-//    public String getBooks(
-//            PageInfoDTO<BookDTO> pageInfo,
-//            @RequestParam(required = false) String bookName,
-//            Model model
-//    ) {
-//        PageInfoDTO<BookDTO> books;
-//        if(bookName != null && !bookName.trim().isEmpty()) {
-//            books = bookService.searchBooksByNameWithCount(pageInfo, bookName);
-//        }
-//        else {
-//            books = bookService.getPaginatedBooks(pageInfo);
-//        }
-//        model.addAttribute("books", books.getElements());
-//        model.addAttribute("totalCount", books.getTotalElementCount());
-//        model.addAttribute("bookName", bookName);
-//        model.addAttribute("pageInfo", pageInfo);
-//        return "book/book-category";
-//    }
+    // 이것도 아마도 userRestController로 옮겨야 할듯
+    @PostMapping("/reset-pw-2")
+    public String post_reset_pw(
+            HttpSession session,
+            @RequestParam("password") String newPw
+    ){
+        // 패턴 검사도 함
+        log.info("newPw: " + newPw);
+        String id = session.getAttribute("id").toString();
+        log.info("reset-2-id :" + id);
+        boolean resetPwResult =  userService.reset_password(id, newPw);
+        if (resetPwResult){
+            return "redirect:/user/login";
+        }
+        return "user/reset-pw-2";
+    }
 
-    // 전체 책 반환 컨트롤러
-
-
-    // 모든 책 목록
+    /************* 책 반환 ***********************/
     // ok
     @GetMapping("/book/book-category")
     public String getBooks(
@@ -487,26 +480,26 @@ public class MainController {
         return "user/write_talk";
     }
 
-    @PostMapping("/discussion/add")
-    public String post_discussion_add (
-            Authentication auth,
-            @RequestBody DiscussionDTO discussion
-
-    ){
-        if(auth != null){
-            String userId = auth.getName();
-            discussionService.createDiscussion(
-                    discussion.getBookTitle(),
-                    discussion.getTopic(),
-                    discussion.getContents(),
-                    userId,
-                    discussion.getBookIsbn()
-            );
-            return "content/discussion/category";
-        }
-        return "redirect:/user/login";
-
-    }
+//    @PostMapping("/discussion/add")
+//    public String post_discussion_add (
+//            Authentication auth,
+//            @RequestBody DiscussionDTO discussion
+//
+//    ){
+//        if(auth != null){
+//            String userId = auth.getName();
+//            discussionService.createDiscussion(
+//                    discussion.getBookTitle(),
+//                    discussion.getTopic(),
+//                    discussion.getContents(),
+//                    userId,
+//                    discussion.getBookIsbn()
+//            );
+//            return "content/discussion/category";
+//        }
+//        return "redirect:/user/login";
+//
+//    }
 
     /******************* 컴플레인(문의사항) ********************/
     @GetMapping("/complain")
@@ -528,30 +521,4 @@ public class MainController {
         }
         return "redirect:/user/login";
     }
-
-//    @PatchMapping("/complain/update")
-//    public String patch_complain_update (
-//            Authentication auth,
-//            @RequestParam Integer compainId
-//    ){
-//        if(auth != null){
-//            userService.updateComplain(compainId, auth.getName());
-//            return "content/complain-update";
-//        }
-//        return "redirect:/user/login";
-//    }
-//
-//    @DeleteMapping("/complain/delete")
-//    public String delete_complain_delete (
-//            Authentication auth,
-//            @RequestParam Integer compainId
-//    ){
-//        if(auth != null){
-//            userService.deleteComplain(compainId);
-//            return "content/complain-delete";
-//        }
-//        return "redirect:/user/login";
-//    }
-
-
 }
