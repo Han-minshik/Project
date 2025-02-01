@@ -20,6 +20,10 @@ main h1{
 }
 /*************************************/
 .find-id-section{
+    display: none;
+}
+.find-id-section[active]{
+    display: block;
     position: relative;
     background-color: transparent;
     font-size: var(--font-size-normal);
@@ -73,3 +77,4 @@ main h1{
     display: block;
 }
 /*******************************/
+

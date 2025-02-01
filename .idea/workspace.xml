@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="manager&#10;· 책 삭제">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager1.js" afterDir="false" />
@@ -12,6 +14,58 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/manager/manager1.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/manager/manager1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/manager/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manager/manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/my.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/my.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/find-id.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icorn/google_login_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/icon/google_login_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icorn/kakao_login_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/icon/kakao_login_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/icorn/naver_login_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/img/icon/naver_login_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/zim.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/wishlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/info-revise.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/info-revise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/join.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/join.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/email-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail/email-auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/pw-email-auth-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail/pw-email-auth-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/my.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/my.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icorn/google_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icorn/kakao_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icorn/naver_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/zim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/info-revise.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/info-revise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/join.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/join.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/pw-email-auth-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/mail/pw-email-auth-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,17 +314,158 @@
       <workItem from="1738074102385" duration="1145000" />
       <workItem from="1738076492601" duration="77000" />
       <workItem from="1738105506264" duration="351000" />
-      <workItem from="1738128677709" duration="26724000" />
-      <workItem from="1738218863675" duration="27497000" />
-      <workItem from="1738247693831" duration="275000" />
-      <workItem from="1738285161388" duration="3583000" />
-      <workItem from="1738296090067" duration="2357000" />
-      <workItem from="1738298672944" duration="323000" />
-      <workItem from="1738309567064" duration="17536000" />
-      <workItem from="1738331225493" duration="4134000" />
-      <workItem from="1738368500770" duration="7000" />
-      <workItem from="1738370836961" duration="1987000" />
-      <workItem from="1738374406369" duration="2427000" />
+    </task>
+    <task id="LOCAL-00011" summary="2025-01-12&#10;&#10;추가&#10;- BookDTO : price 추가(DB)&#10;- LoanDTO : discountPrice(할인받은 금액), finalPrice(최종 금액) 추가(DB)&#10;- NotificationDTO : type 추가(DB, 알림의 종류를 결정)&#10;- BookMapper, book-mapper.xml : getBookDetails 추가&#10;- LoanMapper, loan-mapper.xml : getActiveloanByUserAndBook 추가&#10;- NotificationMapper, notification-mapper.xml 종류 별 알림 구현&#10;- UserMapper, user-mapper.xml : addPointTouser, getTopDiscussionUser, getTopCommentUserByDiscussionId, addPointGrantHistory, hasPointGrantedForReason, deductPoints 구현&#10;- getBookDetails로 UserService에서 대출시 책의 정보 상세 조회&#10;- LoanService : copiesAvailable 조절&#10;- NotificationService : 종류별 알림 서비스 구현&#10;- UserService : 포인트 부여 구현(discussion의 댓글이 다른 주제보다 많은 사용자, 댓글 중 공감이 가장 많은 사용자)&#10;&#10;수정&#10;- 모든 int 태그 -&gt; Integer로 변경&#10;&#10;&#10;삭제">
+      <option name="closed" value="true" />
+      <created>1736682390595</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736682390595</updated>
+    </task>
+    <task id="LOCAL-00012" summary="2025-01-13">
+      <option name="closed" value="true" />
+      <created>1736745320778</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1736745320779</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2025-01-13">
+      <option name="closed" value="true" />
+      <created>1736942262029</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1736942262029</updated>
+    </task>
+    <task id="LOCAL-00014" summary="2025-01-13">
+      <option name="closed" value="true" />
+      <created>1737021843956</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1737021843956</updated>
+    </task>
+    <task id="LOCAL-00015" summary="2025-01-19">
+      <option name="closed" value="true" />
+      <created>1737281427613</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1737281427613</updated>
+    </task>
+    <task id="LOCAL-00016" summary="2025-01-19&#10;&#10;관리자 페이지&#10;- 관리자 등록&#10;- 책 등ㅇ록&#10;- 책 정보 수정&#10;- 책 삭제 &#10;- 공지사항 등록&#10;- 특정 관리자의 post 조회&#10;- post 모두 찾기&#10;- post 수정&#10;- post 삭제&#10;- 관리자 지정(구현해야됨)&#10;&#10;책 페이지&#10;- isbn으로 책 조회&#10;- 특정 책의 평균 별점 조회&#10;- 특정 책의 리뷰와 좋아요 개수 조회&#10;- 특정 책의 토론 주제 개수 조회&#10;- 특정 책의 토론 참여자 인원수 조회&#10;- 리뷰 관련 쿼리(개수, 평균 등)&#10;- 리뷰별 좋아요 개수&#10;- 대출 가능일&#10;- 대출 가능 여부&#10;&#10;카테고리 페이지&#10;- 책 제목으로 검색&#10;- 최신순, 제목순, 보기 설정&#10;- 책의 총 개수&#10;- 페이지네이션&#10;- 모든 책 리스트&#10;- 제목으로 책 검색&#10;&#10;토론 게시판&#10;- 모든 토론 주제 조회&#10;- 가장 최근에 남겨진 의견&#10;- sort, pagination&#10;- 페이징된 토론 개수&#10;- 토론의 모든 내용과 책의 이미지, 제목 반환&#10;&#10;토론 참여 게시판&#10;- 토론의 모든 내용 조회&#10;- 댓글 추가&#10;- 댓글 총 개수&#10;- 댓글 정렬 및 페이지네이션&#10;- 찬성, 반대(한 댓글 당 하나만)&#10;&#10;회원가입&#10;- 회원 등록&#10;&#10;로그인&#10;- 아이디 저장&#10;- SNS 정보 저장&#10;&#10;메인&#10;- 베스트셀러 (위 : 5, 아래 2개 노출)&#10;- 왼쪽 위 : 인기가 가장 많은 책&#10;- 오른쪽 위 : 최신 토론 주제&#10;- 왼쪽 아래 : 가장 인기가 많은 토론 주제의 의견 1&#10;- 오른쪽 아래 : 가장 인기가 많은 토론 주제의 의견 2&#10;&#10;회원정보 수정&#10;- 정보 업데이트&#10;&#10;카트&#10;- 카트 저장&#10;- 카트 삭제&#10;- 카트 조회&#10;&#10;컴플레인&#10;- 컴플레인 저장&#10;- 상태 업데이트('', '답장완료')&#10;&#10;나의 대여 목록&#10;- 대출 기록 생성&#10;- 모든 사용자의 대출 조회&#10;- 반납 처리&#10;- 최신순/이름순 정렬&#10;- 페이지네이션 삭제(5권 제한이라 없어도 될 것 같음)&#10;- 대출 중인 책 반환">
+      <option name="closed" value="true" />
+      <created>1737295773826</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1737295773826</updated>
+    </task>
+    <task id="LOCAL-00017" summary="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정">
+      <option name="closed" value="true" />
+      <created>1737363055675</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1737363055675</updated>
+    </task>
+    <task id="LOCAL-00018" summary="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가">
+      <option name="closed" value="true" />
+      <created>1737366529100</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1737366529100</updated>
+    </task>
+    <task id="LOCAL-00019" summary="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가">
+      <option name="closed" value="true" />
+      <created>1737366644131</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1737366644131</updated>
+    </task>
+    <task id="LOCAL-00020" summary="2025-01-20&#10;login - develop 합병">
+      <option name="closed" value="true" />
+      <created>1737369822202</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1737369822202</updated>
+    </task>
+    <task id="LOCAL-00021" summary="2025-01-20&#10;login - develop 합병">
+      <option name="closed" value="true" />
+      <created>1737377299768</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1737377299769</updated>
+    </task>
+    <task id="LOCAL-00022" summary="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid">
+      <option name="closed" value="true" />
+      <created>1737381367109</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1737381367109</updated>
+    </task>
+    <task id="LOCAL-00023" summary="2025-01-20&#10;merge 준비 완">
+      <option name="closed" value="true" />
+      <created>1737381923109</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1737381923109</updated>
+    </task>
+    <task id="LOCAL-00024" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
+      <option name="closed" value="true" />
+      <created>1737443718245</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1737443718245</updated>
+    </task>
+    <task id="LOCAL-00025" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
+      <option name="closed" value="true" />
+      <created>1737451438212</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1737451438212</updated>
+    </task>
+    <task id="LOCAL-00026" summary="2025-01-21&#10;프론트 merge">
+      <option name="closed" value="true" />
+      <created>1737467311358</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1737467311358</updated>
+    </task>
+    <task id="LOCAL-00027" summary="2025-01-21&#10;프론트 merge">
+      <option name="closed" value="true" />
+      <created>1737516653567</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1737516653567</updated>
+    </task>
+    <task id="LOCAL-00028" summary="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨">
+      <option name="closed" value="true" />
+      <created>1737523389492</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1737523389492</updated>
+    </task>
+    <task id="LOCAL-00029" summary="2025-01-22&#10;프론트 수정">
+      <option name="closed" value="true" />
+      <created>1737550176636</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1737550176636</updated>
     </task>
     <task id="LOCAL-00030" summary="2025-01-22&#10;프론트 수정">
       <option name="closed" value="true" />
@@ -512,165 +707,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738047649577</updated>
     </task>
-    <task id="LOCAL-00060" summary="테스트 진행 중&#10;(review-template, book-template)">
-      <option name="closed" value="true" />
-      <created>1738128885284</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1738128885284</updated>
-    </task>
-    <task id="LOCAL-00061" summary="테스트 진행 중&#10;(review-template, book-template)">
-      <option name="closed" value="true" />
-      <created>1738138131475</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1738138131475</updated>
-    </task>
-    <task id="LOCAL-00062" summary="테스트 진행 중&#10;(review-template, book-template)">
-      <option name="closed" value="true" />
-      <created>1738140798659</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1738140798659</updated>
-    </task>
-    <task id="LOCAL-00063" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
-      <option name="closed" value="true" />
-      <created>1738150368816</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1738150368816</updated>
-    </task>
-    <task id="LOCAL-00064" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
-      <option name="closed" value="true" />
-      <created>1738150887535</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1738150887535</updated>
-    </task>
-    <task id="LOCAL-00065" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
-      <option name="closed" value="true" />
-      <created>1738153237112</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1738153237112</updated>
-    </task>
-    <task id="LOCAL-00066" summary="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동">
-      <option name="closed" value="true" />
-      <created>1738156859798</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1738156859798</updated>
-    </task>
-    <task id="LOCAL-00067" summary="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동">
-      <option name="closed" value="true" />
-      <created>1738156871870</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1738156871870</updated>
-    </task>
-    <task id="LOCAL-00068" summary="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
-      <option name="closed" value="true" />
-      <created>1738244801271</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1738244801271</updated>
-    </task>
-    <task id="LOCAL-00069" summary="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
-      <option name="closed" value="true" />
-      <created>1738247707830</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1738247707830</updated>
-    </task>
-    <task id="LOCAL-00070" summary="discussion/discussionId&#10;· pagination 완료">
-      <option name="closed" value="true" />
-      <created>1738288578268</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1738288578268</updated>
-    </task>
-    <task id="LOCAL-00071" summary="discussion/discussionId&#10;· pagination 완료">
-      <option name="closed" value="true" />
-      <created>1738296418170</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1738296418170</updated>
-    </task>
-    <task id="LOCAL-00072" summary="discussion/discussionId&#10;· pagination 완료">
-      <option name="closed" value="true" />
-      <created>1738296647423</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1738296647423</updated>
-    </task>
-    <task id="LOCAL-00073" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)">
-      <option name="closed" value="true" />
-      <created>1738298405248</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1738298405249</updated>
-    </task>
-    <task id="LOCAL-00074" summary="book, content 끝">
-      <option name="closed" value="true" />
-      <created>1738321801801</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1738321801801</updated>
-    </task>
-    <task id="LOCAL-00075" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;&#10;해야 될 것&#10;manager&#10;- 회원 정보 삭제 &#10;- 승급&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기">
-      <option name="closed" value="true" />
-      <created>1738326880159</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1738326880159</updated>
-    </task>
-    <task id="LOCAL-00076" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;&#10;해야 될 것&#10;manager&#10;- 회원 정보 삭제 &#10;- 승급&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기">
-      <option name="closed" value="true" />
-      <created>1738327407376</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1738327407376</updated>
-    </task>
-    <task id="LOCAL-00077" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;manager&#10;· 회원 정보 삭제 &#10;· 승급&#10;&#10;&#10;예정&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기">
-      <option name="closed" value="true" />
-      <created>1738335289660</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1738335289661</updated>
-    </task>
-    <task id="LOCAL-00078" summary="manager&#10;· 책 삭제">
-      <option name="closed" value="true" />
-      <created>1738372828825</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1738372828826</updated>
-    </task>
-    <option name="localTasksCounter" value="79" />
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="2025-01-20&#10;Viewer 로직 추가&#10;DTO-DB 연계 수정&#10;xml 쿼리 수정&#10;css, html 수정&#10;admin 수정된 회원 조회 추가" />
+    <MESSAGE value="2025-01-20&#10;login - develop 합병" />
+    <MESSAGE value="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid" />
+    <MESSAGE value="2025-01-20&#10;merge 준비 완" />
+    <MESSAGE value="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
+    <MESSAGE value="2025-01-21&#10;프론트 merge" />
+    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정" />
+    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
+    <MESSAGE value="2025-01-22&#10;프론트 수정" />
+    <MESSAGE value="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝" />
     <MESSAGE value="2025-01-23&#10;관리자 페이지&#10;- 책 수정&#10;- 책 삭제 &#10;- 사용자 제거(사용자 리스트를 볼 수 있는 매핑)&#10;- 공지사항 페이지(구현 여부 확인)&#10;&#10;메인&#10;- 홈&#10;- 비밀번호 분실&#10;- 책 페이지(제목 검색 포함)&#10;- 각 책 페이지 불러오기&#10;- 책 리뷰 불러오기&#10;- 리뷰 불러오기&#10;- 리뷰(댓글 추가)&#10;- 토론 게시글 목록&#10;- 각 토론 페이지&#10;- 토론 페이지 댓글 불러오기&#10;- 토론 페이지 생성&#10;- 토론 댓글 생성&#10;- 토론 댓글 좋아요 싫어요&#10;- 컴플레인&#10;&#10;유저 페이지&#10;- 회원등록&#10;- 로그인&#10;- 마이페이지&#10;- 책 대여 목록&#10;- 카트 &#10;- 회원 정보 수정&#10;- 공지사항 조회&#10;- 탈퇴&#10;&#10;유저 rest&#10;- 아이디 찾기&#10;- 전화번호 인증&#10;- 이메일 인증&#10;- 비밀번호 초기화(찾기)&#10;- 회원정보 수정&#10;- 카트 목록 삭제&#10;&#10;추가해야할 것&#10;- 나의 토론글 조회 페이지&#10;- discussion 서비스 -&gt; maincontroller(discussionid로 토론 게시판 조회)&#10;- 토론 게시판 댓글 템플릿 따로 생성&#10;- 헤더랑 푸터 따로 템플릿 생성 -&gt; 로그인하면 그냥 홈으로 리디렉션 -&gt; 헤더만 바뀌에(authenti)&#10;- 관리자 페이지(삭제 눌렀을 때 책 목록 나오게), 관리자 페이지(사용자 리스트, 버튼 누르면 일주일 내 사용자 정보 수정한 유저, 관리자 승격 메서드)&#10;- 관리자가 문의사항 전체를 볼 수 있는 컨트롤러(메서드)&#10;(회원, 비회원 : 작성버튼 / 회원 중에 관리자랑 일반 유저 : 대댓글(페이지 필요))&#10;- 아이디 찾기 페이지(model)&#10;- 회원정보 수정 페이지 model&#10;- my-talk 컨트롤러 &#10;- reset-pw 수정&#10;- 카트 목록 삭제(컨트롤러 수정)&#10;- 토론 글쓰기, 컴플레인 글쓰기  &#10;&#10;삭제&#10;- 공지사항&#10;&#10;discussion&#10;manager&#10;find-id&#10;info-revise&#10;my-talk&#10;reset-pw&#10;wishlist&#10;write(토론 글쓰기, 컴플레인 글쓰기)&#10;헤더 푸터 분리 -&gt; 로그인하면 authentication으로 헤더만 바뀌게(로그인시 그냥 홈으로 리다이렉트)&#10;                            &lt;th:block sec:authorize=&quot;not authenticated&quot;&gt;&#10;complain 페이지에서 관리자가 대댓글 달 수 있도록(페이지)" />
     <MESSAGE value="2025-01-23&#10;- adminService 에서 user 리스트 받아올 때 최근 일주일간 정보 수정한 유저도 model&#10;- adminService-getRecentlyUpdatedUsers 에서 isAdmin 삭제&#10;- MainController 모든 컴플레인 조회 get 생성&#10;- UserMapper, mapper.xml, service 모든 컴플레인 조회 생성" />
     <MESSAGE value="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정" />
@@ -686,16 +739,6 @@
     <MESSAGE value="테스트 진행 중" />
     <MESSAGE value="home&#10;- 타임리프(동적 링크 포함)&#10;- 헤더, 푸터 분리&#10;&#10;book/book-category : 완료&#10;&#10;book/isbn&#10;- 리뷰 추가 창 필요(review-template)&#10;(book 템플릿에는 있는데 리뷰 템플릿으로 옮겨주세요)&#10;- 카테고리 문자열 구현&#10;- 로그인했을 때 로그인 후 대출을 해보세요 삭제&#10;&#10;나의 찜 목록&#10;- sort 정렬 삭제&#10;- 반환된 값들 디자인만 &#10;&#10;discussion_category &#10;- 토론 글쓰기 버튼 추가&#10;&#10;lendbook&#10;- sort 정렬 삭제&#10;- 디자인&#10;&#10;complain &#10;- 디자인&#10;&#10;write_QA&#10;- 디자인 &#10;- postmapping controller 제작해야 됨&#10;&#10;write_talk&#10;- 양식&#10;- 디자인&#10;&#10;&#10;content-template&#10;- 상품 리뷰 템플릿 -&gt; 토론 댓글 작성 템플릿 &#10;(구조, 디자인) &#10;&#10;my-talk&#10;- 디자인&#10;- 타임리프&#10;- 들어가야할 내용 보고 수정&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;&#10;mypage&#10;완료&#10;&#10;book/isbn&#10;- 토론하러 가기 버튼 클릭시 해당 책의 제목을 가진 토론 페이지로 이동 : 완료&#10;- 찜하기 : 완료&#10;- 리뷰 정렬 : 완료&#10;&#10;discussion/category&#10;- 책 보러가기, 토론 참여하러 가기 : 완료&#10;&#10;&#10;테스트 진행 예정&#10;- 대여했을 때 결제 연동 -&gt; 결제 성공하면 lendbook 페이지로 &#10;- inforevise&#10;- join&#10;- email&#10;- discussion/discussionId 조회시 템플릿 &#10;- resetPw&#10;- findPw&#10;- findId" />
     <MESSAGE value="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환" />
-    <MESSAGE value="테스트 진행 중&#10;(review-template, book-template)" />
-    <MESSAGE value="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트" />
-    <MESSAGE value="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동" />
-    <MESSAGE value="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)" />
-    <MESSAGE value="discussion/discussionId&#10;· pagination 완료" />
-    <MESSAGE value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)" />
-    <MESSAGE value="book, content 끝" />
-    <MESSAGE value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;&#10;해야 될 것&#10;manager&#10;- 회원 정보 삭제 &#10;- 승급&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기" />
-    <MESSAGE value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;manager&#10;· 회원 정보 삭제 &#10;· 승급&#10;&#10;&#10;예정&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기" />
-    <MESSAGE value="manager&#10;· 책 삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="manager&#10;· 책 삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환" />
   </component>
 </project>
