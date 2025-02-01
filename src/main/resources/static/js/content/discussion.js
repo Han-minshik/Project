@@ -37,10 +37,11 @@ function handleDiscussionSubmit(event) {
     event.preventDefault();
 
     const form = event.target;
-    const discussionId = document.forms.namedItem('discussionId')?.id;
+    const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
 
-    if (!discussionId) {
-        console.error("🚨 discussionId 값을 찾을 수 없습니다.");
+    if (!csrfToken) {
+        console.error("🚨 CSRF 토큰이 없습니다.");
+        alert("보안 문제가 발생했습니다. 페이지를 새로고침 해주세요.");
         return;
     }
 
@@ -52,20 +53,16 @@ function handleDiscussionSubmit(event) {
         return;
     }
 
-    const commentData = {
-        discussionId: discussionId,
-        content: commentContent
-    };
-
-    console.log("📤 보낼 데이터:", JSON.stringify(commentData));
-
     fetch(`/discussion/${discussionId}/comment/add`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "X-CSRF-TOKEN": csrfToken
         },
-        body: JSON.stringify(commentData)
+        body: JSON.stringify({
+            discussionId: parseInt(discussionId),
+            content: commentContent
+        })
     })
         .then(response => {
             if (!response.ok) {
@@ -194,8 +191,6 @@ function load_comment(event, url) {
     fetch(url)
         .then(response => response.text())  // ✅ 서버에서 Fragment HTML 받아오기
         .then(commentTemplate => {
-            console.log("🚀 서버에서 받은 HTML:", commentTemplate);  // ✅ 서버에서 받은 HTML 로그 확인
-
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = commentTemplate.trim();  // ✅ 공백 제거
 
@@ -219,7 +214,6 @@ function load_comment(event, url) {
         })
         .catch(error => console.error("❌ 댓글 불러오기 실패:", error));
 }
-
 
 
 

@@ -19,6 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -156,9 +159,12 @@ public class MainController {
         if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
                 if ("searchKeyword".equals(cookie.getName())) {
-                    String searchKeyword = cookie.getValue();
+                    String searchKeyword = URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8);
 
-                    // 쿠키 삭제
+                    // ✅ 디버깅 로그 추가
+                    log.info("🔍 검색 키워드 (디코딩 후): " + searchKeyword);
+
+                    // ✅ 쿠키 삭제 (사용 후 제거)
                     Cookie deleteCookie = new Cookie("searchKeyword", null);
                     deleteCookie.setMaxAge(0);
                     deleteCookie.setPath("/");
@@ -171,9 +177,11 @@ public class MainController {
         return null;
     }
 
+
     // 검색 키워드를 쿠키에 저장
     private void saveSearchKeywordToCookie(HttpServletResponse response, String searchKeyword) {
-        Cookie cookie = new Cookie("searchKeyword", searchKeyword);
+        String encodedKeyword = URLEncoder.encode(searchKeyword, StandardCharsets.UTF_8);
+        Cookie cookie = new Cookie("searchKeyword", encodedKeyword);
         cookie.setPath("/");
         cookie.setMaxAge(60 * 5); // 쿠키 유효기간 설정 (5분)
         response.addCookie(cookie);
@@ -307,12 +315,11 @@ public class MainController {
         PageInfoDTO<DiscussionDTO> discussions;
 
         if (searchKeyword != null && !searchKeyword.isEmpty()) {
-            // 검색어가 있을 경우 검색 수행
+            log.info("🔍 검색 실행: " + searchKeyword);
             discussions = discussionService.getDiscussionByBookTitle(pageInfo, searchKeyword);
             model.addAttribute("isSearch", true);
             model.addAttribute("searchKeyword", searchKeyword);
         } else {
-            // 검색어가 없을 경우 기본 리스트 반환
             discussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
             model.addAttribute("isSearch", false);
         }
@@ -320,6 +327,7 @@ public class MainController {
         model.addAttribute("pageInfo", discussions);
         return "content/discussion-category";
     }
+
 
 
     // ok
@@ -330,9 +338,17 @@ public class MainController {
             PageInfoDTO<DiscussionDTO> pageInfo,
             HttpServletResponse response
     ) {
-        saveSearchKeywordToCookie(response, bookName);
-        return discussionService.getDiscussionByBookTitle(pageInfo, bookName);
+        // ✅ URL 디코딩 적용
+        String decodedBookName = URLDecoder.decode(bookName, StandardCharsets.UTF_8);
+
+        log.info("🔍 검색 요청 (디코딩 후): " + decodedBookName);
+
+        // ✅ 쿠키 저장
+        saveSearchKeywordToCookie(response, decodedBookName);
+
+        return discussionService.getDiscussionByBookTitle(pageInfo, decodedBookName);
     }
+
 
     // 토론 페이지
     // ok
@@ -343,7 +359,6 @@ public class MainController {
     ) {
         DiscussionDTO discussion = discussionService.selectDiscussionByDiscussionId(discussionId);
         model.addAttribute("discussion", discussion);
-        log.error(discussion);
         return "content/discussion";
     }
 
@@ -374,11 +389,28 @@ public class MainController {
             @PathVariable Integer discussionId,
             @RequestBody DiscussionCommentDTO discussionComment
     ) {
+        if (discussionComment == null) {
+            return ResponseEntity.badRequest().body("❌ 요청 본문이 없습니다.");
+        }
+
+        log.error("🔍 서버에서 받은 discussionId: " + discussionId);
+        log.error("🔍 서버에서 받은 content: " + discussionComment.getContent());
+
         if (auth == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
+
+        if (discussionId == null) {
+            return ResponseEntity.badRequest().body("토론 ID가 필요합니다.");
+        }
+
+        if (discussionComment.getContent() == null || discussionComment.getContent().trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("❌ 댓글 내용을 입력해주세요.");
+        }
+
         String userId = auth.getName();
         discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
+
         return ResponseEntity.ok("댓글 추가 성공");
     }
 

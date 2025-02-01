@@ -4,24 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/project.GUuQ7Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/project.GUuQ7Q.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book, content 끝">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home_header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home_header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager/manager1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manager/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +19,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -53,12 +34,12 @@
     &quot;assignee&quot;: &quot;Han-minshik&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Han-minshik/Project.git",
-    "accountId": "632693b3-fa16-4b42-a8dd-f9f8ce457534"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Han-minshik/Project.git&quot;,
+    &quot;accountId&quot;: &quot;6fa5aaa8-080a-4004-a62a-aa1bbfbbe890&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -78,7 +59,6 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;JUnit.project의 static.img.main.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.project의 전부 (1).executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.project의 전부.executor&quot;: &quot;Debug&quot;,
@@ -89,10 +69,10 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.ProjectApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main__윤수빈__0131&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/html1/src/main/resources/templates/main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,14 +89,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\Desktop\html1\src\main\resources\templates\main" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\user" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\book" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static" />
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\Desktop\html1\src\main\resources\templates\main\public" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\img" />
     </key>
@@ -185,8 +164,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -281,40 +260,10 @@
       <workItem from="1738128677709" duration="26724000" />
       <workItem from="1738218863675" duration="27497000" />
       <workItem from="1738247693831" duration="275000" />
-      <workItem from="1738285161388" duration="3221000" />
-      <workItem from="1738381881359" duration="1265000" />
-    </task>
-    <task id="LOCAL-00022" summary="2025-01-20&#10;login - develop 합병&#10;loanmapper -&gt; userid, isgn 에서 userid">
-      <option name="closed" value="true" />
-      <created>1737381367109</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1737381367109</updated>
-    </task>
-    <task id="LOCAL-00023" summary="2025-01-20&#10;merge 준비 완">
-      <option name="closed" value="true" />
-      <created>1737381923109</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1737381923109</updated>
-    </task>
-    <task id="LOCAL-00024" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
-      <option name="closed" value="true" />
-      <created>1737443718245</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1737443718245</updated>
-    </task>
-    <task id="LOCAL-00025" summary="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)">
-      <option name="closed" value="true" />
-      <created>1737451438212</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1737451438212</updated>
+      <workItem from="1738285161388" duration="3583000" />
+      <workItem from="1738296090067" duration="2357000" />
+      <workItem from="1738298672944" duration="323000" />
+      <workItem from="1738309567064" duration="16526000" />
     </task>
     <task id="LOCAL-00026" summary="2025-01-21&#10;프론트 merge">
       <option name="closed" value="true" />
@@ -668,24 +617,53 @@
       <option name="project" value="LOCAL" />
       <updated>1738247707830</updated>
     </task>
-    <task id="LOCAL-00070" summary="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
+    <task id="LOCAL-00070" summary="discussion/discussionId&#10;· pagination 완료">
       <option name="closed" value="true" />
-      <created>1738324874387</created>
+      <created>1738288578268</created>
       <option name="number" value="00070" />
       <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
-      <updated>1738324874388</updated>
+      <updated>1738288578268</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="discussion/discussionId&#10;· pagination 완료">
+      <option name="closed" value="true" />
+      <created>1738296418170</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1738296418170</updated>
+    </task>
+    <task id="LOCAL-00072" summary="discussion/discussionId&#10;· pagination 완료">
+      <option name="closed" value="true" />
+      <created>1738296647423</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1738296647423</updated>
+    </task>
+    <task id="LOCAL-00073" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)">
+      <option name="closed" value="true" />
+      <created>1738298405248</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1738298405249</updated>
+    </task>
+    <task id="LOCAL-00074" summary="book, content 끝">
+      <option name="closed" value="true" />
+      <created>1738321801801</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1738321801801</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-21&#10;front en -&gt; ko&#10;wishlist 책 건수 반환 model attribute 수정, (UserController)" />
-    <MESSAGE value="2025-01-21&#10;프론트 merge" />
-    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정" />
     <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
     <MESSAGE value="2025-01-22&#10;프론트 수정" />
     <MESSAGE value="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝" />
@@ -708,6 +686,9 @@
     <MESSAGE value="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트" />
     <MESSAGE value="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동" />
     <MESSAGE value="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)" />
-    <option name="LAST_COMMIT_MESSAGE" value="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)" />
+    <MESSAGE value="discussion/discussionId&#10;· pagination 완료" />
+    <MESSAGE value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)" />
+    <MESSAGE value="book, content 끝" />
+    <option name="LAST_COMMIT_MESSAGE" value="book, content 끝" />
   </component>
 </project>

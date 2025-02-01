@@ -183,7 +183,8 @@ main > header a{
 .book-button{
     font-size: var(--font-size-small);
     padding: 10px 20px;
-    margin-right: 15px;
+    margin-left: 10px;
+    /*margin-right: 10px;*/
     border-radius: 30px;
     cursor: pointer;
     background-color: #ffe08a;
@@ -295,6 +296,7 @@ main > header a{
     justify-content: right;
 }
 .discussion-write-button{
+    text-decoration: none; /* 밑줄 제거 */
     margin-right: 100px;
     margin-top: 20px;
     font-size: var(--font-size-small);
