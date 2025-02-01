@@ -3,14 +3,12 @@ package com.project.service;
 import com.project.dto.DiscussionDTO;
 import com.project.dto.PageInfoDTO;
 import com.project.mapper.DiscussionMapper;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
-@Log4j2
 @Service
 public class DiscussionService {
 
@@ -34,7 +32,6 @@ public class DiscussionService {
         discussion.setBookIsbn(bookIsbn);
         discussion.setBookImage(bookImage);
 
-        log.info("service - discussion" + discussion);
         discussionMapper.createDiscussion(discussion);
 
         return discussion;

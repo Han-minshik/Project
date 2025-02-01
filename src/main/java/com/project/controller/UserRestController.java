@@ -81,12 +81,10 @@ public class UserRestController {
     // 이메일 인증 버튼 클릭
     @PostMapping("/email/auth")
     public ResponseEntity<Void> post_email_auth(
-            @RequestBody String email_to,
-            @RequestParam String requestAuth,
-            @RequestParam(required = false) String id
+            @RequestBody String email_to
     ){
         try{
-            String certNumber = emailService.send_cert_mail(email_to, requestAuth, id);
+            String certNumber = emailService.send_cert_mail(email_to);
             emailCertRepository.put(email_to, certNumber);
             return ResponseEntity.ok().build();
         } catch (MessagingException e) {
@@ -100,9 +98,8 @@ public class UserRestController {
     public ResponseEntity<String> get_findId_by_email(
             @PathVariable String email
     ) {
-        log.info("email: " + email);
         String foundId = userMapper.findIdByEmail(email);
-        log.info("foundId: " + foundId);
+
         if(foundId != null){
             return ResponseEntity.status(HttpStatus.FOUND).body(foundId);
         }

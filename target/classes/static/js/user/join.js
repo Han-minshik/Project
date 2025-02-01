@@ -69,7 +69,7 @@ idCheckBtn.onclick = () => {
 // console.log(IMP_init);
 // IMP.init(IMP_init);
 
-IMP.init("본인꺼 쓰세요");
+IMP.init("imp30720372");
 
 telAuthBtn.onclick = () => {
     IMP.certification(
@@ -117,7 +117,7 @@ emailAuthBtn.onclick = () => {
     const csrfToken = document.forms[0].querySelector('input[name=_csrf]').value;
     const email = `${emailHead.value}@${emailTail.value}`;
     console.log(email)
-    fetch(`/user/email/auth?requestAuth=join`,{
+    fetch(`/user/email/auth`,{
         method: "POST",
         headers:{
             "X-CSRF-TOKEN": csrfToken,

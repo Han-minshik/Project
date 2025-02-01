@@ -1,8 +1,6 @@
 package com.project.controller;
 
 
-import com.project.dto.DiscussionDTO;
-import com.project.service.DiscussionService;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,7 +19,6 @@ import java.util.Map;
 @RestController
 @PropertySource("classpath:my.properties")
 public class MainRestController {
-    @Autowired private DiscussionService discussionService;
 
     private final String IMP_INIT;
 
@@ -41,30 +37,5 @@ public class MainRestController {
         return ResponseEntity.status(HttpStatus.OK).body(IMP_INIT);
     }
 
-    /********************************************************/
-
-
-
-    /********************************************************/
-
-    @PostMapping("/discussion/add")
-    public ResponseEntity<Void> post_discussion_add (
-            Authentication auth,
-            @RequestBody DiscussionDTO discussion
-    ){
-        log.info("controller - discussion: " + discussion);
-        if(auth != null){
-            String userId = auth.getName();
-            discussionService.createDiscussion(
-                    discussion.getBookTitle(),
-                    discussion.getTopic(),
-                    discussion.getContents(),
-                    userId,
-                    discussion.getBookIsbn()
-            );
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
 
 }

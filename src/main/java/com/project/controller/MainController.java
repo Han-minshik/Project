@@ -1,12 +1,12 @@
 package com.project.controller;
 
 import com.project.dto.*;
+import com.project.mapper.BookMapper;
 import com.project.mapper.DiscussionMapper;
 import com.project.service.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,10 @@ public class MainController {
     @Autowired private DiscussionCommentService discussionCommentService;
     @Autowired private UserService userService;
     @Autowired private LoanService loanService;
+    @Autowired
+    private DiscussionMapper discussionMapper;
+    @Autowired
+    private BookMapper bookMapper;
 
     @GetMapping("/")
     public String get_home (
@@ -62,41 +66,21 @@ public class MainController {
     /*************************************/
 
     // 비밀번호 분실
-    @GetMapping("/reset-pw")
-    public String get_reset_pw() {
-        return "user/reset-pw";
-    }
-
-    @GetMapping("/reset-pw-2")
-    public String get_reset_pw_2(
-            @RequestParam String code,
-            HttpSession session,
-            Model model
-    ) {
-        if(code.equals(session.getAttribute("code"))){
-            String id = session.getAttribute("id").toString();
-            log.info("reset-id :" + id);
-            model.addAttribute("id", id);
-            return "user/reset-pw-2";
-        }
-        return "user/reset-pw";
-    }
+    @GetMapping("/resetPw")
+    public String get_reset_pw() {return "user/reset-pw";}
 
     // 이것도 아마도 userRestController로 옮겨야 할듯
     @PostMapping("/resetPw")
     public String post_reset_pw(
-            HttpSession session,
+            String id,
             @RequestParam("password") String newPw
     ){
         // 패턴 검사도 함
-        log.info("newPw: " + newPw);
-        String id = session.getAttribute("id").toString();
-        log.info("reset-2-id :" + id);
         boolean resetPwResult =  userService.reset_password(id, newPw);
         if (resetPwResult){
-            return "redirect:/user/login";
+            return "redirect:/";
         }
-        return "user/reset-pw-2";
+        return "user/reset-pw";
     }
 
 //    @GetMapping("/book/book-category")
@@ -192,6 +176,7 @@ public class MainController {
         }
         return null;
     }
+
 
     // 검색 키워드를 쿠키에 저장
     private void saveSearchKeywordToCookie(HttpServletResponse response, String searchKeyword) {
@@ -335,7 +320,6 @@ public class MainController {
             model.addAttribute("isSearch", true);
             model.addAttribute("searchKeyword", searchKeyword);
         } else {
-            // 검색어가 없을 경우 기본 리스트 반환
             discussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
             model.addAttribute("isSearch", false);
         }
@@ -343,6 +327,7 @@ public class MainController {
         model.addAttribute("pageInfo", discussions);
         return "content/discussion-category";
     }
+
 
 
     // ok
@@ -374,7 +359,6 @@ public class MainController {
     ) {
         DiscussionDTO discussion = discussionService.selectDiscussionByDiscussionId(discussionId);
         model.addAttribute("discussion", discussion);
-        log.error(discussion);
         return "content/discussion";
     }
 
@@ -496,6 +480,7 @@ public class MainController {
 
     /********************************************/
     // 토론 페이지 생성
+    // ok
     @GetMapping("/discussion/add")
     public String get_discussion_add (
     ){
@@ -539,7 +524,7 @@ public class MainController {
     ){
         if(auth != null){
             userService.createComplain(title, contents, auth.getName());
-            return "redirect:/complain";
+            return "user/write_QA";
         }
         return "redirect:/user/login";
     }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="manager&#10;· 책 삭제">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="manager&#10;· 책 삭제"/>
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />

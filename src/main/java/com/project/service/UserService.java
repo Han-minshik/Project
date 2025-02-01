@@ -9,14 +9,8 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,8 +28,6 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired private Validator validator;
 
     public UserDTO find_user(String userId) {
         return userMapper.getUserById(userId);
@@ -55,99 +47,25 @@ public class UserService {
     }
 
     public boolean reset_password(String id, String newPw) {
-        log.info("reset_password newPw : " + newPw);
         boolean pwPatternResult = newPw.matches("^[0-9a-zA-Z~!@#$%^&*()_=+.-]{4,10}");
         if (!pwPatternResult) {
-            log.info("비밀번호 조건 실패");
             return false;
         }
 
         UserDTO findUser = userMapper.getUserById(id);
         findUser.setPassword(passwordEncoder.encode(newPw));
         userMapper.updateUser(findUser);
-        log.info("패스워드 변경 성공");
         return true;
     }
 
-    public boolean updateUser(UserDTO existUser, UserDTO updateUser) {
-        boolean updated = false;
-
-        // 1. 이메일 변경
-        if (updateUser.getEmail() != null && !updateUser.getEmail().trim().isEmpty() &&
-                !updateUser.getEmail().equals(existUser.getEmail())) {
-            existUser.setEmail(updateUser.getEmail());
-            updated = true;
+    public boolean updateUser(UserDTO modifyingUser) {
+        UserDTO findUser = userMapper.getUserById(modifyingUser.getId());
+        if (findUser != null) {
+            modifyingUser.setPassword(passwordEncoder.encode(modifyingUser.getPassword()));
+            userMapper.updateUser(modifyingUser);
+            return true;
         }
-
-        // 2. 비밀번호 변경
-        if (updateUser.getPassword() != null && !updateUser.getPassword().trim().isEmpty() &&
-                !updateUser.getPassword().equals(existUser.getPassword())) {
-            existUser.setPassword(updateUser.getPassword());
-            updated = true;
-        }
-
-        // 3. 전화번호 변경
-        if (updateUser.getTel() != null && !updateUser.getTel().trim().isEmpty() &&
-                !updateUser.getTel().equals(existUser.getTel())) {
-            existUser.setTel(updateUser.getTel());
-            updated = true;
-        }
-
-        // 4. 프로필 이미지 변경 (byte[] 비교)
-        if (updateUser.getProfileImage() != null && updateUser.getProfileImage().length > 0 &&
-                !Arrays.equals(updateUser.getProfileImage(), existUser.getProfileImage())) {
-            existUser.setProfileImage(updateUser.getProfileImage());
-            updated = true;
-        }
-
-        // 5. 닉네임 변경
-        if (updateUser.getNickname() != null && !updateUser.getNickname().trim().isEmpty() &&
-                !updateUser.getNickname().equals(existUser.getNickname())) {
-            existUser.setNickname(updateUser.getNickname());
-            updated = true;
-        }
-
-        // 6. 포인트 변경
-        if (updateUser.getPoint() != null && !updateUser.getPoint().equals(existUser.getPoint())) {
-            existUser.setPoint(updateUser.getPoint());
-            updated = true;
-        }
-
-        // 7. base64 이미지 변경
-        if (updateUser.getBase64Image() != null && !updateUser.getBase64Image().trim().isEmpty() &&
-                !updateUser.getBase64Image().equals(existUser.getBase64Image())) {
-            existUser.setBase64Image(updateUser.getBase64Image());
-            updated = true;
-        }
-
-        // 8. SNS 정보 변경
-        if (updateUser.getSnsInfo() != null && !updateUser.getSnsInfo().equals(existUser.getSnsInfo())) {
-            existUser.setSnsInfo(updateUser.getSnsInfo());
-            updated = true;
-        }
-
-        if(updated){
-            // 유효성 검사를 위한 BindingResult 준비
-            BindingResult bindingResult = new BeanPropertyBindingResult(existUser, "existUser");
-            log.info("existUser: " + existUser);
-            // 유효성 검사 실행
-            validator.validate(existUser, bindingResult);
-
-            // 유효성 검사 오류가 있는 경우
-            if (bindingResult.hasErrors()) {
-                // 유효성 검사 오류 처리 (예: 오류 메시지 기록, 예외 처리 등)
-                bindingResult.getAllErrors().forEach(error -> {
-                    System.out.println(error.getDefaultMessage());
-                });
-                return false;  // 유효성 검사가 실패하면 업데이트를 진행하지 않음
-            }
-            log.info("수정 검사 통과");
-            existUser.setPassword(passwordEncoder.encode(existUser.getPassword()));
-            userMapper.updateUser(existUser);
-        }
-
-        // 최종적으로 하나라도 업데이트된 경우 true 리턴
-        return updated;
+        return false;
     }
 
     public Integer rentBookWithPoints(String userId, String isbn, Integer points) {
