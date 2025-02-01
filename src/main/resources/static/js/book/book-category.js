@@ -134,7 +134,7 @@ const executeSearch = () => {
                                 <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
                             </div>
                             <div class="plot">
-                                <p th:text="${book.detail}">책의 줄거리나 설명</p>
+                                <p>${book.detail}</p>
                             </div>
                             <div class="rent-button-section">
                                 <!-- 찜하기 버튼에 book 정보를 data 속성으로 전달 -->
@@ -167,8 +167,7 @@ const executeSearch = () => {
                 resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
             }
 
-            // 검색 후 리디렉션
-            location.href = `/book/book-category?bookName=${encodeURIComponent(inputValue)}`;
+
         })
         .catch(error => {
             console.error('Error:', error);

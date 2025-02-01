@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +260,7 @@
       <workItem from="1738247693831" duration="275000" />
       <workItem from="1738285161388" duration="3221000" />
       <workItem from="1738293392453" duration="3439000" />
-      <workItem from="1738299097308" duration="6478000" />
+      <workItem from="1738299097308" duration="9359000" />
     </task>
     <task id="LOCAL-00021" summary="2025-01-20&#10;login - develop 합병">
       <option name="closed" value="true" />
