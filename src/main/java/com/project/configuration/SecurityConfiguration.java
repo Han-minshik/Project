@@ -60,7 +60,7 @@ public class SecurityConfiguration {
 
         http.oauth2Login(configure -> {
             configure.loginPage("/user/login")
-                    .failureUrl("/user/sign-up")
+                    .failureUrl("/user/join")
                     .defaultSuccessUrl("/")
                     .permitAll();
         });
