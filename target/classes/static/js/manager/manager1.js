@@ -98,3 +98,39 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     })
 })
+
+document.addEventListener("DOMContentLoaded", function() {
+    const deleteBookBtn = document.querySelectorAll(".book-delete-btn");
+    deleteBookBtn.forEach(button => {
+        button.addEventListener("click", function() {
+            const bookRow = button.closest("tr");
+            const bookIsbn = bookRow.querySelector("td:nth-child(3)").textContent.trim();
+            if(!bookIsbn) {
+                alert("책을 조회할 수 없습니다.");
+                return;
+            }
+            const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+            console.log(csrfToken);
+            fetch("/admin/book/delete", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken
+                },
+                body: JSON.stringify({bookIsbn: bookIsbn})
+            }).then(response => {
+                if(!response.ok) {
+                    return response.text().then(text => {throw new Error(text)});
+                }
+                return response.json();
+            }).then(data => {
+                alert("삭제 완료");
+                console.log("삭제 완료 : ", data);
+                bookRow.style.backgroundColor = "#d4edda";
+            }).catch(error => {
+                console.error("오류 발생 : ", error);
+                alert("실패했습니다 : " + error.message);
+            })
+        })
+    })
+})

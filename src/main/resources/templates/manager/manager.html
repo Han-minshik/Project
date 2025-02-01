@@ -83,14 +83,15 @@
 		<tr>
 			<th>책 제목</th>
 			<th>남은 권수</th>
-			<th></th>
+			<th>isbn</th>
 		</tr>
 		</thead>
 		<tbody th:each="book, iterStat : ${books}">
 		<tr>
 			<td th:text="${book.title}">해를 품은 달</td>
 			<td th:text="${book.copiesAvailable}">12권</td>
-			<td><button>삭제</button></td>
+			<td id="bookIsbn" th:text="${book.isbn}"></td>
+			<td><button class="book-delete-btn">삭제</button></td>
 		</tr>
 		</tbody>
 	</table>
