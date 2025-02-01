@@ -93,6 +93,12 @@ const executeSearch = () => {
     // 검색 키워드를 쿠키에 저장
     document.cookie = `searchKeyword=${encodeURIComponent(inputValue)}; path=/`;
 
+    // 현재 URL에서 기존 bookName 제거 후 새 검색어 적용
+    const url = new URL(window.location.href);
+    url.searchParams.delete('bookName'); // 기존 bookName 제거
+    url.searchParams.set('bookName', inputValue); // 새 검색어 추가
+    history.replaceState(null, '', url.toString()); // URL 업데이트
+
     // bookName 파라미터를 포함하여 검색 요청
     fetch(`/book/book-category/search?bookName=${encodeURIComponent(inputValue)}`, {
         method: 'GET',
@@ -107,6 +113,7 @@ const executeSearch = () => {
             const resultDiv = document.querySelector('.all-book');
             const paginationDiv = document.querySelector('.pagination');
             const totalCountElement = document.getElementById('total-count');
+
             // 검색 결과 렌더링
             resultDiv.innerHTML = '';
             paginationDiv.innerHTML = ''; // 페이지네이션 초기화
@@ -134,10 +141,9 @@ const executeSearch = () => {
                                 <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
                             </div>
                             <div class="plot">
-                                <p>${book.detail}</p>
+                                <p th:text="${book.detail}">책의 줄거리나 설명</p>
                             </div>
                             <div class="rent-button-section">
-                                <!-- 찜하기 버튼에 book 정보를 data 속성으로 전달 -->
                                 <button class="book-heart-button"
                                     data-isbn="${book.isbn}"
                                     data-title="${book.title}">
@@ -166,14 +172,13 @@ const executeSearch = () => {
                 totalCountElement.textContent = 0; // 검색 결과가 없을 경우
                 resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
             }
-
-
         })
         .catch(error => {
             console.error('Error:', error);
             alert('검색 중 문제가 발생했습니다. 다시 시도해주세요.');
         });
 };
+
 
 /**************************************/
 // 📌 보기설정 변경 시 페이지 새로고침

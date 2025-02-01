@@ -10,50 +10,33 @@ const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('conte
 const reviewForm = document.getElementById('review-form')
 
 discussionBtn.onclick = () => {
-    const bookTitleElement = document.querySelector('h1'); // h1 태그 가져오기
-
+    const bookTitleElement = document.querySelector("h1"); // 책 제목 가져오기
     if (!bookTitleElement) {
         console.error("🚨 책 제목을 찾을 수 없습니다!");
         return;
     }
 
     let bookTitle = bookTitleElement.innerText.trim();
-
     if (bookTitle === "") {
         console.error("🚨 책 제목이 비어 있습니다.");
         return;
     }
 
-    // 🔹 공백을 "-"(하이픈)으로 변환하여 URL과 쿠키에서 안전하게 사용
-    bookTitle = bookTitle.replace(/\s+/g, "-"); // 모든 공백을 "-"로 변경
-
-    // 🔹 URL 인코딩 적용
+    // 🔹 URL에서 안전하게 사용하기 위해 인코딩
     const encodedBookTitle = encodeURIComponent(bookTitle);
 
-    console.log(`📚 토론 검색 요청: ${bookTitle} -> /discussion/category/search?bookName=${encodedBookTitle}`);
+    console.log(`📚 토론 검색 요청: ${bookTitle}`);
 
-    fetch(`/discussion/category/search?bookName=${encodedBookTitle}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`❌ 서버 응답 오류: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("✅ 토론 검색 결과:", data);
+    // ✅ 쿠키 설정 (URL 인코딩 적용)
+    document.cookie = `searchKeyword=${encodedBookTitle}; path=/; max-age=300`;
 
-            // 검색 결과가 있을 경우 해당 페이지로 이동
-            if (data && data.elements && data.elements.length > 0) {
-                location.href = `/discussion/category?bookName=${encodedBookTitle}`;
-            } else {
-                alert("❌ 해당 책에 대한 토론이 없습니다.");
-            }
-        })
-        .catch(error => {
-            console.error("❌ 오류 발생:", error);
-            alert("토론 검색 중 오류가 발생했습니다.");
-        });
+    // ✅ 저장된 쿠키 확인
+    console.log("🍪 저장된 쿠키:", document.cookie);
+
+    // 🔥 검색된 페이지로 이동
+    location.href = `/discussion/category`;
 };
+
 
 /*******************************************/
 

@@ -7,6 +7,7 @@ import com.project.service.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,10 +37,6 @@ public class MainController {
     @Autowired private DiscussionCommentService discussionCommentService;
     @Autowired private UserService userService;
     @Autowired private LoanService loanService;
-    @Autowired
-    private DiscussionMapper discussionMapper;
-    @Autowired
-    private BookMapper bookMapper;
 
     @GetMapping("/")
     public String get_home (
@@ -60,50 +60,46 @@ public class MainController {
         model.addAttribute("pBook2", pBook2);
         return "main/home";
     }
-    /*************************************/
+    /**************** 비밀번호 *********************/
 
-    // 비밀번호 분실
-    @GetMapping("/resetPw")
-    public String get_reset_pw() {return "user/reset-pw";}
+    @GetMapping("/reset-pw")
+    public String get_reset_pw() {
+        return "user/reset-pw";
+    }
 
-    // 이것도 아마도 userRestController로 옮겨야 할듯
-    @PostMapping("/resetPw")
-    public String post_reset_pw(
-            String id,
-            @RequestParam("password") String newPw
-    ){
-        // 패턴 검사도 함
-        boolean resetPwResult =  userService.reset_password(id, newPw);
-        if (resetPwResult){
-            return "redirect:/";
+    @GetMapping("/reset-pw-2")
+    public String get_reset_pw_2(
+            @RequestParam String code,
+            HttpSession session,
+            Model model
+    ) {
+        if(code.equals(session.getAttribute("code"))){
+            String id = session.getAttribute("id").toString();
+            log.info("reset-id :" + id);
+            model.addAttribute("id", id);
+            return "user/reset-pw-2";
         }
         return "user/reset-pw";
     }
 
-//    @GetMapping("/book/book-category")
-//    public String getBooks(
-//            PageInfoDTO<BookDTO> pageInfo,
-//            @RequestParam(required = false) String bookName,
-//            Model model
-//    ) {
-//        PageInfoDTO<BookDTO> books;
-//        if(bookName != null && !bookName.trim().isEmpty()) {
-//            books = bookService.searchBooksByNameWithCount(pageInfo, bookName);
-//        }
-//        else {
-//            books = bookService.getPaginatedBooks(pageInfo);
-//        }
-//        model.addAttribute("books", books.getElements());
-//        model.addAttribute("totalCount", books.getTotalElementCount());
-//        model.addAttribute("bookName", bookName);
-//        model.addAttribute("pageInfo", pageInfo);
-//        return "book/book-category";
-//    }
+    // 이것도 아마도 userRestController로 옮겨야 할듯
+    @PostMapping("/reset-pw-2")
+    public String post_reset_pw(
+            HttpSession session,
+            @RequestParam("password") String newPw
+    ){
+        // 패턴 검사도 함
+        log.info("newPw: " + newPw);
+        String id = session.getAttribute("id").toString();
+        log.info("reset-2-id :" + id);
+        boolean resetPwResult =  userService.reset_password(id, newPw);
+        if (resetPwResult){
+            return "redirect:/user/login";
+        }
+        return "user/reset-pw-2";
+    }
 
-    // 전체 책 반환 컨트롤러
-
-
-    // 모든 책 목록
+    /************* 책 반환 ***********************/
     // ok
     @GetMapping("/book/book-category")
     public String getBooks(
@@ -156,9 +152,12 @@ public class MainController {
         if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
                 if ("searchKeyword".equals(cookie.getName())) {
-                    String searchKeyword = cookie.getValue();
+                    String searchKeyword = URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8);
 
-                    // 쿠키 삭제
+                    // ✅ 디버깅 로그 추가
+                    log.info("🔍 검색 키워드 (디코딩 후): " + searchKeyword);
+
+                    // ✅ 쿠키 삭제 (사용 후 제거)
                     Cookie deleteCookie = new Cookie("searchKeyword", null);
                     deleteCookie.setMaxAge(0);
                     deleteCookie.setPath("/");
@@ -171,9 +170,11 @@ public class MainController {
         return null;
     }
 
+
     // 검색 키워드를 쿠키에 저장
     private void saveSearchKeywordToCookie(HttpServletResponse response, String searchKeyword) {
-        Cookie cookie = new Cookie("searchKeyword", searchKeyword);
+        String encodedKeyword = URLEncoder.encode(searchKeyword, StandardCharsets.UTF_8);
+        Cookie cookie = new Cookie("searchKeyword", encodedKeyword);
         cookie.setPath("/");
         cookie.setMaxAge(60 * 5); // 쿠키 유효기간 설정 (5분)
         response.addCookie(cookie);
@@ -307,12 +308,11 @@ public class MainController {
         PageInfoDTO<DiscussionDTO> discussions;
 
         if (searchKeyword != null && !searchKeyword.isEmpty()) {
-            // 검색어가 있을 경우 검색 수행
+            log.info("🔍 검색 실행: " + searchKeyword);
             discussions = discussionService.getDiscussionByBookTitle(pageInfo, searchKeyword);
             model.addAttribute("isSearch", true);
             model.addAttribute("searchKeyword", searchKeyword);
         } else {
-            // 검색어가 없을 경우 기본 리스트 반환
             discussions = discussionService.getDiscussionsWithBookInfo(pageInfo);
             model.addAttribute("isSearch", false);
         }
@@ -320,6 +320,7 @@ public class MainController {
         model.addAttribute("pageInfo", discussions);
         return "content/discussion-category";
     }
+
 
 
     // ok
@@ -330,9 +331,17 @@ public class MainController {
             PageInfoDTO<DiscussionDTO> pageInfo,
             HttpServletResponse response
     ) {
-        saveSearchKeywordToCookie(response, bookName);
-        return discussionService.getDiscussionByBookTitle(pageInfo, bookName);
+        // ✅ URL 디코딩 적용
+        String decodedBookName = URLDecoder.decode(bookName, StandardCharsets.UTF_8);
+
+        log.info("🔍 검색 요청 (디코딩 후): " + decodedBookName);
+
+        // ✅ 쿠키 저장
+        saveSearchKeywordToCookie(response, decodedBookName);
+
+        return discussionService.getDiscussionByBookTitle(pageInfo, decodedBookName);
     }
+
 
     // 토론 페이지
     // ok
@@ -343,7 +352,6 @@ public class MainController {
     ) {
         DiscussionDTO discussion = discussionService.selectDiscussionByDiscussionId(discussionId);
         model.addAttribute("discussion", discussion);
-        log.error(discussion);
         return "content/discussion";
     }
 
@@ -374,11 +382,28 @@ public class MainController {
             @PathVariable Integer discussionId,
             @RequestBody DiscussionCommentDTO discussionComment
     ) {
+        if (discussionComment == null) {
+            return ResponseEntity.badRequest().body("❌ 요청 본문이 없습니다.");
+        }
+
+        log.error("🔍 서버에서 받은 discussionId: " + discussionId);
+        log.error("🔍 서버에서 받은 content: " + discussionComment.getContent());
+
         if (auth == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
+
+        if (discussionId == null) {
+            return ResponseEntity.badRequest().body("토론 ID가 필요합니다.");
+        }
+
+        if (discussionComment.getContent() == null || discussionComment.getContent().trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("❌ 댓글 내용을 입력해주세요.");
+        }
+
         String userId = auth.getName();
         discussionCommentService.addComment(discussionId, userId, discussionComment.getContent());
+
         return ResponseEntity.ok("댓글 추가 성공");
     }
 
@@ -455,26 +480,26 @@ public class MainController {
         return "user/write_talk";
     }
 
-    @PostMapping("/discussion/add")
-    public String post_discussion_add (
-            Authentication auth,
-            @RequestBody DiscussionDTO discussion
-
-    ){
-        if(auth != null){
-            String userId = auth.getName();
-            discussionService.createDiscussion(
-                    discussion.getBookTitle(),
-                    discussion.getTopic(),
-                    discussion.getContents(),
-                    userId,
-                    discussion.getBookIsbn()
-            );
-            return "content/discussion/category";
-        }
-        return "redirect:/user/login";
-
-    }
+//    @PostMapping("/discussion/add")
+//    public String post_discussion_add (
+//            Authentication auth,
+//            @RequestBody DiscussionDTO discussion
+//
+//    ){
+//        if(auth != null){
+//            String userId = auth.getName();
+//            discussionService.createDiscussion(
+//                    discussion.getBookTitle(),
+//                    discussion.getTopic(),
+//                    discussion.getContents(),
+//                    userId,
+//                    discussion.getBookIsbn()
+//            );
+//            return "content/discussion/category";
+//        }
+//        return "redirect:/user/login";
+//
+//    }
 
     /******************* 컴플레인(문의사항) ********************/
     @GetMapping("/complain")
@@ -496,30 +521,4 @@ public class MainController {
         }
         return "redirect:/user/login";
     }
-
-//    @PatchMapping("/complain/update")
-//    public String patch_complain_update (
-//            Authentication auth,
-//            @RequestParam Integer compainId
-//    ){
-//        if(auth != null){
-//            userService.updateComplain(compainId, auth.getName());
-//            return "content/complain-update";
-//        }
-//        return "redirect:/user/login";
-//    }
-//
-//    @DeleteMapping("/complain/delete")
-//    public String delete_complain_delete (
-//            Authentication auth,
-//            @RequestParam Integer compainId
-//    ){
-//        if(auth != null){
-//            userService.deleteComplain(compainId);
-//            return "content/complain-delete";
-//        }
-//        return "redirect:/user/login";
-//    }
-
-
 }

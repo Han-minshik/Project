@@ -1,147 +1,129 @@
 package com.project.controller;
 
-import com.project.dto.AdminPostDTO;
-import com.project.dto.BookDTO;
-import com.project.dto.PageInfoDTO;
-import com.project.dto.UserDTO;
+import com.project.dto.*;
 import com.project.mapper.AdminMapper;
 import com.project.mapper.BookMapper;
 import com.project.mapper.UserMapper;
 import com.project.service.AdminService;
 import com.project.service.BookService;
+import com.project.service.UserService;
+import org.apache.coyote.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.View;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
     private static final Logger log = LogManager.getLogger(AdminController.class);
-    @Autowired private BookMapper bookMapper;
-    @Autowired private UserMapper userMapper;
-    @Autowired private AdminService adminService;
-    @Autowired private AdminMapper adminMapper;
-    @Autowired private BookService bookService;
+    @Autowired
+    private BookMapper bookMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private AdminService adminService;
+    @Autowired
+    private AdminMapper adminMapper;
+    @Autowired
+    private BookService bookService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private View error;
 
+    // ok
     @GetMapping("/manager")
-    public String manager() {
+    public String manager(Model model) {
+//        List<UserDTO> users = adminService.getAllUser();
+        List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
+        List<BookDTO> books = bookService.getAllBooks();
+        List<ComplainDTO> complains = userService.getComplains();
+        List<UserDTO> publicUsers = adminService.getPublicUser();
+        model.addAttribute("publicUsers", publicUsers);
+        model.addAttribute("books", books);
+        model.addAttribute("updatedUsers", updatedUsers);
+//        model.addAttribute("users", users);
+        model.addAttribute("complains", complains);
         return "manager/manager";
     }
 
-    /*********************문의사항 조회*************************/
-
-
-
-    /*********************************************/
-//    @GetMapping("/book/add")
-//    public void insertBook(){}
-//
-//    @PostMapping("/book/add")
-//    public String insertBook(
-//            @AuthenticationPrincipal UserDTO user,
-//            BookDTO book
-//    ){
-//        if(user.getRole().equals("관리자")){
-//            adminService.insertBook(book);
-//            return "redirect:/admin/books";
-//        }
-//        return "redirect:/";
-//    }
-
-    /*******************************************/
-
-//    @GetMapping("/book/update")
-//    public String updateBook(@AuthenticationPrincipal UserDTO user,
-//                             Model model){
-//
-//    }
-
-//    @PatchMapping("/book/update")
-//    public String updateBook(
-//            @AuthenticationPrincipal UserDTO user,
-//            BookDTO book
-//    ) {
-//        if(user.getRole().equals("관리자")){
-//            adminService.updateBook(book);
-//            return "redirect:/admin/books";
-//
-//        }
-//        return "redirect:/";
-//    }
-
-    /********************************************/
-
-    @GetMapping("/book/delete")
-    public String deleteBook(@AuthenticationPrincipal UserDTO user,
-                             Model model){
-        if(user.getRole().equals("관리자")) {
-            List<BookDTO> books = bookService.getAllBooks();
-            model.addAttribute("books", books);
-            return "redirect:/admin/books";
-        }
-        return "redirect:/";
-    }
-
+    /******************* 책 관련 *************************/
+    // ok
     @DeleteMapping("/book/delete")
-    public String deleteBook(
-            @AuthenticationPrincipal UserDTO user,
-            @RequestParam("bookIsbn") String bookIsbn
-    ) {
-        if(user.getRole().equals("관리자")){
-            adminService.deleteBook(bookIsbn);
-            return "redirect:/admin/books";
+    public ResponseEntity<String> deleteBook(@AuthenticationPrincipal UserDTO user,
+                                             @RequestBody Map<String, String> payload) {
+        if (user.getRole().equals("관리자")) {
+            String bookIsbn = payload.get("bookIsbn");
+
+            if (bookIsbn == null) {
+                return ResponseEntity.badRequest().body("ISBN이 제공되지 않았습니다.");
+            }
+
+//            adminService.deleteBook(bookIsbn);
+            log.info("삭제 요청된 책 ISBN: " + bookIsbn);
+            return ResponseEntity.ok("책 삭제 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한 없음");
         }
-        return "redirect:/";
     }
 
     /******************* 유저 관련 ********************/
-    @GetMapping("/admin/user")
-    public String getUserList(@AuthenticationPrincipal UserDTO user, Model model, PageInfoDTO<UserDTO> pageInfo) {
-        if(user.getRole().equals("관리자")) {
-            List<UserDTO> users = adminService.getAllUser();
-            List<UserDTO> updatedUsers = adminService.getRecentlyUpdatedUsers();
-            model.addAttribute("updatedUsers", updatedUsers);
-            model.addAttribute("users", users);
-            model.addAttribute("pageInfo", pageInfo);
-            log.error(updatedUsers);
-            log.error(users);
-            return "redirect:/admin/user";
+    // ok
+    @PatchMapping("/update-user")
+    public ResponseEntity<String> updateUser(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, String> payload) {
+        if (!user.getRole().equals("관리자")) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한이 없습니다.");
         }
-        return "redirect:/";
+        String userId = payload.get("userId");
+        adminService.promoteToAdmin(userId);
+        return ResponseEntity.ok("유저 승격 완료");
+    }
+    // ok
+    @DeleteMapping("/drop-user")
+    public ResponseEntity<String> dropUser(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, List<String>> payload) {
+        if(user.getRole().equals("관리자")) {
+            List<String> userIds = payload.get("userIds");
+            for(String userId : userIds) {
+                adminService.deleteUser(userId);
+                log.error("삭제된 유저 ID : " + userId);
+            }
+            return ResponseEntity.ok("유저 삭제 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한 없음");
+        }
     }
 
-    @PostMapping("/update-user")
-    public String updateUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
+    /*************** 유저 컴플레인 답글 작성 ********************/
+    @PostMapping("/update/answer")
+    public ResponseEntity<String> updateAnswer(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, String> payload) {
         if(user.getRole().equals("관리자")) {
-            adminService.promoteToAdmin(userId);
-            log.error(userId);
-            return "redirect:/admin/user";
+            if(payload == null || !payload.containsKey("complainNo") || !payload.containsKey("answer")) {
+                return ResponseEntity.badRequest().body("잘못된 요청 데이터입니다.");
+            }
+            try {
+                Integer complainNo = Integer.parseInt(payload.get("complainNo"));
+                String answer = payload.get("answer");
+                adminService.answerToUser(complainNo, answer);
+                return ResponseEntity.ok("답변이 업데이트되었습니다.");
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().body("complainNo가 숫자가 아닙니다.");
+            } catch (Exception e) {
+                return ResponseEntity.status(500).body("서버 오류 발생 : " + e.getMessage());
+            }
         }
-        return "redirect:/";
+        return ResponseEntity.status(403).body("권한이 없습니다.");
     }
-
-    @PostMapping("/drop-user")
-    public String dropUser(@AuthenticationPrincipal UserDTO user, @RequestParam String userId) {
-        if(user.getRole().equals("관리자")) {
-            adminService.deleteUser(userId);
-            log.error(userId);
-            return "redirect:/admin/user";
-        }
-        return "redirect:/";
-    }
-
-    // 아마도 RestController로 가야할 듯
-//    @PostMapping("/drop-user")
-//    public String dropUser(@RequestParam String id) {
-//        userMapper.deleteUser(username);
-//        return "redirect:/admin/drop-user";
-//    }
 
 //    /****************** 규칙 위반 게시글 삭제 *******************/
 //
@@ -233,6 +215,4 @@ public class AdminController {
 //        }
 //        return "redirect:/user/login";
 //    }
-
-
 }
