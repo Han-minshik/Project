@@ -134,3 +134,65 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     })
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".comment-trigger").forEach(item => {
+        item.addEventListener("click", function () {
+            let replyBox = this.closest("td").querySelector(".reply-box");
+            if (replyBox.querySelector(".reply-input")) {
+                replyBox.innerHTML = "";
+                return;
+            }
+            let input = document.createElement("input");
+            input.type = "text";
+            input.classList.add("reply-input");
+            input.placeholder = "답변을 입력하세요...";
+            let submitBtn = document.createElement("button");
+            submitBtn.textContent = "전송";
+            submitBtn.classList.add("submit-reply");
+            replyBox.innerHTML = "";
+            replyBox.appendChild(input);
+            replyBox.appendChild(submitBtn);
+            input.focus();
+            submitBtn.addEventListener("click", function () {
+                let answerText = input.value.trim();
+                if (!answerText) {
+                    alert("답변을 입력하세요.");
+                    return;
+                }
+                let complainNo = item.closest("tr").getAttribute("data-complain-no");
+                if (!complainNo) {
+                    alert("잘못된 데이터입니다.");
+                    return;
+                }
+                let csrfToken = document.querySelector("meta[name='_csrf']").getAttribute("content");
+                fetch("/admin/update/answer", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": csrfToken // CSRF 토큰 추가
+                    },
+                    body: JSON.stringify({
+                        complainNo: complainNo,
+                        answer: answerText
+                    })
+                })
+                    .then(response => response.text())
+                    .then(message => {
+                        alert(message);  // 서버 응답 메시지 표시
+                        replyBox.innerHTML = `<p class="reply-comment">${answerText}</p>`; // 입력창 대신 답변 표시
+                    })
+                    .catch(error => {
+                        alert("서버 오류 발생: " + error);
+                    });
+            });
+        });
+    });
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest(".comment-trigger") && !event.target.closest(".reply-box")) {
+            document.querySelectorAll(".reply-box").forEach(box => box.innerHTML = "");
+        }
+    });
+});
+
+

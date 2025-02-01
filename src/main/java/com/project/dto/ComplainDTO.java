@@ -16,6 +16,7 @@ public class ComplainDTO {
     private String contents;
     private String userId;
     private LocalDateTime uploadedAt;
+    private String answer;
 
     private List<UserDTO> user;
 }

@@ -104,6 +104,27 @@ public class AdminController {
         }
     }
 
+    /*************** 유저 컴플레인 답글 작성 ********************/
+    @PostMapping("/update/answer")
+    public ResponseEntity<String> updateAnswer(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, String> payload) {
+        if(user.getRole().equals("관리자")) {
+            if(payload == null || !payload.containsKey("complainNo") || !payload.containsKey("answer")) {
+                return ResponseEntity.badRequest().body("잘못된 요청 데이터입니다.");
+            }
+            try {
+                Integer complainNo = Integer.parseInt(payload.get("complainNo"));
+                String answer = payload.get("answer");
+                adminService.answerToUser(complainNo, answer);
+                return ResponseEntity.ok("답변이 업데이트되었습니다.");
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().body("complainNo가 숫자가 아닙니다.");
+            } catch (Exception e) {
+                return ResponseEntity.status(500).body("서버 오류 발생 : " + e.getMessage());
+            }
+        }
+        return ResponseEntity.status(403).body("권한이 없습니다.");
+    }
+
 //    /****************** 규칙 위반 게시글 삭제 *******************/
 //
 //    @DeleteMapping("/discussion/delete")
