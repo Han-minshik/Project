@@ -128,3 +128,11 @@ ol a[active=true]{
         width: 100%; /* 1개씩 */
     }
 }
+
+.book-item button {
+    background-color: #007BFF;
+    padding: 5px 10px;
+    color: white;
+    border-radius:20px;
+    border: none;
+}

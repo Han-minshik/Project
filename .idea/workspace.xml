@@ -4,19 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="book, content 끝">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" beforeDir="false" />
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="수정1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/AdminMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/AdminMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/admin-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/complaint.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/complaint.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/complaint.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/complaint.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/method.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,14 +286,6 @@
       <workItem from="1738296090067" duration="2357000" />
       <workItem from="1738298672944" duration="323000" />
       <workItem from="1738309567064" duration="16526000" />
-    </task>
-    <task id="LOCAL-00026" summary="2025-01-21&#10;프론트 merge">
-      <option name="closed" value="true" />
-      <created>1737467311358</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1737467311358</updated>
     </task>
     <task id="LOCAL-00027" summary="2025-01-21&#10;프론트 merge">
       <option name="closed" value="true" />
@@ -671,14 +671,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738321801801</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="수정1">
+      <option name="closed" value="true" />
+      <created>1738494023305</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1738494023306</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-22&#10;merge 후 일부 수정&#10;pagination 필요한 부분 쿼리문, 서비스 로직 수정해야됨" />
     <MESSAGE value="2025-01-22&#10;프론트 수정" />
     <MESSAGE value="2025-01-23&#10;수정&#10;- BookMapper searchBooksByNameWithCount : MapKey, List&lt;Map&lt;String, Object&gt;&gt; -&gt; PageInfoDTO&lt;BookDTO&gt;&#10;- 평균 평점이 가장 높은 책(Book-mapper.xml)&#10;- 평균 평점이 가장 높은 책 5, 2권&#10;- BookService : 제목 검색 로직 단순화&#10;- discussionService : 최신 5개에서 최신 1개로 변환&#10;- loan-mapper.xml : getActiveLoanByUserAndBook sort 조건 부여(보기 설정 X)&#10;- loanService : getActiveLoanByUser에서 Book도 같이 조회할 수 있도록 설정(대출 페이지로 책을 조회하기 힘들고, 대출 내역의 isbn으로 책의 정보를 조회하도록 설계)&#10;&#10;&#10;추가 &#10;- discussioncommnet-mapper.xml : 첫 번째, 두 번째 인기있는 의견 작성&#10;- MainController : book-category 구현&#10;- MainController : 홈화면 구현&#10;- UserController : lendBook, wishlist 끝" />
     <MESSAGE value="2025-01-23&#10;관리자 페이지&#10;- 책 수정&#10;- 책 삭제 &#10;- 사용자 제거(사용자 리스트를 볼 수 있는 매핑)&#10;- 공지사항 페이지(구현 여부 확인)&#10;&#10;메인&#10;- 홈&#10;- 비밀번호 분실&#10;- 책 페이지(제목 검색 포함)&#10;- 각 책 페이지 불러오기&#10;- 책 리뷰 불러오기&#10;- 리뷰 불러오기&#10;- 리뷰(댓글 추가)&#10;- 토론 게시글 목록&#10;- 각 토론 페이지&#10;- 토론 페이지 댓글 불러오기&#10;- 토론 페이지 생성&#10;- 토론 댓글 생성&#10;- 토론 댓글 좋아요 싫어요&#10;- 컴플레인&#10;&#10;유저 페이지&#10;- 회원등록&#10;- 로그인&#10;- 마이페이지&#10;- 책 대여 목록&#10;- 카트 &#10;- 회원 정보 수정&#10;- 공지사항 조회&#10;- 탈퇴&#10;&#10;유저 rest&#10;- 아이디 찾기&#10;- 전화번호 인증&#10;- 이메일 인증&#10;- 비밀번호 초기화(찾기)&#10;- 회원정보 수정&#10;- 카트 목록 삭제&#10;&#10;추가해야할 것&#10;- 나의 토론글 조회 페이지&#10;- discussion 서비스 -&gt; maincontroller(discussionid로 토론 게시판 조회)&#10;- 토론 게시판 댓글 템플릿 따로 생성&#10;- 헤더랑 푸터 따로 템플릿 생성 -&gt; 로그인하면 그냥 홈으로 리디렉션 -&gt; 헤더만 바뀌에(authenti)&#10;- 관리자 페이지(삭제 눌렀을 때 책 목록 나오게), 관리자 페이지(사용자 리스트, 버튼 누르면 일주일 내 사용자 정보 수정한 유저, 관리자 승격 메서드)&#10;- 관리자가 문의사항 전체를 볼 수 있는 컨트롤러(메서드)&#10;(회원, 비회원 : 작성버튼 / 회원 중에 관리자랑 일반 유저 : 대댓글(페이지 필요))&#10;- 아이디 찾기 페이지(model)&#10;- 회원정보 수정 페이지 model&#10;- my-talk 컨트롤러 &#10;- reset-pw 수정&#10;- 카트 목록 삭제(컨트롤러 수정)&#10;- 토론 글쓰기, 컴플레인 글쓰기  &#10;&#10;삭제&#10;- 공지사항&#10;&#10;discussion&#10;manager&#10;find-id&#10;info-revise&#10;my-talk&#10;reset-pw&#10;wishlist&#10;write(토론 글쓰기, 컴플레인 글쓰기)&#10;헤더 푸터 분리 -&gt; 로그인하면 authentication으로 헤더만 바뀌게(로그인시 그냥 홈으로 리다이렉트)&#10;                            &lt;th:block sec:authorize=&quot;not authenticated&quot;&gt;&#10;complain 페이지에서 관리자가 대댓글 달 수 있도록(페이지)" />
@@ -703,6 +710,7 @@
     <MESSAGE value="discussion/discussionId&#10;· pagination 완료" />
     <MESSAGE value="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)" />
     <MESSAGE value="book, content 끝" />
-    <option name="LAST_COMMIT_MESSAGE" value="book, content 끝" />
+    <MESSAGE value="수정1" />
+    <option name="LAST_COMMIT_MESSAGE" value="수정1" />
   </component>
 </project>
