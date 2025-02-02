@@ -27,7 +27,6 @@
 		<section class="main-image-section">
 			<div class="main-image-container">
 				<img th:src="${book.base64Image}" src="../../static/images/book_main.jpg" alt="메인이미지"/>
-				<button th:if="${book.bookImages != null and #lists.size(book.bookImages) > 0}" class="viewer-watch-button">미리보기</button>
 			</div>
 		</section>
 
@@ -331,26 +330,6 @@
 		</div>
 	</section>
 
-	<!-- 팝업 뷰어 -->
-	<section id="bookViewer" class="viewer hidden">
-		<div class="viewer-content">
-			<span class="bookViewer-close"><i class="bi bi-x"></i></span>
-			<div id="bookImages">
-				<div id="bookMainPageContainer">
-					<img th:src="${book.base64Image}" alt="메인이미지">
-				</div>
-				<div id="bookImagesContainer">
-					<div th:each="image: ${book.bookImages}">
-						<img th:src="@{|/image/${image.no}|}" alt="책 이미지">
-					</div>
-				</div>
-			</div>
-			<div class="viewer-button">
-				<button id="prevPage"><i class="bi bi-chevron-left"></i></button>
-				<button id="nextPage"><i class="bi bi-chevron-right"></i></button>
-			</div>
-		</div>
-	</section>
 </main>
 </body>
 </html>

@@ -219,6 +219,16 @@ public class MainController {
         return "book/book";
     }
 
+    @GetMapping("/book/viewer/{bookIsbn}")
+    public String getBookViewer(
+            @PathVariable String bookIsbn,
+            Model model
+    ){
+        BookDTO book = bookService.getBookByIsbn(bookIsbn);
+        model.addAttribute("book", book);
+        return "book/book-viewer";
+    }
+
     // 책 리뷰 불러오기
     // js로 태그 작성 같은걸 붙인다
     // ok
