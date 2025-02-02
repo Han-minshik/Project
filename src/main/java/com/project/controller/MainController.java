@@ -212,7 +212,6 @@ public class MainController {
             List<CategoryDTO> categories = bookService.getCategoryHierarchyByIsbn(bookIsbn);
             model.addAttribute("categories", categories);
             log.error(categories);
-
         } catch (Exception e) {
             log.error("Error fetching book data for ISBN: {}", bookIsbn, e);
             return "error/500";
