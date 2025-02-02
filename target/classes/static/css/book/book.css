@@ -57,6 +57,7 @@ main > article > form{
 }
 main > article .main-image-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -1369,5 +1370,4 @@ main > article .button-container > .heart-btn {
     text-align: right;
     margin-right: 20px;
     margin-bottom: 10px;
->>> >>> > > 메인-페이지-디자인(정예은): src /main/ resources /static/ css /book/ book . css
 }

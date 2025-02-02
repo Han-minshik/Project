@@ -44,7 +44,6 @@
 <hr/>
 
 <main>
-	<h2>책 목록</h2>
 	<div class="wishlist" id="wishlist-container">
 		<!-- 책 목록이 있는 경우 -->
 		<ul class="book-list">
@@ -61,36 +60,5 @@
 		</ul>
 	</div>
 </main>
-
-<!--    <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">-->
-<!--        <li th:if="${pageInfo.startPage != 1}">-->
-<!--            <a th:href="@{/product(-->
-<!--                    page=${pageInfo.startPage - 1},-->
-<!--                    size=${pageInfo.size},-->
-<!--                    sort=${pageInfo.sort}-->
-<!--                )}">-->
-<!--                <i class="bi bi-caret-left-fill"></i>-->
-<!--            </a>-->
-<!--        </li>-->
-
-<!--        <li th:if="${pageInfo.startPage <= pageInfo.endPage}" th:each="pageNumber: ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">-->
-<!--            <a th:href="@{/product(-->
-<!--                    page=${pageNumber},-->
-<!--                    size=${pageInfo.size},-->
-<!--                    sort=${pageInfo.sort})}"-->
-<!--               th:text="${pageNumber}"-->
-<!--               th:active="${pageInfo.page == pageNumber}">1</a>-->
-<!--        </li>-->
-<!--        <li th:if="${pageInfo.endPage != pageInfo.totalPageCount}">-->
-<!--            <a th:href="@{/product(-->
-<!--                    page=${pageInfo.endPage + 1},-->
-<!--                    size=${pageInfo.size},-->
-<!--                    sort=${pageInfo.sort}-->
-<!--                )}">-->
-<!--                <i class="bi bi-caret-right-fill"></i>-->
-<!--            </a>-->
-<!--        </li>-->
-<!--    </ol>-->
-
 </body>
 </html>

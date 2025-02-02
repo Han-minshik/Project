@@ -62,6 +62,7 @@ public class MainController {
         model.addAttribute("pBook2", pBook2);
         return "main/home";
     }
+
     /**************** 비밀번호 *********************/
 
     @GetMapping("/reset-pw")

@@ -4,11 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="대출 완료(css 합병 완)">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="대출 완료&#10;- 뷰어, css 합병 완">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/loginHome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/complaint.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/login-home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/loginHome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/book/book.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/loginHome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/complaint.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/method.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/method.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/login-home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/loginHome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +55,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -59,6 +96,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "JUnit.project의 static.img.main.executor": "Debug",
     "JUnit.project의 전부 (1).executor": "Debug",
     "JUnit.project의 전부.executor": "Debug",
@@ -72,7 +110,8 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources/templates/book",
+    "last_opened_file_path": "C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources/templates/layout",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,13 +128,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\layout" />
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\book" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\book" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\css\book" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\css\user" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\public" />
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\main" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\img" />
     </key>
@@ -280,15 +321,8 @@
       <workItem from="1738438849264" duration="178000" />
       <workItem from="1738457507871" duration="3549000" />
       <workItem from="1738469028036" duration="1201000" />
-      <workItem from="1738495585032" duration="668000" />
-    </task>
-    <task id="LOCAL-00036" summary="2025-01-23&#10;관리자 페이지&#10;- 책 수정&#10;- 책 삭제 &#10;- 사용자 제거(사용자 리스트를 볼 수 있는 매핑)&#10;- 공지사항 페이지(구현 여부 확인)&#10;&#10;메인&#10;- 홈&#10;- 비밀번호 분실&#10;- 책 페이지(제목 검색 포함)&#10;- 각 책 페이지 불러오기&#10;- 책 리뷰 불러오기&#10;- 리뷰 불러오기&#10;- 리뷰(댓글 추가)&#10;- 토론 게시글 목록&#10;- 각 토론 페이지&#10;- 토론 페이지 댓글 불러오기&#10;- 토론 페이지 생성&#10;- 토론 댓글 생성&#10;- 토론 댓글 좋아요 싫어요&#10;- 컴플레인&#10;&#10;유저 페이지&#10;- 회원등록&#10;- 로그인&#10;- 마이페이지&#10;- 책 대여 목록&#10;- 카트 &#10;- 회원 정보 수정&#10;- 공지사항 조회&#10;- 탈퇴&#10;&#10;유저 rest&#10;- 아이디 찾기&#10;- 전화번호 인증&#10;- 이메일 인증&#10;- 비밀번호 초기화(찾기)&#10;- 회원정보 수정&#10;- 카트 목록 삭제&#10;&#10;추가해야할 것&#10;- 나의 토론글 조회 페이지&#10;- discussion 서비스 -&gt; maincontroller(discussionid로 토론 게시판 조회)&#10;- 토론 게시판 댓글 템플릿 따로 생성&#10;- 헤더랑 푸터 따로 템플릿 생성 -&gt; 로그인하면 그냥 홈으로 리디렉션 -&gt; 헤더만 바뀌에(authenti)&#10;- 관리자 페이지(삭제 눌렀을 때 책 목록 나오게), 관리자 페이지(사용자 리스트, 버튼 누르면 일주일 내 사용자 정보 수정한 유저, 관리자 승격 메서드)&#10;- 관리자가 문의사항 전체를 볼 수 있는 컨트롤러(메서드)&#10;(회원, 비회원 : 작성버튼 / 회원 중에 관리자랑 일반 유저 : 대댓글(페이지 필요))&#10;- 아이디 찾기 페이지(model)&#10;- 회원정보 수정 페이지 model&#10;- my-talk 컨트롤러 &#10;- reset-pw 수정&#10;- 카트 목록 삭제(컨트롤러 수정)&#10;- 토론 글쓰기, 컴플레인 글쓰기  &#10;&#10;삭제&#10;- 공지사항&#10;&#10;discussion&#10;manager&#10;find-id&#10;info-revise&#10;my-talk&#10;reset-pw&#10;wishlist&#10;write(토론 글쓰기, 컴플레인 글쓰기)&#10;헤더 푸터 분리 -&gt; 로그인하면 authentication으로 헤더만 바뀌게(로그인시 그냥 홈으로 리다이렉트)&#10;                            &lt;th:block sec:authorize=&quot;not authenticated&quot;&gt;&#10;complain 페이지에서 관리자가 대댓글 달 수 있도록(페이지)">
-      <option name="closed" value="true" />
-      <created>1737636563684</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1737636563684</updated>
+      <workItem from="1738495585032" duration="919000" />
+      <workItem from="1738497567397" duration="6069000" />
     </task>
     <task id="LOCAL-00037" summary="2025-01-23&#10;- adminService 에서 user 리스트 받아올 때 최근 일주일간 정보 수정한 유저도 model&#10;- adminService-getRecentlyUpdatedUsers 에서 isAdmin 삭제&#10;- MainController 모든 컴플레인 조회 get 생성&#10;- UserMapper, mapper.xml, service 모든 컴플레인 조회 생성">
       <option name="closed" value="true" />
@@ -674,14 +708,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738470214138</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="대출 완료&#10;- 뷰어, css 합병 완">
+      <option name="closed" value="true" />
+      <created>1738496398085</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1738496398086</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정&#10;discussion-mapper 에서 토론의 모든 내용과 각 토론마다의 최신 댓글을 반환할 수 있도록 수정&#10;discussionService 에서 pageinfo 를 반환&#10;maincontroller 에서 모든 토론 내용과 각 토론마다의 최신 댓글을 model&#10;Controller PageInfo 작성&#10;Controller 에서 count 구현" />
     <MESSAGE value="테스트 중" />
     <MESSAGE value="홈 화면/책 목록 페이지 컨트롤러 완료" />
     <MESSAGE value="홈 화면/책 목록 페이지(제목 검색) 컨트롤러 완료" />
@@ -706,6 +747,7 @@
     <MESSAGE value="합병 완&#10;· security 수정(OAuth2)" />
     <MESSAGE value="대출 완료" />
     <MESSAGE value="대출 완료(css 합병 완)" />
-    <option name="LAST_COMMIT_MESSAGE" value="대출 완료(css 합병 완)" />
+    <MESSAGE value="대출 완료&#10;- 뷰어, css 합병 완" />
+    <option name="LAST_COMMIT_MESSAGE" value="대출 완료&#10;- 뷰어, css 합병 완" />
   </component>
 </project>

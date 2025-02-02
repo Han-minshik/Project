@@ -6,27 +6,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>문의 목록</title>
-	<link rel="stylesheet" href="../../static/css/user/method.css" type="text/css">
+	<link rel="stylesheet" href="../../static/css/user/complain.css" type="text/css">
 	<script src="../../static/js/user/method.js" defer></script>
 </head>
 
 <body>
-<table class="table">
+
+<table>
 	<tr><td colspan="4"><h2>문의 사항이 있다면 자유롭게 남겨보세요.</h2></td></tr>
 	<tr class="header">
-		<td class="num">번호</td>
-		<td class="title">제목</td>
+		<td>번호</td>
 		<td>작성자</td>
-		<td>작성날짜</td>
+		<td>제목</td>
+		<td >작성날짜</td>
 	</tr>
-
+</table>
+<table>
 	<!-- /user/complain 요청 시: myComplains 표시 -->
 	<tr th:if="${myComplains != null}" th:each="complain, iterStat : ${myComplains}">
 		<td th:text="${iterStat.count}"></td>
 		<td th:text="${complain.getTitle()}"></td>
 		<td th:text="${complain.getUserId()}"></td>
 		<td th:text="${complain.getUploadedAt()}"></td>
-		<td th:text="${complain.answer}"></td>
 	</tr>
 
 	<!-- /complain 요청 시: complains 표시 -->
@@ -35,7 +36,6 @@
 		<td th:text="${complain.getTitle()}"></td>
 		<td th:text="${complain.getUserId()}"></td>
 		<td th:text="${complain.getUploadedAt()}"></td>
-		<td th:text="${complain.answer}"></td>
 	</tr>
 
 	<!-- 데이터가 없을 때 메시지 표시 -->
@@ -45,10 +45,7 @@
 </table>
 
 <br>
-<table>
-	<tr>
-		<td><button onclick="location.href='write_QA'">글쓰기</button></td>
-	</tr>
-</table>
+<button onclick="location.href='write_QA'">글쓰기</button>
+
 </body>
 </html>
