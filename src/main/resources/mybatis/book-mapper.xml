@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.BookMapper">
+    <resultMap id="bookWithImageMap" type="BookDTO" autoMapping="true">
+        <id property="isbn" column="isbn" />
+        <collection property="bookImages" ofType="BookImageDTO" javaType="list">
+            <id property="no" column="no"/>
+        </collection>
+    </resultMap>
     <!-- 모든 책 리스트 -->
     <select id="getAllBooks" resultType="BookDTO">
         SELECT * FROM book
@@ -25,8 +31,11 @@
 
     </select>
     <!-- isbn 으로 책 조회 -->
-    <select id="getBookByIsbn" resultType="BookDTO">
-        SELECT * FROM book WHERE isbn = #{isbn}
+    <select id="getBookByIsbn" resultType="BookDTO" resultMap="bookWithImageMap">
+        SELECT b.*, bi.no
+        FROM book b
+                 LEFT OUTER JOIN book_image bi ON b.isbn = bi.book_isbn
+        WHERE b.isbn = #{isbn}
     </select>
     <!-- 평균 평점이 가장 높은 책 반환 -->
     <select id="getPopularBook" resultType="BookDTO">

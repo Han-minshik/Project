@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="대출 완료(css 합병 완)">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/book/book.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +72,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources/static/css/user",
+    "last_opened_file_path": "C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources/templates/book",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,18 +89,20 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\book" />
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\book" />
+      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\css\book" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\css\user" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\user" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\user" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\mail" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.project.mapper" />
       <recent name="com.project.dto" />
+      <recent name="com.project.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ProjectApplication">
@@ -274,15 +279,8 @@
       <workItem from="1738419007614" duration="19157000" />
       <workItem from="1738438849264" duration="178000" />
       <workItem from="1738457507871" duration="3549000" />
-      <workItem from="1738469028036" duration="1102000" />
-    </task>
-    <task id="LOCAL-00035" summary="2025-01-23&#10;관리자 페이지&#10;- 책 수정&#10;- 책 삭제 &#10;- 사용자 제거(사용자 리스트를 볼 수 있는 매핑)&#10;- 공지사항 페이지(구현 여부 확인)&#10;&#10;메인&#10;- 홈&#10;- 비밀번호 분실&#10;- 책 페이지(제목 검색 포함)&#10;- 각 책 페이지 불러오기&#10;- 책 리뷰 불러오기&#10;- 리뷰 불러오기&#10;- 리뷰(댓글 추가)&#10;- 토론 게시글 목록&#10;- 각 토론 페이지&#10;- 토론 페이지 댓글 불러오기&#10;- 토론 페이지 생성&#10;- 토론 댓글 생성&#10;- 토론 댓글 좋아요 싫어요&#10;- 컴플레인&#10;&#10;유저 페이지&#10;- 회원등록&#10;- 로그인&#10;- 마이페이지&#10;- 책 대여 목록&#10;- 카트 &#10;- 회원 정보 수정&#10;- 공지사항 조회&#10;- 탈퇴&#10;&#10;유저 rest&#10;- 아이디 찾기&#10;- 전화번호 인증&#10;- 이메일 인증&#10;- 비밀번호 초기화(찾기)&#10;- 회원정보 수정&#10;- 카트 목록 삭제&#10;&#10;추가해야할 것&#10;- 나의 토론글 조회 페이지&#10;- discussion 서비스 -&gt; maincontroller(discussionid로 토론 게시판 조회)&#10;- 토론 게시판 댓글 템플릿 따로 생성&#10;- 헤더랑 푸터 따로 템플릿 생성 -&gt; 로그인하면 그냥 홈으로 리디렉션 -&gt; 헤더만 바뀌에(authenti)&#10;- 관리자 페이지(삭제 눌렀을 때 책 목록 나오게), 관리자 페이지(사용자 리스트, 버튼 누르면 일주일 내 사용자 정보 수정한 유저, 관리자 승격 메서드)&#10;- 관리자가 문의사항 전체를 볼 수 있는 컨트롤러(메서드)&#10;(회원, 비회원 : 작성버튼 / 회원 중에 관리자랑 일반 유저 : 대댓글(페이지 필요))&#10;- 아이디 찾기 페이지(model)&#10;- 회원정보 수정 페이지 model&#10;- my-talk 컨트롤러 &#10;- reset-pw 수정&#10;- 카트 목록 삭제(컨트롤러 수정)&#10;- 토론 글쓰기, 컴플레인 글쓰기  &#10;&#10;삭제&#10;- 공지사항&#10;&#10;discussion&#10;manager&#10;find-id&#10;info-revise&#10;my-talk&#10;reset-pw&#10;wishlist&#10;write(토론 글쓰기, 컴플레인 글쓰기)&#10;헤더 푸터 분리 -&gt; 로그인하면 authentication으로 헤더만 바뀌게(로그인시 그냥 홈으로 리다이렉트)&#10;                            &lt;th:block sec:authorize=&quot;not authenticated&quot;&gt;&#10;complain 페이지에서 관리자가 대댓글 달 수 있도록(페이지)">
-      <option name="closed" value="true" />
-      <created>1737630091968</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1737630091968</updated>
+      <workItem from="1738469028036" duration="1201000" />
+      <workItem from="1738495585032" duration="668000" />
     </task>
     <task id="LOCAL-00036" summary="2025-01-23&#10;관리자 페이지&#10;- 책 수정&#10;- 책 삭제 &#10;- 사용자 제거(사용자 리스트를 볼 수 있는 매핑)&#10;- 공지사항 페이지(구현 여부 확인)&#10;&#10;메인&#10;- 홈&#10;- 비밀번호 분실&#10;- 책 페이지(제목 검색 포함)&#10;- 각 책 페이지 불러오기&#10;- 책 리뷰 불러오기&#10;- 리뷰 불러오기&#10;- 리뷰(댓글 추가)&#10;- 토론 게시글 목록&#10;- 각 토론 페이지&#10;- 토론 페이지 댓글 불러오기&#10;- 토론 페이지 생성&#10;- 토론 댓글 생성&#10;- 토론 댓글 좋아요 싫어요&#10;- 컴플레인&#10;&#10;유저 페이지&#10;- 회원등록&#10;- 로그인&#10;- 마이페이지&#10;- 책 대여 목록&#10;- 카트 &#10;- 회원 정보 수정&#10;- 공지사항 조회&#10;- 탈퇴&#10;&#10;유저 rest&#10;- 아이디 찾기&#10;- 전화번호 인증&#10;- 이메일 인증&#10;- 비밀번호 초기화(찾기)&#10;- 회원정보 수정&#10;- 카트 목록 삭제&#10;&#10;추가해야할 것&#10;- 나의 토론글 조회 페이지&#10;- discussion 서비스 -&gt; maincontroller(discussionid로 토론 게시판 조회)&#10;- 토론 게시판 댓글 템플릿 따로 생성&#10;- 헤더랑 푸터 따로 템플릿 생성 -&gt; 로그인하면 그냥 홈으로 리디렉션 -&gt; 헤더만 바뀌에(authenti)&#10;- 관리자 페이지(삭제 눌렀을 때 책 목록 나오게), 관리자 페이지(사용자 리스트, 버튼 누르면 일주일 내 사용자 정보 수정한 유저, 관리자 승격 메서드)&#10;- 관리자가 문의사항 전체를 볼 수 있는 컨트롤러(메서드)&#10;(회원, 비회원 : 작성버튼 / 회원 중에 관리자랑 일반 유저 : 대댓글(페이지 필요))&#10;- 아이디 찾기 페이지(model)&#10;- 회원정보 수정 페이지 model&#10;- my-talk 컨트롤러 &#10;- reset-pw 수정&#10;- 카트 목록 삭제(컨트롤러 수정)&#10;- 토론 글쓰기, 컴플레인 글쓰기  &#10;&#10;삭제&#10;- 공지사항&#10;&#10;discussion&#10;manager&#10;find-id&#10;info-revise&#10;my-talk&#10;reset-pw&#10;wishlist&#10;write(토론 글쓰기, 컴플레인 글쓰기)&#10;헤더 푸터 분리 -&gt; 로그인하면 authentication으로 헤더만 바뀌게(로그인시 그냥 홈으로 리다이렉트)&#10;                            &lt;th:block sec:authorize=&quot;not authenticated&quot;&gt;&#10;complain 페이지에서 관리자가 대댓글 달 수 있도록(페이지)">
       <option name="closed" value="true" />
@@ -668,7 +666,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738470002695</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="대출 완료(css 합병 완)">
+      <option name="closed" value="true" />
+      <created>1738470214138</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1738470214138</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

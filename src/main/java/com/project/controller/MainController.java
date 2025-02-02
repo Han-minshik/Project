@@ -214,21 +214,28 @@ public class MainController {
             model.addAttribute("categories", categories);
             log.error(categories);
 
-            if(auth != null && auth.getName() != null) {
-                UserDTO user = userService.find_user(auth.getName());
-                if(user != null) {
-                    model.addAttribute("userEmail", user.getEmail());
-                    model.addAttribute("username", user.getId());
-                    model.addAttribute("userTel", user.getTel());
-                }
-            }
-
         } catch (Exception e) {
             log.error("Error fetching book data for ISBN: {}", bookIsbn, e);
             return "error/500";
         }
         return "book/book";
     }
+
+    // 뷰어
+    @GetMapping("/book/viewer/{bookIsbn}")
+    public String getBookViewer(
+            @PathVariable String bookIsbn,
+            Model model,
+            Authentication auth
+    ){
+        if(auth == null || auth.getName() == null) {
+           return "user/login";
+        }
+        BookDTO book = bookService.getBookByIsbn(bookIsbn);
+        model.addAttribute("book", book);
+        return "book/book-viewer";
+    }
+
     // ok
     @GetMapping("/book/{bookIsbn}/review")
     public String get_book_review (
