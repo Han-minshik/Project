@@ -132,7 +132,7 @@ const executeSearch = () => {
                                 <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
                             </div>
                             <div class="plot">
-                                <p>${book.detail || '책의 줄거리나 설명'}</p>
+                                <p>${book.detail}</p>
                             </div>
                             <div class="rent-button-section">
                                 <button class="book-heart-button"
