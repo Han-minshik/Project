@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,7 @@ public class MainController {
     @Autowired private DiscussionCommentService discussionCommentService;
     @Autowired private UserService userService;
     @Autowired private LoanService loanService;
+    @Autowired private PortOneService portOneService;
 
     @GetMapping("/")
     public String get_home (
@@ -170,7 +172,6 @@ public class MainController {
         return null;
     }
 
-
     // 검색 키워드를 쿠키에 저장
     private void saveSearchKeywordToCookie(HttpServletResponse response, String searchKeyword) {
         String encodedKeyword = URLEncoder.encode(searchKeyword, StandardCharsets.UTF_8);
@@ -180,13 +181,13 @@ public class MainController {
         response.addCookie(cookie);
     }
 
-
     // 책 페이지 불러오기
     // ok
     @GetMapping("/book/{bookIsbn}")
     public String getBook(
             @PathVariable String bookIsbn,
-            Model model
+            Model model,
+            Authentication auth
     ) {
         try {
             BookDTO book = bookService.getBookByIsbn(bookIsbn);
@@ -213,15 +214,21 @@ public class MainController {
             model.addAttribute("categories", categories);
             log.error(categories);
 
+            if(auth != null && auth.getName() != null) {
+                UserDTO user = userService.find_user(auth.getName());
+                if(user != null) {
+                    model.addAttribute("userEmail", user.getEmail());
+                    model.addAttribute("username", user.getId());
+                    model.addAttribute("userTel", user.getTel());
+                }
+            }
+
         } catch (Exception e) {
             log.error("Error fetching book data for ISBN: {}", bookIsbn, e);
             return "error/500";
         }
         return "book/book";
     }
-
-    // 책 리뷰 불러오기
-    // js로 태그 작성 같은걸 붙인다
     // ok
     @GetMapping("/book/{bookIsbn}/review")
     public String get_book_review (
@@ -294,6 +301,54 @@ public class MainController {
         }
     }
 
+    /********** 책 대출 **********/
+    @GetMapping("/points")
+    public ResponseEntity<Integer> getUserPoints(Authentication auth) {
+        if (auth == null || auth.getName() == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        Integer userPoints = loanService.getUserPoints(auth.getName());
+        return ResponseEntity.ok(userPoints);
+    }
+
+    @PostMapping("/loan")
+    public ResponseEntity<String> bookLoan(@RequestBody LoanDTO loan, @AuthenticationPrincipal UserDTO user) {
+        loan.setUser(user);
+        loan.setUserId(user.getId());
+        String userId = user.getId();
+
+        log.info("📌 받은 LoanDTO 데이터: {}", loan);
+        log.info("📌 받은 impUid: {}", loan.getImpUid());
+
+        if (loan.getFinalPrice() > 0 && (loan.getImpUid() == null || loan.getImpUid().isBlank())) {
+            log.error("❌ impUid 값이 비어 있습니다! LoanDTO: {}", loan);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결제 정보가 누락되었습니다.");
+        }
+
+        try {
+            if (loan.getFinalPrice() > 0) {
+                LoanDTO paymentInfo = portOneService.payments_authentication(loan.getImpUid());
+
+                if (paymentInfo == null || !Objects.equals(paymentInfo.getFinalPrice(), loan.getFinalPrice())) {
+                    log.error("❌ 결제 검증 실패: 요청 금액={}, 검증 금액={}",
+                            loan.getFinalPrice(), (paymentInfo != null ? paymentInfo.getFinalPrice() : null));
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결제 검증 실패");
+                }
+            }
+
+            if (loanService.getActiveLoanCountByUserId(userId) >= 6) {
+                log.warn("❌ 대출 가능 권수 초과 - 사용자: {}", userId);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("최대 5권까지 대출 가능합니다.");
+            }
+
+            loanService.createLoanWithPoints(loan);
+            return ResponseEntity.status(HttpStatus.CREATED).body("대출 완료");
+
+        } catch (Exception e) {
+            log.error("❌ 서버 오류 발생: {}", e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류 발생: " + e.getMessage());
+        }
+    }
 
     /********************* 토론 **********************/
     // ok
@@ -321,8 +376,6 @@ public class MainController {
         return "content/discussion-category";
     }
 
-
-
     // ok
     @GetMapping("/discussion/category/search")
     @ResponseBody
@@ -341,7 +394,6 @@ public class MainController {
 
         return discussionService.getDiscussionByBookTitle(pageInfo, decodedBookName);
     }
-
 
     // 토론 페이지
     // ok
@@ -373,7 +425,6 @@ public class MainController {
         // ✅ Fragment만 반환하도록 변경
         return "content/discussion-comment :: comment-section";
     }
-
 
     // ok
     @PostMapping("/discussion/{discussionId}/comment/add")
@@ -467,9 +518,6 @@ public class MainController {
         // 응답이 JSON 형식으로 반환되도록 명확히 설정
         return ResponseEntity.ok(response);
     }
-
-
-
 
     /********************************************/
     // 토론 페이지 생성

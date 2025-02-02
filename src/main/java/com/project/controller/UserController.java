@@ -129,8 +129,6 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-
-
     /************************************************/
     @GetMapping("/my-talk")
     public String get_my_discussion(Authentication auth, Model model, PageInfoDTO<DiscussionDTO> pageInfo) {
@@ -163,21 +161,6 @@ public class UserController {
             log.error(loanBookMap);
         }
         return "user/lendbook";
-    }
-
-
-    // 책 대출하기
-    @PostMapping("/lendbook/lend")
-    public String post_lendbook_lend(
-            Authentication auth,
-            @ModelAttribute LoanDTO lendbook,
-            @RequestParam Integer points
-    ){
-        if (auth != null) {
-            loanService.createLoanWithPoints(lendbook, points);
-            return "redirect:/user/lendbook";
-        }
-        return "redirect:/user/login";
     }
 
     /************************************************/

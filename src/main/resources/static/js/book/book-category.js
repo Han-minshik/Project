@@ -1,9 +1,6 @@
 const input = document.querySelector('.search-input');
 const button = document.querySelector('.search-button');
 
-const heartbutton = document.querySelector('.book-heart-button');
-
-
 // CSRF 토큰 추출
 const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
 
@@ -54,13 +51,6 @@ document.addEventListener('click', function(event) {
         if (confirm('찜하시겠습니까?')) {
             addToWishlist(event.target);  // 클릭된 버튼을 전달
         }
-    }
-});
-
-// 📌 대출하기 버튼을 눌렀을 때
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("book-rent-button")) {
-        confirm('대출하시겠습니까?');
     }
 });
 
@@ -136,6 +126,7 @@ const executeSearch = () => {
                                 <span>/</span>
                                 <span class="publisher">${book.publisher}</span>
                             </div>
+                            <input type="hidden" class="book-price-hidden" value="${book.price}">
                             <div class="rent-available">
                                 <span>대출가능여부: </span>
                                 <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
@@ -149,7 +140,11 @@ const executeSearch = () => {
                                     data-title="${book.title}">
                                     찜하기
                                 </button>
-                                <button class="book-rent-button">대출하기</button>
+                                <button class="book-rent-button"
+                                    data-isbn="${book.isbn}"
+                                    data-title="${book.title}">
+                                    대출하기
+                                </button>
                             </div>
                         </div>
                     `;
@@ -188,3 +183,94 @@ viewSizeSelect.addEventListener("change", () => {
     searchParams.set('size', viewSizeSelect.value);
     location.href = `/book/book-category?${searchParams.toString()}`;
 });
+
+/******************* 대출하기 버튼 *********************/
+document.addEventListener("DOMContentLoaded", function () {
+    const csrfToken = document.querySelector('meta[name=_csrf]')?.content;
+
+    document.addEventListener("click", async function (event) {
+        const button = event.target.closest(".book-rent-button");
+        if (!button) return;
+
+        if (!confirm('대출하시겠습니까?')) return;
+        IMP.init("imp25064853"); // 포트원 가맹점 코드
+
+        // 🔹 책 정보 가져오기 (템플릿에서 data 속성 및 hidden input 활용)
+        const bookInfo = button.closest(".book-info");
+        const bookIsbn = button.getAttribute("data-isbn");
+        const bookTitle = button.getAttribute("data-title");
+        const bookAuthor = bookInfo.querySelector(".author")?.textContent.trim();
+        const originalPrice = parseInt(bookInfo.querySelector(".book-price-hidden")?.value, 10) || 0;
+
+        const userPoints = await fetchUserPoints();
+        let maxDiscount = Math.floor(originalPrice / 10000) * 1000;
+        let usedPoints = Math.min(userPoints, maxDiscount);
+        let discountAmount = Math.min(originalPrice, Math.floor(usedPoints / 1000) * 10000);
+        let finalPrice = Math.max(0, originalPrice - discountAmount);
+
+        const loanObject = { bookTitle, bookAuthor, bookIsbn, originalPrice, discountAmount, finalPrice, usedPoints };
+        console.log("📌 대출 요청 데이터:", loanObject);
+
+        if (finalPrice === 0) {
+            console.log("🎉 결제 필요 없음 - 바로 대출 처리 진행");
+            return requestLoan(loanObject);
+        }
+
+        IMP.request_pay(
+            {
+                channelKey: "channel-key-744b24b7-9388-444b-8aa9-c38549be4242",
+                pg: "kakaopay",
+                merchant_uid: `loan_${bookIsbn}_${new Date().getTime()}`,
+                currency: "KRW",
+                name: `${bookTitle} 대출`,
+                amount: finalPrice
+            },
+            function (response) {
+                console.log("💳 [결제 응답 전체]:", response);
+
+                if (!response.success) {
+                    console.error("❌ 결제 실패:", response.error_msg);
+                    alert(`결제 실패: ${response.error_msg}`);
+                    return;
+                }
+
+                console.log("✅ impUid 확인:", response.imp_uid);
+                loanObject.impUid = response.imp_uid;
+                requestLoan(loanObject);
+            }
+        );
+    });
+
+    function requestLoan(requestBody) {
+        console.log("📤 /loan API 요청 본문:", requestBody);
+
+        fetch(`/loan`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": csrfToken
+            },
+            credentials: "include",
+            body: JSON.stringify(requestBody)
+        })
+            .then(response => response.text().then(data => ({ response, data })))
+            .then(({ response, data }) => {
+                console.log("📨 서버 응답 데이터:", data);
+            })
+            .catch(error => {
+                console.error("❌ 대출 요청 중 오류 발생:", error);
+            });
+    }
+
+    async function fetchUserPoints() {
+        try {
+            const response = await fetch("/points");
+            if (!response.ok) throw new Error("포인트 정보를 가져올 수 없습니다.");
+            return await response.json();
+        } catch (error) {
+            console.error("❌ 포인트 조회 오류:", error);
+            return 0;
+        }
+    }
+});
+

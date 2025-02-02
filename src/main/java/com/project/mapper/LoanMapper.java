@@ -12,7 +12,7 @@ import java.util.List;
 
 @Mapper
 public interface LoanMapper {
-    void createLoan(@Param("loan") LoanDTO loan);
+    void createLoan(LoanDTO loan);
     List<LoanDTO> getLoansByUserId(@Param("userId") String userId);
     void updateLoanStatus(@Param("id") Integer id, @Param("status") String status);
     List<LoanDTO> getAllLoans();
@@ -22,5 +22,7 @@ public interface LoanMapper {
     void increaseCopiesAvailable(@Param("bookIsbn") String bookIsbn); // Integer → String
     List<LoanDTO> getActiveLoanByUserAndBook(@Param("userId") String userId); // Integer → String
     LocalDateTime getFirstReturnDateByBookIsbn(@Param("isbn") String isbn);
+    Integer getUserPoints(@Param("userId") String userId);
+    void deductUserPoints(@Param("userId") String userId, @Param("points") Integer points);
 }
 
