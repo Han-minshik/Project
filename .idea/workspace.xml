@@ -4,46 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="대출 완료&#10;- 뷰어, css 합병 완">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/loginHome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/complaint.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/method.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/login-home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/loginHome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/book/book.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/loginHome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/complaint.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/method.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/method.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/write.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/method.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/user/method.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/login-home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/loginHome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,23 +291,7 @@
       <workItem from="1738457507871" duration="3549000" />
       <workItem from="1738469028036" duration="1201000" />
       <workItem from="1738495585032" duration="919000" />
-      <workItem from="1738497567397" duration="6069000" />
-    </task>
-    <task id="LOCAL-00037" summary="2025-01-23&#10;- adminService 에서 user 리스트 받아올 때 최근 일주일간 정보 수정한 유저도 model&#10;- adminService-getRecentlyUpdatedUsers 에서 isAdmin 삭제&#10;- MainController 모든 컴플레인 조회 get 생성&#10;- UserMapper, mapper.xml, service 모든 컴플레인 조회 생성">
-      <option name="closed" value="true" />
-      <created>1737643803425</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1737643803425</updated>
-    </task>
-    <task id="LOCAL-00038" summary="2025-01-23&#10;- adminService 에서 user 리스트 받아올 때 최근 일주일간 정보 수정한 유저도 model&#10;- adminService-getRecentlyUpdatedUsers 에서 isAdmin 삭제&#10;- MainController 모든 컴플레인 조회 get 생성&#10;- UserMapper, mapper.xml, service 모든 컴플레인 조회 생성">
-      <option name="closed" value="true" />
-      <created>1737643988669</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1737643988669</updated>
+      <workItem from="1738497567397" duration="7685000" />
     </task>
     <task id="LOCAL-00039" summary="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정">
       <option name="closed" value="true" />
@@ -716,14 +669,29 @@
       <option name="project" value="LOCAL" />
       <updated>1738496398086</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가">
+      <option name="closed" value="true" />
+      <created>1738503683475</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1738503683475</updated>
+    </task>
+    <task id="LOCAL-00087" summary="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가">
+      <option name="closed" value="true" />
+      <created>1738503700511</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1738503700511</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="테스트 중" />
     <MESSAGE value="홈 화면/책 목록 페이지 컨트롤러 완료" />
     <MESSAGE value="홈 화면/책 목록 페이지(제목 검색) 컨트롤러 완료" />
     <MESSAGE value="로그인하고 실행하는 페이지나 기타 컨트롤러 추가" />
@@ -748,6 +716,7 @@
     <MESSAGE value="대출 완료" />
     <MESSAGE value="대출 완료(css 합병 완)" />
     <MESSAGE value="대출 완료&#10;- 뷰어, css 합병 완" />
-    <option name="LAST_COMMIT_MESSAGE" value="대출 완료&#10;- 뷰어, css 합병 완" />
+    <MESSAGE value="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가" />
   </component>
 </project>
