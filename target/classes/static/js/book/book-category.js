@@ -237,6 +237,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("✅ impUid 확인:", response.imp_uid);
                 loanObject.impUid = response.imp_uid;
                 requestLoan(loanObject);
+                if(confirm("대여 목록으로 이동하시겠습니까?")) {
+                    location.href="/user/lendbook";
+                }
             }
         );
     });

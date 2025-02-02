@@ -323,6 +323,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("📌 impUid 포함된 대출 객체:", loanObject);
 
                 requestLoan(loanObject);
+                if(confirm("대여 목록으로 이동하시겠습니까?")) {
+                    location.href = "/user/lendbook";
+                }
             }
         );
     };

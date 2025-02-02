@@ -9,6 +9,7 @@
 	<title>책 목록</title>
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 	<link rel="stylesheet" href="../../static/css/book/book-category.css">
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script src="../../static/js/book/book-category.js" defer></script>
 </head>
 <body>
@@ -70,6 +71,8 @@
 					<span>/</span>
 					<span class="publisher" th:text="${book.publisher}">출판사</span>
 				</div>
+				<!-- 책 가격을 hidden input으로 추가 -->
+				<input type="hidden" class="book-price-hidden" th:value="${book.price}">
 				<div class="rent-available">
 					<span>대출가능여부: </span>
 					<span th:text="${book.copiesAvailable} > 0 ? '가능' : '불가'" class="rent-status">불가</span>
@@ -84,7 +87,9 @@
 					        th:data-title="${book.title}">
 						찜하기
 					</button>
-					<button class="book-rent-button">대출하기</button>
+					<button class="book-rent-button"
+					th:data-isbn="${book.isbn}" th:data-title="${book.title}"
+					th:data-price="${book.price}">대출하기</button>
 				</div>
 			</div>
 		</div>
