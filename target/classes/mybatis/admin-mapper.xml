@@ -60,4 +60,7 @@
     <delete id="deleteUser">
         DELETE user FROM user WHERE id = #{userId}
     </delete>
+    <update id="answerToUser">
+        UPDATE complain SET answer = #{answer} WHERE complain.no = #{complainNo}
+    </update>
 </mapper>

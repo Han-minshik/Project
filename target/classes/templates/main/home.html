@@ -16,10 +16,16 @@
 <div id="header-container"></div>
 
 <section class="banner">
-
-	<!--여기에 API를 넣을 구간-->
-	<h1>베스트 셀러</h1>
-	<p>오늘의 추천작은?</p>
+	<div class="swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" th:each="book : ${pBook2}">
+				<img th:src="${book.base64Image}" alt="Book Image">
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+	</div>
 </section>
 
 <section class="books">
@@ -28,22 +34,22 @@
 	<div class="book-list">
 		<div class="book">
 			<div class="box">
-				<h1 th:text="${pBook[0].getDetail()}"></h1>
+				<p th:text="${pBook[0].getDetail()}"></p>
 				<button type="button" class="link" onclick="location.href='../book/book-category'" )>대여하러가기</button>
 			</div>
 			<div class="box">
-				<h1>1퍼센트 부자들의 법칙: 성공과 부를 끌어당기는 비밀법칙</h1>
-				<p>토익상세: 돈을 어떻게 하면 많이 모을 수 있을까요? 저가 알아낸,,</p>
+				<p>1퍼센트 부자들의 법칙: 성공과 부를 끌어당기는 비밀법칙<br>
+				토익상세: 돈을 어떻게 하면 많이 모을 수 있을까요? 저가 알아낸,,</p>
 				<button type="button" class="link" onclick="location.href='../content/discussion-category'" )>나도 참여하기</button>
 			</div>
 			<div class="box">
-				<h1>이번주 토의좋아요 순위1</h1>
+				<p>이번주 토의좋아요 순위1</p>
 				<p>1퍼센트 부자들의 법칙: 성공과 부를 끌어당기는 비밀법칙의 토의에서</p>
 				<p>의견 A: 돈이야 평생 버는 거 아니겠습니까? 허나 좀 더 쉽게,,,, </p>
 
 			</div>
 			<div class="box">
-				<h1>이번주 토의좋아요 순위2</h1>
+				<p>이번주 토의좋아요 순위2</p>
 				<p>나미야 잡화점의 기적 토의에서</p>
 				<p>의견 B: 주거칩입은 맞는데 기이한 일을 겪었잖아? 거기에서 해결,,, </p>
 			</div>
@@ -88,6 +94,8 @@
 </section>
 
 <div id="footer-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 </body>
 </html>

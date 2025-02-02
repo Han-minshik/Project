@@ -62,7 +62,7 @@ function includeHTML(callback) {
         if (file) {
             /*make an HTTP request using the attribute value as the file name:*/
             xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = function () {
                 if (this.readyState == 4) {
                     if (this.status == 200) {
                         elmnt.innerHTML = this.responseText;
@@ -81,13 +81,13 @@ function includeHTML(callback) {
             return;
         }
     }
-    setTimeout(function() {
+    setTimeout(function () {
         callback();
     }, 0);
 }
 
-    // header와 footer를 불러오는 함수
-    function loadHTML(elementId, file) {
+// header와 footer를 불러오는 함수
+function loadHTML(elementId, file) {
     fetch(file)
         .then(response => response.text())
         .then(html => {
@@ -96,8 +96,30 @@ function includeHTML(callback) {
         .catch(err => console.warn('HTML 로딩 오류:', err));
 }
 
-    // 페이지 로드 시 header와 footer를 불러오기
-    window.onload = function() {
+// 페이지 로드 시 header와 footer를 불러오기
+window.onload = function () {
     loadHTML('header-container', '/header');  // 서버에서 반환된 HTML 삽입
     loadHTML('footer-container', '/footer');  // 서버에서 반환된 HTML 삽입
 };
+
+    document.addEventListener("DOMContentLoaded", function() {
+    new Swiper(".swiper", {
+        loop: true, // 무한 반복
+        autoplay: {
+            delay: 5000, // 5초마다 변경
+            disableOnInteraction: false
+        },
+        speed: 5000, // 전환 속도
+        effect: "slide", // 기본 슬라이드 효과 (부드러운 느낌)
+        slidesPerView: 1, // 한 번에 한 개의 이미지만 보이도록 설정
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        }
+    });
+});
+
