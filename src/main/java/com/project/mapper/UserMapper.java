@@ -1,8 +1,10 @@
 package com.project.mapper;
 
 import com.project.dto.*;
+import jakarta.validation.constraints.Pattern;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
 

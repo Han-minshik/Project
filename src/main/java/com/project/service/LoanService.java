@@ -9,6 +9,7 @@ import com.project.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class LoanService {
     @Autowired private LoanMapper loanMapper;
     @Autowired private UserMapper userMapper;
     @Autowired private BookMapper bookMapper;
+    @Autowired private PortOneService portOneService;
 
     /**
      * 특정 사용자의 대출 기록 조회
@@ -65,28 +67,53 @@ public class LoanService {
         return loanMapper.getAvailableCopies(bookIsbn);
     }
 
+    public Integer getUserPoints(String userId) {
+        return loanMapper.getUserPoints(userId);
+    }
+
     /**
-     * 포인트를 사용하여 대출 생성
+     * 포인트 차감 메서드 (포인트가 있다면 사용)
      */
-    public void createLoanWithPoints(LoanDTO loan, Integer points) {
+    public void deductUserPoints(String userId, Integer usedPoints) {
+        if (usedPoints != null && usedPoints > 0) {
+            log.info("🔹 사용자 {}의 포인트 {} 차감", userId, usedPoints);
+            loanMapper.deductUserPoints(userId, usedPoints);
+        }
+    }
+
+    @Transactional
+    public void createLoanWithPoints(LoanDTO loan) {
         Integer availableCopies = loanMapper.getAvailableCopies(loan.getBookIsbn());
         if (availableCopies == null || availableCopies <= 0) {
-            LocalDateTime nextReturnDate = loanMapper.getFirstReturnDateByBookIsbn(loan.getBookIsbn());
-            throw new IllegalArgumentException("현재 대출 가능한 복사본이 없습니다. 다음 반납 예상일: " + nextReturnDate);
+            throw new IllegalArgumentException("현재 대출 가능한 복사본이 없습니다.");
         }
 
-        Integer discountPrice = 0;
-        if (points != null && points > 0) {
-            Integer maxUsablePoints = (loan.getFinalPrice() / 10000) * 1000;
-            points = Math.min(points, maxUsablePoints);
-            discountPrice = (points / 1000) * 10000;
-            loan.setDiscountPrice(discountPrice);
-            loan.setFinalPrice(loan.getFinalPrice() - discountPrice);
-        }
+        String userId = loan.getUser().getId();
+        Integer userPoints = loanMapper.getUserPoints(userId);
 
+        // ✅ 포인트가 있으면 **무조건** 사용
+        Integer maxUsablePoints = (loan.getOriginalPrice() / 10000) * 1000; // 최대 사용할 수 있는 포인트
+        Integer usedPoints = Math.min(userPoints, maxUsablePoints); // 실제 사용할 포인트
+        Integer discountPrice = (usedPoints / 1000) * 10000; // 포인트를 반영한 할인 금액
+
+        // ✅ 최종 결제 금액: 포인트 적용 후 금액
+        loan.setDiscountPrice(discountPrice);
+        loan.setFinalPrice(Math.max(0, loan.getOriginalPrice() - discountPrice));
+
+        // ✅ 대출 데이터 저장
+        log.info("📌 대출 저장 (포인트 적용됨): " + loan);
         loanMapper.createLoan(loan);
+
+        // ✅ 책 재고 감소
         loanMapper.decreaseCopiesAvailable(loan.getBookIsbn());
+
+        // ✅ 포인트 차감 (포인트가 0이 아닌 경우만 실행)
+        if (usedPoints > 0) {
+            log.info("🔹 사용자 {}의 포인트 {} 차감", userId, usedPoints);
+            loanMapper.deductUserPoints(userId, usedPoints);
+        }
     }
+
 
     /**
      * 특정 사용자가 대출 중인 책 확인
@@ -124,7 +151,6 @@ public class LoanService {
                 ));
     }
 
-
     /**
      * 특정 책의 첫 번째 반납 예정일 조회
      */
@@ -157,5 +183,4 @@ public class LoanService {
             log.warn("사용자 {}에 대한 유효한 대출 기록이 존재하지 않습니다.", userId);
         }
     }
-
 }
