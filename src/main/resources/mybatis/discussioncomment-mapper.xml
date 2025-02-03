@@ -140,4 +140,7 @@
     <select id="getUnlikeCount" resultType="java.lang.Integer">
         SELECT `unlike` FROM discussion_comment WHERE id = #{commentId}
     </select>
+    <select id="getDiscussionCommentAuthor" resultType="java.lang.String">
+        SELECT discussion_comment.user_id FROM discussion_comment WHERE id = #{commentId}
+    </select>
 </mapper>

@@ -188,14 +188,27 @@ viewSizeSelect.addEventListener("change", () => {
 document.addEventListener("DOMContentLoaded", function () {
     const csrfToken = document.querySelector('meta[name=_csrf]')?.content;
 
+    /********** 🔹 로그인 여부 확인 함수 **********/
+    function isUserLoggedIn() {
+        return document.querySelector(".user-logged-in") !== null;
+    }
+
+    /********** 🔹 대출 버튼 클릭 이벤트 **********/
     document.addEventListener("click", async function (event) {
         const button = event.target.closest(".book-rent-button");
         if (!button) return;
 
+        // 🔹 로그인 여부 체크
+        if (!isUserLoggedIn()) {
+            alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+            window.location.href = "/user/login";
+            return;
+        }
+
         if (!confirm('대출하시겠습니까?')) return;
         IMP.init("imp25064853"); // 포트원 가맹점 코드
 
-        // 🔹 책 정보 가져오기 (템플릿에서 data 속성 및 hidden input 활용)
+        // 🔹 책 정보 가져오기
         const bookInfo = button.closest(".book-info");
         const bookIsbn = button.getAttribute("data-isbn");
         const bookTitle = button.getAttribute("data-title");
@@ -244,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     });
 
+    /********** 🔹 대출 요청 (포인트 포함하여 서버로 전송) **********/
     function requestLoan(requestBody) {
         console.log("📤 /loan API 요청 본문:", requestBody);
 
@@ -265,6 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    /********** 🔹 사용자 포인트 조회 **********/
     async function fetchUserPoints() {
         try {
             const response = await fetch("/points");

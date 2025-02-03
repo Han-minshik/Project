@@ -23,24 +23,30 @@ public class DiscussionCommentService {
 
     private static final int POINTS_THRESHOLD = 1000; // 포인트 지급 값
     private static final int COMMENT_COUNT_THRESHOLD = 10; // 댓글 10개 조건
+    private static final int COMMENT_LIKE_AND_UNLIKE_SUM = 50;
 
     public void addComment(Integer discussionId, String userId, String content) {
-        // 댓글 추가
+        boolean hasCommented = discussionCommentMapper.hasUserCommented(discussionId, userId);
+        if (hasCommented) {
+            throw new IllegalStateException("이미 해당 토론에 댓글을 작성했습니다.");
+        }
         discussionCommentMapper.addComment(discussionId, userId, content);
-
-        // 댓글 수 확인
         Integer commentCount = discussionCommentMapper.getCommentCountByDiscussion(discussionId);
-
-        // 댓글이 10개에 도달하면 포인트 부여
         if (commentCount == COMMENT_COUNT_THRESHOLD) {
             String authorId = discussionCommentMapper.getDiscussionAuthorById(discussionId); // 토론 작성자 ID 가져오기
             userMapper.addPointToUser(authorId, POINTS_THRESHOLD);
         }
     }
 
+
     public void addLike(Integer commentId, String userId) {
         if (discussionCommentMapper.hasUserVoted(userId, commentId) > 0) {
             throw new IllegalStateException("이미 투표한 댓글입니다.");
+        }
+        Integer sum = discussionCommentMapper.getTotalVotesByCommentId(commentId);
+        if(sum == COMMENT_LIKE_AND_UNLIKE_SUM) {
+            String user = discussionCommentMapper.getDiscussionCommentAuthor(commentId);
+            userMapper.addPointToUser(user, POINTS_THRESHOLD);
         }
         log.error("commentId: " + commentId + ", userId: " + userId);
         discussionCommentMapper.addUserVote(commentId, userId);
@@ -50,6 +56,11 @@ public class DiscussionCommentService {
     public void addUnlike(Integer commentId, String userId) {
         if (discussionCommentMapper.hasUserVoted(userId, commentId) > 0) {
             throw new IllegalStateException("이미 투표한 댓글입니다.");
+        }
+        Integer sum = discussionCommentMapper.getTotalVotesByCommentId(commentId);
+        if(sum == COMMENT_LIKE_AND_UNLIKE_SUM) {
+            String user = discussionCommentMapper.getDiscussionCommentAuthor(commentId);
+            userMapper.addPointToUser(user, POINTS_THRESHOLD);
         }
         log.error("commentId: " + commentId + ", userId: " + userId);
         discussionCommentMapper.addUserVote(commentId, userId);
@@ -81,12 +92,9 @@ public class DiscussionCommentService {
         }
         return pageInfo;
     }
-
-
     public DiscussionCommentDTO getFirstComment() {
         return discussionCommentMapper.getFirstComment();
     }
-
     public DiscussionCommentDTO getSecondComment() {
         return discussionCommentMapper.getSecondComment();
     }

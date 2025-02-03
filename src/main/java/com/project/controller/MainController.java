@@ -601,6 +601,6 @@ public class MainController {
             userService.createComplain(title, contents, auth.getName());
             return "user/write_QA";
         }
-        return "redirect:/user/login";
+        return "redirect:/user/complain";
     }
 }

@@ -89,8 +89,6 @@ public class DiscussionService {
         return pageInfo;
     }
 
-
-
     /**
      * isbn 으로 토론 조회
      */
@@ -109,8 +107,6 @@ public class DiscussionService {
         pageInfo.setElements(result);
         return pageInfo;
     }
-
-
 
     /**
      * 마이 페이지, 내가 작성한 토론 글 조회

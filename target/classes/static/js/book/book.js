@@ -269,10 +269,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const loanBtn = document.querySelector(".loan-btn");
     if (!loanBtn) return;
 
-    const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('content');
+    /********** 🔹 로그인 여부 확인 함수 **********/
+    function isUserLoggedIn() {
+        return document.querySelector(".user-logged-in") !== null;
+    }
 
-    /********** 🔹 대출 버튼 클릭 시 처리 **********/
+    /********** 🔹 대출 버튼 클릭 이벤트 **********/
     loanBtn.onclick = async () => {
+        if (!isUserLoggedIn()) {
+            alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+            window.location.href = "/user/login";
+            return;
+        }
+
         if (!confirm('대출하시겠습니까?')) return;
         IMP.init("imp25064853"); // 가맹점 코드 확인
 
