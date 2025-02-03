@@ -13,14 +13,25 @@
 <header th:fragment="header" id="main-header">
     <nav>
         <ul class="menu-bar">
-	        <li><div class="logo">Read Talk Enjoy</div></li>
-	        <li><a th:href="@{/book/book-category}" class="link">책</a></li>
-	        <li><a th:href="@{/discussion/category}">토론 게시판</a></li>
-	        <li><a th:href="@{/complain}">문의하기</a></li>
-	        <li>
+            <li><div class="logo">Read Talk Enjoy</div></li>
+            <li><a th:href="@{/book/book-category}" class="link">책</a></li>
+            <li><a th:href="@{/discussion/category}">토론 게시판</a></li>
+            <li><a th:href="@{/complain}">문의하기</a></li>
+            <li>
                 <div class="auth-buttons">
-	                <button sec:authorize="not authenticated" class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
-	                <button sec:authorize="not authenticated" class="login-button" style="float: right" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
+                    <!-- 비로그인 상태 -->
+                    <div sec:authorize="not authenticated">
+                        <button class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
+                        <button class="login-button" style="float: right" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
+                    </div>
+
+                    <!-- 로그인 상태 -->
+                    <div sec:authorize="authenticated">
+                        <a th:href="@{/user/my-page}">
+                            <img th:src="${user != null and user.getBase64Image() != null ? user.getBase64Image() : '../../static/img/예시 프로필.png'}"
+                                 alt="프로필 이미지">
+                        </a>
+                    </div>
                 </div>
             </li>
         </ul>

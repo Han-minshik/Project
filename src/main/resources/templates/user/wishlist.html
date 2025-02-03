@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/main-layout}"
 >
 <head>
 	<meta charset="UTF-8">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 	<title>나의 찜목록</title>
 	<link rel="stylesheet" href="../../static/css/content/wishlist.css" type="text/css">
-	<script src="../../static/js/content/wishlist.js" defer></script>
+
 </head>
 <body>
+
+<main layout:fragment="main">
+
 <h1>나의 찜 목록</h1>
-<header>
-	<div>
+	<div class="category">
 		<span>찜한 권수:</span>
 		<b th:text="${cartCount} + '건'">13건</b>
 	</div>
-</header>
-
 <hr/>
 
-<main>
+<content1>
 	<div class="wishlist" id="wishlist-container">
 		<!-- 책 목록이 있는 경우 -->
 		<ul class="book-list">
@@ -37,6 +39,7 @@
 			</li>
 		</ul>
 	</div>
+</content1>
 </main>
 </body>
 </html>

@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/main-layout}"
 >
 <head>
 	<meta charset="UTF-8">
@@ -13,7 +14,8 @@
 	<script src="../../static/js/book/book-category.js" defer></script>
 </head>
 <body>
-<main>
+<main layout:fragment="main">
+<main1>
 	<h1>책목록</h1>
 
 	<!-- 검색 섹션 -->
@@ -120,6 +122,7 @@
 		</li>
 	</ol>
 
+</main1>
 </main>
 </body>
 </html>

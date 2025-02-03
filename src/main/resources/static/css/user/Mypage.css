@@ -1,17 +1,10 @@
 @import url("../public/public.css");
 
-body{
+content1{
     position: relative;
     width: 1200px;
     margin: 120px auto;
     text-align: center;
-}
-
-img{
-    text-align: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
 }
 
 p{
@@ -24,7 +17,7 @@ p{
     width: 300px;
 }
 
-.menu-bar li{
+.bar li{
     background-color: #ffc946;
     border-radius: 30px;
     padding: 20px;
@@ -35,7 +28,7 @@ p{
     margin-right: auto;
 }
 
-.menu-bar a{
+.bar a{
     text-decoration: none;
     color: black;
 }

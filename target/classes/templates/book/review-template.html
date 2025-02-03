@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/main-layout}"
 >
 <head>
 	<meta charset="UTF-8">
@@ -11,6 +12,7 @@
 	<script src="../../static/js/book/book.js" defer></script>
 </head>
 <body>
+<main layout:fragment="main">
 <div class="my-opinion-chat">
 	<h3>리뷰 작성하기</h3>
 	<form method="post" class="my-opinion-form">
@@ -124,5 +126,6 @@
 		</a>
 	</li>
 </ol>
+</main>
 </body>
 </html>

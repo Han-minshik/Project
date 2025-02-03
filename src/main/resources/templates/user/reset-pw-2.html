@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/main-layout}"
 >
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,8 @@
 	<link rel="stylesheet" href="../../static/css/user/reset-pw-2.css">
 </head>
 <body>
-    <main>
+<main layout:fragment="main">
+    <main1>
         <h1>비밀번호 찾기</h1>
         <form th:action="@{/reset-pw-2}" method="post">
             <section class="user-info-revise-section">
@@ -37,6 +39,7 @@
                 <button type="submit">바꾸기</button>
             </section>
         </form>
-    </main>
+    </main1>
+</main>
 </body>
 </html>

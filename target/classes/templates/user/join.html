@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/main-layout}"
 >
 <head>
 	<meta charset="UTF-8">
@@ -12,7 +13,8 @@
 	<script src="../../static/js/user/join.js" defer></script>
 </head>
 <body>
-<main>
+<main layout:fragment="main">
+<main1>
 	<h1>회원가입</h1>
 	<form th:action="@{/user/join}" method="post">
 		<h2>필수정보</h2>
@@ -100,6 +102,7 @@
 			<button type="button">돌아가기</button>
 		</section>
 	</form>
+</main1>
 </main>
 </body>
 </html>

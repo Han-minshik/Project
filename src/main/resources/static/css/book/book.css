@@ -4,12 +4,12 @@ html{
     scroll-behavior: smooth;
 }
 
-main{
+main1{
     position: relative;
     width: 1200px;
     margin: 120px auto;
 }
-main img{
+main1 img{
     width: 90%;
     height: 90%;
 }
@@ -43,19 +43,19 @@ h2{
     }
 }
 
-main > article{
+main1 > article{
     display: flex;
 }
-main > article > section{
+main1 > article > section{
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
 }
-main > article > form{
+main1 > article > form{
     flex: 1;
 }
-main > article .main-image-container{
+main1 > article .main-image-container{
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -5,14 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/wishlist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/public/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/public/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/public/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/public/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/Mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/Mypage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/myTalk.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/myTalk.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/write.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-viewer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-viewer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/public/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/public/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/join.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/join.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lend.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw-2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/public/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/public/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/public/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/public/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +61,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -40,12 +75,12 @@
     &quot;assignee&quot;: &quot;Han-minshik&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Han-minshik/Project.git&quot;,
-    &quot;accountId&quot;: &quot;6fa5aaa8-080a-4004-a62a-aa1bbfbbe890&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Han-minshik/Project.git",
+    "accountId": "b87c3c74-6d0d-4ef9-b1b1-c30084171b1b"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -76,10 +111,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ProjectApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "main__윤수빈__0203",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/한민식/Desktop/software/팀 프로젝트/Project/src/main/resources/templates/layout",
+    "last_opened_file_path": "C:/Users/Administrator/Desktop/마지막/src/main/resources/static/css/public",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -97,11 +132,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\마지막\src\main\resources\static\css\public" />
+      <recent name="C:\Users\Administrator\Desktop\마지막\src\main\resources\templates\public" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\layout" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates" />
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\book" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\js\book" />
-      <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\static\css\book" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\한민식\Desktop\software\팀 프로젝트\Project\src\main\resources\templates\public" />
@@ -292,6 +327,7 @@
       <workItem from="1738469028036" duration="1201000" />
       <workItem from="1738495585032" duration="919000" />
       <workItem from="1738497567397" duration="7685000" />
+      <workItem from="1738538882978" duration="12257000" />
     </task>
     <task id="LOCAL-00039" summary="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정">
       <option name="closed" value="true" />

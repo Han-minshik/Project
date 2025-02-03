@@ -2,7 +2,8 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/main-layout}">
 <head>
 	<meta charset="UTF-8">
 	<title>문의 목록</title>
@@ -12,6 +13,8 @@
 
 <body>
 
+<main layout:fragment="main">
+
 <table>
 	<tr><td colspan="4"><h2>문의 사항이 있다면 자유롭게 남겨보세요.</h2></td></tr>
 	<tr class="header">
@@ -20,8 +23,7 @@
 		<td>제목</td>
 		<td >작성날짜</td>
 	</tr>
-</table>
-<table>
+
 	<!-- /user/complain 요청 시: myComplains 표시 -->
 	<tr th:if="${myComplains != null}" th:each="complain, iterStat : ${myComplains}">
 		<td th:text="${iterStat.count}"></td>
@@ -42,10 +44,11 @@
 	<tr th:if="${(myComplains == null or myComplains.isEmpty()) and (complains == null or complains.isEmpty())}">
 		<td colspan="4">등록된 문의가 없습니다.</td>
 	</tr>
-</table>
+</table><br>
+	<div class="container">
+		<button onclick="location.href='../user/write_QA'">글쓰기</button>
+	</div>
 
-<br>
-<button onclick="location.href='write_QA'">글쓰기</button>
-
+</main>
 </body>
 </html>

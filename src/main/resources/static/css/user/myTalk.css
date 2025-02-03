@@ -1,15 +1,9 @@
 @import url("../public/public.css");
 
-body{
-    position: relative;
-    width: 1200px;
-    margin: 120px auto;
-    text-align: center;
-}
 
 table {
     margin: auto;
-    width: 700px;
+    width: 900px;
     border-radius: 5px;
     border-collapse: collapse;
     border-top: none;
@@ -21,19 +15,22 @@ table {
 .table td, .table th {
     border-bottom: 1px lightgray solid;
     height: 30px;
-    font-size: 14px;
+    font-size: 20px;
+}
+.h2{
+    text-align: center;
 }
 .num {
     width: 50px;
 }
-.title {
+.title1 {
     width: 500px;
 }
 .body {
     text-align: center;
 }
-.body .title {
-    text-align: left;
+.title1 b {
+    text-align: center;
 }
 button {
     width: 100px;

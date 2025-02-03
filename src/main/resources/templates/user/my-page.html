@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/main-layout}"
 >
 <head>
 	<meta charset="UTF-8">
@@ -10,22 +11,22 @@
 	<link rel="stylesheet" href="../../static/css/user/Mypage.css" type="text/css">
 </head>
 <body>
-<header>
-	<img th:src="${user.getBase64Image()}" alt="img">
+<main layout:fragment="main">
+
+<content1>
 	<p th:text="${user.getId()}">나는야 나무 늘보</p>
 	<p th:text="${user.getEmail()}">woriah1234@daum.net</p>
-</header>
 
 <div class="jb-division-line"></div>
 
-<main>
-	<ul class="menu-bar">
+	<ul class="bar">
 		<li><a th:href="@{/user/my-talk}">나의 토론 게시글</a></li>
 		<li><a th:href="@{/user/lendbook}">대여</a></li>
 		<li><a th:href="@{/user/wishlist}">찜</a></li>
 		<li><a th:href="@{/user/pw-auth}">회원정보수정</a></li>
 		<li><a th:href="@{/user/my-talk}">문의사항</a></li>
 	</ul>
+</content1>
 </main>
 </body>
 </html>
