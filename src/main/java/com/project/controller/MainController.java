@@ -328,7 +328,18 @@ public class MainController {
     }
 
     @PostMapping("/loan")
-    public ResponseEntity<String> bookLoan(@RequestBody LoanDTO loan, @AuthenticationPrincipal UserDTO user) {
+    public ResponseEntity<String> bookLoan(
+            Authentication auth,
+            @RequestBody LoanDTO loan,
+            @AuthenticationPrincipal UserDTO user) {
+
+        // 1️⃣ 로그인 검증 (로그인하지 않은 경우)
+        if (auth == null || auth.getName() == null) {
+            log.warn("❌ 대출 요청 실패 - 로그인 필요");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("로그인해주세요.");
+        }
+
+        // 2️⃣ 유저 정보 설정
         loan.setUser(user);
         loan.setUserId(user.getId());
         String userId = user.getId();
@@ -336,15 +347,15 @@ public class MainController {
         log.info("📌 받은 LoanDTO 데이터: {}", loan);
         log.info("📌 받은 impUid: {}", loan.getImpUid());
 
-        if (loan.getFinalPrice() > 0 && (loan.getImpUid() == null || loan.getImpUid().isBlank())) {
-            log.error("❌ impUid 값이 비어 있습니다! LoanDTO: {}", loan);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결제 정보가 누락되었습니다.");
-        }
-
         try {
+            // 3️⃣ 결제 정보 검증 (유료 대출의 경우)
             if (loan.getFinalPrice() > 0) {
-                LoanDTO paymentInfo = portOneService.payments_authentication(loan.getImpUid());
+                if (loan.getImpUid() == null || loan.getImpUid().isBlank()) {
+                    log.error("❌ impUid 값이 비어 있습니다! LoanDTO: {}", loan);
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결제 정보가 누락되었습니다.");
+                }
 
+                LoanDTO paymentInfo = portOneService.payments_authentication(loan.getImpUid());
                 if (paymentInfo == null || !Objects.equals(paymentInfo.getFinalPrice(), loan.getFinalPrice())) {
                     log.error("❌ 결제 검증 실패: 요청 금액={}, 검증 금액={}",
                             loan.getFinalPrice(), (paymentInfo != null ? paymentInfo.getFinalPrice() : null));
@@ -352,11 +363,13 @@ public class MainController {
                 }
             }
 
+            // 4️⃣ 대출 가능 권수 초과 검증 (최대 5권까지 가능)
             if (loanService.getActiveLoanCountByUserId(userId) >= 6) {
                 log.warn("❌ 대출 가능 권수 초과 - 사용자: {}", userId);
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("최대 5권까지 대출 가능합니다.");
             }
 
+            // 5️⃣ 대출 생성 (포인트 적용)
             loanService.createLoanWithPoints(loan);
             return ResponseEntity.status(HttpStatus.CREATED).body("대출 완료");
 
