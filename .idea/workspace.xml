@@ -4,22 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="헤더, 홈 css, 구조 변경&#10;결제 연동 로그인 시만 작동하도록 수정">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionCommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionCommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionCommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussioncomment-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussioncomment-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main/login-home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionCommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionCommentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/login-home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/method.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +46,9 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -302,15 +317,7 @@
       <workItem from="1738505351388" duration="187000" />
       <workItem from="1738553018187" duration="5838000" />
       <workItem from="1738566411826" duration="6278000" />
-      <workItem from="1738573418916" duration="2086000" />
-    </task>
-    <task id="LOCAL-00042" summary="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정&#10;discussion-mapper 에서 토론의 모든 내용과 각 토론마다의 최신 댓글을 반환할 수 있도록 수정&#10;discussionService 에서 pageinfo 를 반환&#10;maincontroller 에서 모든 토론 내용과 각 토론마다의 최신 댓글을 model&#10;Controller PageInfo 작성">
-      <option name="closed" value="true" />
-      <created>1737711959011</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1737711959011</updated>
+      <workItem from="1738573418916" duration="8728000" />
     </task>
     <task id="LOCAL-00043" summary="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정&#10;discussion-mapper 에서 토론의 모든 내용과 각 토론마다의 최신 댓글을 반환할 수 있도록 수정&#10;discussionService 에서 pageinfo 를 반환&#10;maincontroller 에서 모든 토론 내용과 각 토론마다의 최신 댓글을 model&#10;Controller PageInfo 작성&#10;Controller 에서 count 구현">
       <option name="closed" value="true" />
@@ -696,14 +703,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738572683017</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk">
+      <option name="closed" value="true" />
+      <created>1738575754788</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1738575754788</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="로그인하고 실행하는 페이지나 기타 컨트롤러 추가" />
     <MESSAGE value="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환" />
     <MESSAGE value="합병 전 백업 파일" />
     <MESSAGE value="테스트 진행 중" />
@@ -728,6 +742,7 @@
     <MESSAGE value="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가" />
     <MESSAGE value="버튼 클릭 시 이동 및 자잘한 변경" />
     <MESSAGE value="헤더, 홈 css, 구조 변경&#10;결제 연동 로그인 시만 작동하도록 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="헤더, 홈 css, 구조 변경&#10;결제 연동 로그인 시만 작동하도록 수정" />
+    <MESSAGE value="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk" />
+    <option name="LAST_COMMIT_MESSAGE" value="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk" />
   </component>
 </project>

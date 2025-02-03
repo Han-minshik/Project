@@ -39,12 +39,12 @@
     </select>
     <!-- 평균 평점이 가장 높은 책 반환 -->
     <select id="getPopularBook" resultType="BookDTO">
-#         SELECT *
-#         FROM book b
-#                  JOIN review r ON b.isbn = r.book_isbn
-#         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
-#         ORDER BY AVG(r.rate) DESC
-        SELECT * FROM book ORDER BY created_at DESC LIMIT 1
+        SELECT b.*
+        FROM book b
+                 JOIN review r ON b.isbn = r.book_isbn
+        GROUP BY b.isbn
+        ORDER BY AVG(r.rate) DESC
+        LIMIT 1
     </select>
     <!-- 특정 책의 토론 주제 개수 조회 -->
     <select id="getDiscussionCountByBookIsbn" resultType="java.lang.Integer">
@@ -107,23 +107,21 @@
     </select>
     <!-- 평균 평점이 가장 높은 책 5권 반환 -->
     <select id="getPopularBook5" resultType="BookDTO">
-#         SELECT *
-#         FROM book b
-#                  JOIN review r ON b.isbn = r.book_isbn
-#         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
-#         ORDER BY AVG(r.rate) DESC
-#         LIMIT 5
-        SELECT * FROM book ORDER BY isbn LIMIT 5
+        SELECT b.*
+        FROM book b
+                 JOIN review r ON b.isbn = r.book_isbn
+        GROUP BY b.isbn
+        ORDER BY AVG(r.rate) DESC
+        LIMIT 5
     </select>
     <!-- 평균 평점이 가장 높은 책 2권 반환 -->
     <select id="getPopularBook2" resultType="BookDTO">
-#         SELECT *
-#         FROM book b
-#                  JOIN review r ON b.isbn = r.book_isbn
-#         GROUP BY b.isbn, b.title, b.author, b.publisher, b.price, b.detail, b.category
-#         ORDER BY AVG(r.rate) DESC
-#         LIMIT 2
-        SELECT * FROM book ORDER BY isbn DESC LIMIT 2
+        SELECT b.*
+        FROM book b
+                 JOIN review r ON b.isbn = r.book_isbn
+        GROUP BY b.isbn
+        ORDER BY AVG(r.rate) DESC
+        LIMIT 2
     </select>
     <!-- 유저 카트 조회 -->
     <select id="selectCartsByUser" resultMap="cartResultMap">

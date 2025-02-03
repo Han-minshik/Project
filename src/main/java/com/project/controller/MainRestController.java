@@ -46,25 +46,4 @@ public class MainRestController {
 
 
     /********************************************************/
-
-    @PostMapping("/discussion/add")
-    public ResponseEntity<Void> post_discussion_add (
-            Authentication auth,
-            @RequestBody DiscussionDTO discussion
-    ){
-        log.info("controller - discussion: " + discussion);
-        if(auth != null){
-            String userId = auth.getName();
-            discussionService.createDiscussion(
-                    discussion.getBookTitle(),
-                    discussion.getTopic(),
-                    discussion.getContents(),
-                    userId,
-                    discussion.getBookIsbn()
-            );
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
-
 }

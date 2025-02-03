@@ -43,28 +43,40 @@ public class DiscussionCommentService {
         if (discussionCommentMapper.hasUserVoted(userId, commentId) > 0) {
             throw new IllegalStateException("이미 투표한 댓글입니다.");
         }
-        Integer sum = discussionCommentMapper.getTotalVotesByCommentId(commentId);
-        if(sum == COMMENT_LIKE_AND_UNLIKE_SUM) {
-            String user = discussionCommentMapper.getDiscussionCommentAuthor(commentId);
-            userMapper.addPointToUser(user, POINTS_THRESHOLD);
-        }
-        log.error("commentId: " + commentId + ", userId: " + userId);
+
+        // 좋아요 증가
         discussionCommentMapper.addUserVote(commentId, userId);
         discussionCommentMapper.incrementLike(commentId);
+
+        // 현재 찬성/반대 총합 조회
+        Integer totalVotes = discussionCommentMapper.getTotalVotesByCommentId(commentId);
+
+        // 포인트 지급 조건 확인 (찬성 + 반대 합이 50일 경우)
+        if (totalVotes == COMMENT_LIKE_AND_UNLIKE_SUM) {
+            String authorId = discussionCommentMapper.getDiscussionCommentAuthor(commentId);
+            userMapper.addPointToUser(authorId, POINTS_THRESHOLD);
+            log.info("포인트 지급 완료: " + POINTS_THRESHOLD + "점, 사용자: " + authorId);
+        }
     }
 
     public void addUnlike(Integer commentId, String userId) {
         if (discussionCommentMapper.hasUserVoted(userId, commentId) > 0) {
             throw new IllegalStateException("이미 투표한 댓글입니다.");
         }
-        Integer sum = discussionCommentMapper.getTotalVotesByCommentId(commentId);
-        if(sum == COMMENT_LIKE_AND_UNLIKE_SUM) {
-            String user = discussionCommentMapper.getDiscussionCommentAuthor(commentId);
-            userMapper.addPointToUser(user, POINTS_THRESHOLD);
-        }
-        log.error("commentId: " + commentId + ", userId: " + userId);
+
+        // 반대 증가
         discussionCommentMapper.addUserVote(commentId, userId);
         discussionCommentMapper.incrementUnlike(commentId);
+
+        // 현재 찬성/반대 총합 조회
+        Integer totalVotes = discussionCommentMapper.getTotalVotesByCommentId(commentId);
+
+        // 포인트 지급 조건 확인 (찬성 + 반대 합이 50일 경우)
+        if (totalVotes == COMMENT_LIKE_AND_UNLIKE_SUM) {
+            String authorId = discussionCommentMapper.getDiscussionCommentAuthor(commentId);
+            userMapper.addPointToUser(authorId, POINTS_THRESHOLD);
+            log.info("포인트 지급 완료: " + POINTS_THRESHOLD + "점, 사용자: " + authorId);
+        }
     }
 
     public Integer getLikeCount(Integer commentId) {

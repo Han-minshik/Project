@@ -8,7 +8,6 @@ const csrfMetaTag = document.querySelector('meta[name="_csrf"]');
 const csrfHeaderMetaTag = document.querySelector('meta[name="_csrf_header"]');
 
 const csrfToken = csrfMetaTag ? csrfMetaTag.getAttribute('content') : null;
-const csrfHeader = csrfHeaderMetaTag ? csrfHeaderMetaTag.getAttribute('content') : null;
 
 
 document.addEventListener("DOMContentLoaded", function () {

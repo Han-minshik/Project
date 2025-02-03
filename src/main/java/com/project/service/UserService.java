@@ -223,7 +223,6 @@ public class UserService {
         }
     }
 
-
     public void createComplain(String title, String contents, String userId) {
         ComplainDTO complain = new ComplainDTO();
         complain.setTitle(title);
@@ -261,5 +260,9 @@ public class UserService {
 
     public List<ComplainDTO> getMyComplains(String userId) {
         return userMapper.getMyComplains(userId);
+    }
+
+    public ComplainDTO getComplainByNo(Integer no) {
+        return userMapper.getComplainByNo(no);
     }
 }

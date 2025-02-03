@@ -9,23 +9,18 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<link rel="stylesheet" href="../../static/css/user/myTalk.css" type="text/css">
-	<script src="../../static/js/user/method.js" defer></script>
 </head>
-
-
 <body>
-
 <main layout:fragment="main">
-
 	<table class="table">
 		<tr><td colspan="2"><h2>My Discussions</h2></td></tr>
 		<tr class="header">
 			<td class="title">제목</td>
 			<td>작성날짜</td>
 		</tr>
-		<tr class="title1">
-			<td class="content2"><b th:text="${myDiscussion[0].getTopic()}">title : </b></td>
-			<td class="day"><b th:text="${myDiscussion[0].getCreatedAt()}">작성날짜 : </b></td>
+		<tr class="title1" th:each="discussion, iterStat : ${myDiscussion}">
+			<td class="content2"><b th:text="${discussion.getTopic()}">title : </b></td>
+			<td class="day"><b th:text="${discussion.getCreatedAt()}">작성날짜 : </b></td>
 		</tr>
 	</table>
 </main>

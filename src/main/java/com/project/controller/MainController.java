@@ -557,31 +557,33 @@ public class MainController {
         return "user/write_talk";
     }
 
-    @GetMapping("/write_QA")
-    public String writeQA() {
+    @GetMapping("/complain/add")
+    public String get_complain_add() {
         return "user/write_QA";
     }
 
-//    @PostMapping("/discussion/add")
-//    public String post_discussion_add (
-//            Authentication auth,
-//            @RequestBody DiscussionDTO discussion
-//
-//    ){
-//        if(auth != null){
-//            String userId = auth.getName();
-//            discussionService.createDiscussion(
-//                    discussion.getBookTitle(),
-//                    discussion.getTopic(),
-//                    discussion.getContents(),
-//                    userId,
-//                    discussion.getBookIsbn()
-//            );
-//            return "content/discussion/category";
-//        }
-//        return "redirect:/user/login";
-//
-//    }
+    @PostMapping("/discussion/add")
+    public String postDiscussionAdd(
+            Authentication auth,
+            @ModelAttribute DiscussionDTO discussion
+    ) {
+        if (auth == null) {
+            return "redirect:/user/login"; // 로그인되지 않은 사용자는 로그인 페이지로 리디렉션
+        }
+
+        String userId = auth.getName(); // 현재 로그인한 사용자 ID 가져오기
+
+        discussionService.createDiscussion(
+                discussion.getBookTitle(),
+                discussion.getTopic(),
+                discussion.getContents(),
+                userId,
+                discussion.getBookIsbn()
+        );
+
+        return "redirect:/discussion/category"; // 저장 후 토론 카테고리 페이지로 이동
+    }
+
 
     /******************* 컴플레인(문의사항) ********************/
     @GetMapping("/complain")
@@ -592,15 +594,25 @@ public class MainController {
     }
 
     @PostMapping("/complain/add")
-    public String post_complain_add (
+    public String postComplainAdd(
             Authentication auth,
-            @RequestParam String title,
-            @RequestParam String contents
-    ){
-        if(auth != null){
-            userService.createComplain(title, contents, auth.getName());
-            return "user/write_QA";
+            @ModelAttribute ComplainDTO complainDTO
+    ) {
+        if (auth == null) {
+            return "redirect:/user/login"; // 로그인되지 않은 사용자는 로그인 페이지로 이동
         }
-        return "redirect:/user/complain";
+        String userId = auth.getName(); // 현재 로그인한 사용자 ID 가져오기
+        userService.createComplain(complainDTO.getTitle(), complainDTO.getContents(), userId);
+        return "redirect:/complain"; // 저장 후 문의 목록 페이지로 이동
+    }
+
+    @GetMapping("/complain/detail/{no}")
+    public String getComplainDetail(@PathVariable("no") Integer no, Model model) {
+        ComplainDTO complain = userService.getComplainByNo(no);
+        if (complain == null) {
+            return "redirect:/complain"; // 문의가 존재하지 않으면 목록 페이지로 리디렉션
+        }
+        model.addAttribute("complain", complain);
+        return "user/complain-detail"; // 상세 페이지로 이동
     }
 }

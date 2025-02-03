@@ -20,7 +20,7 @@ public class DiscussionService {
     /**
      * 새로운 토론 주제를 생성
      */
-    public DiscussionDTO createDiscussion(String bookTitle, String topic, String contents, String userId, String bookIsbn) {
+    public void createDiscussion(String bookTitle, String topic, String contents, String userId, String bookIsbn) {
         byte[] bookImage = discussionMapper.getBookImageByTitle(bookTitle);
         if (bookImage == null) {
             throw new IllegalArgumentException("책 제목에 해당하는 이미지를 찾을 수 없습니다.");
@@ -36,8 +36,6 @@ public class DiscussionService {
 
         log.info("service - discussion" + discussion);
         discussionMapper.createDiscussion(discussion);
-
-        return discussion;
     }
 
     /**
