@@ -40,6 +40,14 @@ public class MainController {
     @Autowired private LoanService loanService;
     @Autowired private PortOneService portOneService;
 
+    @ModelAttribute("user")
+    public UserDTO getUser(@AuthenticationPrincipal UserDTO user) {
+        if (user == null) {
+            return null; // 로그인하지 않은 사용자
+        }
+        return userService.find_user(user.getUsername());
+    }
+
     @GetMapping("/")
     public String get_home (
             Model model,
@@ -534,6 +542,11 @@ public class MainController {
     public String get_discussion_add (
     ){
         return "user/write_talk";
+    }
+
+    @GetMapping("/write_QA")
+    public String writeQA() {
+        return "user/write_QA";
     }
 
 //    @PostMapping("/discussion/add")

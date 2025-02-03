@@ -109,6 +109,7 @@ body {
     position: relative;
     top: -100px;
     left: -130px;
+    text-align: center;
 }
 
 .book button {
@@ -155,7 +156,7 @@ body {
 
 .discussions p {
     flex: 1;
-    font-size: 100px;
+    font-size: 80px;
 }
 
 .books h2 {

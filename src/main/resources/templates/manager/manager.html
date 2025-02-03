@@ -103,7 +103,7 @@
 	<table class="checklist5">
 		<tbody>
 		<tr th:each="complain : ${complains}" th:if="${complain.answer == null}" th:data-complain-no="${complain.no}">
-		<td colspan="3">
+			<td colspan="3">
 				<ul>
 					<li class="comment-trigger" th:text="${complain.userId}"></li>
 					<li class="comment-trigger" th:text="${complain.title}">문의 제목</li>

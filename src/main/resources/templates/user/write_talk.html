@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/main-layout}"
 >
 <head>
 	<meta charset="UTF-8">
@@ -12,6 +13,7 @@
 	<script src="../../static/js/user/write-talk.js" defer></script>
 </head>
 <body>
+<main layout:fragment="main">
 <form th:action="@{/discussion/add}" method="post">
 	<table>
 		<tr><td><h2>토론 글쓰기</h2></td></tr>
@@ -29,5 +31,6 @@
 		</tr>
 	</table>
 </form>
+</main>
 </body>
 </html>

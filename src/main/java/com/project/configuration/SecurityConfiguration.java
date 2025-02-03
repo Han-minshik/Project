@@ -54,8 +54,7 @@ public class SecurityConfiguration {
                     .clearAuthentication(true)
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
-                    .logoutSuccessUrl("/")
-                    .permitAll();
+                    .logoutSuccessUrl("/");
         });
 
         http.oauth2Login(configure -> {

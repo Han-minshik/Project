@@ -36,7 +36,7 @@
     </select>
     <!-- 가장 최근의 토론 주제 -->
     <select id="getCurrentDiscussion" resultType="DiscussionDTO">
-        SELECT topic, discussion.contents FROM discussion
+        SELECT * FROM discussion
         ORDER BY created_at DESC
         LIMIT 1
     </select>

@@ -5,26 +5,40 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
 <head>
-    <meta charset="UTF-8">
-    <title>홈페이지 헤더</title>
-    <link rel="stylesheet" href="../../static/css/public/header.css">
+	<meta charset="UTF-8">
+	<title>홈페이지 헤더</title>
+	<link rel="stylesheet" href="../../static/css/public/header.css">
 </head>
 <body>
 <header th:fragment="header" id="main-header">
-    <nav>
-        <ul class="menu-bar">
-	        <li><div class="logo">Read Talk Enjoy</div></li>
-	        <li><a th:href="@{/book/book-category}" class="link">책</a></li>
-	        <li><a th:href="@{/discussion/category}">토론 게시판</a></li>
-	        <li><a th:href="@{/complain}">문의하기</a></li>
-	        <li>
-                <div class="auth-buttons">
-	                <button sec:authorize="not authenticated" class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
-	                <button sec:authorize="not authenticated" class="login-button" style="float: right" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
-                </div>
-            </li>
-        </ul>
-    </nav>
+	<nav>
+		<ul class="menu-bar">
+			<li><a class="logo" th:href="@{/}">Read Talk Enjoy</a></li>
+			<li><a th:href="@{/book/book-category}" class="link">책</a></li>
+			<li><a th:href="@{/discussion/category}">토론 게시판</a></li>
+			<li><a th:href="@{/complain}">문의하기</a></li>
+			<li>
+				<div class="auth-buttons">
+					<!-- 비로그인 상태 -->
+					<div sec:authorize="not authenticated">
+						<button class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
+						<button class="login-button" style="float: right" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
+					</div>
+
+					<!-- 로그인 상태 -->
+					<div sec:authorize="authenticated">
+						<ul>
+							<li><a th:href="@{/user/my-page}"><i class="bi bi-search"></i></a></li>
+						</ul>
+						<form sec:authorize="authenticated" name="logout-form" th:action="@{/user/logout}" method="post">
+							<button><i class="bi bi-door-open"></i></button>
+						</form>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</nav>
 </header>
+
 </body>
 </html>

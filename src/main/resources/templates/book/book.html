@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
+      layout:decorate="~{/layout/main-layout}">
 <head>
 	<meta charset="UTF-8">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
@@ -14,7 +14,7 @@
 	<script src="../../static/js/book/book.js" defer></script>
 </head>
 <body>
-<main>
+<main layout:fragment="main">
 	<nav id="category-nav">
 		<ol>
 			<li th:each="category: ${categories}">
