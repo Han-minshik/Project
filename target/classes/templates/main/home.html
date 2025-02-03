@@ -49,7 +49,11 @@
 				</div>
 				<div class="box">
 					<p th:text="${cDiscussion[0].contents}">1퍼센트 부자들의 법칙: 성공과 부를 끌어당기는 비밀법칙</p>
-					<button type="button" class="link"  th:onclick="|location.href='@{/discussion/{discussionId}(discussionId=${cDiscussion[0].id})}'|">나도 참여하기</button>
+					<button type="button" class="link"
+					        th:data-url="@{/discussion/{discussionId}(discussionId=${cDiscussion[0].id})}"
+					        onclick="location.href=this.getAttribute('data-url')">
+						나도 참여하기
+					</button>
 				</div>
 				<div class="box">
 					<p th:text="${fComment.content}">이번주 토의좋아요 순위1</p>
