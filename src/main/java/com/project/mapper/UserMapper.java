@@ -19,7 +19,7 @@ public interface UserMapper {
     void updateUser(UserDTO userDTO);
     void deleteUser(@Param("id") String id);
     List<ReviewDTO> getReviewsByUserId(@Param("userId") String userId);
-    void insertSnsInfo(@Param("snsInfo") SnsInfoDTO snsInfo);
+    void insertSnsInfo(SnsInfoDTO snsInfo);
     void insertReview(@Param("review") ReviewDTO review);
     void addPointToUser(@Param("userId") String userId, @Param("points") Integer points);
     String getTopDiscussionUser();

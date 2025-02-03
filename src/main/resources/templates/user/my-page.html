@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-	<img th:src="${user.getBase64Image()}" alt="img">
+	<img th:src="${user.base64Image}" alt="img">
 	<p th:text="${user.getId()}">나는야 나무 늘보</p>
 	<p th:text="${user.getEmail()}">woriah1234@daum.net</p>
 </header>

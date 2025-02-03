@@ -80,7 +80,7 @@ public class EmailService {
                 code.append(characters.charAt(index));
             }
 
-            String passwordLink = "localhost:8080/reset-pw-2?code=" + code;
+            String passwordLink = "http://localhost:8080/reset-pw-2?code=" + code;
             session.setAttribute("code", code.toString());
             session.setAttribute("id", id);
             context.setVariable("passwordLink", passwordLink);

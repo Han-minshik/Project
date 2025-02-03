@@ -4,37 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk">
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="security 제외 웬만한 모든 기능과 포인트 지급 로직">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DiscussionMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionCommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DiscussionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussioncomment-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussioncomment-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/complain.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/user/method.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/SecurityOAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/SecurityOAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/user-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/user-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/user/myTalk.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/user/myTalk.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/method.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/discussion-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/complain.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/user/complain.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,15 +304,7 @@
       <workItem from="1738505351388" duration="187000" />
       <workItem from="1738553018187" duration="5838000" />
       <workItem from="1738566411826" duration="6278000" />
-      <workItem from="1738573418916" duration="8728000" />
-    </task>
-    <task id="LOCAL-00043" summary="2025-01-24&#10;쿼리문 alias 수정&#10;bookdto 에서 image 바이트 배열 반환할 때 base64로 변환해서 반환하도록 수정&#10;maincontroller 에서 전체 토론 반환할 때 각 토론의 최근에 작성된 댓글도 반환하도록 수정&#10;discussion-mapper 에서 토론의 모든 내용과 각 토론마다의 최신 댓글을 반환할 수 있도록 수정&#10;discussionService 에서 pageinfo 를 반환&#10;maincontroller 에서 모든 토론 내용과 각 토론마다의 최신 댓글을 model&#10;Controller PageInfo 작성&#10;Controller 에서 count 구현">
-      <option name="closed" value="true" />
-      <created>1737715135988</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1737715135988</updated>
+      <workItem from="1738573418916" duration="12218000" />
     </task>
     <task id="LOCAL-00044" summary="홈 화면/책 목록 페이지 컨트롤러 완료">
       <option name="closed" value="true" />
@@ -711,14 +690,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738575754788</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="security 제외 웬만한 모든 기능과 포인트 지급 로직">
+      <option name="closed" value="true" />
+      <created>1738582297228</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1738582297228</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환" />
     <MESSAGE value="합병 전 백업 파일" />
     <MESSAGE value="테스트 진행 중" />
     <MESSAGE value="home&#10;- 타임리프(동적 링크 포함)&#10;- 헤더, 푸터 분리&#10;&#10;book/book-category : 완료&#10;&#10;book/isbn&#10;- 리뷰 추가 창 필요(review-template)&#10;(book 템플릿에는 있는데 리뷰 템플릿으로 옮겨주세요)&#10;- 카테고리 문자열 구현&#10;- 로그인했을 때 로그인 후 대출을 해보세요 삭제&#10;&#10;나의 찜 목록&#10;- sort 정렬 삭제&#10;- 반환된 값들 디자인만 &#10;&#10;discussion_category &#10;- 토론 글쓰기 버튼 추가&#10;&#10;lendbook&#10;- sort 정렬 삭제&#10;- 디자인&#10;&#10;complain &#10;- 디자인&#10;&#10;write_QA&#10;- 디자인 &#10;- postmapping controller 제작해야 됨&#10;&#10;write_talk&#10;- 양식&#10;- 디자인&#10;&#10;&#10;content-template&#10;- 상품 리뷰 템플릿 -&gt; 토론 댓글 작성 템플릿 &#10;(구조, 디자인) &#10;&#10;my-talk&#10;- 디자인&#10;- 타임리프&#10;- 들어가야할 내용 보고 수정&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;&#10;mypage&#10;완료&#10;&#10;book/isbn&#10;- 토론하러 가기 버튼 클릭시 해당 책의 제목을 가진 토론 페이지로 이동 : 완료&#10;- 찜하기 : 완료&#10;- 리뷰 정렬 : 완료&#10;&#10;discussion/category&#10;- 책 보러가기, 토론 참여하러 가기 : 완료&#10;&#10;&#10;테스트 진행 예정&#10;- 대여했을 때 결제 연동 -&gt; 결제 성공하면 lendbook 페이지로 &#10;- inforevise&#10;- join&#10;- email&#10;- discussion/discussionId 조회시 템플릿 &#10;- resetPw&#10;- findPw&#10;- findId" />
@@ -743,6 +729,7 @@
     <MESSAGE value="버튼 클릭 시 이동 및 자잘한 변경" />
     <MESSAGE value="헤더, 홈 css, 구조 변경&#10;결제 연동 로그인 시만 작동하도록 수정" />
     <MESSAGE value="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk" />
-    <option name="LAST_COMMIT_MESSAGE" value="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk" />
+    <MESSAGE value="security 제외 웬만한 모든 기능과 포인트 지급 로직" />
+    <option name="LAST_COMMIT_MESSAGE" value="security 제외 웬만한 모든 기능과 포인트 지급 로직" />
   </component>
 </project>

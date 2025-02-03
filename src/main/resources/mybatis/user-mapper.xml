@@ -3,6 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.mapper.UserMapper">
+    <resultMap id="userWithSnsInfoMap" type="UserDTO" autoMapping="true">
+        <id property="id" column="id" />
+        <collection property="snsInfo" ofType="com.project.dto.SnsInfoDTO" javaType="list">
+            <id property="id" column="sns_id" />
+            <result property="name" column="name" />
+            <result property="connectedDate" column="connected_date" />
+        </collection>
+    </resultMap>
     <!-- 유저 등록 -->
     <insert id="createUser">
         INSERT INTO user (id, password, ci, tel, email,
@@ -16,7 +24,7 @@
         SELECT * FROM user WHERE id = #{id}
     </select>
     <!-- ci로 사용자 조회 -->
-    <select id="getUserByCi" resultType="UserDTO">
+    <select id="getUserByCi" resultType="UserDTO" resultMap="userWithSnsInfoMap">
         SELECT *, USER.id AS user_id, SNS_INFO.id AS sns_id
         FROM user USER
                  LEFT OUTER JOIN sns_info SNS_INFO ON USER.id = SNS_INFO.user_id

@@ -18,7 +18,8 @@
 			<td class="title">제목</td>
 			<td>작성날짜</td>
 		</tr>
-		<tr class="title1" th:each="discussion, iterStat : ${myDiscussion}">
+		<tr class="title1" th:each="discussion, iterStat : ${myDiscussion}"
+		th:onclick="|location.href='@{/discussion/{discussionId}(discussionId=${discussion.id})}'|">
 			<td class="content2"><b th:text="${discussion.getTopic()}">title : </b></td>
 			<td class="day"><b th:text="${discussion.getCreatedAt()}">작성날짜 : </b></td>
 		</tr>

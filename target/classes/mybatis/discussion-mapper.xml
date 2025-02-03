@@ -16,7 +16,7 @@
                    DEFAULT,
                    DEFAULT,
                    #{userId},
-                   #{bookIsbn},
+                   (SELECT isbn FROM book WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1),
                    (SELECT image FROM book WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1)
                )
     </insert>
@@ -92,7 +92,6 @@
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
-
     <!-- 토론 생성할 때 제목으로 이미지를 반환 -->
     <select id="getBookImageByTitle">
         SELECT image FROM book WHERE title LIKE CONCAT('%', REPLACE(#{title}, ' ', ''), '%')

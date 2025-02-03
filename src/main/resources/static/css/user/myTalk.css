@@ -32,23 +32,8 @@ table {
 .title1 b {
     text-align: center;
 }
-button {
-    width: 100px;
-    height: 40px;
-    font-size: 15px;
-    border: 0;
-    outline: 1.5px rgb(68, 136, 244) solid;
-    border-radius: 5px;
-    padding-left: 10px;
-    background-color: rgb(164, 199, 255);
-}
-button:active {
-    width: 100px;
-    height: 40px;
-    font-size: 15px;
-    border: 0;
-    border-radius: 5px;
-    outline: 1.5px rgb(27, 76, 155) solid;
-    padding-left: 10px;
-    background-color: rgb(68, 136, 244);
+
+.title1:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
 }
