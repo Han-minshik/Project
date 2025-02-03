@@ -1078,7 +1078,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="293" parent="1" name="project">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-02-01.19:03:22</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-02-03.15:05:24</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="294" parent="1" name="sys">
@@ -1325,7 +1325,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="344" parent="303" name="no">
-      <AutoIncrement>56</AutoIncrement>
+      <AutoIncrement>59</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1381,7 +1381,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="355" parent="305" name="no">
-      <AutoIncrement>9</AutoIncrement>
+      <AutoIncrement>11</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1422,7 +1422,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="363" parent="306" name="id">
-      <AutoIncrement>12</AutoIncrement>
+      <AutoIncrement>13</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1480,7 +1480,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="374" parent="307" name="id">
-      <AutoIncrement>34</AutoIncrement>
+      <AutoIncrement>38</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1539,7 +1539,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="385" parent="308" name="id">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1811,7 +1811,7 @@ book_isbn</ColNames>
     <column id="437" parent="313" name="role">
       <NotNull>1</NotNull>
       <Position>10</Position>
-      <StoredType>enum(&apos;일반&apos;, &apos;관리자&apos;)|0e</StoredType>
+      <StoredType>enum(&apos;USER&apos;, &apos;ADMIN&apos;)|0e</StoredType>
     </column>
     <column id="438" parent="313" name="nickname">
       <Position>11</Position>
