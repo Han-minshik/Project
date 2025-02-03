@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-	<img th:src="${user.getBase64Image()}" alt="img">
+	<img th:src="${user.base64Image}" alt="img">
 	<p th:text="${user.getId()}">나는야 나무 늘보</p>
 	<p th:text="${user.getEmail()}">woriah1234@daum.net</p>
 </header>
@@ -23,8 +23,8 @@
 		<li><a th:href="@{/user/my-talk}">나의 토론 게시글</a></li>
 		<li><a th:href="@{/user/lendbook}">대여</a></li>
 		<li><a th:href="@{/user/wishlist}">찜</a></li>
-		<li><a th:href="@{/user/info-revise}">회원정보수정</a></li>
-		<li><a th:href="@{/user/my-talk}">문의사항</a></li>
+		<li><a th:href="@{/user/pw-auth}">회원정보수정</a></li>
+		<li><a th:href="@{/user/complain}">문의사항</a></li>
 	</ul>
 </main>
 </body>

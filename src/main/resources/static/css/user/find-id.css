@@ -19,7 +19,80 @@ main h1{
     border-bottom: 5px solid black;
 }
 /*************************************/
+form{
+    position: relative;
+    background-color: transparent;
+    font-size: var(--font-size-normal);
+    text-align: center;
+    padding: 60px 80px;
+    width: 800px;
+}
+form span{
+    text-align: left;
+    width: 250px;
+    justify-content: center;
+}
+form input{
+    font-size: var(--font-size-small);
+    /*width: 100%;*/
+    padding: 8px 10px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+form > section > div{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.user-info-revise-section{
+    padding: 70px 50px;
+    border-top: 2px solid #512e02;
+}
+.user-info-revise-section button {
+    padding: 10px 20px;
+    width: 170px;
+    height: 100%;
+    margin-left: 10px;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+    /*border-radius: 20px;*/
+    border: none;
+    transition-duration: 0.2s;
+    background-color: var(--Summer-spring-decoration-design-elements-2-rgba);
+    &:hover {
+        opacity: 0.8;
+    }
+}
+/********************************/
+.find-btn-section{
+    /*margin: 20px 0 20px 0;*/
+    text-align: center;
+    padding: 0 50px;
+}
+.find-btn-section > button {
+    /*margin: 0 20px;*/
+    padding: 10px 20px;
+    width: 100%;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    transition-duration: 0.2s;
+    background-color: var(--Summer-spring-decoration-design-elements-2-rgba);
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+/*************************************/
 .find-id-section{
+    display: none;
+    padding: 60px 80px;
+    width: 800px;
+}
+.find-id-section[active]{
+    display: block;
     position: relative;
     background-color: transparent;
     font-size: var(--font-size-normal);
@@ -73,3 +146,4 @@ main h1{
     display: block;
 }
 /*******************************/
+

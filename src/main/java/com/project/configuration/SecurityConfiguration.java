@@ -54,13 +54,12 @@ public class SecurityConfiguration {
                     .clearAuthentication(true)
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
-                    .logoutSuccessUrl("/")
-                    .permitAll();
+                    .logoutSuccessUrl("/");
         });
 
         http.oauth2Login(configure -> {
             configure.loginPage("/user/login")
-                    .failureUrl("/user/sign-up")
+                    .failureUrl("/user/join")
                     .defaultSuccessUrl("/")
                     .permitAll();
         });

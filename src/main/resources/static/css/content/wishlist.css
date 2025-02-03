@@ -1,52 +1,21 @@
 @import url("../public/public.css");
 
-header{
-    margin: 20px 0;
-    padding: 0 250px;
-}
-
 h1{
     text-align: center;
     margin: 60px;
 }
 /***********************************/
 
-header{
-    display: flex;
-    justify-content: space-between;
-    font-size: var(--font-size-x-small);
-    margin-bottom: 25px;
+.category{
+    text-align: left;
+    margin: 20px 0;
+    padding: 0 250px;
+    font-size: 30px;
     color: var(--Dark-gray-textured-background---4-rgba);
-}
-header > div{
-    display: flex;
-    align-items: center;
-}
-header li{
-    display: inline-block;
-    list-style: none;
-}
-header li:not(:last-child)::after{
-    content: "|";
-    margin: 0 10px;
-}
-header a{
-    text-decoration: none;
-    color: var(--Dark-gray-textured-background---4-rgba);
-}
-header label{
-    display: flex;
-    align-items: center;
-}
-header select{
-    font-size: var(--font-size-xx-small);
-    padding: 2px 4px;
-    margin-left: 4px;
-    background-color: unset;
-    border: 1px solid black;
 }
 
-main {
+
+.content1 {
     margin: 20px 0;
     padding: 0 250px;
     text-align: center;
@@ -68,4 +37,78 @@ ol a{
 }
 ol a[active=true]{
     font-weight: bold;
+}
+
+
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;  /* 요소 간 간격 */
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+}
+
+.book-item {
+    width: 250px;  /* 고정 크기 */
+    height: 350px; /* 고정 높이 */
+    box-sizing: border-box;
+}
+
+.book-card {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 내용 정렬 */
+}
+
+.book-image {
+    width: 100%;
+    height: 180px; /* 이미지 크기 고정 */
+    object-fit: cover;
+}
+
+.book-info {
+    flex-grow: 1;  /* 정보가 적어도 균형 유지 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-info h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+}
+
+.book-info p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* 반응형 처리 */
+@media (max-width: 1024px) {
+    .book-item {
+        width: calc(33.333% - 20px); /* 3개씩 */
+    }
+}
+
+@media (max-width: 768px) {
+    .book-item {
+        width: calc(50% - 20px); /* 2개씩 */
+    }
+}
+
+@media (max-width: 480px) {
+    .book-item {
+        width: 100%; /* 1개씩 */
+    }
 }

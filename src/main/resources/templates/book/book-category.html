@@ -3,16 +3,17 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
+      layout:decorate="~{/layout/main-layout}">
 <head>
 	<meta charset="UTF-8">
 	<title>책 목록</title>
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 	<link rel="stylesheet" href="../../static/css/book/book-category.css">
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script src="../../static/js/book/book-category.js" defer></script>
 </head>
 <body>
-<main>
+<main layout:fragment="main">
 	<h1>책목록</h1>
 
 	<!-- 검색 섹션 -->
@@ -70,6 +71,8 @@
 					<span>/</span>
 					<span class="publisher" th:text="${book.publisher}">출판사</span>
 				</div>
+				<!-- 책 가격을 hidden input으로 추가 -->
+				<input type="hidden" class="book-price-hidden" th:value="${book.price}">
 				<div class="rent-available">
 					<span>대출가능여부: </span>
 					<span th:text="${book.copiesAvailable} > 0 ? '가능' : '불가'" class="rent-status">불가</span>
@@ -80,12 +83,13 @@
 				<div class="rent-button-section">
 					<!-- 찜하기 버튼에 book 정보를 data 속성으로 전달 -->
 					<button class="book-heart-button"
-					        onclick="addToWishlist(this)"
 					        th:data-isbn="${book.isbn}"
 					        th:data-title="${book.title}">
 						찜하기
 					</button>
-					<button class="book-rent-button">대출하기</button>
+					<button class="book-rent-button"
+					th:data-isbn="${book.isbn}" th:data-title="${book.title}"
+					th:data-price="${book.price}">대출하기</button>
 				</div>
 			</div>
 		</div>
@@ -93,23 +97,29 @@
 
 	<!-- 페이지네이션 -->
 	<ol class="pagination" th:if="${pageInfo.totalPageCount > 1}">
+		<!-- 이전 페이지 버튼 -->
 		<li th:if="${pageInfo.startPage > 1}">
-			<a th:href="@{/book/book-category(page=${pageInfo.startPage - 1}, size=${pageInfo.size})}">
+			<a th:href="@{/book/book-category(page=${pageInfo.startPage - 1}, size=${pageInfo.size}, sort=${pageInfo.sort})}">
 				<i class="bi bi-caret-left-fill"></i>
 			</a>
 		</li>
+
+		<!-- 페이지 번호 -->
 		<li th:each="pageNumber : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-			<a th:href="@{/book/book-category(page=${pageNumber}, size=${pageInfo.size})}"
+			<a th:href="@{/book/book-category(page=${pageNumber}, size=${pageInfo.size}, sort=${pageInfo.sort})}"
 			   th:text="${pageNumber}"
 			   th:classappend="${pageInfo.page == pageNumber} ? 'active' : ''">
 			</a>
 		</li>
+
+		<!-- 다음 페이지 버튼 -->
 		<li th:if="${pageInfo.endPage < pageInfo.totalPageCount}">
-			<a th:href="@{/book/book-category(page=${pageInfo.endPage + 1}, size=${pageInfo.size})}">
+			<a th:href="@{/book/book-category(page=${pageInfo.endPage + 1}, size=${pageInfo.size}, sort=${pageInfo.sort})}">
 				<i class="bi bi-caret-right-fill"></i>
 			</a>
 		</li>
 	</ol>
+
 </main>
 </body>
 </html>

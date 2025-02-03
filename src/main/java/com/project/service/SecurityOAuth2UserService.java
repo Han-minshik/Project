@@ -86,7 +86,8 @@ public class SecurityOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     SnsInfoDTO get_google_sns_info(Map<String, Object> attributes) {
-        String id = attributes.get("id").toString();
+        String id = attributes.get("sub").toString();
+        log.error(attributes);
         return SnsInfoDTO.builder()
                 .id(id)
                 .ci(CI)

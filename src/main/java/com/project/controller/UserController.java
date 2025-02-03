@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,13 +28,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/user")
 public class UserController {
     @Autowired private UserService userService;
-    @Autowired private UserMapper userMapper;
     @Autowired private PortOneService portOneService;
-    @Autowired private AdminMapper adminMapper;
     @Autowired private BookService bookService;
-    @Autowired private LoanMapper loanMapper;
     @Autowired private LoanService loanService;
     @Autowired private DiscussionService discussionService;
+    @Autowired private PasswordEncoder passwordEncoder;
 
     /***********************************************/
 
@@ -89,6 +88,11 @@ public class UserController {
         return "user/join";
     }
 
+    /************************************************/
+    @GetMapping("/find-id")
+    public String get_email_auth(){
+        return "user/find-id";
+    }
 
 
     /***********************************************/
@@ -125,8 +129,6 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-
-
     /************************************************/
     @GetMapping("/my-talk")
     public String get_my_discussion(Authentication auth, Model model, PageInfoDTO<DiscussionDTO> pageInfo) {
@@ -160,38 +162,6 @@ public class UserController {
         }
         return "user/lendbook";
     }
-
-
-    // 책 대출하기
-    @PostMapping("/lendbook/lend")
-    public String post_lendbook_lend(
-            Authentication auth,
-            @ModelAttribute LoanDTO lendbook,
-            @RequestParam Integer points
-    ){
-        if (auth != null) {
-            loanService.createLoanWithPoints(lendbook, points);
-            return "redirect:/user/lendbook";
-        }
-        return "redirect:/user/login";
-    }
-
-
-//    @GetMapping("/lendbook/all")
-//    public String get_lendbook_all(
-//            Authentication auth,
-//            Model model,
-//            PageInfoDTO<CartDTO> pageInfo
-//    ){
-//        if (auth != null) {
-//            List<LoanDTO> allLendBooks = loanService.getLoansByUserId(auth.getName());
-//            model.addAttribute("allLendBooks", allLendBooks);
-//            model.addAttribute("pageInfo", pageInfo);
-//            return "user/lendbook";
-//        }
-//        return "redirect:/user/login";
-//    }
-
 
     /************************************************/
 
@@ -245,38 +215,67 @@ public class UserController {
         return ResponseEntity.ok(Map.of("message", "찜하기 성공"));
     }
 
-    // 회원 정보 수정
-    @GetMapping("/info-revise")
-    public String get_user_info_revise(
-            @AuthenticationPrincipal UserDTO user,
-            Model model
-    ) {
-        if (user != null) {
-//            UserDTO user = userMapper.getUserById(auth.getName()); // 유저 정보 가져옴
-//            user.setPassword(null); // 비밀번호 유출 안되게
-            model.addAttribute("user", user); // 유저 정보를 템플릿에 넘김
-            return "user/info-revise";
+    /*************************************************/
+
+    // 회원 정보 수정을 위한 비밀번호 인증
+    @GetMapping("/pw-auth")
+    public String get_pw_auth(Authentication auth) {
+        if (auth != null) {
+            return "user/pw-auth";
         }
         return "redirect:/user/login";
     }
 
-    // 아마도 userRestController로 가야할지도
-    @PostMapping("/info-revise")
-    public String post_user_info_revise(
-            Authentication auth,
-            @ModelAttribute @Validated UserDTO user,
-            BindingResult bindingResult
+    @PostMapping("/pw-auth")
+    public String post_pw_auth(
+            @AuthenticationPrincipal UserDTO user,
+            @RequestParam String password,
+            HttpSession session
     ){
-        if(auth == null || !auth.getName().equals(user.getId())){
+        // passwordEncoder.matches()로 비교 (암호화된 비밀번호와 입력된 비밀번호 비교)
+        if(user != null && passwordEncoder.matches(password, user.getPassword())) {
+            log.info("비밀번호 일치");
+            session.setAttribute("passwordAuthenticated", true);
+            return "redirect:/user/info-revise";
+        }
+        log.info("비밀번호 불일치");
+        return "redirect:/user/login";
+    }
+
+    // 회원 정보 수정
+    @GetMapping("/info-revise")
+    public String get_user_info_revise(
+            @AuthenticationPrincipal UserDTO user,
+            HttpSession session
+    ) {
+        if (user == null) {
             return "redirect:/user/login";
         }
-        if(bindingResult.hasErrors()) {
-            return "user/info-revise";
+        // 비밀번호 인증 여부 체크
+        if (session.getAttribute("passwordAuthenticated") == null || !(boolean) session.getAttribute("passwordAuthenticated")) {
+            // 비밀번호 인증이 안 되어 있으면 인증 페이지로 리디렉션
+            return "redirect:/user/pw-auth";
+        }
+        // 인증된 후 개인정보 수정 페이지
+        return "user/info-revise";
+    }
+
+    @PostMapping("/info-revise")
+    public String post_user_info_revise(
+            @AuthenticationPrincipal UserDTO existUser,
+            @ModelAttribute UserDTO updateUser
+    ){
+        if(existUser == null || !existUser.getName().equals(existUser.getId())){
+            return "redirect:/user/login";
         }
 
-        userMapper.updateUser(user);
-        return "redirect:/";
-
+        boolean updateResult = userService.updateUser(existUser, updateUser);
+        if(updateResult){
+            log.info("개인정보 변경 성공");
+            return "redirect:/";
+        }
+        log.info("개인정보 변경 실패");
+        return "user/info-revise";
     }
 
     @GetMapping("/complain")

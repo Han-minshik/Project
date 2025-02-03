@@ -117,14 +117,22 @@ public class BookService {
      */
     public Map<String, Map<String, Object>> getPaginatedReviews(PageInfoDTO<ReviewDTO> pageInfo, String isbn) {
         pageInfo.setSize(3);
-        if(pageInfo.getPage() < 1) {
+
+        if (pageInfo.getPage() < 1) {
             return null;
         }
-        Map<String, Map<String,Object>> result = bookMapper.selectPaginatedReviewTotalCountByIsbn(isbn);
+        // 총 리뷰 개수 가져오기
+        Map<String, Map<String, Object>> result = bookMapper.selectPaginatedReviewTotalCountByIsbn(isbn);
         log.error(result);
-        if(!result.isEmpty()) {
+        if (!result.isEmpty()) {
             Integer totalElementCount = Integer.parseInt(result.get("result").get("count").toString());
-            var reviews = bookMapper.selectPaginatedReviewsByBookIsbn(pageInfo, isbn);
+            // 리뷰 목록 가져오기
+            List<ReviewDTO> reviews = bookMapper.selectPaginatedReviewsByBookIsbn(pageInfo, isbn);
+            // 🔥 모든 리뷰 객체에 대해 Base64 변환 실행
+            for (ReviewDTO review : reviews) {
+                review.setReviewImage(review.getUserImage()); // byte[] → Base64 변환 실행
+            }
+            // ✅ pageInfo에 변환된 리뷰 목록 저장
             pageInfo.setTotalElementCount(totalElementCount);
             pageInfo.setElements(reviews);
         }
@@ -223,8 +231,20 @@ public class BookService {
         return categoryHierarchy;
     }
 
-    public void insertReview(String userId, String isbn, String content) {
-        bookMapper.insertReview(userId, isbn, content);
+    public void insertReview(String userId, String isbn, String content, Integer rate) {
+        try {
+            System.out.println("[DEBUG] SQL 실행 전 - User: " + userId + ", ISBN: " + isbn + ", Content: " + content + ", Rate: " + rate);
+            bookMapper.insertReview(userId, isbn, content, rate);
+            System.out.println("[DEBUG] SQL 실행 완료!");
+        } catch (Exception e) {
+            System.err.println("[ERROR] 리뷰 저장 중 오류 발생!");
+            e.printStackTrace(); // 🔥 에러 출력
+            throw e; // 예외 다시 던짐
+        }
+    }
+
+    public Integer plusReviewLike(String bookIsbn, String content, String userId) {
+        return bookMapper.plusReviewLike(bookIsbn, content, userId);
     }
 
 }

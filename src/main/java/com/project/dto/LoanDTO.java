@@ -12,6 +12,7 @@ import java.util.List;
 @ToString
 public class LoanDTO {
     private Integer id;
+    private UserDTO user;
     private LocalDateTime loanDate;
     private LocalDateTime returnDate;
     private String status;
@@ -19,9 +20,9 @@ public class LoanDTO {
     private String userId;
     private String bookIsbn;
 
+    private Integer originalPrice;
     private Integer discountPrice;
     private Integer finalPrice;
 
-    private List<UserDTO> user;
-    private List<BookDTO> book;
+    private String impUid;
 }

@@ -18,6 +18,20 @@ public class ReviewDTO {
     private Integer rate;   // 별점
     private LocalDateTime updatedAt;
 
+    private byte[] userImage;
+    private String base64Image;
+
+
     private List<UserDTO> user;
     private List<BookDTO> book;
+    public void setReviewImage(byte[] userImage) {
+        this.userImage = userImage;
+        if (userImage != null) {
+            this.base64Image = "data:image/jpeg;base64," + java.util.Base64.getEncoder().encodeToString(userImage);
+        } else {
+            this.base64Image = null; // 기본 이미지 설정
+        }
+    }
+
+
 }

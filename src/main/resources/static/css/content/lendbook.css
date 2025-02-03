@@ -1,9 +1,5 @@
 @import url("../public/public.css");
 
-header{
-    margin: 20px 0;
-    padding: 0 250px;
-}
 
 h1{
     text-align: center;
@@ -11,61 +7,78 @@ h1{
 }
 /***********************************/
 
-header{
-    display: flex;
+header1{
     justify-content: space-between;
     font-size: var(--font-size-x-small);
-    margin-bottom: 25px;
+    margin: 20px;
     color: var(--Dark-gray-textured-background---4-rgba);
 }
-header > div{
+
+
+.book-list {
     display: flex;
-    align-items: center;
-}
-header li{
-    display: inline-block;
+    flex-wrap: wrap;
+    gap: 20px;  /* 요소 간 간격 */
+    padding: 0;
     list-style: none;
-}
-header li:not(:last-child)::after{
-    content: "|";
-    margin: 0 10px;
-}
-header a{
-    text-decoration: none;
-    color: var(--Dark-gray-textured-background---4-rgba);
-}
-header label{
-    display: flex;
-    align-items: center;
-}
-header select{
-    font-size: var(--font-size-xx-small);
-    padding: 2px 4px;
-    margin-left: 4px;
-    background-color: unset;
-    border: 1px solid black;
+    justify-content: center;
 }
 
-main {
-    margin: 20px 0;
-    padding: 0 250px;
-    text-align: center;
+.book-item {
+    width: 250px;  /* 고정 크기 */
+    height: 500px; /* 고정 높이 */
+    box-sizing: border-box;
+
 }
 
-ol{
-    margin: 50px 0;
+
+.book-cover{
+    width: 250px;
+    height: 300px; /* 이미지 크기 고정 */
+    object-fit: cover;
+}
+
+.book-info {
+    flex-grow: 1;  /* 정보가 적어도 균형 유지 */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-ol > li {
-    margin: 0 8px;
+
+.book-info h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
 }
-ol a{
-    color: black;
-    font-size: var(--font-size-x-small);
-    font-weight: normal;
+
+.book-info p {
+    font-size: 1rem;
+    color: #555;
 }
-ol a[active=true]{
-    font-weight: bold;
+
+/* 반응형 처리 */
+@media (max-width: 1024px) {
+    .book-item {
+        width: calc(33.333% - 20px); /* 3개씩 */
+    }
+}
+
+@media (max-width: 768px) {
+    .book-item {
+        width: calc(50% - 20px); /* 2개씩 */
+    }
+}
+
+@media (max-width: 480px) {
+    .book-item {
+        width: 100%; /* 1개씩 */
+    }
+}
+
+.book-item button {
+    background-color: #007BFF;
+    padding: 5px 10px;
+    color: white;
+    border-radius:20px;
+    border: none;
 }

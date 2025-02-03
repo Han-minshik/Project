@@ -3,12 +3,14 @@ package com.project.service;
 import com.project.dto.DiscussionDTO;
 import com.project.dto.PageInfoDTO;
 import com.project.mapper.DiscussionMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
+@Log4j2
 @Service
 public class DiscussionService {
 
@@ -18,7 +20,7 @@ public class DiscussionService {
     /**
      * 새로운 토론 주제를 생성
      */
-    public DiscussionDTO createDiscussion(String bookTitle, String topic, String contents, String userId, String bookIsbn) {
+    public void createDiscussion(String bookTitle, String topic, String contents, String userId, String bookIsbn) {
         byte[] bookImage = discussionMapper.getBookImageByTitle(bookTitle);
         if (bookImage == null) {
             throw new IllegalArgumentException("책 제목에 해당하는 이미지를 찾을 수 없습니다.");
@@ -32,9 +34,8 @@ public class DiscussionService {
         discussion.setBookIsbn(bookIsbn);
         discussion.setBookImage(bookImage);
 
+        log.info("service - discussion" + discussion);
         discussionMapper.createDiscussion(discussion);
-
-        return discussion;
     }
 
     /**
@@ -86,8 +87,6 @@ public class DiscussionService {
         return pageInfo;
     }
 
-
-
     /**
      * isbn 으로 토론 조회
      */
@@ -106,8 +105,6 @@ public class DiscussionService {
         pageInfo.setElements(result);
         return pageInfo;
     }
-
-
 
     /**
      * 마이 페이지, 내가 작성한 토론 글 조회

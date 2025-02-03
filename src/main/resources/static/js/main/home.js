@@ -1,52 +1,22 @@
-// $(document).ready(function () {
-//
-//     mobileSize();
-//
-//     function mobileSize() {
-//         var realSize = window.innerWidth;
-//         $("body").css("width", realSize);
-//         console.log("디바이스 실사이즈:" + realSize);
-//         console.log("모바일 실사이즈:" + $("body").css("width"));
-//     }
-//
-// });
 
-// let rollUpBtn = document.querySelector('#rollUp');
-//
-// const scroll = () => {
-//     if (window.scrollY !== 0) {
-//         setTimeout(() => {
-//             window.scrollTo(0, window.scrollY - 50);
-//             scroll();
-//         }, 10);
-//     }
-// }
-//
-// rollUpBtn.addEventListener('click', scroll);
-//
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    mobileSize();
-
-    function mobileSize() {
-        var realSize = window.innerWidth;
-        document.body.style.width = realSize + "px";
-        console.log("디바이스 실사이즈: " + realSize);
-        console.log("모바일 실사이즈: " + document.body.style.width);
-    }
-
-    let rollUpBtn = document.querySelector('#rollUp');
-
-    const scroll = () => {
-        if (window.scrollY !== 0) {
-            setTimeout(() => {
-                window.scrollTo(0, window.scrollY - 50);
-                scroll();
-            }, 10);
+document.addEventListener("DOMContentLoaded", function() {
+    new Swiper(".swiper", {
+        loop: true, // 무한 반복
+        autoplay: {
+            delay: 5000, // 5초마다 변경
+            disableOnInteraction: false
+        },
+        speed: 5000, // 전환 속도
+        effect: "slide", // 기본 슬라이드 효과 (부드러운 느낌)
+        slidesPerView: 1, // 한 번에 한 개의 이미지만 보이도록 설정
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
         }
-    };
-
-    rollUpBtn.addEventListener("click", scroll);
+    });
 });
 

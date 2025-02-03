@@ -135,4 +135,12 @@ public class AdminService {
     public void deleteUser(String userId) {
         adminMapper.deleteUser(userId);
     }
+
+    public void answerToUser(Integer complainNo, String answer) {
+        adminMapper.answerToUser(complainNo, answer);
+    }
+
+    public List<UserDTO> getPublicUser() {
+        return adminMapper.getPublicUser();
+    }
 }

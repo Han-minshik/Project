@@ -40,18 +40,19 @@
         VALUES (NULL, #{content}, 0, 0, NULL, DEFAULT, DEFAULT, #{userId}, #{discussionId})
     </insert>
     <!-- 사용자 투표 여부 확인 -->
-    <select id="hasUserVoted" resultType="java.lang.Boolean">
-        SELECT INSTR(voted_user_ids, #{userId}) > 0
+    <select id="hasUserVoted" resultType="java.lang.Integer">
+        SELECT COUNT(*)
         FROM discussion_comment
-        WHERE id = #{commentId}
+        WHERE id = #{commentId} AND FIND_IN_SET(#{userId}, voted_user_ids) > 0
     </select>
     <!-- 사용자 투표 기록 추가 -->
     <update id="addUserVote">
         UPDATE discussion_comment
-        SET voted_user_ids = CASE
-                                 WHEN voted_user_ids IS NULL THEN #{userId}
-                                 ELSE CONCAT(voted_user_ids, ',', #{userId})
-            END
+        SET voted_user_ids =
+                CASE
+                    WHEN voted_user_ids IS NULL THEN #{userId}
+                    ELSE CONCAT(voted_user_ids, ',', #{userId})
+                    END
         WHERE id = #{commentId}
     </update>
     <!-- 특정 토론의 작성자 ID 가져오기 -->
@@ -87,15 +88,10 @@
         LIMIT 1 OFFSET 1
     </select>
     <!-- 댓글 정렬 및 페이지네이션 -->
-    <select id="getCommentsWithSortAndPagination" resultType="com.project.dto.DiscussionCommentDTO">
+    <select id="getCommentsWithSortAndPagination" resultType="DiscussionCommentDTO">
         SELECT
-        dc.id AS comment_id,
-        dc.content AS comment_content,
-        dc.created_at AS comment_created_at,
-        dc.like AS like_count,
-        dc.unlike AS dislike_count,
-        u.id AS user_id,
-#         u.name AS user_name
+        dc.*,
+        u.id AS user_id
         FROM discussion_comment dc
         INNER JOIN user u ON dc.user_id = u.id
         WHERE dc.discussion_id = #{discussionId}
@@ -108,10 +104,9 @@
             <when test="pageInfo.sort == 'dislike'">
                 ORDER BY dc.unlike DESC
             </when>
-            <!-- 기본 정렬: 최신순 -->
-            <otherwise>
-                ORDER BY dc.created_at DESC
-            </otherwise>
+                    <otherwise>
+                        ORDER BY dc.created_at DESC
+                    </otherwise>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
     </select>
@@ -123,12 +118,29 @@
     </select>
     <!-- 첫 번째 인기있는 의견 -->
     <select id="getFirstComment" resultType="DiscussionCommentDTO">
-#         SELECT * FROM discussion_comment ORDER BY `like` DESC
-        SELECT * FROM discussion_comment LIMIT 1
+        SELECT * FROM discussion_comment ORDER BY `like` DESC LIMIT 1
+#         SELECT * FROM discussion_comment LIMIT 1
     </select>
     <!-- 두 번째 인기있는 의견 -->
     <select id="getSecondComment" resultType="DiscussionCommentDTO">
-#         SELECT * FROM discussion_comment ORDER BY `like` DESC LIMIT 1 OFFSET 1
-        SELECt * FROM discussion_comment LIMIT 1 OFFSET 1
+        SELECT * FROM discussion_comment ORDER BY `like` DESC LIMIT 1 OFFSET 1
+#         SELECT * FROM discussion_comment LIMIT 1 OFFSET 1
+    </select>
+    <select id="getDiscussionIdByCommentId" resultType="java.lang.Integer">
+        SELECT discussion_id
+        FROM discussion_comment
+        WHERE id = #{commentId}
+    </select>
+    <!-- 특정 댓글의 찬성 개수 조회 -->
+    <select id="getLikeCount" resultType="java.lang.Integer">
+        SELECT `like` FROM discussion_comment WHERE id = #{commentId}
+    </select>
+
+    <!-- 특정 댓글의 반대 개수 조회 -->
+    <select id="getUnlikeCount" resultType="java.lang.Integer">
+        SELECT `unlike` FROM discussion_comment WHERE id = #{commentId}
+    </select>
+    <select id="getDiscussionCommentAuthor" resultType="java.lang.String">
+        SELECT discussion_comment.user_id FROM discussion_comment WHERE id = #{commentId}
     </select>
 </mapper>

@@ -3,21 +3,22 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
+      layout:decorate="~{/layout/main-layout}">
 <head>
 	<meta charset="UTF-8">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 	<title>Title</title>
 	<link rel="stylesheet" href="../../static/css/book/book.css">
 	<script src="https://kit.fontawesome.com/d19fdaba43.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 	<script src="../../static/js/book/book.js" defer></script>
 </head>
 <body>
-<main>
+<main layout:fragment="main">
 	<nav id="category-nav">
 		<ol>
-			<li>
-				<a href="#">CATEGORY1</a>
+			<li th:each="category: ${categories}">
+				<a th:text="${category.name}">CATEGORY1</a>
 			</li>
 		</ol>
 	</nav>
@@ -62,11 +63,11 @@
 					<b>대출 가능일:</b>
 					<!--                        <span th:text="${loan.returnDate}">2025-02-17</span>-->
 					<span th:if="${book.copiesAvailable == 0}" th:text="${formattedDate}"></span>
-<!--					<span th:text="${firstReturnDate}">2025-02-17</span>-->
+					<!--					<span th:text="${firstReturnDate}">2025-02-17</span>-->
 				</div>
 			</div>
 
-			<div class="login-to-loan">
+			<div class="login-to-loan" sec:authorize="isAnonymous()">
 				<span><a href="/user/login">로그인</a></span>
 				<b>후 대출을 해보세요</b>
 			</div>
@@ -102,7 +103,6 @@
 			</li>
 		</ul>
 	</nav>
-
 	<section id="book-info-section">
 		<div class="book-img-container">
 			<h4>말라파르테 문학상, 만해문학상 수상작 <br>
@@ -140,6 +140,28 @@
 		</div>
 	</section>
 	<section id="review-form">
+		<div class="my-opinion-chat">
+			<h3>리뷰 작성하기</h3>
+			<form method="post" class="my-opinion-form">
+				<label>
+					<textarea name="text" placeholder="리뷰를 작성해주세요..."></textarea>
+				</label>
+				<button type="submit">작성하기</button>
+
+				<!-- ⭐ 별점 선택 UI -->
+				<div class="rating-container">
+					<span class="rating-label">별점 선택:</span>
+					<div class="star-rating">
+						<i class="fa-regular fa-star" data-value="1"></i>
+						<i class="fa-regular fa-star" data-value="2"></i>
+						<i class="fa-regular fa-star" data-value="3"></i>
+						<i class="fa-regular fa-star" data-value="4"></i>
+						<i class="fa-regular fa-star" data-value="5"></i>
+					</div>
+					<input type="hidden" name="rate" id="rating-value" value="0">
+				</div>
+			</form>
+		</div>
 		<div class="review-score-container">
 			<section class="review-score-section">
 				<div class="review-total-count-container">
@@ -200,15 +222,7 @@
 
 			</section>
 		</div>
-		<div class="my-opinion-chat">
-			<h3>
-				리뷰 작성하기
-			</h3>
-			<form method="post" class="my-opinion-form">
-				<label><textarea name="text"></textarea></label>
-				<button type="submit">작성하기</button>
-			</form>
-		</div>
+
 		<div class="review-sort-container">
 			<ul>
 				<li><a href="#" active>최신순</a></li>
@@ -315,6 +329,7 @@
 			</div>
 		</div>
 	</section>
+
 </main>
 </body>
 </html>
