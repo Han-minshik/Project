@@ -3,6 +3,7 @@ package com.project.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,21 +25,23 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configure -> {
-//            configure.requestMatchers("/static/**").permitAll();
-//            configure.requestMatchers("/").permitAll();
-//            configure.requestMatchers("/user/join").permitAll();
-//            configure.requestMatchers("/user/id/*", "/user/name/*", "user/findId/**").permitAll();
-//            configure.requestMatchers("/tel/auth", "/email/auth").permitAll();
-//            configure.requestMatchers("/book/*","/discussion/**").permitAll();
-//            configure.anyRequest().authenticated();
-            configure.anyRequest().permitAll();
+            // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
+            configure.requestMatchers("/admin/**").hasRole("ADMIN");
+
+            // ✅ 공개 접근 허용 경로
+            configure.requestMatchers("/static/**", "/", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
+            configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
+                    "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
+                    "/user/id/**", "/user/info", "/user/info-revise", "/user/login", "/user/pw-auth",
+                    "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth").permitAll();
+
+            // ✅ 그 외 모든 요청은 인증 필요
+            configure.anyRequest().authenticated();
         });
 
-        // 관리자만 접근 가능한 authorizeHttpRequests가 필요함
-//        http.authorizeHttpRequests(configure -> {
-//            configure.requestMatchers("/admin/**").hasAnyAuthority("ADMIN"); // READ 권한 있는 유저만 가능
-//            configure.anyRequest().authenticated();
-//        });
+        http.userDetailsService(userDetailsService)
+                .formLogin(Customizer.withDefaults());
 
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
@@ -77,7 +80,7 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-//
+
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
