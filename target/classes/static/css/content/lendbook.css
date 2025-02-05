@@ -82,3 +82,8 @@ header1{
     border-radius:20px;
     border: none;
 }
+
+.book-item button:hover {
+    background-color: #555555;
+    cursor: pointer;
+}

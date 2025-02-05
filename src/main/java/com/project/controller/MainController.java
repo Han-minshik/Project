@@ -40,13 +40,13 @@ public class MainController {
     @Autowired private LoanService loanService;
     @Autowired private PortOneService portOneService;
 
-    @ModelAttribute("user")
-    public UserDTO getUser(@AuthenticationPrincipal UserDTO user) {
-        if (user == null) {
-            return null; // 로그인하지 않은 사용자
-        }
-        return userService.find_user(user.getUsername());
-    }
+//    @ModelAttribute("user")
+//    public UserDTO getUser(@AuthenticationPrincipal UserDTO user) {
+//        if (user == null) {
+//            return null; // 로그인하지 않은 사용자
+//        }
+//        return userService.find_user(user.getUsername());
+//    }
 
     @GetMapping("/")
     public String get_home (
