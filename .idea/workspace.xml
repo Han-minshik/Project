@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="최종">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/content/lendbook.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,15 +297,7 @@
       <workItem from="1738589654864" duration="5729000" />
       <workItem from="1738635022816" duration="272000" />
       <workItem from="1738739422827" duration="8019000" />
-      <workItem from="1738748363354" duration="3490000" />
-    </task>
-    <task id="LOCAL-00050" summary="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환">
-      <option name="closed" value="true" />
-      <created>1737855976147</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1737855976147</updated>
+      <workItem from="1738748363354" duration="6348000" />
     </task>
     <task id="LOCAL-00051" summary="- 로그인하고 실행하는 페이지나 기타 컨트롤러 추가&#10;- 각 토론 조회 페이지 &#10;- 마이 페이지 반환">
       <option name="closed" value="true" />
@@ -690,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738750889424</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="최종">
+      <option name="closed" value="true" />
+      <created>1738751900295</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1738751900295</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

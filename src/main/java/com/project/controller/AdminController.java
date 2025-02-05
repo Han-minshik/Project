@@ -55,14 +55,14 @@ public class AdminController {
     @DeleteMapping("/book/delete")
     public ResponseEntity<String> deleteBook(@AuthenticationPrincipal UserDTO user,
                                              @RequestBody Map<String, String> payload) {
-        if (user.getRole().equals("관리자")) {
+        if (user.getRole().equals("ADMIN")) {
             String bookIsbn = payload.get("bookIsbn");
 
             if (bookIsbn == null) {
                 return ResponseEntity.badRequest().body("ISBN이 제공되지 않았습니다.");
             }
             log.info("삭제 요청된 책 ISBN: " + bookIsbn);
-            return ResponseEntity.ok("책 삭제 성공");
+            return ResponseEntity.ok("Complete");
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한 없음");
         }
@@ -72,24 +72,24 @@ public class AdminController {
     // ok
     @PatchMapping("/update-user")
     public ResponseEntity<String> updateUser(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, String> payload) {
-        if (!user.getRole().equals("관리자")) {
+        if (!user.getRole().equals("ADMIN")) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한이 없습니다.");
         }
         String userId = payload.get("userId");
         adminService.promoteToAdmin(userId);
-        return ResponseEntity.ok("유저 승격 완료");
+        return ResponseEntity.ok("Complete");
     }
 
     // ok
     @DeleteMapping("/drop-user")
     public ResponseEntity<String> dropUser(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, List<String>> payload) {
-        if (user.getRole().equals("관리자")) {
+        if (user.getRole().equals("ADMIN")) {
             List<String> userIds = payload.get("userIds");
             for (String userId : userIds) {
                 adminService.deleteUser(userId);
                 log.error("삭제된 유저 ID : " + userId);
             }
-            return ResponseEntity.ok("유저 삭제 성공");
+            return ResponseEntity.ok("Complete");
         } else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("권한 없음");
         }
@@ -98,7 +98,7 @@ public class AdminController {
     /*************** 유저 컴플레인 답글 작성 ********************/
     @PostMapping("/update/answer")
     public ResponseEntity<String> updateAnswer(@AuthenticationPrincipal UserDTO user, @RequestBody Map<String, String> payload) {
-        if (user.getRole().equals("관리자")) {
+        if (user.getRole().equals("ADMIN")) {
             if (payload == null || !payload.containsKey("complainNo") || !payload.containsKey("answer")) {
                 return ResponseEntity.badRequest().body("잘못된 요청 데이터입니다.");
             }
