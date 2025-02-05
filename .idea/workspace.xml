@@ -7,15 +7,8 @@
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="최종">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/LoanMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/LoanMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/LoanService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/loan-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/loan-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/LoanMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/mapper/LoanMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/LoanService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/LoanService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mybatis/loan-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/loan-mapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,10 +43,10 @@
     &quot;accountId&quot;: &quot;6fa5aaa8-080a-4004-a62a-aa1bbfbbe890&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -308,15 +301,8 @@
       <workItem from="1738635022816" duration="272000" />
       <workItem from="1738739422827" duration="8019000" />
       <workItem from="1738748363354" duration="8148000" />
-      <workItem from="1738758249985" duration="1139000" />
-    </task>
-    <task id="LOCAL-00052" summary="합병 전 백업 파일">
-      <option name="closed" value="true" />
-      <created>1737942165016</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1737942165017</updated>
+      <workItem from="1738758249985" duration="1465000" />
+      <workItem from="1738763471618" duration="1701000" />
     </task>
     <task id="LOCAL-00053" summary="테스트 진행 중">
       <option name="closed" value="true" />
@@ -702,7 +688,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738755950889</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="최종">
+      <option name="closed" value="true" />
+      <created>1738759703866</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1738759703867</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
