@@ -193,8 +193,6 @@ body {
     text-align: center;
 }
 
-@import url("../public/public.css");
-
 .book-carousel {
     display: flex;
     align-items: center;
@@ -391,7 +389,6 @@ body {
     text-align: center;
     margin-top: 10px;
 }
-
 
 .discussions li {
     display: flex;
