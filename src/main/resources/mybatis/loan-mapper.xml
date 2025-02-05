@@ -22,20 +22,6 @@
         WHERE
             a.user_id = #{userId}
     </select>
-    <!-- 대출 정보 업데이트(반납처리) -->
-    <update id="updateLoanStatus">
-        UPDATE loan
-        SET status = #{status}
-        WHERE id = #{id}
-    </update>
-    <!-- 대출 중인 모든 사용자 조회 -->
-    <select id="getAllLoans" resultType="LoanDTO">
-        SELECT a.id, a.loan_date, a.return_date, a.status, a.book_isbn,
-               b.title AS bookTitle
-        FROM loan as a JOIN book b ON a.book_isbn = b.isbn
-                       JOIN user c ON a.user_id = c.id
-        WHERE a.status = '대출 중'
-    </select>
     <!-- 한 사람이 대출 할 수 있는 횟수 -->
     <select id="getActiveLoanCountByUserId" resultType="java.lang.Integer">
         SELECt COUNT(*)
@@ -53,12 +39,6 @@
         UPDATE book
         SET copies_available = book.copies_available - 1
         WHERE isbn = #{bookIsbn} AND book.copies_available > 0
-    </update>
-    <!-- 책 재고 증가(반납시) -->
-    <update id="increaseCopiesAvailable">
-        UPDATE book
-        SET copies_available = book.copies_available + 1
-        WHERE  isbn = #{bookIsbn}
     </update>
     <!-- 사용자 id로 대출중인 책 반환 -->
     <select id="getActiveLoanByUserAndBook" resultType="LoanDTO">
@@ -83,4 +63,7 @@
         SET point = point - #{points}
         WHERE id = #{userId} AND point >= #{points}
     </update>
+    <delete id="returnBook">
+        DELETE FROM loan WHERE book_isbn = #{bookIsbn} AND user_id = #{userId}
+    </delete>
 </mapper>

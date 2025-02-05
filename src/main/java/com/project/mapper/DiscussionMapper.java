@@ -15,12 +15,10 @@ public interface DiscussionMapper {
     List<DiscussionDTO> getCurrentDiscussion();
     Integer selectPaginatedDiscussionsTotalCount(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo);
     List<DiscussionDTO> getDiscussions(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo);
-    List<DiscussionDTO> getDiscussionsByBookIsbn(@Param("bookIsbn") String bookIsbn);
     List<DiscussionDTO> getDiscussionByBookTitle(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo, @Param("title") String title);
     byte[] getBookImageByTitle(@Param("title") String title);
     List<DiscussionDTO> getMyDiscussion(@Param("pageInfo") PageInfoDTO<DiscussionDTO> pageInfo, @Param("userId") String userId);
     DiscussionDTO selectDiscussionByDiscussionId(@Param("discussionId") Integer discussionId);
     Integer getTotalCountByTitle(@Param("title") String title);
     Integer getTotalCountByUser(@Param("userId") String userId);
-    Integer selectDiscussionNoByIsbn(@Param("bookIsbn") String bookIsbn);
 }

@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
             const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
-            console.log(csrfToken);
             fetch("/admin/book/delete", {
                 method: "DELETE",
                 headers: {

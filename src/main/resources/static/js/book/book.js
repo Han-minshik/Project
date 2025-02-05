@@ -41,8 +41,6 @@ discussionBtn.onclick = () => {
 // 찜하기 버튼을 눌렀을 때
 cartBtn.onclick = () => {
     const cartObject = createCartObject();
-    console.log("bookForm:", bookForm); // bookForm 객체 출력
-    console.log("isbn:", bookForm?.id); // id 값 출력
 
     if (!cartObject || !cartObject.isbn) {
         alert('책 정보를 가져올 수 없습니다.');
@@ -59,8 +57,6 @@ cartBtn.onclick = () => {
             body: JSON.stringify(cartObject), // JSON 형식으로 요청 본문 설정
         })
             .then(response => {
-                console.log('Error status:', response.status); // 상태 코드 출력
-                console.log('Error response:', response); // 오류 본문 출력
                 if (!response.ok) {
                     if (response.status === 401) {
                         throw new Error('로그인이 필요합니다.');
@@ -84,7 +80,7 @@ cartBtn.onclick = () => {
 function createCartObject() {
     const bookForm = document.forms.namedItem('book'); // 폼 요소 선택
     if (!bookForm) {
-        console.error("bookForm을 찾을 수 없습니다.");
+        console.error("bookForm 을 찾을 수 없습니다.");
         return null;
     }
 
@@ -100,30 +96,6 @@ function createCartObject() {
         publisher: bookPublisher || null,
         price: parseInt(bookPrice, 10) || 0,
     };
-}
-
-// 찜/대출하기 페이지에 상품 추가하는 요청
-function request(url, requestBody){
-    const csrfToken = document.querySelector('meta[name=_csrf]').getAttribute('content');
-    // 대출하기에 POST 요청 전송
-    return fetch(url, {
-        method: "POST",
-        headers: {
-            "X-CSRF-TOKEN": csrfToken,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(requestBody)
-    }).then(response => {
-        // 로그인이 안된 유저가 클릭 시
-        if(response.status === 401){
-            alert('로그인을 먼저 해주세요');
-            throw new Error();
-        }
-        else if(!response.ok){
-            alert('시스템 에러 발생!');
-            throw new Error();
-        }
-    });
 }
 
 /**************************************/
@@ -159,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const reviewData = { content: reviewContent, rate: ratingValue };
-            console.log("📤 보낼 데이터:", JSON.stringify(reviewData));
 
             fetch(`/book/${bookIsbn}/review/add`, {
                 method: "POST",
@@ -286,7 +257,6 @@ document.addEventListener("DOMContentLoaded", function () {
         IMP.init("imp25064853"); // 가맹점 코드 확인
 
         const loanObject = await createLoanObj();
-        console.log("📌 대출 요청 데이터:", loanObject);
 
         if (!loanObject) {
             console.error("❌ 대출 객체 생성 실패");
@@ -312,24 +282,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 amount: loanObject.finalPrice
             },
             function (response) {
-                console.log("💳 [결제 응답 전체]:", response);
-
                 if (!response.success) {
-                    console.error("❌ 결제 실패:", response.error_msg);
                     alert(`결제 실패: ${response.error_msg}`);
                     return;
                 }
 
                 if (!response.imp_uid) {
-                    console.error("❌ imp_uid 없음! 결제 응답:", response);
                     alert("결제 정보가 정상적으로 처리되지 않았습니다. 다시 시도해주세요.");
                     return;
                 }
-
-                console.log("✅ impUid 확인:", response.imp_uid);
-                console.log(response);
                 loanObject.impUid = response.imp_uid; // 🔹 impUid 추가
-                console.log("📌 impUid 포함된 대출 객체:", loanObject);
 
                 requestLoan(loanObject);
                 if(confirm("대여 목록으로 이동하시겠습니까?")) {
@@ -341,8 +303,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /********** 🔹 대출 요청 (포인트 포함하여 서버로 전송) **********/
     function requestLoan(requestBody) {
-        console.log("📤 /loan API 요청 본문:", requestBody); // ✅ impUid 포함 여부 확인
-
         fetch(`/loan`, {
             method: "POST",
             headers: {
@@ -352,10 +312,9 @@ document.addEventListener("DOMContentLoaded", function () {
             credentials: "include",
             body: JSON.stringify(requestBody)
         }).then(response => {
-            console.log("✅ 응답 상태 코드:", response.status);
             return response.text().then(data => ({ response, data }));
         }).then(({ response, data }) => {
-            console.log("📨 서버 응답 데이터:", data);
+            console.log("📨 서버 응답 성공");
         }).catch(error => {
             console.error("❌ 대출 요청 중 오류 발생:", error);
         });

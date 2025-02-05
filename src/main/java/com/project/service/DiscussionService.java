@@ -39,13 +39,6 @@ public class DiscussionService {
     }
 
     /**
-     * 가장 최근의 댓글 내용 반환
-     */
-    public String getRecentCommentByDiscussionId(Integer discussionId) {
-        return discussionMapper.getRecentCommentByDiscussionId(discussionId);
-    }
-
-    /**
      * 특정 토론에 대한 댓글 수 반환
      */
     public Integer getCommentCountByDiscussion(Integer discussionId) {
@@ -88,14 +81,6 @@ public class DiscussionService {
     }
 
     /**
-     * isbn 으로 토론 조회
-     */
-    public List<DiscussionDTO> getDiscussionsByBookIsbn(String bookIsbn) {
-        List<DiscussionDTO> discussions = discussionMapper.getDiscussionsByBookIsbn(bookIsbn);
-        return discussions != null ? discussions : Collections.emptyList();
-    }
-
-    /**
      * 책 제목으로 토론 검색
      */
     public PageInfoDTO<DiscussionDTO> getDiscussionByBookTitle(PageInfoDTO<DiscussionDTO> pageInfo, String title) {
@@ -135,9 +120,5 @@ public class DiscussionService {
      */
     public DiscussionDTO selectDiscussionByDiscussionId(Integer discussionId) {
         return discussionMapper.selectDiscussionByDiscussionId(discussionId);
-    }
-
-    public Integer getTotalCountByTitle(String title) {
-        return discussionMapper.getTotalCountByTitle(title);
     }
 }

@@ -112,3 +112,14 @@ ol a[active=true]{
         width: 100%; /* 1개씩 */
     }
 }
+
+#cartBtn {
+    width: 50px;
+    height: 20px;
+    background-color: #e2e2e2;
+}
+
+#cartBtn:hover {
+    background-color: darkgrey;
+    cursor: pointer;
+}

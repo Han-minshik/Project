@@ -93,7 +93,6 @@ public class MainController {
         return "user/reset-pw";
     }
 
-    // 이것도 아마도 userRestController로 옮겨야 할듯
     @PostMapping("/reset-pw-2")
     public String post_reset_pw(
             HttpSession session,
@@ -119,24 +118,19 @@ public class MainController {
             HttpServletRequest request,
             HttpServletResponse response
     ) {
-        // 쿠키에서 검색 키워드 가져오기
         String searchKeyword = getSearchKeywordFromCookies(request, response);
 
         PageInfoDTO<BookDTO> books;
 
         if (searchKeyword != null && !searchKeyword.isEmpty()) {
-            // 검색 조건이 있는 경우 검색 수행
             books = bookService.searchBooksByNameWithCount(pageInfo, searchKeyword);
         } else {
-            // 검색 조건이 없는 경우 전체 데이터 조회
             books = bookService.getPaginatedBooks(pageInfo);
         }
 
-        // 디버깅 로그 추가
         System.out.println("Search Keyword: " + searchKeyword);
         System.out.println("Books: " + books);
 
-        // 모델에 데이터 추가
         model.addAttribute("books", books.getElements());
         model.addAttribute("totalCount", books.getTotalElementCount());
         model.addAttribute("pageInfo", books); // 검색 결과 반영된 PageInfo 전달
@@ -164,16 +158,13 @@ public class MainController {
             for (Cookie cookie : request.getCookies()) {
                 if ("searchKeyword".equals(cookie.getName())) {
                     String searchKeyword = URLDecoder.decode(cookie.getValue(), StandardCharsets.UTF_8);
-
                     // ✅ 디버깅 로그 추가
                     log.info("🔍 검색 키워드 (디코딩 후): " + searchKeyword);
-
                     // ✅ 쿠키 삭제 (사용 후 제거)
                     Cookie deleteCookie = new Cookie("searchKeyword", null);
                     deleteCookie.setMaxAge(0);
                     deleteCookie.setPath("/");
                     response.addCookie(deleteCookie);
-
                     return searchKeyword;
                 }
             }
@@ -195,8 +186,7 @@ public class MainController {
     @GetMapping("/book/{bookIsbn}")
     public String getBook(
             @PathVariable String bookIsbn,
-            Model model,
-            Authentication auth
+            Model model
     ) {
         try {
             BookDTO book = bookService.getBookByIsbn(bookIsbn);
@@ -221,8 +211,6 @@ public class MainController {
 
             List<CategoryDTO> categories = bookService.getCategoryHierarchyByIsbn(bookIsbn);
             model.addAttribute("categories", categories);
-            log.error(categories);
-
         } catch (Exception e) {
             log.error("Error fetching book data for ISBN: {}", bookIsbn, e);
             return "error/500";
@@ -344,9 +332,6 @@ public class MainController {
         loan.setUserId(user.getId());
         String userId = user.getId();
 
-        log.info("📌 받은 LoanDTO 데이터: {}", loan);
-        log.info("📌 받은 impUid: {}", loan.getImpUid());
-
         try {
             // 3️⃣ 결제 정보 검증 (유료 대출의 경우)
             if (loan.getFinalPrice() > 0) {
@@ -466,9 +451,6 @@ public class MainController {
             return ResponseEntity.badRequest().body("❌ 요청 본문이 없습니다.");
         }
 
-        log.error("🔍 서버에서 받은 discussionId: " + discussionId);
-        log.error("🔍 서버에서 받은 content: " + discussionComment.getContent());
-
         if (auth == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
@@ -503,10 +485,8 @@ public class MainController {
         Map<String, Integer> response = new HashMap<>();
 
         try {
-            // 좋아요 추가
             discussionCommentService.addLike(commentId, userId);
 
-            // 업데이트된 좋아요와 싫어요 개수 가져오기
             Integer updatedLikes = discussionCommentService.getLikeCount(commentId);
             Integer updatedUnlikes = discussionCommentService.getUnlikeCount(commentId);
 
@@ -544,7 +524,6 @@ public class MainController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        // 응답이 JSON 형식으로 반환되도록 명확히 설정
         return ResponseEntity.ok(response);
     }
 

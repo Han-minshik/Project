@@ -222,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let finalPrice = Math.max(0, originalPrice - discountAmount);
 
         const loanObject = { bookTitle, bookAuthor, bookIsbn, originalPrice, discountAmount, finalPrice, usedPoints };
-        console.log("📌 대출 요청 데이터:", loanObject);
 
         if (finalPrice === 0) {
             console.log("🎉 결제 필요 없음 - 바로 대출 처리 진행");
@@ -239,15 +238,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 amount: finalPrice
             },
             function (response) {
-                console.log("💳 [결제 응답 전체]:", response);
-
                 if (!response.success) {
                     console.error("❌ 결제 실패:", response.error_msg);
                     alert(`결제 실패: ${response.error_msg}`);
                     return;
                 }
 
-                console.log("✅ impUid 확인:", response.imp_uid);
                 loanObject.impUid = response.imp_uid;
                 requestLoan(loanObject);
                 if(confirm("대여 목록으로 이동하시겠습니까?")) {
@@ -259,8 +255,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /********** 🔹 대출 요청 (포인트 포함하여 서버로 전송) **********/
     function requestLoan(requestBody) {
-        console.log("📤 /loan API 요청 본문:", requestBody);
-
         fetch(`/loan`, {
             method: "POST",
             headers: {
@@ -272,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => response.text().then(data => ({ response, data })))
             .then(({ response, data }) => {
-                console.log("📨 서버 응답 데이터:", data);
+                console.log("📨 서버 응답 성공");
             })
             .catch(error => {
                 console.error("❌ 대출 요청 중 오류 발생:", error);

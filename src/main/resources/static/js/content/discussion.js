@@ -70,7 +70,6 @@ function handleDiscussionSubmit(event) {
             return response.text();
         })
         .then(responseText => {
-            console.log("✅ 댓글 추가 성공:", responseText);
             textArea.value = "";
             load_comment(null, `/discussion/${discussionId}/comment`);
         })
@@ -92,8 +91,6 @@ function handleVoteClick(event) {
     const button = event.currentTarget;
     const commentElement = button.closest(".one-discussion");
     const commentId = commentElement ? commentElement.getAttribute("data-comment-id") : null;
-
-    console.log("🔍 클릭된 댓글 ID:", commentId); // ✅ commentId 디버깅
 
     if (!commentId) {
         console.error("🚨 commentId를 찾을 수 없습니다!");
@@ -125,7 +122,7 @@ function voteLikeComment(commentId, button) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log("좋아요 업데이트:", data);
+            console.log("좋아요 업데이트 성공");
             // UI 업데이트 로직
             updateVoteUI(commentId, data.like, data.unlike, true);
         })
@@ -134,7 +131,6 @@ function voteLikeComment(commentId, button) {
 
 /// ✅ 싫어요(👎) 요청 보내기
 function voteUnlikeComment(commentId, button) {
-    console.log(`요청 URL: /discussion/${discussionId}/comment/${commentId}/unlike`);
     fetch(`/discussion/${discussionId}/comment/${commentId}/unlike`, {
         method: "POST",
         headers: {
@@ -144,7 +140,7 @@ function voteUnlikeComment(commentId, button) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log("싫어요 업데이트:", data);
+            console.log("싫어요 업데이트 성공");
             // UI 업데이트 로직
             updateVoteUI(commentId, data.like, data.unlike, false);
         })

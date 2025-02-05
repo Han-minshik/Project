@@ -40,7 +40,6 @@
         ORDER BY created_at DESC
         LIMIT 1
     </select>
-    <!-- 페이징된 토론의 총 개수 조회 -->
     <select id="selectPaginatedDiscussionsTotalCount" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM discussion d
@@ -59,12 +58,6 @@
             </when>
         </choose>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
-    </select>
-    <!-- isbn 으로 토론 조회 -->
-    <select id="getDiscussionsByBookIsbn" resultType="DiscussionDTO">
-        SELECT *
-        FROM discussion
-        WHERE book_isbn = #{bookIsbn}
     </select>
     <!-- Discussion 페이지 제목으로 토론, 조회된 개수 조회   -->
     <select id="getDiscussionByBookTitle" resultType="DiscussionDTO">
@@ -114,8 +107,5 @@
     <!-- 사용자가 작성한 토론 글 -->
     <select id="getTotalCountByUser" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM discussion WHERE user_id = #{userId}
-    </select>
-    <select id="selectDiscussionNoByIsbn" resultType="java.lang.Integer">
-        SELECT id FROM discussion WHERE book_isbn = #{bookIsbn}
     </select>
 </mapper>

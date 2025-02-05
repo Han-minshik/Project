@@ -147,10 +147,7 @@
     </insert>
     <!-- 카트에서 특정 책 삭제 -->
     <delete id="deleteBookFromCart">
-        DELETE FROM `cart` WHERE user_id = #{userId} AND cart.no IN
-        <foreach collection="carts" item="cart" open="(" close=")" separator=",">
-            #{cartNo}
-        </foreach>
+        DELETE FROM `cart` WHERE `no` = #{cartNo}
     </delete>
     <!-- viewer -->
     <select id="getImageByIsbn" resultType="BookImageDTO">

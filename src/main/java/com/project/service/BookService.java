@@ -145,14 +145,12 @@ public class BookService {
      */
     public List<CartDTO> getCartsByUser(UserDTO user) {
         List<CartDTO> wishlist = bookMapper.selectCartsByUser(user);
-        log.error("Raw Wishlist: {}", wishlist);
 
         // Null 요소 제거
         wishlist = wishlist.stream()
                 .filter(cart -> cart != null && cart.getBook() != null)
                 .collect(Collectors.toList());
 
-        log.error("Filtered Wishlist: {}", wishlist);
         return wishlist;
     }
 
@@ -183,46 +181,12 @@ public class BookService {
     /**
      * 특정 책을 카트에서 삭제
      */
-    public void deleteBooksFromCart(Integer cartNo, String userId) {
+    public void deleteBooksFromCart(Integer cartNo) {
         try {
-//            if (carts == null || carts.isEmpty()) {
-//                throw new IllegalArgumentException("Cart items cannot be null or empty.");
-//            }
-
-            // UserDTO user = new UserDTO();
-            // user.setId(userId);
-
-            bookMapper.deleteBookFromCart(cartNo, userId);
+            bookMapper.deleteBookFromCart(cartNo);
         } catch (Exception e) {
-            log.error("Error while deleting books from cart for userId: {}", userId, e);
-            throw new RuntimeException("Failed to delete books from cart. Please try again later.");
+            throw new RuntimeException("찜 목록 삭제에 실패했습니다.");
         }
-    }
-
-    /**
-     * 특정 책의 이미지 조회
-     */
-    public List<BookImageDTO> getImageByIsbn(String isbn) {
-        try {
-            return bookMapper.getImageByIsbn(isbn);
-        } catch (Exception e) {
-            log.error("Error while fetching images for book ISBN: {}", isbn, e);
-            throw new RuntimeException("Failed to fetch book images. Please try again later.");
-        }
-    }
-
-    /**
-     * 홈 페이지 베스트셀러 조회
-     */
-    public List<BookDTO> getBooksForHomePage() {
-        List<BookDTO> ascBooks = bookMapper.getASCBestseller();
-        List<BookDTO> descBooks = bookMapper.getDESCBestseller();
-        List<BookDTO> homePageBooks = new ArrayList<>();
-
-        homePageBooks.addAll(ascBooks);
-        homePageBooks.addAll(descBooks);
-
-        return homePageBooks;
     }
 
     public List<CategoryDTO> getCategoryHierarchyByIsbn(String isbn) {
@@ -246,5 +210,4 @@ public class BookService {
     public Integer plusReviewLike(String bookIsbn, String content, String userId) {
         return bookMapper.plusReviewLike(bookIsbn, content, userId);
     }
-
 }

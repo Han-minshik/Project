@@ -40,10 +40,4 @@ public class MainRestController {
     ResponseEntity<String> get_imp_init() {
         return ResponseEntity.status(HttpStatus.OK).body(IMP_INIT);
     }
-
-    /********************************************************/
-
-
-
-    /********************************************************/
 }

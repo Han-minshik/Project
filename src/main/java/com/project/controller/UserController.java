@@ -18,7 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -139,29 +143,35 @@ public class UserController {
             model.addAttribute("myDiscussionCount", myDiscussionCount);
             model.addAttribute("myDiscussion", myDiscussion);
             model.addAttribute("pageInfo", pageInfo);
-            log.error(myDiscussion);
-            log.error(myDiscussionCount);
             return "user/my-talk";
         }
         return "redirect:/user/login";
     }
 
     /************************************************/
-
     @GetMapping("/lendbook")
-    public String get_lendbook(Authentication auth, Model model, PageInfoDTO<LoanDTO> pageInfo) {
+    public String getLendbook(Authentication auth, Model model, PageInfoDTO<LoanDTO> pageInfo) {
+        Map<LoanDTO, BookDTO> loanBookMap = new HashMap<>(); // loanBookMap 초기화
+        Integer activeLoanCount = 0; // 대여한 권수 기본값 설정
+
         if (auth != null) {
             String userId = auth.getName();
-            Map<LoanDTO, BookDTO> loanBookMap = loanService.getActiveLoanByUser(userId);
-            Integer activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
-            model.addAttribute("activeLoanCount", activeLoanCount);
-            model.addAttribute("loanBookMap", loanBookMap);
-            model.addAttribute("pageInfo", pageInfo);
-            log.error(activeLoanCount);
-            log.error(loanBookMap);
+            loanBookMap = loanService.getActiveLoanByUser(userId);
+            activeLoanCount = loanService.getActiveLoanCountByUserId(userId);
+
+            // loanBookMap이 null이면 빈 HashMap으로 초기화 (NullPointerException 방지)
+            if (loanBookMap == null) {
+                loanBookMap = new HashMap<>();
+            }
         }
+
+        model.addAttribute("activeLoanCount", activeLoanCount);
+        model.addAttribute("loanBookMap", loanBookMap);
+        model.addAttribute("pageInfo", pageInfo);
+
         return "user/lendbook";
     }
+
 
     /************************************************/
 
@@ -193,8 +203,6 @@ public class UserController {
             @RequestBody BookDTO book,
             Authentication auth
     ) {
-        log.info("Received BookDTO: {}", book);
-
         if (book.getIsbn() == null || book.getIsbn().isEmpty()) {
             log.error("ISBN 값이 누락되었습니다!");
             return ResponseEntity.badRequest().body(Map.of("message", "ISBN 값이 필요합니다."));
@@ -208,11 +216,28 @@ public class UserController {
         String userId = auth.getName();
         UserDTO user = new UserDTO();
         user.setId(userId);
-        log.info("User Info: {}", user);
 
         bookService.insertBookToCart(book, user);
 
         return ResponseEntity.ok(Map.of("message", "찜하기 성공"));
+    }
+
+    @PostMapping("/wishlist/delete/{cartNo}")
+    public String deleteBookFromWishlist(@PathVariable("cartNo") Integer cartNo, RedirectAttributes redirectAttributes) {
+        try {
+            if (cartNo == null) {
+                redirectAttributes.addFlashAttribute("error", "잘못된 요청입니다.");
+                return "redirect:/user/wishlist"; // ✅ 실패 시 리다이렉트
+            }
+
+            bookService.deleteBooksFromCart(cartNo);
+            redirectAttributes.addFlashAttribute("message", "삭제 성공");
+
+            return "redirect:/user/wishlist"; // ✅ 성공 시 리다이렉트
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "삭제 실패");
+            return "redirect:/user/wishlist"; // ✅ 예외 발생 시 리다이렉트
+        }
     }
 
     /*************************************************/
@@ -292,52 +317,16 @@ public class UserController {
 
     @GetMapping("/write_QA")
     public void write_complain() {
-
     }
 
-//    /*********************** 공지사항 *********************/
-//    // 어쩌면 메인으로 가야하는건가?
-//    // 공지사항 목록
-//    @GetMapping("/adminPost")
-//    public String get_allAdminPost(
-//            Authentication auth,
-//            Model model
-//    ){
-//        if (auth != null) {
-//            List<AdminPostDTO> allAdminPost = adminMapper.getAllAdminPosts();
-//            model.addAttribute("allAdminPost", allAdminPost);
-//            return "user/all-admin-post";
-//        }
-//        return "redirect:/user/login";
-//    }
-//
-//    // 공지사항 한 페이지
-//    @GetMapping("/adminPost/{adminPostId}")
-//    public String get_adminPost(
-//            Authentication auth,
-//            @PathVariable Integer adminPostId,
-//            Model model
-//    ){
-//        if (auth != null) {
-//            List<AdminPostDTO> adminPost = adminMapper.getAdminPostById(adminPostId);
-//            model.addAttribute("adminPost", adminPost);
-//            return "user/admin-post";
-//        }
-//        return "redirect:/user/login";
-//    }
-//
-//    /******************************/
-//    // 탈퇴
-//    @GetMapping("/resign")
-//    public void get_user_resign(){}
-//
-//    @PostMapping("/resign")
-//    public String post_user_resign(
-//            Authentication auth
-//    ){
-//        if (auth != null) {
-//            userMapper.deleteUser(auth.getName());
-//        }
-//        return "redirect:/user/logout";
-//    }
+    @PostMapping("/book/return/{bookIsbn}")
+    public String returnBook(@PathVariable String bookIsbn, Principal principal, RedirectAttributes redirectAttributes) {
+        try {
+            loanService.returnBook(bookIsbn, principal.getName());
+            redirectAttributes.addFlashAttribute("message", "책이 성공적으로 반납되었습니다!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "책 반납에 실패했습니다.");
+        }
+        return "redirect:/user/lendbook"; // ✅ 리다이렉트 정상 작동
+    }
 }

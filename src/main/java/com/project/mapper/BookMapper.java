@@ -23,10 +23,7 @@ public interface BookMapper {
     List<BookDTO> getPopularBook2();
     List<CartDTO> selectCartsByUser(UserDTO user);
     void insertBookToCart(@Param("cart") CartDTO cart, @Param("user") UserDTO user);
-    void deleteBookFromCart(@Param("cartNo")Integer cartNo, @Param("userId")String userId);
-    List<BookImageDTO> getImageByIsbn(@Param("isbn")String isbn);
-    List<BookDTO> getASCBestseller();
-    List<BookDTO> getDESCBestseller();
+    void deleteBookFromCart(@Param("cartNo") Integer cartNo);
     Integer selectCartCountByUser(@Param("userId")String userId);
     List<CategoryDTO> selectCategoryByIsbn(@Param("isbn") String isbn);
     void insertReview(@Param("userId")String userId, @Param("isbn") String isbn, @Param("content")String content, @Param("rate") Integer rate);

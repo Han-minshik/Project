@@ -26,7 +26,7 @@ document.forms[0].onsubmit = (event) => {
         .then(response => response.text())
         .then(data => {
             alert("토론 게시판에 등록되었습니다!");
-            console.log("서버 응답:", data);
+            console.log("서버 응답");
         })
         .catch(error => {
             console.error("오류 발생:", error);

@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -25,29 +22,6 @@ public class LoanService {
     @Autowired private UserMapper userMapper;
     @Autowired private BookMapper bookMapper;
     @Autowired private PortOneService portOneService;
-
-    /**
-     * 특정 사용자의 대출 기록 조회
-     */
-    public List<LoanDTO> getLoansByUserId(String userId) {
-        return loanMapper.getLoansByUserId(userId);
-    }
-
-    /**
-     * 대출 상태 업데이트 및 책 재고 증가 (반납 처리)
-     */
-    public void updateLoanStatus(Integer loanId, String bookIsbn) {
-        loanMapper.updateLoanStatus(loanId, "반납 완료");
-        loanMapper.increaseCopiesAvailable(bookIsbn);
-    }
-
-    /**
-     * 모든 대출 기록 조회
-     */
-    public List<LoanDTO> getAllLoans() {
-        return loanMapper.getAllLoans();
-    }
-
     /**
      * 사용자가 대출 중인 책의 개수 확인
      */
@@ -69,16 +43,6 @@ public class LoanService {
 
     public Integer getUserPoints(String userId) {
         return loanMapper.getUserPoints(userId);
-    }
-
-    /**
-     * 포인트 차감 메서드 (포인트가 있다면 사용)
-     */
-    public void deductUserPoints(String userId, Integer usedPoints) {
-        if (usedPoints != null && usedPoints > 0) {
-            log.info("🔹 사용자 {}의 포인트 {} 차감", userId, usedPoints);
-            loanMapper.deductUserPoints(userId, usedPoints);
-        }
     }
 
     @Transactional
@@ -121,8 +85,10 @@ public class LoanService {
     public Map<LoanDTO, BookDTO> getActiveLoanByUser(String userId) {
         // 사용자의 대출 목록 조회
         List<LoanDTO> loans = loanMapper.getActiveLoanByUserAndBook(userId);
+
+        // 대출 기록이 없을 경우 빈 Map 반환 (예외 발생 X)
         if (loans == null || loans.isEmpty()) {
-            throw new IllegalArgumentException("현재 사용자가 대출 중인 기록이 없습니다.");
+            return new HashMap<>();
         }
 
         // 대출 목록에서 ISBN 추출
@@ -131,16 +97,10 @@ public class LoanService {
                 .distinct()
                 .toList();
 
-        List<BookDTO> books = isbns.stream()
-                .map(isbn -> {
-                    BookDTO book = bookMapper.getBookByIsbn(isbn);
-                    return book;
-                })
+        // ISBN을 기반으로 책 정보 조회
+        Map<String, BookDTO> bookMap = isbns.stream()
+                .map(bookMapper::getBookByIsbn)
                 .filter(Objects::nonNull)
-                .toList();
-
-        // ISBN을 키로 하는 맵 생성
-        Map<String, BookDTO> bookMap = books.stream()
                 .collect(Collectors.toMap(BookDTO::getIsbn, book -> book));
 
         // LoanDTO와 BookDTO를 매핑
@@ -158,29 +118,7 @@ public class LoanService {
         return loanMapper.getFirstReturnDateByBookIsbn(bookIsbn);
     }
 
-    /**
-     * 반납 처리 및 포인트 적립
-     */
-    public void returnBookWithReward(Integer loanId, String bookIsbn, String userId) {
-        // 대출 상태를 '반납 완료'로 업데이트
-        loanMapper.updateLoanStatus(loanId, "반납 완료");
-        loanMapper.increaseCopiesAvailable(bookIsbn);
-
-        // 대출 중인 사용자 확인 및 포인트 적립
-        List<LoanDTO> loans = loanMapper.getActiveLoanByUserAndBook(userId);
-
-        if (loans != null && !loans.isEmpty()) {
-            for (LoanDTO loan : loans) {
-                if (loan.getFinalPrice() != null) {
-                    Integer rewardPoints = (loan.getFinalPrice() / 1000) * 10;
-                    userMapper.addPointToUser(userId, rewardPoints);
-                    log.info("반납 완료 및 포인트 {} 적립: 사용자 ID {}, 책 ISBN {}", rewardPoints, userId, bookIsbn);
-                } else {
-                    log.warn("사용자 {}의 대출 기록 중 가격 정보가 없는 항목이 있습니다.", userId);
-                }
-            }
-        } else {
-            log.warn("사용자 {}에 대한 유효한 대출 기록이 존재하지 않습니다.", userId);
-        }
+    public void returnBook(String bookIsbn, String userId) {
+        loanMapper.returnBook(bookIsbn, userId);
     }
 }
