@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -222,22 +224,36 @@ public class UserController {
         return ResponseEntity.ok(Map.of("message", "찜하기 성공"));
     }
 
-    @PostMapping("/wishlist/delete/{cartNo}")
-    public String deleteBookFromWishlist(@PathVariable("cartNo") Integer cartNo, RedirectAttributes redirectAttributes) {
-        try {
-            if (cartNo == null) {
-                redirectAttributes.addFlashAttribute("error", "잘못된 요청입니다.");
-                return "redirect:/user/wishlist"; // ✅ 실패 시 리다이렉트
-            }
-
-            bookService.deleteBooksFromCart(cartNo);
-            redirectAttributes.addFlashAttribute("message", "삭제 성공");
-
-            return "redirect:/user/wishlist"; // ✅ 성공 시 리다이렉트
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "삭제 실패");
-            return "redirect:/user/wishlist"; // ✅ 예외 발생 시 리다이렉트
+    @GetMapping("/book/viewer/{bookIsbn}")
+    public String getBookViewer(
+            @PathVariable String bookIsbn,
+            Model model,
+            @AuthenticationPrincipal UserDTO user
+    ) {
+        if (user == null || user.getName() == null) {
+            return "user/login";
         }
+        LoanDTO loanInfo = loanService.getLoanByUserAndBook(user.getName(), bookIsbn);
+        if (loanInfo == null || !"대출 중".equals(loanInfo.getStatus())) {
+            model.addAttribute("error", "해당 책을 대출한 사용자만 열람할 수 있습니다.");
+            return "error/forbidden";
+        }
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime loanDate = loanInfo.getLoanDate();
+        LocalDateTime returnDate = loanInfo.getReturnDate().toLocalDate().atTime(23, 59, 59); // 반납일 끝까지 허용
+
+        System.out.println("현재 시간: " + now);
+        System.out.println("대출 시작일: " + loanDate);
+        System.out.println("반납 기한: " + returnDate);
+
+        if (now.isBefore(loanDate) || now.isAfter(returnDate)) {
+            model.addAttribute("error", "해당 책은 대출 기간 내에서만 열람할 수 있습니다.");
+            return "error/forbidden";
+        }
+
+        BookDTO book = bookService.getBookByIsbn(bookIsbn);
+        model.addAttribute("book", book);
+        return "book/book-viewer";
     }
 
     /*************************************************/

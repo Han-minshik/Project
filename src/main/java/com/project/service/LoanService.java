@@ -121,4 +121,8 @@ public class LoanService {
     public void returnBook(String bookIsbn, String userId) {
         loanMapper.returnBook(bookIsbn, userId);
     }
+
+    public LoanDTO getLoanByUserAndBook(String userId, String bookIsbn) {
+        return loanMapper.findByUserIdAndBookIsbn(userId, bookIsbn);
+    }
 }

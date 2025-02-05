@@ -21,5 +21,6 @@ public interface LoanMapper {
     Integer getUserPoints(@Param("userId") String userId);
     void deductUserPoints(@Param("userId") String userId, @Param("points") Integer points);
     void returnBook(@Param("bookIsbn") String bookIsbn, @Param("userId") String userId);
+    LoanDTO findByUserIdAndBookIsbn(@Param("userId") String userId, @Param("bookIsbn") String bookIsbn);
 }
 

@@ -66,4 +66,14 @@
     <delete id="returnBook">
         DELETE FROM loan WHERE book_isbn = #{bookIsbn} AND user_id = #{userId}
     </delete>
+    <select id="findByUserIdAndBookIsbn" resultType="LoanDTO">
+        SELECT *
+        FROM loan
+        WHERE user_id = ?
+          AND book_isbn = ?
+          AND status = '대출 중'
+          AND NOW() BETWEEN loan_date AND return_date;
+    </select>
+
+
 </mapper>
