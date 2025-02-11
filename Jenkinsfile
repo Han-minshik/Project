@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("GIT Clone") {
             steps {
-                git url : "https://github.com/Han-minshik/Project.git",
+                git url : "https://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@github.com/Han-minshik/Project.git",
                 branch: 'main',
                 credentialsId: 'hanminshik'
             }
