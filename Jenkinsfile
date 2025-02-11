@@ -9,11 +9,11 @@ pipeline {
                 credentialsId: 'hanminshik'
             }
         }
-//         stage("Package"){
-//             steps{
-//                 sh "chmod 777 mvnw"
-//                 sh "./mvnw package"
-//             }
-//         }
+        stage("Package"){
+            steps{
+                sh "chmod 777 mvnw"
+                sh "./mvnw package"
+            }
+        }
     }
 }
