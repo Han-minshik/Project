@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="최종&#10;viewer 검증 로직">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="JavaScript File" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -63,9 +65,13 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.webserver-mysql: Compose 배포.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose 배포.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.project의 static.img.main.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.project의 전부 (1).executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.project의 전부.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.project [compile].executor&quot;: &quot;Run&quot;,
     &quot;Maven.project [package].executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
@@ -116,7 +122,7 @@
       <recent name="com.project.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProjectApplication">
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="project의 전부 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project" />
       <option name="PACKAGE_NAME" value="" />
@@ -134,14 +140,6 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="static.img.main" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="project의 전부" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project" />
-      <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -166,11 +164,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose 배포" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.webserver-mysql: Compose 배포" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="webserver-mysql" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Dockerfile" />
+        <item itemvalue="Docker.docker-compose.yml: Compose 배포" />
+        <item itemvalue="Docker.docker-compose.yml.webserver-mysql: Compose 배포" />
         <item itemvalue="JUnit.project의 static.img.main" />
         <item itemvalue="JUnit.project의 전부 (1)" />
-        <item itemvalue="JUnit.project의 전부" />
       </list>
     </recent_temporary>
   </component>
@@ -312,94 +353,8 @@
       <workItem from="1739276247055" duration="670000" />
       <workItem from="1739276938163" duration="1048000" />
       <workItem from="1739339004923" duration="7000" />
-    </task>
-    <task id="LOCAL-00056" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
-      <option name="closed" value="true" />
-      <created>1738043719038</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1738043719039</updated>
-    </task>
-    <task id="LOCAL-00057" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
-      <option name="closed" value="true" />
-      <created>1738044494565</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1738044494565</updated>
-    </task>
-    <task id="LOCAL-00058" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
-      <option name="closed" value="true" />
-      <created>1738047428200</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1738047428200</updated>
-    </task>
-    <task id="LOCAL-00059" summary="book-category &#10;· 찜하기 완료 but wishlist js에서 에러(생성 필요)&#10;· 검색했을 때 페이지네이션 디자인 깨짐 &#10;· 대출하기 눌렀을 때 결제 연동&#10;· 검색 이후 sort 정렬&#10;&#10;book/isbn&#10;· 댓글 추가 &#10;· 로그인 했을 때 로그인 후 대출을 해보세요 삭제&#10;· 대출하기 결제 연동&#10;&#10;&#10;&#10;&#10;&#10;완료&#10;book-category&#10;· 검색했을 때 찜하기 버튼 완료&#10;&#10;book/isbn&#10;· 날짜 포매팅 &#10;· 토론하러가기&#10;· 찜하기 &#10;· 대출 가능 권수 0일 때, 대출 가능 여부 불가 및 대출 가능일 반환">
-      <option name="closed" value="true" />
-      <created>1738047649577</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1738047649577</updated>
-    </task>
-    <task id="LOCAL-00060" summary="테스트 진행 중&#10;(review-template, book-template)">
-      <option name="closed" value="true" />
-      <created>1738128885284</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1738128885284</updated>
-    </task>
-    <task id="LOCAL-00061" summary="테스트 진행 중&#10;(review-template, book-template)">
-      <option name="closed" value="true" />
-      <created>1738138131475</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1738138131475</updated>
-    </task>
-    <task id="LOCAL-00062" summary="테스트 진행 중&#10;(review-template, book-template)">
-      <option name="closed" value="true" />
-      <created>1738140798659</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1738140798659</updated>
-    </task>
-    <task id="LOCAL-00063" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
-      <option name="closed" value="true" />
-      <created>1738150368816</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1738150368816</updated>
-    </task>
-    <task id="LOCAL-00064" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
-      <option name="closed" value="true" />
-      <created>1738150887535</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1738150887535</updated>
-    </task>
-    <task id="LOCAL-00065" summary="리뷰 템플릿 끝&#10;book/isbn&#10;book-category 최종 테스트">
-      <option name="closed" value="true" />
-      <created>1738153237112</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1738153237112</updated>
-    </task>
-    <task id="LOCAL-00066" summary="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동">
-      <option name="closed" value="true" />
-      <created>1738156859798</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1738156859798</updated>
+      <workItem from="1739354698639" duration="8960000" />
+      <workItem from="1739371463602" duration="1101000" />
     </task>
     <task id="LOCAL-00067" summary="book/isbn&#10;· 리뷰 사용자 이미지 반환&#10;· 리뷰 입력 창 생성&#10;· 리뷰 입력 완료(but 최신 정렬 되지 않음)&#10;· 리뷰 좋아요&#10;· 로그인 후 대출해보세요 로그인 했을 시 삭제 &#10;· 토론하러 가기 버튼 클릭시 띄어쓰기, 특수 문자 포함되어 있어도 반환&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;book/book-category&#10;· 제목 검색 정확히 반환 X(띄어쓰기와 특수문자 등) -&gt; 특수문자 제거하여 검색(공백은 검색 X)&#10;· 찜하기 버튼 오류 수정&#10;&#10;- (대출하기 연동만 하면 끝)&#10;&#10;&#10;discussion/category&#10;· 검색 잘 반환(공백은 검색 X)&#10;· 제목 검색한 이후 반환된 값들의 버튼 작동ㅇ&#10;· 검색 후 페이지네이션 깨짐 현상 수정&#10;&#10;- 글쓰기 버튼 클릭 시 이동&#10;&#10;&#10;테스트 예정&#10;· discussion/discussionid : 리뷰 템플릿 불러오기 &#10;· discussion/category : 글쓰기 버튼 클릭 시 이동">
       <option name="closed" value="true" />
@@ -705,7 +660,95 @@
       <option name="project" value="LOCAL" />
       <updated>1739276997302</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739354971364</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1739354971364</updated>
+    </task>
+    <task id="LOCAL-00106" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739357175587</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1739357175587</updated>
+    </task>
+    <task id="LOCAL-00107" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739361273139</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1739361273139</updated>
+    </task>
+    <task id="LOCAL-00108" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739361543885</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1739361543885</updated>
+    </task>
+    <task id="LOCAL-00109" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739362399013</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1739362399013</updated>
+    </task>
+    <task id="LOCAL-00110" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739363125226</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363125226</updated>
+    </task>
+    <task id="LOCAL-00111" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739363205737</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363205737</updated>
+    </task>
+    <task id="LOCAL-00112" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739363270155</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363270155</updated>
+    </task>
+    <task id="LOCAL-00113" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739363306198</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363306198</updated>
+    </task>
+    <task id="LOCAL-00114" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739363631824</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363631824</updated>
+    </task>
+    <task id="LOCAL-00115" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739364041507</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1739364041507</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
