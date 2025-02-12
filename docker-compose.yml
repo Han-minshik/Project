@@ -4,7 +4,7 @@ services:
     container_name: mysql
     restart: always
     ports:
-      - 50000:3306
+      - 3306:3306
     environment:
       - TZ=Asia/Seoul
       - MYSQL_ROOT_PASSWORD=kong3767
