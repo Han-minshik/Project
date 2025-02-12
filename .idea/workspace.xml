@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="최종&#10;viewer 검증 로직">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="최종&#10;viewer 검증 로직" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -352,15 +350,7 @@
       <workItem from="1739276938163" duration="1048000" />
       <workItem from="1739339004923" duration="7000" />
       <workItem from="1739354698639" duration="8960000" />
-      <workItem from="1739371463602" duration="2675000" />
-    </task>
-    <task id="LOCAL-00068" summary="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
-      <option name="closed" value="true" />
-      <created>1738244801271</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1738244801271</updated>
+      <workItem from="1739371463602" duration="4256000" />
     </task>
     <task id="LOCAL-00069" summary="discussion/category&#10;· 토론 글쓰기 버튼 클릭시 이동&#10;· 제목으로 검색했을 때 최근 댓글 반환&#10;&#10;(완료)&#10;&#10;&#10;discussion/discussionId&#10;· 리뷰 불러오기 &#10;· 리뷰 작성하기 &#10;· 리뷰 좋아요 싫어요(유저 당 댓글에 좋아요나 싫어요를 하나만 가능)&#10;&#10;· 리뷰 페이지네이션(구현 필요)">
       <option name="closed" value="true" />
@@ -746,7 +736,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739373778511</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="최종&#10;viewer 검증 로직">
+      <option name="closed" value="true" />
+      <created>1739379609466</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1739379609466</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
