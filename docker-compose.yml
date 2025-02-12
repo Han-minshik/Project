@@ -15,8 +15,8 @@ services:
   # 웹 서버가 될 continer 정의
   webserver-java:
     container_name: webserver
-    ports:
-      - 80:80
+#    ports:
+#      - 80:80
     build:
       context: . # 참조할 도커파일 경로
       dockerfile: Dockerfile # 도커파일의 이름
