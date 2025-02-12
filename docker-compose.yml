@@ -1,0 +1,24 @@
+services:
+  webserver-mysql:
+    image: mysql:8.0.39
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_ROOT_PASSWORD=kong3767
+      - MYSQL_USERNAME=korea
+      - MYSQL_USER_PASSWORD=1234
+      - MYSQL_DATABASE=project
+
+  # 웹 서버가 될 continer 정의
+  webserver-java:
+    container_name: webserver
+    build:
+      context: . # 참조할 도커파일 경로
+      dockerfile: Dockerfile # 도커파일의 이름
+    # 이 컨테이너는 webserver-mysql을 기반으로 동작한다는 의미
+    # webserver-mysql 컨테이너 먼저 만들어라
+    depends_on:
+      - webserver-mysql
