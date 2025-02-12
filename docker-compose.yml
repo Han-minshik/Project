@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   webserver-mysql:
     image: mysql:8.0.39
