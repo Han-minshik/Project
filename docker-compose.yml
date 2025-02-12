@@ -1,7 +1,7 @@
 version: '3'
 services:
   webserver-mysql:
-    image: mysql:8.4.0
+    image: mysql:8.0.4
     container_name: mysql
     restart: always
     ports:
