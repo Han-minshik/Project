@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ssl/keystore.p12" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,15 +353,7 @@
       <workItem from="1739339004923" duration="7000" />
       <workItem from="1739354698639" duration="8960000" />
       <workItem from="1739371463602" duration="7976000" />
-      <workItem from="1739412334128" duration="4715000" />
-    </task>
-    <task id="LOCAL-00075" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;&#10;해야 될 것&#10;manager&#10;- 회원 정보 삭제 &#10;- 승급&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기">
-      <option name="closed" value="true" />
-      <created>1738326880159</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1738326880159</updated>
+      <workItem from="1739412334128" duration="6160000" />
     </task>
     <task id="LOCAL-00076" summary="discussion/discussionId&#10;· pagination 완료&#10;· complain 페이지 타임리프(사용자, 전체 분리)&#10;&#10;&#10;해야 될 것&#10;manager&#10;- 회원 정보 삭제 &#10;- 승급&#10;- 책 삭제 &#10;- Q&amp;A 댓글 달기">
       <option name="closed" value="true" />
@@ -749,7 +739,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739416102528</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739417424388</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1739417424388</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
