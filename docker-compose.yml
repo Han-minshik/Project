@@ -8,8 +8,8 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=kong3767
-      - MYSQL_USERNAME=korea
-      - MYSQL_USER_PASSWORD=1234
+      - MYSQL_USER=korea
+      - MYSQL_PASSWORD=1234
       - MYSQL_DATABASE=project
 
   # 웹 서버가 될 continer 정의

@@ -29,7 +29,7 @@ public class SecurityConfiguration {
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/static/**", "/", "/book/**", "/content/**").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
@@ -40,12 +40,6 @@ public class SecurityConfiguration {
             configure.anyRequest().authenticated();
         });
 
-//        http.requiresChannel(channel ->
-//                channel.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-//                        .requiresSecure());
-//        http.sessionManagement(session -> session.sessionFixation().newSession());
-
-
         http.userDetailsService(userDetailsService)
                 .formLogin(Customizer.withDefaults());
 
@@ -54,9 +48,8 @@ public class SecurityConfiguration {
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", false)
+                    .defaultSuccessUrl("/")
                     .permitAll();
-//            configure.permitAll();
         });
 
         http.logout(configure -> {
