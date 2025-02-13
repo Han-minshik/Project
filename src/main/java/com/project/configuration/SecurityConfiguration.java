@@ -40,6 +40,12 @@ public class SecurityConfiguration {
             configure.anyRequest().authenticated();
         });
 
+        http.requiresChannel(channel ->
+                channel.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                        .requiresSecure());
+        http.sessionManagement(session -> session.sessionFixation().newSession());
+
+
         http.userDetailsService(userDetailsService)
                 .formLogin(Customizer.withDefaults());
 
@@ -48,7 +54,7 @@ public class SecurityConfiguration {
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/", false)
                     .permitAll();
         });
 
