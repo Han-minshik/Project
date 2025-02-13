@@ -45,9 +45,10 @@ public class SecurityConfiguration {
         });
 
         // 🔹 HTTPS 강제 적용 (Spring Security 6 이상)
-//        http.requiresChannel(channel ->
-//                channel.anyRequest().requiresSecure()
-//        );
+//        http.requiresChannel(channel -> {
+//             channel.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+//           .requiresSecure();
+//        });
 
         // 🔹 CORS 설정 허용
         http.cors(Customizer.withDefaults());
