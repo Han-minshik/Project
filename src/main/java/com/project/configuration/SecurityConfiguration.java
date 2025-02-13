@@ -52,7 +52,7 @@ public class SecurityConfiguration {
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", false)
+                    .defaultSuccessUrl("/")
                     .permitAll();
         });
 
@@ -67,7 +67,7 @@ public class SecurityConfiguration {
         http.oauth2Login(configure -> {
             configure.loginPage("/user/login")
                     .failureUrl("/user/join")
-                    .defaultSuccessUrl("/", false)
+                    .defaultSuccessUrl("/")
                     .permitAll();
         });
 
