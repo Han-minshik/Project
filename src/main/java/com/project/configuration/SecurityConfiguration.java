@@ -40,10 +40,10 @@ public class SecurityConfiguration {
             configure.anyRequest().authenticated();
         });
 
-        http.requiresChannel(channel ->
-                channel.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-                        .requiresSecure());
-        http.sessionManagement(session -> session.sessionFixation().newSession());
+//        http.requiresChannel(channel ->
+//                channel.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+//                        .requiresSecure());
+//        http.sessionManagement(session -> session.sessionFixation().newSession());
 
 
         http.userDetailsService(userDetailsService)
