@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/project.GUuQ7Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/project.GUuQ7Q.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/854acda5-2ba5-479e-a87d-48607c743d4f/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -362,15 +354,7 @@
       <workItem from="1739354698639" duration="8960000" />
       <workItem from="1739371463602" duration="7976000" />
       <workItem from="1739412334128" duration="12321000" />
-      <workItem from="1739447884496" duration="1020000" />
-    </task>
-    <task id="LOCAL-00087" summary="홈&#10;· 헤더, 푸터 분리&#10;· 타임리프 값 삽입&#10;· 버튼 클릭 시 이동&#10;· 슬라이드 &#10;&#10;· 로그인시 헤더에 로그아웃 버튼이나 다른 추가할 것들 추가">
-      <option name="closed" value="true" />
-      <created>1738503700511</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1738503700511</updated>
+      <workItem from="1739447884496" duration="2866000" />
     </task>
     <task id="LOCAL-00088" summary="버튼 클릭 시 이동 및 자잘한 변경">
       <option name="closed" value="true" />
@@ -756,7 +740,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739423018031</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739449757530</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1739449757530</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
