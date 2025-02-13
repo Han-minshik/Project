@@ -48,7 +48,7 @@ public class SecurityConfiguration {
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/", false)
                     .permitAll();
         });
 
