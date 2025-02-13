@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-    </list>
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -357,183 +352,7 @@
       <workItem from="1739354698639" duration="8960000" />
       <workItem from="1739371463602" duration="7976000" />
       <workItem from="1739412334128" duration="12321000" />
-      <workItem from="1739447884496" duration="4481000" />
-    </task>
-    <task id="LOCAL-00091" summary="discussion/discussionId&#10;· 좋아요, 싫어요 총합 계산하여 추가할 때마다 50개가 됐다면 포인트 지급 로직 작성&#10;(한 유저당 댓글 하나에 좋아요와 싫어요 중 하나만 누를 수 있어 테스트 해보지 못함)&#10;· 한 토론에 한 유저가 작성할 수 있는 댓글은 1개로 한정&#10;&#10;write_QA&#10;write_talk">
-      <option name="closed" value="true" />
-      <created>1738575754788</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1738575754788</updated>
-    </task>
-    <task id="LOCAL-00092" summary="security 제외 웬만한 모든 기능과 포인트 지급 로직">
-      <option name="closed" value="true" />
-      <created>1738582297228</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1738582297228</updated>
-    </task>
-    <task id="LOCAL-00093" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738585813404</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1738585813404</updated>
-    </task>
-    <task id="LOCAL-00094" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738585935524</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1738585935524</updated>
-    </task>
-    <task id="LOCAL-00095" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738585948300</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1738585948300</updated>
-    </task>
-    <task id="LOCAL-00096" summary="최종&#10;springsecurity 수정 완">
-      <option name="closed" value="true" />
-      <created>1738595196853</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1738595196854</updated>
-    </task>
-    <task id="LOCAL-00097" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738747446748</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1738747446749</updated>
-    </task>
-    <task id="LOCAL-00098" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738750889422</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1738750889424</updated>
-    </task>
-    <task id="LOCAL-00099" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738751900295</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1738751900295</updated>
-    </task>
-    <task id="LOCAL-00100" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738755950889</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1738755950889</updated>
-    </task>
-    <task id="LOCAL-00101" summary="최종">
-      <option name="closed" value="true" />
-      <created>1738759703866</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1738759703867</updated>
-    </task>
-    <task id="LOCAL-00102" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1738765391926</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1738765391926</updated>
-    </task>
-    <task id="LOCAL-00103" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739276599343</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1739276599343</updated>
-    </task>
-    <task id="LOCAL-00104" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739276997302</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1739276997302</updated>
-    </task>
-    <task id="LOCAL-00105" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739354971364</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1739354971364</updated>
-    </task>
-    <task id="LOCAL-00106" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739357175587</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1739357175587</updated>
-    </task>
-    <task id="LOCAL-00107" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739361273139</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1739361273139</updated>
-    </task>
-    <task id="LOCAL-00108" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739361543885</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1739361543885</updated>
-    </task>
-    <task id="LOCAL-00109" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739362399013</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1739362399013</updated>
-    </task>
-    <task id="LOCAL-00110" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739363125226</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1739363125226</updated>
-    </task>
-    <task id="LOCAL-00111" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739363205737</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1739363205737</updated>
-    </task>
-    <task id="LOCAL-00112" summary="최종&#10;viewer 검증 로직">
-      <option name="closed" value="true" />
-      <created>1739363270155</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1739363270155</updated>
+      <workItem from="1739447884496" duration="14251000" />
     </task>
     <task id="LOCAL-00113" summary="최종&#10;viewer 검증 로직">
       <option name="closed" value="true" />
@@ -751,7 +570,183 @@
       <option name="project" value="LOCAL" />
       <updated>1739452210673</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739453621512</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1739453621512</updated>
+    </task>
+    <task id="LOCAL-00141" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739453707011</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1739453707011</updated>
+    </task>
+    <task id="LOCAL-00142" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739453832480</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1739453832480</updated>
+    </task>
+    <task id="LOCAL-00143" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739454446707</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1739454446707</updated>
+    </task>
+    <task id="LOCAL-00144" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739455427529</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1739455427529</updated>
+    </task>
+    <task id="LOCAL-00145" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739455582017</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1739455582017</updated>
+    </task>
+    <task id="LOCAL-00146" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739455957286</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1739455957286</updated>
+    </task>
+    <task id="LOCAL-00147" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739456982177</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1739456982177</updated>
+    </task>
+    <task id="LOCAL-00148" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739457679773</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1739457679773</updated>
+    </task>
+    <task id="LOCAL-00149" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739457819027</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1739457819027</updated>
+    </task>
+    <task id="LOCAL-00150" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739458243572</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1739458243572</updated>
+    </task>
+    <task id="LOCAL-00151" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739458651082</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1739458651082</updated>
+    </task>
+    <task id="LOCAL-00152" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739459518646</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1739459518646</updated>
+    </task>
+    <task id="LOCAL-00153" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739459754981</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1739459754981</updated>
+    </task>
+    <task id="LOCAL-00154" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739460203127</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1739460203127</updated>
+    </task>
+    <task id="LOCAL-00155" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739460566716</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1739460566716</updated>
+    </task>
+    <task id="LOCAL-00156" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739461655368</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1739461655368</updated>
+    </task>
+    <task id="LOCAL-00157" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739461776913</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1739461776913</updated>
+    </task>
+    <task id="LOCAL-00158" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739462012626</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1739462012626</updated>
+    </task>
+    <task id="LOCAL-00159" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739462212340</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1739462212340</updated>
+    </task>
+    <task id="LOCAL-00160" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739462466165</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1739462466165</updated>
+    </task>
+    <task id="LOCAL-00161" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739462660498</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1739462660498</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
