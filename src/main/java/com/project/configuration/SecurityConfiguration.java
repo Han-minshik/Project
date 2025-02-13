@@ -50,12 +50,13 @@ public class SecurityConfiguration {
                 .formLogin(Customizer.withDefaults());
 
         http.formLogin(configure -> {
-            configure.loginPage("/user/login")
-                    .loginProcessingUrl("/user/login")
-                    .usernameParameter("id")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/", false)
-                    .permitAll();
+//            configure.loginPage("/user/login")
+//                    .loginProcessingUrl("/user/login")
+//                    .usernameParameter("id")
+//                    .passwordParameter("password")
+//                    .defaultSuccessUrl("/", false)
+//                    .permitAll();
+            configure.permitAll();
         });
 
         http.logout(configure -> {
