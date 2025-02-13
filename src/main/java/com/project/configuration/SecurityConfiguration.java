@@ -40,6 +40,10 @@ public class SecurityConfiguration {
             configure.anyRequest().authenticated();
         });
 
+        http.requiresChannel(channel ->
+                channel.anyRequest().requiresSecure()
+        );
+
         http.userDetailsService(userDetailsService)
                 .formLogin(Customizer.withDefaults());
 
@@ -63,7 +67,7 @@ public class SecurityConfiguration {
         http.oauth2Login(configure -> {
             configure.loginPage("/user/login")
                     .failureUrl("/user/join")
-                    .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/", true)
                     .permitAll();
         });
 
