@@ -102,15 +102,13 @@ public class UserController {
 
 
     /***********************************************/
-    @GetMapping("/login")
-    public String get_login(Authentication auth) {
-        if (auth != null && auth.isAuthenticated()) {
-            return "redirect:/"; // ✅ 이미 로그인된 사용자는 홈으로 리디렉트
-        }
-        return "user/login";
-    }
-
-
+//    @GetMapping("/login")
+//    public String get_login(Authentication auth) {
+//        if (auth != null && auth.isAuthenticated()) {
+//            return "redirect:/"; // ✅ 이미 로그인된 사용자는 홈으로 리디렉트
+//        }
+//        return "user/login";
+//    }
 
     /***********************************************/
     // 내 회원 정보 메뉴

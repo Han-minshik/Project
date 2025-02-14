@@ -68,6 +68,13 @@ public class MainController {
         return "main/home";
     }
 
+    /***********************************************/
+    @GetMapping("/user/login")
+    public String get_login(String error, String logout) {
+        log.info("Member login get");
+        return "user/login";
+    }
+
     /**************** 비밀번호 *********************/
 
     @GetMapping("/reset-pw")
