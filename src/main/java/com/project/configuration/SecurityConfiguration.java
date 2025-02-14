@@ -26,7 +26,7 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(configure -> {
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/user/login","/");
+            configure.requestMatchers("/user/login","/").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
