@@ -29,13 +29,16 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(configure -> {
             configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
 
+            // ✅ 로그인, 로그아웃 관련 경로를 최상단에 배치
+            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**", "/login/oauth2/**", "/user/login?**", "/user/login?error=true").permitAll();
+
+            // ✅ 정적 리소스 허용
+            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/book/**", "/content/**").permitAll();
+
             // ✅ 관리자 페이지 보호
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
-            // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/book/**", "/content/**").permitAll();
-            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**", "/login/oauth2/**", "/user/login?**").permitAll();
-            configure.requestMatchers("/user/login?error=true").permitAll();  // 🔹 로그인 실패 URL 허용 추가
+            // ✅ 메일 및 기타 공개 접근 가능 경로
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
@@ -47,22 +50,32 @@ public class SecurityConfiguration {
             configure.anyRequest().authenticated();
         });
 
+        // ✅ HTTP 기본 인증 비활성화 및 CSRF, CORS 설정
         http.httpBasic(AbstractHttpConfigurer::disable)
                 .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configure(http))
-                        .csrf(AbstractHttpConfigurer::disable);
+                .csrf(AbstractHttpConfigurer::disable);
 
+        // ✅ 세션 유지 설정 (필요 시 `ALWAYS`로 변경하여 세션 유지 테스트 가능)
         http.sessionManagement(session -> session
-                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // ✅ 세션을 유지하도록 설정
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)  // 기본값 유지
         );
 
         // ✅ 일반 로그인 설정
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
-                    .permitAll()  // 🔹 로그인 페이지는 인증 없이 접근 가능하도록 설정
+                    .permitAll()
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/", false)  // 🔹 로그인 후 원래 요청한 페이지로 이동
+                    .failureUrl("/user/login?error=true");
+        });
+
+        // ✅ OAuth2 로그인 설정
+        http.oauth2Login(configure -> {
+            configure.loginPage("/user/login")
+                    .permitAll()
+                    .defaultSuccessUrl("/", false)  // 🔹 로그인 후 원래 요청한 페이지로 이동
                     .failureUrl("/user/login?error=true");
         });
 
@@ -73,14 +86,6 @@ public class SecurityConfiguration {
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
                     .logoutSuccessUrl("/");
-        });
-
-        // ✅ OAuth2 로그인 설정
-        http.oauth2Login(configure -> {
-            configure.loginPage("/user/login")  // 🔹 로그인 페이지 명확하게 설정
-                    .permitAll()  // 🔹 인증 없이 접근 가능하도록 설정
-                    .defaultSuccessUrl("/", true)
-                    .failureUrl("/user/login?error=true");
         });
 
         // ✅ Remember Me 설정
