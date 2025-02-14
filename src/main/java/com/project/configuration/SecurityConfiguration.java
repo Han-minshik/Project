@@ -29,12 +29,12 @@ public class SecurityConfiguration {
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/", "/book/**", "/content/**").permitAll();
-            configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
+            configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
                     "/user/id/**", "/user/info", "/user/info-revise", "/user/login", "/user/pw-auth",
                     "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2").permitAll();
+            configure.requestMatchers("/static/**", "/", "/book/**", "/content/**").permitAll();
 
             // ✅ 그 외 모든 요청은 인증 필요
             configure.anyRequest().authenticated();
