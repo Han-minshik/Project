@@ -32,6 +32,7 @@ public class SecurityConfiguration {
 
             // ✅ 공개 접근 허용 경로
             configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home","/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
@@ -54,12 +55,12 @@ public class SecurityConfiguration {
 
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
+                    .permitAll()
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
                     .defaultSuccessUrl("/", false)
-                    .failureUrl("/user/login?error=true")
-                    .permitAll();
+                    .failureUrl("/user/login?error=true");
         });
 
         http.logout(configure -> {
@@ -79,9 +80,9 @@ public class SecurityConfiguration {
 
         http.oauth2Login(configure -> {
             configure.defaultSuccessUrl("/", false)
+                    .permitAll()
                     .failureUrl("/user/login?error=true")
-                    .loginPage("/user/login")
-                    .permitAll();
+                    .loginPage("/user/login");
         });
 
         http.rememberMe(configure -> {
