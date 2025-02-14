@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.ProjectApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.ProjectApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.ProjectApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.project.ProjectApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,15 +357,7 @@
       <workItem from="1739371463602" duration="7976000" />
       <workItem from="1739412334128" duration="12321000" />
       <workItem from="1739447884496" duration="20607000" />
-      <workItem from="1739496432762" duration="17914000" />
-    </task>
-    <task id="LOCAL-00163" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739463047940</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1739463047940</updated>
+      <workItem from="1739496432762" duration="18959000" />
     </task>
     <task id="LOCAL-00164" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -754,7 +743,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739518455646</updated>
     </task>
-    <option name="localTasksCounter" value="212" />
+    <task id="LOCAL-00212" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739518485389</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1739518485389</updated>
+    </task>
+    <option name="localTasksCounter" value="213" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
