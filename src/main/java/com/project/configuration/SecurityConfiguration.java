@@ -25,9 +25,6 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configure -> {
-            // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
-            configure.requestMatchers("/admin/**").hasRole("ADMIN");
-
             // ✅ 공개 접근 허용 경로
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
@@ -36,6 +33,8 @@ public class SecurityConfiguration {
                     "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2").permitAll();
             configure.requestMatchers("/static/**", "/", "/book/**", "/content/**").permitAll();
 
+            // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
+            configure.requestMatchers("/admin/**").hasRole("ADMIN");
             // ✅ 그 외 모든 요청은 인증 필요
             configure.anyRequest().authenticated();
         });
