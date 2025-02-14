@@ -29,11 +29,11 @@ public class SecurityConfiguration {
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/", "/main/home", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/static/**", "/", "/main/home", "/user/login", "/book/**", "/content/**").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
-                    "/user/id/**", "/user/info", "/user/info-revise", "/user/login", "/user/pw-auth",
+                    "/user/id/**", "/user/info", "/user/info-revise", "/user/pw-auth",
                     "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2",
                     "/layout/**", "/public/**").permitAll();
 
@@ -50,7 +50,7 @@ public class SecurityConfiguration {
 
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
-                    .loginProcessingUrl("/login")
+                    .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
                     .defaultSuccessUrl("/", true)

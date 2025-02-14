@@ -103,14 +103,7 @@ public class UserController {
 
     /***********************************************/
     @GetMapping("/login")
-    public String get_login(Authentication auth) {
-        if (auth != null) {
-            System.out.println("로그인 할 필요 없습니다");
-            System.out.println("이미 로그인된 유저 : " + auth.getName());
-            return "redirect:/";
-        }
-
-        System.out.println("로그인 안되어있음");
+    public String get_login() {
         return "user/login";
     }
 
