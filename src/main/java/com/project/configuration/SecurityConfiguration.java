@@ -28,7 +28,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(configure -> {
 //            configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/layout/**", "/public/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
+            configure.requestMatchers("/layout/**", "/public/**", "/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
             configure.requestMatchers("/user/login","/", "/oauth2/**").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
