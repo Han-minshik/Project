@@ -31,7 +31,7 @@ public class SecurityConfiguration {
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/user/login", "/user/login/**", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home","/book/**", "/content/**").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
