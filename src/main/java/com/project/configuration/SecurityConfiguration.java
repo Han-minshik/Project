@@ -26,20 +26,20 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(configure -> {
             // ✅ 공개 접근 허용 경로
-//            configure.requestMatchers("/layout/**", "/public/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
-//            configure.requestMatchers("/user/login","/", "/oauth2/**").permitAll();
-//            configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
-//            configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
-//                    "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
-//                    "/user/id/**", "/user/info", "/user/info-revise", "/user/pw-auth",
-//                    "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2").permitAll();
-//            configure.requestMatchers("/static/**", "/book/**", "/content/**", "/img/**", "/css/**", "/js/**").permitAll();
+            configure.requestMatchers("/layout/**", "/public/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
+            configure.requestMatchers("/user/login","/", "/oauth2/**").permitAll();
+            configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
+            configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
+                    "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
+                    "/user/id/**", "/user/info", "/user/info-revise", "/user/pw-auth",
+                    "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2").permitAll();
+            configure.requestMatchers("/static/**", "/book/**", "/content/**", "/img/**", "/css/**", "/js/**").permitAll();
 //
 //            // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
-//            configure.requestMatchers("/admin/**").hasRole("ADMIN");
+            configure.requestMatchers("/admin/**").hasRole("ADMIN");
             // ✅ 그 외 모든 요청은 인증 필요
-//            configure.anyRequest().authenticated();
-                configure.anyRequest().permitAll();
+            configure.anyRequest().authenticated();
+//                configure.anyRequest().permitAll();
         });
 
         http.userDetailsService(userDetailsService)
