@@ -26,7 +26,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configure -> {
-            configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
+//            configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
             // ✅ 공개 접근 허용 경로
             configure.requestMatchers("/layout/**", "/public/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
             configure.requestMatchers("/user/login","/", "/oauth2/**").permitAll();
