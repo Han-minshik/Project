@@ -34,7 +34,7 @@ public class SecurityConfiguration {
 
             // ✅ 공개 접근 허용 경로
             configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/book/**", "/content/**").permitAll();
-            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**", "/login/oauth2/**").permitAll();
+            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**", "/login/oauth2/**", "/user/login?**").permitAll();
             configure.requestMatchers("/user/login?error=true").permitAll();  // 🔹 로그인 실패 URL 허용 추가
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
@@ -49,9 +49,11 @@ public class SecurityConfiguration {
 
         http.httpBasic(AbstractHttpConfigurer::disable)
                 .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configure(http))
-                        .csrf(AbstractHttpConfigurer::disable)
-                                .sessionManagement(httpSecuritySessionManagementConfigurer ->
-                                        httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+                        .csrf(AbstractHttpConfigurer::disable);
+
+        http.sessionManagement(session -> session
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // ✅ 세션을 유지하도록 설정
+        );
 
         // ✅ 일반 로그인 설정
         http.formLogin(configure -> {
@@ -60,7 +62,7 @@ public class SecurityConfiguration {
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", false)
+                    .defaultSuccessUrl("/", true)
                     .failureUrl("/user/login?error=true");
         });
 
@@ -77,7 +79,7 @@ public class SecurityConfiguration {
         http.oauth2Login(configure -> {
             configure.loginPage("/user/login")  // 🔹 로그인 페이지 명확하게 설정
                     .permitAll()  // 🔹 인증 없이 접근 가능하도록 설정
-                    .defaultSuccessUrl("/", false)
+                    .defaultSuccessUrl("/", true)
                     .failureUrl("/user/login?error=true");
         });
 
