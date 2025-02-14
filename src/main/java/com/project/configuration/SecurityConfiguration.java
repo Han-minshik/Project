@@ -1,5 +1,6 @@
 package com.project.configuration;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,13 +24,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-        http.authorizeHttpRequests(configure -> {
+        http.authorizeHttpRequests(configure ->
+    {
+            configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
             // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/user/login", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/user/login", "/user/login/**", "/book/**", "/content/**").permitAll();
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
@@ -55,7 +57,7 @@ public class SecurityConfiguration {
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/", false)
                     .failureUrl("/user/login?error=true")
                     .permitAll();
         });
@@ -76,7 +78,7 @@ public class SecurityConfiguration {
 //        });
 
         http.oauth2Login(configure -> {
-            configure.defaultSuccessUrl("/", true)
+            configure.defaultSuccessUrl("/", false)
                     .failureUrl("/user/login?error=true")
                     .loginPage("/user/login")
                     .permitAll();
