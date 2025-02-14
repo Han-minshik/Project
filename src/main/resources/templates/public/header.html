@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
 <head>
 	<meta charset="UTF-8">
+	<title>홈페이지 헤더</title>
 	<link rel="stylesheet" href="../../static/css/public/header.css">
 </head>
 <body>
@@ -24,16 +27,15 @@
 		<!-- 로그인 & 회원가입 / 사용자 메뉴 -->
 		<div class="auth-buttons">
 			<!-- 비로그인 상태 -->
-			<div th:if="${user == null}" class="user-logged-out">
+			<div sec:authorize="not authenticated" class="user-logged-out">
 				<button class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
 				<button class="signup-button" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
 			</div>
 
 			<!-- 로그인 상태 -->
-			<div th:if="${user != null}" class="user-logged-in">
+			<div sec:authorize="authenticated" class="user-logged-in">
 				<a th:href="@{/user/my-page}" class="user-icon">
 					<i class="bi bi-person-circle"></i>
-					<span th:text="${user.name}"></span> <!-- ✅ 로그인한 사용자 이름 표시 -->
 				</a>
 				<form name="logout-form" th:action="@{/user/logout}" method="post">
 					<button class="logout-button">
