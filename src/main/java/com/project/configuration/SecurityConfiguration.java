@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
                     "/user/id/**", "/user/info", "/user/info-revise", "/user/pw-auth",
                     "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2",
-                    "/layout/**", "/public/**").permitAll();
+                    "/layout/**", "/public/**", "/main/home").permitAll();
 
             // ✅ 그 외 모든 요청은 인증 필요
             configure.anyRequest().authenticated();
