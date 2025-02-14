@@ -45,6 +45,8 @@ public class SecurityConfiguration {
 //                channel.anyRequest().requiresSecure()
 //        );
 
+
+
         http.userDetailsService(userDetailsService)
                 .formLogin(Customizer.withDefaults());
 

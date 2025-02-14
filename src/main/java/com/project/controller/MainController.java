@@ -50,8 +50,7 @@ public class MainController {
 
     @GetMapping("/")
     public String get_home (
-            Model model,
-            String userId
+            Model model
     ) {
         List<BookDTO> pBook5 = bookService.getPopularBook5();
         List<BookDTO> pBook = bookService.getPopularBook();
@@ -59,9 +58,7 @@ public class MainController {
         DiscussionCommentDTO fComment = discussionCommentService.getFirstComment();
         DiscussionCommentDTO sComment = discussionCommentService.getSecondComment();
         List<BookDTO> pBook2 = bookService.getPopularBook2();
-        UserDTO user = userService.find_user(userId);
 
-        model.addAttribute("user", user);
         model.addAttribute("pBook5", pBook5);
         model.addAttribute("pBook", pBook);
         model.addAttribute("cDiscussion", cDiscussion);
