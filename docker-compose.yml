@@ -30,5 +30,5 @@ services:
     restart: always
     environment:
       - SERVER_PORT=443
-      - SPRING_PROFILES_ACTIVE_prod
+      - SPRING_PROFILES_ACTIVE=prod
       - FORWARD_HEADERS_STRATEGY=native
