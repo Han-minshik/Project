@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" afterDir="false" />
-    </list>
+    <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -358,15 +355,7 @@
       <workItem from="1739371463602" duration="7976000" />
       <workItem from="1739412334128" duration="12321000" />
       <workItem from="1739447884496" duration="20607000" />
-      <workItem from="1739496432762" duration="17157000" />
-    </task>
-    <task id="LOCAL-00161" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739462660498</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1739462660498</updated>
+      <workItem from="1739496432762" duration="17576000" />
     </task>
     <task id="LOCAL-00162" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -752,7 +741,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739516601576</updated>
     </task>
-    <option name="localTasksCounter" value="210" />
+    <task id="LOCAL-00210" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739517880505</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1739517880505</updated>
+    </task>
+    <option name="localTasksCounter" value="211" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
