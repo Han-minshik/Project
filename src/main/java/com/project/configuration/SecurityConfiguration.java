@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,15 +26,16 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(configure ->
-    {
+        http.authorizeHttpRequests(configure -> {
             configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
-            // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
+
+            // ✅ 관리자 페이지 보호
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
 
             // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home","/book/**", "/content/**").permitAll();
-            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**").permitAll();
+            configure.requestMatchers("/static/**", "/img/**", "/css/**", "/js/**", "/", "/main/home", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/user/login", "/user/login/**", "/user/logout", "/oauth2/**", "/login/oauth2/**").permitAll();
+            configure.requestMatchers("/user/login?error=true").permitAll();  // 🔹 로그인 실패 URL 허용 추가
             configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**").permitAll();
             configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
@@ -44,18 +47,16 @@ public class SecurityConfiguration {
             configure.anyRequest().authenticated();
         });
 
-//        http.requiresChannel(channel ->
-//                channel.anyRequest().requiresSecure()
-//        );
+        http.httpBasic(AbstractHttpConfigurer::disable)
+                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configure(http))
+                        .csrf(AbstractHttpConfigurer::disable)
+                                .sessionManagement(httpSecuritySessionManagementConfigurer ->
+                                        httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-
-
-        http.userDetailsService(userDetailsService)
-                .formLogin(Customizer.withDefaults());
-
+        // ✅ 일반 로그인 설정
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
-                    .permitAll()
+                    .permitAll()  // 🔹 로그인 페이지는 인증 없이 접근 가능하도록 설정
                     .loginProcessingUrl("/user/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
@@ -63,6 +64,7 @@ public class SecurityConfiguration {
                     .failureUrl("/user/login?error=true");
         });
 
+        // ✅ 로그아웃 설정
         http.logout(configure -> {
             configure.logoutUrl("/user/logout")
                     .clearAuthentication(true)
@@ -71,20 +73,15 @@ public class SecurityConfiguration {
                     .logoutSuccessUrl("/");
         });
 
-//        http.oauth2Login(configure -> {
-//            configure.loginPage("/user/login")
-//                    .failureUrl("/user/join")
-//                    .defaultSuccessUrl("/")
-//                    .permitAll();
-//        });
-
+        // ✅ OAuth2 로그인 설정
         http.oauth2Login(configure -> {
-            configure.defaultSuccessUrl("/", false)
-                    .permitAll()
-                    .failureUrl("/user/login?error=true")
-                    .loginPage("/user/login");
+            configure.loginPage("/user/login")  // 🔹 로그인 페이지 명확하게 설정
+                    .permitAll()  // 🔹 인증 없이 접근 가능하도록 설정
+                    .defaultSuccessUrl("/", false)
+                    .failureUrl("/user/login?error=true");
         });
 
+        // ✅ Remember Me 설정
         http.rememberMe(configure -> {
             configure.userDetailsService(userDetailsService)
                     .tokenRepository(persistentTokenRepository())
