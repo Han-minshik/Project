@@ -65,10 +65,17 @@ public class SecurityConfiguration {
                     .logoutSuccessUrl("/");
         });
 
+//        http.oauth2Login(configure -> {
+//            configure.loginPage("/user/login")
+//                    .failureUrl("/user/join")
+//                    .defaultSuccessUrl("/")
+//                    .permitAll();
+//        });
+
         http.oauth2Login(configure -> {
-            configure.loginPage("/user/login")
-                    .failureUrl("/user/join")
-                    .defaultSuccessUrl("/")
+            configure.defaultSuccessUrl("/", true)
+                    .failureUrl("/user/login?error=true")
+                    .loginPage("/user/login")
                     .permitAll();
         });
 
