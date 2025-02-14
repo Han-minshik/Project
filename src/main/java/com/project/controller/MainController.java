@@ -69,11 +69,11 @@ public class MainController {
     }
 
     /***********************************************/
-    @GetMapping("/user/login")
-    public String get_login(String error, String logout) {
-        log.info("Member login get");
-        return "user/login";
-    }
+//    @GetMapping("/user/login")
+//    public String get_login(String error, String logout) {
+//        log.info("Member login get");
+//        return "user/login";
+//    }
 
     /**************** 비밀번호 *********************/
 

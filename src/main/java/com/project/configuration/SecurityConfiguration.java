@@ -1,5 +1,6 @@
 package com.project.configuration;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(configure -> {
+            configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
             // ✅ 공개 접근 허용 경로
             configure.requestMatchers("/layout/**", "/public/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
             configure.requestMatchers("/user/login","/", "/oauth2/**").permitAll();
