@@ -27,13 +27,13 @@
 		<!-- 로그인 & 회원가입 / 사용자 메뉴 -->
 		<div class="auth-buttons">
 			<!-- 비로그인 상태 -->
-			<div sec:authorize="not authenticated" class="user-logged-out">
+			<div sec:authorize="not authenticated" th:if="${#authorization.expression('isAnonymous()')}" class="user-logged-out">
 				<button class="login-button" th:onclick="|location.href='@{/user/login}'|">로그인</button>
 				<button class="signup-button" th:onclick="|location.href='@{/user/join}'|">회원가입</button>
 			</div>
 
 			<!-- 로그인 상태 -->
-			<div sec:authorize="authenticated" class="user-logged-in">
+			<div sec:authorize="authenticated" th:if="${#authorization.expression('isAuthenticated()')}" class="user-logged-in">
 				<a th:href="@{/user/my-page}" class="user-icon">
 					<i class="bi bi-person-circle"></i>
 				</a>

@@ -33,7 +33,7 @@ public class SecurityConfiguration {
                     "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
                     "/user/id/**", "/user/info", "/user/info-revise", "/user/pw-auth",
                     "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2").permitAll();
-            configure.requestMatchers("/static/**", "/book/**", "/content/**").permitAll();
+            configure.requestMatchers("/static/**", "/book/**", "/content/**", "/img/**", "/css/**", "/js/**").permitAll();
 
             // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
             configure.requestMatchers("/admin/**").hasRole("ADMIN");
