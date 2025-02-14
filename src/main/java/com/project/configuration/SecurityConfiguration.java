@@ -50,10 +50,11 @@ public class SecurityConfiguration {
 
         http.formLogin(configure -> {
             configure.loginPage("/user/login")
-                    .loginProcessingUrl("/user/login")
+                    .loginProcessingUrl("/login")
                     .usernameParameter("id")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/", true)
+                    .failureUrl("/user/login?error=true")
                     .permitAll();
         });
 
