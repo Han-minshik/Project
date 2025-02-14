@@ -6,6 +6,167 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/ProjectApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/aspect/ControllerAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/MainConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/FileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainRestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserRestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/converter/MultipartConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/AdminPostDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/BookDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/BookImageDTO$BookImageDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/BookImageDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/CartDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/CategoryDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/ComplainDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionCommentDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/DiscussionDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/FileDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/LoanDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/NotificationDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/PageInfoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/ReviewDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/SnsInfoDTO$SnsInfoDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/SnsInfoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/dto/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/AdminMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/BookMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/CategoryMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionCommentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/DiscussionMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/FileMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/LoanMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/BookService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionCommentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/DiscussionService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/EmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/LoanService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/PortOneService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/SecurityOAuth2UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/SecurityUserDetailsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/my.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/admin-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/category-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/configuration/configuration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussion-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussioncomment-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/loan-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/user-mapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ssl/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book-category.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book-viewer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/book/book.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/discussion-category.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/discussion.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/lendbook.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/wishlist.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/content/zim.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/login/join.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/login/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/login/loginHeader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main/info-revise.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/manager/manager.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/public/footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/public/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/public/public.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/Mypage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/complain-detail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/complain.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/email-auth.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/find-id.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/find-pw.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/info-revise.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/method.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/myTalk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/pw-auth.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/reset-pw-2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/reset-pw.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/user/write.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/book1.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/book2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/book3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/book_main.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/free-icon-email-6129053.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/free-icon-kakao-talk-3669990.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/free-icon-more-information-2740648.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/free-icon-stack-of-books-5833290.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icon/google_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icon/kakao_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/icon/naver_login_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/login_book.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/img/예시 프로필.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-viewer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion-category.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/content/discussion.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main/home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/manager/manager1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/public/embla-carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/find-id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/info-revise.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/join.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/reset-pw.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/user/write-talk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book-viewer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-comment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/main-layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/email-auth-template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/email-auth.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/id-email-auth-template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/pw-email-auth-template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/manager/manager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/public/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/public/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain-detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/join.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/pw-auth.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.ProjectApplicationTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.ProjectApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/project/ProjectApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -360,15 +521,7 @@
       <workItem from="1739496432762" duration="21863000" />
       <workItem from="1739523727035" duration="8600000" />
       <workItem from="1739545645871" duration="1338000" />
-      <workItem from="1739547021491" duration="2458000" />
-    </task>
-    <task id="LOCAL-00187" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739496810674</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1739496810674</updated>
+      <workItem from="1739547021491" duration="3204000" />
     </task>
     <task id="LOCAL-00188" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -754,7 +907,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739548814642</updated>
     </task>
-    <option name="localTasksCounter" value="236" />
+    <task id="LOCAL-00236" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739549868019</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1739549868019</updated>
+    </task>
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
