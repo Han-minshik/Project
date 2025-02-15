@@ -18,7 +18,7 @@ services:
     image: tomcat:10.1.31-jdk21  # Tomcat 컨테이너 사용
     container_name: webserver
     ports:
-      - "8081:8081"  # Tomcat 기본 포트 사용
+      - "8080:8080"  # Tomcat 기본 포트 사용
     volumes:
       - ./target/project-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/project.war  # WAR 배포
     depends_on:
