@@ -5,7 +5,6 @@ import com.project.mapper.BookMapper;
 import com.project.mapper.LoanMapper;
 import com.project.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
