@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/main-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/main-layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/public/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/public/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/public/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/public/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ssl/keystore.p12" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -367,23 +363,8 @@
       <workItem from="1739545645871" duration="1338000" />
       <workItem from="1739547021491" duration="3818000" />
       <workItem from="1739578512164" duration="3520000" />
-      <workItem from="1739585690208" duration="4743000" />
-    </task>
-    <task id="LOCAL-00193" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739500236031</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1739500236031</updated>
-    </task>
-    <task id="LOCAL-00194" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739501350750</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1739501350750</updated>
+      <workItem from="1739585690208" duration="6057000" />
+      <workItem from="1739599184246" duration="2414000" />
     </task>
     <task id="LOCAL-00195" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -761,7 +742,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739590157632</updated>
     </task>
-    <option name="localTasksCounter" value="242" />
+    <task id="LOCAL-00242" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739591018056</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1739591018056</updated>
+    </task>
+    <task id="LOCAL-00243" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739591030148</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1739591030148</updated>
+    </task>
+    <option name="localTasksCounter" value="244" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
