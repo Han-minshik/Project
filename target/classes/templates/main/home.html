@@ -9,11 +9,10 @@
 	<meta charset="UTF-8">
 	<title>RD 홈페이지에 오신것을 환영합니다!</title>
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
-	<link rel="stylesheet" href="../../static/css/main/home.css">
+	<link rel="stylesheet" th:href="@{/css/main/home.css}">
+	<script th:src="@{/js/public/embla-carousel.js}" defer></script>
 	<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 	<script src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"></script>
-	<script src="../../static/js/public/embla-carousel.js" defer></script>
-	<script src="../../static/js/main/home.js" defer></script>
 </head>
 <body>
 <main layout:fragment="main">

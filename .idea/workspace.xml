@@ -5,26 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/main-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/main-layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/public/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/public/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/public/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/public/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/ProjectApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/ProjectApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.ProjectApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.ProjectApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.ProjectApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.project.ProjectApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/service/SecurityOAuth2UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/service/SecurityOAuth2UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/layout/main-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/layout/main-layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/public/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/public/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/public/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/public/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -381,14 +377,7 @@
       <workItem from="1739545645871" duration="1338000" />
       <workItem from="1739547021491" duration="3818000" />
       <workItem from="1739578512164" duration="3520000" />
-    </task>
-    <task id="LOCAL-00191" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739499140849</created>
-      <option name="number" value="00191" />
-      <option name="presentableId" value="LOCAL-00191" />
-      <option name="project" value="LOCAL" />
-      <updated>1739499140849</updated>
+      <workItem from="1739585690208" duration="4042000" />
     </task>
     <task id="LOCAL-00192" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -774,7 +763,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739580344296</updated>
     </task>
-    <option name="localTasksCounter" value="240" />
+    <task id="LOCAL-00240" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739585871332</created>
+      <option name="number" value="00240" />
+      <option name="presentableId" value="LOCAL-00240" />
+      <option name="project" value="LOCAL" />
+      <updated>1739585871332</updated>
+    </task>
+    <option name="localTasksCounter" value="241" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

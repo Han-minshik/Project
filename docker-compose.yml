@@ -1,11 +1,12 @@
 version: '3'
+
 services:
   webserver-mysql:
     image: mysql:8.0.4
     container_name: mysql
     restart: always
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=kong3767
       - MYSQL_USER=korea
@@ -13,20 +14,16 @@ services:
       - MYSQL_DATABASE=project
       - MYSQL_SKIP_NAME_RESOLVE=false
 
-  # 웹 서버가 될 continer 정의
   webserver-java:
+    image: tomcat:10.1.31-jdk21  # Tomcat 컨테이너 사용
     container_name: webserver
     ports:
-      - 443:443
-    build:
-      context: . # 참조할 도커파일 경로
-      dockerfile: Dockerfile # 도커파일의 이름
-    # 이 컨테이너는 webserver-mysql을 기반으로 동작한다는 의미
-    # webserver-mysql 컨테이너 먼저 만들어라
+      - "8080:8080"  # Tomcat 기본 포트 사용
+    volumes:
+      - ./target/project-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/project.war  # WAR 배포
     depends_on:
       - webserver-mysql
     restart: always
     environment:
-      - SERVER_PORT=443
       - SPRING_PROFILES_ACTIVE=prod
       - FORWARD_HEADERS_STRATEGY=native
