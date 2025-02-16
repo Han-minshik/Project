@@ -7,13 +7,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
-	<link rel="stylesheet" href="../../static/css/content/discussion.css">
-	<link rel="stylesheet" href="../../static/css/public/header.css">
-	<script src="../../static/js/content/discussion.js" defer></script>
+	<link rel="stylesheet" th:href="@{/css/content/discussion.css}">
+	<link rel="stylesheet" th:href="@{/css/public/header.css}">
+	<script th:src="@{/js/content/discussion.js}" defer></script>
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 </head>
 <body>
-<header th:replace="~{/public/header :: header}"></header>
+<header th:replace="~{public/header :: header}"></header>
 <main>
 	<h1>토론 게시판</h1>
 	<div class="my-opinion-container">

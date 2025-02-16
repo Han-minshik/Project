@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>상품 리뷰 템플릿</title>
 	<script src="https://kit.fontawesome.com/d19fdaba43.js" crossorigin="anonymous"></script>
-	<script src="../../static/js/book/book.js" defer></script>
+	<script th:src="@{/js/book/book.js}" defer></script>
 </head>
 <body>
 <div class="my-opinion-chat">
@@ -75,36 +75,35 @@
 	</ul>
 </div>
 
-<div class="review-container">
-	<div class="review" th:each="review: ${pageInfo.elements}">
-		<section class="review-user-section">
-			<div>
-				<div class="review-user-image"
-				     th:style="'background-image: url(\'' + (${review.getBase64Image()} ?: '../../static/img/book_main.jpg') + '\');'">
+	<div class="review-container">
+		<div class="review" th:each="review: ${pageInfo.elements}">
+			<section class="review-user-section">
+				<div>
+					<div class="review-user-image"
+					     th:style="'background-image: url(\'' + (${review.getBase64Image()} ?: '/static/img/book_main.jpg') + '\');'">
+					</div>
+					<span class="review-user-name" th:text="${review.userId}" data-user-id="${review.userId}">ANYA FORGER</span>
 				</div>
-				<span class="review-user-name" th:text="${review.userId}" data-user-id="${review.userId}">ANYA FORGER</span>
-			</div>
-			<div>
-				<div class="review-user-stars">
-					<th:block th:each="rate: ${#numbers.sequence(1, 5)}">
-						<i th:if="${rate <= review.rate}" class="fa-solid fa-star"></i>
-						<i th:if="${rate > review.rate}" class="fa-regular fa-star"></i>
-					</th:block>
+				<div>
+					<div class="review-user-stars">
+						<th:block th:each="rate: ${#numbers.sequence(1, 5)}">
+							<i th:if="${rate <= review.rate}" class="fa-solid fa-star"></i>
+							<i th:if="${rate > review.rate}" class="fa-regular fa-star"></i>
+						</th:block>
+					</div>
 				</div>
-			</div>
-		</section>
-		<section class="review-section">
-			<span class="review-content" th:text="${review.content}" data-content="${review.content}"></span>
-		</section>
-		<section class="review-recommend-section">
-			<div>
-				<i class="fa-solid fa-thumbs-up" data-content="${review.content}" data-user-id="${review.userId}"></i>
-				<span th:text="${review.like}">112</span>
-			</div>
-		</section>
+			</section>
+			<section class="review-section">
+				<span class="review-content" th:text="${review.content}" data-content="${review.content}"></span>
+			</section>
+			<section class="review-recommend-section">
+				<div>
+					<i class="fa-solid fa-thumbs-up" data-content="${review.content}" data-user-id="${review.userId}"></i>
+					<span th:text="${review.like}">112</span>
+				</div>
+			</section>
+		</div>
 	</div>
-</div>
-
 
 <ol th:if="${pageInfo.page <= pageInfo.totalPageCount}">
 	<li th:if="${pageInfo.startPage != 1}">

@@ -9,7 +9,7 @@
 	<title>상품 리뷰 템플릿</title>
 	<meta name="_csrf" th:content="${_csrf.token}">
 	<meta name="_csrf_header" th:content="${_csrf.headerName}">
-	<script src="../../static/js/content/discussion.js" defer></script>
+	<script th:src="@{/js/content/discussion.js}" defer></script>
 </head>
 <body>
 <!-- ✅ Fragment를 감싸도록 추가 -->
