@@ -49,7 +49,8 @@ public class SecurityConfiguration {
                     "/user/id/**", "/user/info", "/user/info-revise", "/user/login", "/user/pw-auth",
                     "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2",
                         "/book/{bookIsbn}", "/discussion/{discussionId}", "/complain/detail/{no}", "/user/id/{userId}", "/user/findId/{email}",
-                        "/user/resetPw/password",
+                        "/user/resetPw/password","/book/book-category/**", "/search", "/discussion/category/**",
+                        "/user/email/**",
                         "/book/{bookIsbn}/review", "/discussion/category/search", "/book/book-category/search", "/discussion/{discussionId}/search",
                         "/discussion/{discussionId}/comment"
                 ).permitAll()

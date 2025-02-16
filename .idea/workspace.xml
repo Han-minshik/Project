@@ -5,96 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book-viewer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book-viewer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book/review-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion-comment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/main-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/main-layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/email-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail/email-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/manager/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/complain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/find-id.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/info-revise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/join.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/join.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/pw-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/pw-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/reset-pw.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_QA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/write_talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book-viewer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book-viewer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/book/review-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion-comment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layout/main-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layout/main-layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/mail/email-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/mail/email-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/manager/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/manager/manager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/complain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/find-id.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/info-revise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/join.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/join.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/pw-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/pw-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/reset-pw-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/reset-pw.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_QA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/write_talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/book-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/book-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/book-viewer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/book-viewer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/review-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/book/review-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/content/discussion-category.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/content/discussion-category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/content/discussion-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/content/discussion-comment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/content/discussion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/content/discussion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/layout/main-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/layout/main-layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/mail/email-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/mail/email-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/main/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/manager/manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/manager/manager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/complain-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/complain-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/complain.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/complain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/find-id.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/info-revise.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/info-revise.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/join.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/join.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/my-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/my-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/my-talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/my-talk.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/pw-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/pw-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/reset-pw-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/reset-pw-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/reset-pw.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/reset-pw.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/write_QA.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/write_QA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/write_talk.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/write_talk.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -455,23 +367,8 @@
       <workItem from="1739585690208" duration="6057000" />
       <workItem from="1739599184246" duration="27271000" />
       <workItem from="1739664358557" duration="12699000" />
-      <workItem from="1739687082725" duration="18161000" />
-    </task>
-    <task id="LOCAL-00197" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739505131914</created>
-      <option name="number" value="00197" />
-      <option name="presentableId" value="LOCAL-00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1739505131914</updated>
-    </task>
-    <task id="LOCAL-00198" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739506392650</created>
-      <option name="number" value="00198" />
-      <option name="presentableId" value="LOCAL-00198" />
-      <option name="project" value="LOCAL" />
-      <updated>1739506392651</updated>
+      <workItem from="1739687082725" duration="18925000" />
+      <workItem from="1739717504201" duration="324000" />
     </task>
     <task id="LOCAL-00199" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -849,7 +746,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739602385025</updated>
     </task>
-    <option name="localTasksCounter" value="246" />
+    <task id="LOCAL-00246" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739714606214</created>
+      <option name="number" value="00246" />
+      <option name="presentableId" value="LOCAL-00246" />
+      <option name="project" value="LOCAL" />
+      <updated>1739714606214</updated>
+    </task>
+    <task id="LOCAL-00247" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739714630782</created>
+      <option name="number" value="00247" />
+      <option name="presentableId" value="LOCAL-00247" />
+      <option name="project" value="LOCAL" />
+      <updated>1739714630782</updated>
+    </task>
+    <option name="localTasksCounter" value="248" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
