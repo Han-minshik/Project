@@ -8,8 +8,8 @@
 	<meta charset="UTF-8">
 	<title>관리자 페이지</title>
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
-	<link rel="stylesheet" href="../../static/css/manager/manager.css?ver=1" type="text/css">
-	<script src="../../static/js/manager/manager1.js" defer></script>
+	<link rel="stylesheet" th:href="@{/css/manager/manager.css}" type="text/css">
+	<script th:src="@{/js/manager/manager1.js}" defer></script>
 </head>
 
 <body>

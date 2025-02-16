@@ -3,13 +3,13 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/main-layout}">
+      layout:decorate="~{layout/main-layout}">
 <head>
 	<meta charset="UTF-8">
 	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
 	<title>Title</title>
-	<link rel="stylesheet" href="../../static/css/user/find-id.css">
-	<script src="../../static/js/user/find-id.js" defer></script>
+	<link rel="stylesheet" th:href="@{/css/user/find-id.css}">
+	<script th:src="@{/js/user/find-id.js}" defer></script>
 </head>
 
 <body>

@@ -26,21 +26,55 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(configure -> {
 //            configure.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll();
-            // ✅ 공개 접근 허용 경로
-            configure.requestMatchers("/layout/**", "/public/**", "/**").permitAll(); // ✅ 레이아웃 및 공통 헤더 인증 제거
-            configure.requestMatchers("/user/login","/", "/oauth2/**").permitAll();
-            configure.requestMatchers("/mail/**", "/user/email/**", "/user/email/auth/**", "/login").permitAll();
-            configure.requestMatchers("/complain", "/user/join", "/discussion/category", "/discussion/category/search",
-                    "/user/complain", "/user/find-id", "/user/findId/**", "/user/find-id",
-                    "/user/id/**", "/user/info", "/user/info-revise", "/user/pw-auth",
-                    "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2").permitAll();
-            configure.requestMatchers("/static/**", "/book/**", "/content/**", "/img/**", "/css/**", "/js/**").permitAll();
-//
-//            // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
-            configure.requestMatchers("/admin/**").hasRole("ADMIN");
-            // ✅ 그 외 모든 요청은 인증 필요
-            configure.anyRequest().authenticated();
-//                configure.anyRequest().permitAll();
+            configure
+                // ✅ 공개 접근 허용 경로
+                .requestMatchers(
+                    "/book/book-category", "/book/book-category/search",
+                    "/discussion/category", "/discussion/category/search",
+                    "/user/join", "/user/find-id", "/user/login",
+                    "/user/reset-pw", "/user/reset-pw-2",
+                    "/user/email/auth", "/user/tel/auth",
+                    "/complain", "/complain/detail/**", "/complain/add",
+                    "/imp_init",
+                    "/user/id/**", "/user/findId/**",
+                    "/book/**",
+                    "/content/**"
+                ).permitAll()
+                .requestMatchers(
+                    "/complain",
+                    "/user/join",
+                    "/discussion/category",
+                    "/discussion/category/search",
+                    "/user/complain","/user/find-id", "/user/findId/**", "/user/find-id",
+                    "/user/id/**", "/user/info", "/user/info-revise", "/user/login", "/user/pw-auth",
+                    "/user/resetPw/", "/user/resetPw/password", "/user/tel/", "/user/tel/auth", "/reset-pw", "/reset-pw-2",
+                        "/book/{bookIsbn}", "/discussion/{discussionId}", "/complain/detail/{no}", "/user/id/{userId}", "/user/findId/{email}",
+                        "/user/resetPw/password",
+                        "/book/{bookIsbn}/review", "/discussion/category/search", "/book/book-category/search", "/discussion/{discussionId}/search",
+                        "/discussion/{discussionId}/comment"
+                ).permitAll()
+                // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
+                .requestMatchers(
+                    "/admin/**"
+                ).hasRole("ADMIN")
+                // ✅ 이메일 인증 경로
+                .requestMatchers(
+                    "/mail/**",
+                    "/user/email/**",
+                    "/user/email/auth/**"
+                ).permitAll()
+                // ✅ 리소스 및 전체 경로
+                .requestMatchers(
+                    // "/css/**", "/js/**", "/img/**", "/files/**",
+                    "/static/**",
+                    "/css/**",
+                    "/img/**",
+                    "/js/**",
+                    "/public/**",
+                    "/**"
+                ).permitAll()
+                // ✅ 그 외 모든 요청은 인증 필요
+                .anyRequest().authenticated();
         });
 
         http.userDetailsService(userDetailsService)
