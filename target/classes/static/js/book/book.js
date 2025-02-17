@@ -235,46 +235,36 @@ function load_review(event, url){
 }
 
 /********************* 대여 버튼 *****************************/
-
 document.addEventListener("DOMContentLoaded", function () {
+    IMP.init("imp25064853"); // ✅ 포트원 초기화는 페이지가 로드될 때 실행
+
     const loanBtn = document.querySelector(".loan-btn");
     if (!loanBtn) return;
 
-    /********** 🔹 로그인 여부 확인 함수 **********/
-    function isUserLoggedIn() {
-        return document.querySelector(".user-logged-in") !== null;
-    }
-
-    /********** 🔹 대출 버튼 클릭 이벤트 **********/
     loanBtn.onclick = async () => {
         if (!isUserLoggedIn()) {
-            alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+            alert("로그인이 필요합니다.");
             window.location.href = "/user/login";
             return;
         }
 
         if (!confirm('대출하시겠습니까?')) return;
-        IMP.init("imp25064853"); // 가맹점 코드 확인
 
         const loanObject = await createLoanObj();
-
         if (!loanObject) {
             console.error("❌ 대출 객체 생성 실패");
             return;
         }
 
-        console.log("포트원 결제 요청 시작...")
+        console.log("🛒 결제 요청 시작...");
 
-        // 🔹 결제 금액이 0원이면 결제 없이 바로 대출 요청
         if (loanObject.finalPrice === 0) {
             console.log("🎉 결제 필요 없음 - 바로 대출 처리 진행");
             return requestLoan(loanObject);
         }
 
-        // 🔹 포트원 결제 요청
         IMP.request_pay(
             {
-                channelKey: "channel-key-744b24b7-9388-444b-8aa9-c38549be4242",
                 pg: "kakaopay",
                 merchant_uid: `loan_${loanObject.bookIsbn}_${new Date().getTime()}`,
                 currency: "KRW",
@@ -282,16 +272,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 amount: loanObject.finalPrice
             },
             function (response) {
+                console.log("✅ 결제 응답:", response);
+
                 if (!response.success) {
                     alert(`결제 실패: ${response.error_msg}`);
                     return;
                 }
 
                 if (!response.imp_uid) {
-                    alert("결제 정보가 정상적으로 처리되지 않았습니다. 다시 시도해주세요.");
+                    alert("결제 정보가 정상적으로 처리되지 않았습니다.");
                     return;
                 }
-                loanObject.impUid = response.imp_uid; // 🔹 impUid 추가
 
                 requestLoan(loanObject);
                 if(confirm("대여 목록으로 이동하시겠습니까?")) {

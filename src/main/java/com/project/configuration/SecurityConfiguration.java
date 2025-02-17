@@ -52,7 +52,7 @@ public class SecurityConfiguration {
                         "/user/resetPw/password","/book/book-category/**", "/search", "/discussion/category/**",
                         "/user/email/**",
                         "/book/{bookIsbn}/review", "/discussion/category/search", "/book/book-category/search", "/discussion/{discussionId}/search",
-                        "/discussion/{discussionId}/comment"
+                        "/discussion/{discussionId}/comment", "/book/search", "/discussion/category/search/**", "/book/book-category/search/**"
                 ).permitAll()
                 // ✅ 관리자 페이지 보호: "ADMIN" 역할이 있어야만 접근 가능
                 .requestMatchers(

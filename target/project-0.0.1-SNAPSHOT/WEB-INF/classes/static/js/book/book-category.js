@@ -70,110 +70,94 @@ button.addEventListener("click", (event) => {
 });
 
 const executeSearch = () => {
-    const input = document.getElementById('search-input');
     const inputValue = input.value.trim();
 
     if (!inputValue) {
-        // 검색어가 없으면 목록 페이지로 이동
         document.cookie = "searchKeyword=; Max-Age=0; path=/"; // 쿠키 삭제
-        location.href = '/book/book-category';
+        alert("검색어를 입력해주세요.");
         return;
     }
 
-    // 검색 키워드를 쿠키에 저장
+    // ✅ 검색어를 쿠키에 저장
     document.cookie = `searchKeyword=${encodeURIComponent(inputValue)}; path=/`;
 
-    // 현재 URL에서 기존 bookName 제거 후 새 검색어 적용
-    const url = new URL(window.location.href);
-    url.searchParams.delete('bookName'); // 기존 bookName 제거
-    url.searchParams.set('bookName', inputValue); // 새 검색어 추가
-    history.replaceState(null, '', url.toString()); // URL 업데이트
-
-    // bookName 파라미터를 포함하여 검색 요청
+    // ✅ API 요청 시 검색어 포함
     fetch(`/book/book-category/search?bookName=${encodeURIComponent(inputValue)}`, {
         method: 'GET',
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`API 요청 실패: ${response.status}`);
             }
             return response.json();
         })
         .then(data => {
+            console.log("📌 API 응답 데이터:", data);
+
             const resultDiv = document.querySelector('.all-book');
-            const paginationDiv = document.querySelector('.pagination');
             const totalCountElement = document.getElementById('total-count');
 
-            // 검색 결과 렌더링
-            resultDiv.innerHTML = '';
-            paginationDiv.innerHTML = ''; // 페이지네이션 초기화
+            if (!resultDiv) {
+                console.error("❌ 검색 결과를 표시할 요소(.all-book)를 찾을 수 없습니다.");
+                return;
+            }
+
+            resultDiv.innerHTML = ''; // 기존 검색 결과 초기화
+            resultDiv.style.display = "block"; // 검색 결과 표시
 
             if (data.elements && data.elements.length > 0) {
-                totalCountElement.textContent = data.totalElementCount; // 총 개수 업데이트
+                totalCountElement.textContent = data.totalElementCount;
+
                 data.elements.forEach(book => {
                     const searchBook = document.createElement('div');
-                    searchBook.className = 'one-book';
+                    searchBook.classList.add('one-book');
+
                     searchBook.innerHTML = `
-                        <div class="image-container">
-                            <img src="${book.base64Image || '../../static/images/book_main.jpg'}" alt="${book.title}" />
+                    <div class="image-container">
+                        <img src="${book.base64Image || '../../static/images/book_main.jpg'}" alt="${book.title}">
+                    </div>
+                    <div class="book-info">
+                        <h2><a href="/book/${book.isbn}">${book.title}</a></h2>
+                        <div class="author-publisher">
+                            <span class="author">${book.author}</span> / <span class="publisher">${book.publisher}</span>
                         </div>
-                        <div class="book-info">
-                            <h2>
-                                <a href="/book/${book.isbn}">${book.title}</a>
-                            </h2>
-                            <div class="author-publisher">
-                                <span class="author">${book.author}</span>
-                                <span>/</span>
-                                <span class="publisher">${book.publisher}</span>
-                            </div>
-                            <input type="hidden" class="book-price-hidden" value="${book.price}">
-                            <div class="rent-available">
-                                <span>대출가능여부: </span>
-                                <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
-                            </div>
-                            <div class="plot">
-                                <p>${book.detail}</p>
-                            </div>
-                            <div class="rent-button-section">
-                                <button class="book-heart-button"
-                                    data-isbn="${book.isbn}"
-                                    data-title="${book.title}">
-                                    찜하기
-                                </button>
-                                <button class="book-rent-button"
-                                    data-isbn="${book.isbn}"
-                                    data-title="${book.title}">
-                                    대출하기
-                                </button>
-                            </div>
+                        <div class="rent-available">
+                            <span>대출가능여부: </span> <span class="rent-status">${book.copiesAvailable > 0 ? '가능' : '불가'}</span>
                         </div>
-                    `;
+                        <div class="plot"><p>${book.detail}</p></div>
+                        <div class="rent-button-section">
+                            <button class="book-heart-button" data-isbn="${book.isbn}" data-title="${book.title}">찜하기</button>
+                            <button class="book-rent-button" data-isbn="${book.isbn}" data-title="${book.title}" data-price="${book.price}">대출하기</button>
+                        </div>
+                    </div>
+                `;
+
                     resultDiv.appendChild(searchBook);
                 });
-
-                // 페이지네이션 렌더링
-                if (data.totalPageCount > 1) {
-                    for (let i = data.startPage; i <= data.endPage; i++) {
-                        const pageLink = document.createElement('a');
-                        pageLink.href = `/book/book-category?page=${i}&size=${data.size}`;
-                        pageLink.textContent = i;
-                        if (i === data.page) {
-                            pageLink.classList.add('active');
-                        }
-                        paginationDiv.appendChild(pageLink);
-                    }
-                }
             } else {
-                totalCountElement.textContent = 0; // 검색 결과가 없을 경우
-                resultDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+                totalCountElement.textContent = 0;
+                resultDiv.innerHTML = `<p>📌 검색 결과가 없습니다. 다른 검색어를 입력해 주세요.</p>`;
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('❌ 검색 중 오류 발생:', error);
             alert('검색 중 문제가 발생했습니다. 다시 시도해주세요.');
         });
 };
 
+// ✅ 페이지 로드 시 쿠키에서 검색어 가져와 자동 검색 실행
+document.addEventListener("DOMContentLoaded", () => {
+    const getCookieValue = (name) => {
+        const value = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return value ? decodeURIComponent(value.pop()) : null;
+    };
+
+    const initialKeyword = getCookieValue('searchKeyword');
+    if (initialKeyword) {
+        input.value = initialKeyword; // 검색창에 기존 검색어 유지
+        executeSearch(); // 자동 검색 실행
+    }
+});
 
 /**************************************/
 // 📌 보기설정 변경 시 페이지 새로고침

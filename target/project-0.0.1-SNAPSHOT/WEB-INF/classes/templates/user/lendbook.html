@@ -27,7 +27,7 @@
 			<!-- 대여 목록이 없을 경우 -->
 			<div th:if="${loanBookMap.isEmpty()}">
 				<p>대여한 책이 없어요ㅠㅠ</p>
-				<a href="../book/book-category" class="link">책 보러가기!</a>
+				<a th:href="@{/book/book-category}" class="link">책 보러가기!</a>
 			</div>
 
 			<!-- 대여 목록이 있을 경우 -->
@@ -52,11 +52,11 @@
 							</div>
 
 							<!-- 책 보러가기 버튼 -->
-							<button type="button" class="link"
-							        th:onclick="|location.href='@{/book/viewer/{bookIsbn}(bookIsbn=${entry.value.isbn})}'|">
-								책보러가기
-							</button>
-
+							<form th:action="@{/book/viewer/{bookIsbn}(bookIsbn=${entry.value.isbn})}" method="get">
+								<button type="submit" class="link">
+									책보러가기
+								</button>
+							</form>
 							<!-- 반납 버튼 -->
 							<form th:action="@{/user/book/return/{bookIsbn}(bookIsbn=${entry.value.isbn})}" method="post">
 								<button type="submit" class="link">반납</button>

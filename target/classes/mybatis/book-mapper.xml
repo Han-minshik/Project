@@ -17,7 +17,7 @@
     <select id="searchBooksByNameWithCount" resultType="com.project.dto.BookDTO">
         SELECT b.*
         FROM book b
-        WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '')
+        WHERE CAST(REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') AS CHAR)
         LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
         <if test="pageInfo.sort != null">
             ORDER BY
@@ -28,7 +28,6 @@
             </choose>
         </if>
         LIMIT #{pageInfo.size} OFFSET #{pageInfo.offset}
-
     </select>
     <!-- isbn 으로 책 조회 -->
     <select id="getBookByIsbn" resultType="BookDTO" resultMap="bookWithImageMap">
@@ -206,7 +205,7 @@
     <select id="getTotalBookCountByTitle" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM book
-        WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '')
+        WHERE CAST(REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') AS CHAR)
                   LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
     </select>
     <!-- 리뷰 좋아요 추가 -->

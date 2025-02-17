@@ -16,8 +16,8 @@
                    DEFAULT,
                    DEFAULT,
                    #{userId},
-                   (SELECT isbn FROM book WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1),
-                   (SELECT image FROM book WHERE REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1)
+                   (SELECT isbn FROM book WHERE CAST(REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') AS CHAR ) LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1),
+                   (SELECT image FROM book WHERE CAST(REGEXP_REPLACE(title, '[^a-zA-Z0-9가-힣]', '') AS CHAR ) LIKE CONCAT('%', REGEXP_REPLACE(#{bookTitle}, '[^a-zA-Z0-9가-힣]', ''), '%') LIMIT 1)
                )
     </insert>
     <!-- 가장 최근에 남겨진 의견 -->
@@ -71,7 +71,7 @@
         LIMIT 1
         ) AS recentComment
         FROM discussion d
-        WHERE REGEXP_REPLACE(d.book_title, '[^a-zA-Z0-9가-힣]', '')
+        WHERE CAST(REGEXP_REPLACE(d.book_title, '[^a-zA-Z0-9가-힣]', '')AS CHAR)
         LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
         <choose>
             <!-- 최신순 정렬 -->
@@ -101,7 +101,7 @@
     <select id="getTotalCountByTitle" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM discussion
-        WHERE REGEXP_REPLACE(book_title, '[^a-zA-Z0-9가-힣]', '')
+        WHERE CAST(REGEXP_REPLACE(book_title, '[^a-zA-Z0-9가-힣]', '') AS CHAR )
                   LIKE CONCAT('%', REGEXP_REPLACE(#{title}, '[^a-zA-Z0-9가-힣]', ''), '%')
     </select>
     <!-- 사용자가 작성한 토론 글 -->

@@ -229,20 +229,27 @@ public class MainController {
             @AuthenticationPrincipal UserDTO user
     ) {
         if (user == null || user.getName() == null) {
-            return "redirect:/user/login"; // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+            return "user/login";
         }
-
-        // 확인용 로그
-        System.out.println("현재 로그인된 user_id: " + user.getName());
-        System.out.println("클릭한 책의 ISBN: " + bookIsbn);
-
         LoanDTO loanInfo = loanService.getLoanByUserAndBook(user.getName(), bookIsbn);
-        BookDTO book = bookService.getBookByIsbn(bookIsbn);
-
         if (loanInfo == null || !"대출 중".equals(loanInfo.getStatus())) {
             model.addAttribute("error", "해당 책을 대출한 사용자만 열람할 수 있습니다.");
-            return "redirect:/user/lendbook";
+            return "error/forbidden";
         }
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime loanDate = loanInfo.getLoanDate();
+        LocalDateTime returnDate = loanInfo.getReturnDate().toLocalDate().atTime(23, 59, 59); // 반납일 끝까지 허용
+
+        System.out.println("현재 시간: " + now);
+        System.out.println("대출 시작일: " + loanDate);
+        System.out.println("반납 기한: " + returnDate);
+
+        if (now.isBefore(loanDate) || now.isAfter(returnDate)) {
+            model.addAttribute("error", "해당 책은 대출 기간 내에서만 열람할 수 있습니다.");
+            return "error/forbidden";
+        }
+
+        BookDTO book = bookService.getBookByIsbn(bookIsbn);
         model.addAttribute("book", book);
         return "book/book-viewer";
     }
