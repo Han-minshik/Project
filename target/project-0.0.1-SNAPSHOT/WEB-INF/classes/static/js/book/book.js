@@ -235,127 +235,136 @@ function load_review(event, url){
 }
 
 /********************* 대여 버튼 *****************************/
+
 document.addEventListener("DOMContentLoaded", function () {
-    IMP.init("imp25064853"); // ✅ 포트원 초기화는 페이지가 로드될 때 실행
+        const loanBtn = document.querySelector(".loan-btn");
+        if (!loanBtn) return;
 
-    const loanBtn = document.querySelector(".loan-btn");
-    if (!loanBtn) return;
-
-    loanBtn.onclick = async () => {
-        if (!isUserLoggedIn()) {
-            alert("로그인이 필요합니다.");
-            window.location.href = "/user/login";
-            return;
+        /********** 🔹 로그인 여부 확인 함수 **********/
+        function isUserLoggedIn() {
+            return document.querySelector(".user-logged-in") !== null;
         }
 
-        if (!confirm('대출하시겠습니까?')) return;
-
-        const loanObject = await createLoanObj();
-        if (!loanObject) {
-            console.error("❌ 대출 객체 생성 실패");
-            return;
-        }
-
-        console.log("🛒 결제 요청 시작...");
-
-        if (loanObject.finalPrice === 0) {
-            console.log("🎉 결제 필요 없음 - 바로 대출 처리 진행");
-            return requestLoan(loanObject);
-        }
-
-        IMP.request_pay(
-            {
-                pg: "kakaopay",
-                merchant_uid: `loan_${loanObject.bookIsbn}_${new Date().getTime()}`,
-                currency: "KRW",
-                name: `${loanObject.bookTitle} 대출`,
-                amount: loanObject.finalPrice
-            },
-            function (response) {
-                console.log("✅ 결제 응답:", response);
-
-                if (!response.success) {
-                    alert(`결제 실패: ${response.error_msg}`);
-                    return;
-                }
-
-                if (!response.imp_uid) {
-                    alert("결제 정보가 정상적으로 처리되지 않았습니다.");
-                    return;
-                }
-
-                requestLoan(loanObject);
-                if(confirm("대여 목록으로 이동하시겠습니까?")) {
-                    location.href = "/user/lendbook";
-                }
+        /********** 🔹 대출 버튼 클릭 이벤트 **********/
+        loanBtn.onclick = async () => {
+            if (!isUserLoggedIn()) {
+                alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+                window.location.href = "/user/login";
+                return;
             }
-        );
-    };
 
-    /********** 🔹 대출 요청 (포인트 포함하여 서버로 전송) **********/
-    function requestLoan(requestBody) {
-        fetch(`/loan`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": csrfToken
-            },
-            credentials: "include",
-            body: JSON.stringify(requestBody)
-        }).then(response => {
-            return response.text().then(data => ({ response, data }));
-        }).then(({ response, data }) => {
-            console.log("📨 서버 응답 성공");
-        }).catch(error => {
-            console.error("❌ 대출 요청 중 오류 발생:", error);
-        });
-    }
+            if (!confirm('대출하시겠습니까?')) return;
+            IMP.init("imp25064853"); // 가맹점 코드 확인
 
-    /********** 🔹 사용자 포인트 조회 **********/
-    async function fetchUserPoints() {
-        try {
-            const response = await fetch("/points");
-            if (!response.ok) throw new Error("포인트 정보를 가져올 수 없습니다.");
-            return await response.json();
-        } catch (error) {
-            console.error("❌ 포인트 조회 오류:", error);
-            return 0;
-        }
-    }
+            const loanObject = await createLoanObj();
 
-    /********** 🔹 대출 객체 생성 (비동기 함수로 수정) **********/
-    async function createLoanObj() {
-        const bookTitle = document.querySelector("h1")?.textContent?.trim();
-        const bookAuthor = document.querySelector("h2")?.textContent?.split("/")[0]?.trim();
-        const bookIsbn = document.querySelector("form[name='book']")?.id;
-        const originalPrice = parseInt(
-            document.querySelector(".book-price span:nth-child(2)").textContent.replace(/[^0-9]/g, ""),
-            10
-        );
+            if (!loanObject) {
+                console.error("❌ 대출 객체 생성 실패");
+                return;
+            }
 
-        // 🔹 사용자 포인트 가져오기 (비동기 처리)
-        const userPoints = await fetchUserPoints();
+            console.log("포트원 결제 요청 시작...")
 
-        // 🔹 포인트 할인 계산
-        let maxDiscount = Math.floor(originalPrice / 10000) * 1000;  // 1000포인트당 10,000원 할인
-        let usedPoints = Math.min(userPoints, maxDiscount); // 사용 가능한 최대 포인트
-        let discountAmount = Math.floor(usedPoints / 1000) * 10000; // 실제 할인 적용 금액
-        discountAmount = Math.min(originalPrice, discountAmount); // 원래 가격보다 할인을 초과할 수 없음
+            // 🔹 결제 금액이 0원이면 결제 없이 바로 대출 요청
+            if (loanObject.finalPrice === 0) {
+                console.log("🎉 결제 필요 없음 - 바로 대출 처리 진행");
+                return requestLoan(loanObject);
+            }
 
-        let finalPrice = Math.max(0, originalPrice - discountAmount); // 최종 결제 금액 (0원 이상)
+            // 🔹 포트원 결제 요청
+            IMP.request_pay(
+                {
+                    channelKey: "channel-key-744b24b7-9388-444b-8aa9-c38549be4242",
+                    pg: "kakaopay",
+                    merchant_uid: `loan_${loanObject.bookIsbn}_${new Date().getTime()}`,
+                    currency: "KRW",
+                    name: `${loanObject.bookTitle} 대출`,
+                    amount: loanObject.finalPrice
+                },
+                function (response) {
+                    if (!response.success) {
+                        alert(`결제 실패: ${response.error_msg}`);
+                        return;
+                    }
 
-        console.log(`✅ 포인트 적용 전 가격: ${originalPrice}, 할인 금액: ${discountAmount}, 최종 결제 금액: ${finalPrice}`);
+                    if (!response.imp_uid) {
+                        alert("결제 정보가 정상적으로 처리되지 않았습니다. 다시 시도해주세요.");
+                        return;
+                    }
+                    loanObject.impUid = response.imp_uid; // 🔹 impUid 추가
 
-        return {
-            bookTitle,
-            bookAuthor,
-            bookIsbn,
-            originalPrice,
-            discountAmount,
-            finalPrice,
-            usedPoints
+                    requestLoan(loanObject);
+                    if(confirm("대여 목록으로 이동하시겠습니까?")) {
+                        location.href = "/user/lendbook";
+                    }
+                }
+            );
         };
-    }
+
+        /********** 🔹 대출 요청 (포인트 포함하여 서버로 전송) **********/
+        function requestLoan(requestBody) {
+            fetch(`/loan`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": csrfToken
+                },
+                credentials: "include",
+                body: JSON.stringify(requestBody)
+            }).then(response => {
+                return response.text().then(data => ({ response, data }));
+            }).then(({ response, data }) => {
+                console.log("📨 서버 응답 성공");
+            }).catch(error => {
+                console.error("❌ 대출 요청 중 오류 발생:", error);
+            });
+        }
+
+        /********** 🔹 사용자 포인트 조회 **********/
+        async function fetchUserPoints() {
+            try {
+                const response = await fetch("/points");
+                if (!response.ok) throw new Error("포인트 정보를 가져올 수 없습니다.");
+                return await response.json();
+            } catch (error) {
+                console.error("❌ 포인트 조회 오류:", error);
+                return 0;
+            }
+        }
+
+        /********** 🔹 대출 객체 생성 (비동기 함수로 수정) **********/
+        async function createLoanObj() {
+            const bookTitle = document.querySelector("h1")?.textContent?.trim();
+            const bookAuthor = document.querySelector("h2")?.textContent?.split("/")[0]?.trim();
+            const bookIsbn = document.querySelector("form[name='book']")?.id;
+            const originalPrice = parseInt(
+                document.querySelector(".book-price span:nth-child(2)").textContent.replace(/[^0-9]/g, ""),
+                10
+            );
+
+            // 🔹 사용자 포인트 가져오기 (비동기 처리)
+            const userPoints = await fetchUserPoints();
+
+            // 🔹 포인트 할인 계산
+            let maxDiscount = Math.floor(originalPrice / 10000) * 1000;  // 1000포인트당 10,000원 할인
+            let usedPoints = Math.min(userPoints, maxDiscount); // 사용 가능한 최대 포인트
+            let discountAmount = Math.floor(usedPoints / 1000) * 10000; // 실제 할인 적용 금액
+            discountAmount = Math.min(originalPrice, discountAmount); // 원래 가격보다 할인을 초과할 수 없음
+
+            let finalPrice = Math.max(0, originalPrice - discountAmount); // 최종 결제 금액 (0원 이상)
+
+            console.log(`✅ 포인트 적용 전 가격: ${originalPrice}, 할인 금액: ${discountAmount}, 최종 결제 금액: ${finalPrice}`);
+
+            return {
+                bookTitle,
+                bookAuthor,
+                bookIsbn,
+                originalPrice,
+                discountAmount,
+                finalPrice,
+                usedPoints
+            };
+        }
     }
 );
 
