@@ -139,7 +139,6 @@ public class BookService {
         return result;
     }
 
-
     /**
      * 유저의 장바구니 상품 조회
      */
@@ -153,7 +152,6 @@ public class BookService {
 
         return wishlist;
     }
-
 
     public Integer getCartCountByUser(String userId) {
         return bookMapper.selectCartCountByUser(userId);
@@ -176,7 +174,6 @@ public class BookService {
         bookMapper.insertBookToCart(cart, user); // MyBatis 매퍼 호출
         return cart;
     }
-
 
     /**
      * 특정 책을 카트에서 삭제

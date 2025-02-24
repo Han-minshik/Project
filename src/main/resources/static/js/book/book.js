@@ -241,6 +241,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const loanBtn = document.querySelector(".loan-btn");
     if (!loanBtn) return;
 
+    function isUserLoggedIn() {
+        return document.querySelector(".user-logged-in") !== null;
+    }
+
     loanBtn.onclick = async () => {
         if (!isUserLoggedIn()) {
             alert("로그인이 필요합니다.");

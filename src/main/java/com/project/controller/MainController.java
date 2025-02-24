@@ -234,7 +234,7 @@ public class MainController {
         LoanDTO loanInfo = loanService.getLoanByUserAndBook(user.getName(), bookIsbn);
         if (loanInfo == null || !"대출 중".equals(loanInfo.getStatus())) {
             model.addAttribute("error", "해당 책을 대출한 사용자만 열람할 수 있습니다.");
-            return "error/forbidden";
+            return "user/lendbook";
         }
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime loanDate = loanInfo.getLoanDate();
@@ -246,7 +246,7 @@ public class MainController {
 
         if (now.isBefore(loanDate) || now.isAfter(returnDate)) {
             model.addAttribute("error", "해당 책은 대출 기간 내에서만 열람할 수 있습니다.");
-            return "error/forbidden";
+            return "user/lendbook";
         }
 
         BookDTO book = bookService.getBookByIsbn(bookIsbn);

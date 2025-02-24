@@ -6,35 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="15b74aa2-1c85-4c93-8e2d-9c2f696a5028" name="변경" comment="배포 중(application.properties 포트 번호 변경)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/discussion-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/discussion-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/lendbook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT.war.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/configuration/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/com/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/mybatis/book-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/mybatis/book-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/mybatis/discussion-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/mybatis/discussion-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/static/js/book/book-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/static/js/book/book-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/static/js/book/book.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/static/js/book/book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/lendbook.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/project-0.0.1-SNAPSHOT/WEB-INF/classes/templates/user/lendbook.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,15 +370,8 @@
       <workItem from="1739717504201" duration="12865000" />
       <workItem from="1739730606738" duration="3058000" />
       <workItem from="1739752378971" duration="7607000" />
-      <workItem from="1739760459867" duration="1534000" />
-    </task>
-    <task id="LOCAL-00200" summary="배포 중(application.properties 포트 번호 변경)">
-      <option name="closed" value="true" />
-      <created>1739508211393</created>
-      <option name="number" value="00200" />
-      <option name="presentableId" value="LOCAL-00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1739508211393</updated>
+      <workItem from="1739760459867" duration="1635000" />
+      <workItem from="1739861638100" duration="803000" />
     </task>
     <task id="LOCAL-00201" summary="배포 중(application.properties 포트 번호 변경)">
       <option name="closed" value="true" />
@@ -793,7 +757,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739718330053</updated>
     </task>
-    <option name="localTasksCounter" value="249" />
+    <task id="LOCAL-00249" summary="배포 중(application.properties 포트 번호 변경)">
+      <option name="closed" value="true" />
+      <created>1739762050847</created>
+      <option name="number" value="00249" />
+      <option name="presentableId" value="LOCAL-00249" />
+      <option name="project" value="LOCAL" />
+      <updated>1739762050847</updated>
+    </task>
+    <option name="localTasksCounter" value="250" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
